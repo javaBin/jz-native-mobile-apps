@@ -1,0 +1,27 @@
+PODS:
+  - SwiftyJSON (2.3.2)
+  - XCGLogger (4.0.0):
+    - XCGLogger/Core (= 4.0.0)
+  - XCGLogger/Core (4.0.0)
+
+DEPENDENCIES:
+  - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON.git`, tag `14.2.0`)
+  - XCGLogger (~> 4.0.0)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/IBM-Swift/SwiftyJSON.git
+    :tag: 14.2.0
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :git: https://github.com/IBM-Swift/SwiftyJSON.git
+    :tag: 14.2.0
+
+SPEC CHECKSUMS:
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
+
+PODFILE CHECKSUM: efdca7b929a6a68f0f6bd398203189c6ca33482f
+
+COCOAPODS: 1.3.1
