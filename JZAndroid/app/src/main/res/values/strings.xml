@@ -3,4 +3,19 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+
+    <string name="permission_write">Modify JavaZone schedule data</string>
+
+    <!-- Accessibility description for navigation drawer -->
+    <string name="navdrawer_description_a11y">Navigation Menu</string>
+
+    <!-- Navigation bar text for viewing the user's schedule -->
+    <string name="title_schedule">Schedule</string>
+
+
+    <!-- Navigation bar text for viewing Info -->
+    <string name="title_info">Info</string>
+
+
 </resources>
