@@ -27,9 +27,43 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
         buildConfigField("boolean", "ENABLE_DEBUG_TOOLS", "false")
+
+        buildConfigField("String", "WIFI_SSID", "\"${wifi_ssid}\"")
+        buildConfigField("String", "WIFI_PASSPHRASE", "\"${wifi_passphrase}\"")
+        buildConfigField("String", "CONFERENCE_HASHTAG", "\"${conference_hashtag}\"")
+        buildConfigField("String", "CONFERENCE_HASHTAG_PREFIX", "\"${conference_hashtag_prefix}\"")
+        buildConfigField("String", "BOOTSTRAP_DATA_TIMESTAMP", "\"${bootstrap_data_timestamp}\"")
+        buildConfigField("String", "DEFAULT_TIMEZONE", "\"${default_timezone}\"")
+        buildConfigField("String", "CONFERENCE_DAY1_START", "\"${conference_day1_start}\"")
+        buildConfigField("String", "CONFERENCE_DAY1_END", "\"${conference_day1_end}\"")
+        buildConfigField("String", "CONFERENCE_DAY2_START", "\"${conference_day2_start}\"")
+        buildConfigField("String", "CONFERENCE_DAY2_END", "\"${conference_day2_end}\"")
+
+        resValue("string", "pref_conf_messages_enabled", "pref_conf_messages_enabled_${conf_version}")
+        buildConfigField("String", "PREF_CONF_MESSAGES_ENABLED", "\"pref_conf_messages_enabled_${conf_version}\"")
+
+        resValue("string", "pref_attendee_at_venue", "pref_attendee_at_venue_int_${conf_version}")
+        buildConfigField("String", "PREF_ATTENDEE_AT_VENUE", "\"pref_attendee_at_venue_int_${conf_version}\"")
+
+        resValue("string", "pref_last_registration_check_ts", "pref_last_registration_check_ts_${conf_version}")
+        buildConfigField("String", "PREF_LAST_REGISTRATION_CHECK_TS", "\"pref_last_registration_check_ts_${conf_version}\"")
+
+        resValue("string", "pref_session_reminders_enabled", "pref_session_reminders_enabled_${conf_version}")
+        buildConfigField("String", "PREF_NOTIFICATIONS_ENABLED", "\"pref_session_reminders_enabled_${conf_version}\"")
+
+        resValue("string", "pref_session_feedback_reminders_enabled", "pref_session_feedback_reminders_enabled_${conf_version}")
+        buildConfigField("String", "PREF_SESSION_FEEDBACK_REMINDERS_ENABLED", "\"pref_session_feedback_reminders_enabled_${conf_version}\"")
+
+        buildConfigField("String", "PREF_SESSIONS_LOADED_DONE", "\"pref_sessions_loaded_done_${conf_version}\"")
+        buildConfigField("String", "KEYNOTE_SESSION_ID", "\"${keynote_session_id}\"")
+        buildConfigField("String", "SLEEPING_PILL_URL", "\"${sleepingpill_api_url}\"")
+
+
+        buildConfigField("String", "NEW_FEED_ITEM", "\"new_feed_item\"")
 
         consumerProguardFiles file('proguard-project.txt')
 
@@ -40,11 +74,13 @@ android {
             debuggable true
             minifyEnabled false
             buildConfigField("boolean", "ENABLE_DEBUG_TOOLS", "true")
+            buildConfigField("String", "SLEEPING_PILL_SLUG_URL", "\"${developer_api_endpoint}\"")
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "SLEEPING_PILL_SLUG_URL", "\"${production_api_endpoint}\"")
         }
     }
 
@@ -84,6 +120,10 @@ dependencies {
     compile "com.android.support:preference-v7:25.3.1"
     compile "com.android.support:transition:25.3.1"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
 
 
     // JSON utility library.

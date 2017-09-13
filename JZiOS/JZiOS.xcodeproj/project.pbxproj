@@ -10,6 +10,7 @@
 		2735140A3C34E6E612523AFC /* Pods_JZiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD799FD8AF5CE6BA011FE7F /* Pods_JZiOSTests.framework */; };
 		46C2023509D0432BEDE96EA0 /* Pods_JZiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F8E863A8035F5112297BB0 /* Pods_JZiOSUITests.framework */; };
 		4C20B2F2BC2BE0889A3A90C8 /* Pods_JZiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E2D10CEC636FB7A5AF5662A /* Pods_JZiOS.framework */; };
+		50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EAF01F690B35009A3E29 /* URLConstants.swift */; };
 		50C1693A1F686F83005E8AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C169391F686F83005E8AC7 /* AppDelegate.swift */; };
 		50C1693C1F686F83005E8AC7 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1693B1F686F83005E8AC7 /* MasterViewController.swift */; };
 		50C1693E1F686F83005E8AC7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1693D1F686F83005E8AC7 /* DetailViewController.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		1E2D10CEC636FB7A5AF5662A /* Pods_JZiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE83B840387BEFD1FB91C44 /* Pods-JZiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZiOS/Pods-JZiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		50A3EAF01F690B35009A3E29 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		50C169361F686F83005E8AC7 /* JZiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JZiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C169391F686F83005E8AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C1693B1F686F83005E8AC7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50A3EAEF1F690B07009A3E29 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				50A3EAF01F690B35009A3E29 /* URLConstants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
 		50C1692D1F686F83005E8AC7 = {
 			isa = PBXGroup;
 			children = (
@@ -118,8 +128,9 @@
 		50C169381F686F83005E8AC7 /* JZiOS */ = {
 			isa = PBXGroup;
 			children = (
+				50A3EAEF1F690B07009A3E29 /* Constants */,
 				50C1696B1F686FAE005E8AC7 /* Utils */,
-				50C1696A1F686FA9005E8AC7 /* Scenes */,
+				50C1696A1F686FA9005E8AC7 /* ViewControllers */,
 				50C169691F686F9D005E8AC7 /* Models */,
 				50C169391F686F83005E8AC7 /* AppDelegate.swift */,
 				50C1693B1F686F83005E8AC7 /* MasterViewController.swift */,
@@ -158,11 +169,11 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		50C1696A1F686FA9005E8AC7 /* Scenes */ = {
+		50C1696A1F686FA9005E8AC7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Scenes;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		50C1696B1F686FAE005E8AC7 /* Utils */ = {
@@ -491,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
+				50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */,
 				50C1693E1F686F83005E8AC7 /* DetailViewController.swift in Sources */,
 				50C1693C1F686F83005E8AC7 /* MasterViewController.swift in Sources */,
 				50C1693A1F686F83005E8AC7 /* AppDelegate.swift in Sources */,
@@ -650,6 +662,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JZiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "\"-D\" \"DEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = net.chrissearle.incogito.JavaZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -663,6 +677,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JZiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = net.chrissearle.incogito.JavaZone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -746,6 +761,7 @@
 				50C169621F686F84005E8AC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50C169631F686F84005E8AC7 /* Build configuration list for PBXNativeTarget "JZiOSTests" */ = {
 			isa = XCConfigurationList;
@@ -754,6 +770,7 @@
 				50C169651F686F84005E8AC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50C169661F686F84005E8AC7 /* Build configuration list for PBXNativeTarget "JZiOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -762,6 +779,7 @@
 				50C169681F686F84005E8AC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
