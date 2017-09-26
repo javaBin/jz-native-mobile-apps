@@ -139,6 +139,16 @@ public class SettingsUtils {
   }
 
   /**
+   * Return a long representing the last time a sync succeeded.
+   *
+   * @param context Context to be used to lookup the {@link android.content.SharedPreferences}.
+   */
+  public static long getLastSyncSucceededTime(final Context context) {
+    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+    return sp.getLong(PREF_LAST_SYNC_SUCCEEDED, 0L);
+  }
+
+  /**
    * Return true if analytics are enabled, false if user has disabled them.
    *
    * @param context Context to be used to lookup the {@link android.content.SharedPreferences}.

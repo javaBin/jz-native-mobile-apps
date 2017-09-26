@@ -78,7 +78,6 @@ public class AppApplication extends MultiDexApplication {
 
         LOGD(TAG, "Analytics being prepared.");
         AnalyticsHelper.prepareAnalytics(this);
-        SettingsUtils.markDeclinedWifiSetup(this, false);
 
         // Ensure an updated security provider is installed into the system when a new one is
         // available via Google Play services.

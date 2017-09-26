@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import no.schedule.javazone.v3.sync.SessionApiWebService;
 import no.schedule.javazone.v3.util.SettingsUtils;
 
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(!SettingsUtils.isMarkSessionLoadedDone(this)) {
-            new SessionApiWebService().getAllSessions(BuildConfig.SLEEPING_PILL_SLUG_URL);
+            new SessionApiWebService(this).getAllSessions(BuildConfig.SLEEPING_PILL_SLUG_URL);
         }
 
         mTextMessage = (TextView) findViewById(R.id.message);

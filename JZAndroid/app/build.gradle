@@ -195,3 +195,5 @@ dependencies {
     testCompile 'org.powermock:powermock-module-junit4:1.6.4'
     testCompile 'org.json:json:20090211'
 }
+
+apply plugin: 'com.google.gms.google-services'

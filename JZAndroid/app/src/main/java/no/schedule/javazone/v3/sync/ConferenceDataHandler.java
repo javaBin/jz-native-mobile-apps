@@ -30,8 +30,11 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 import no.schedule.javazone.v3.io.JSONHandler;
+import no.schedule.javazone.v3.io.handler.SessionHandler;
+import no.schedule.javazone.v3.io.model.Session;
 
 import static no.schedule.javazone.v3.util.LogUtils.LOGD;
 import static no.schedule.javazone.v3.util.LogUtils.LOGE;
@@ -94,6 +97,9 @@ public class ConferenceDataHandler {
   private HashtagsHandler mHashtagsHandler;
   private VideosHandler mVideosHandler; */
 
+  private SessionHandler mSessionsHandler;
+
+
   // Convenience map that maps the key name to its corresponding handler (e.g.
   // "blocks" to mBlocksHandler (to avoid very tedious if-elses)
   private final HashMap<String, JSONHandler> mHandlerForKey = new HashMap<>();
@@ -104,6 +110,17 @@ public class ConferenceDataHandler {
   public ConferenceDataHandler(Context ctx) {
     mContext = ctx;
   }
+
+  public void applyConferenceData(List<Session> sessions, String dataTimestamp) {
+    LOGD(TAG, "Applying data from " + sessions.size() + " sessions, timestamp " + dataTimestamp);
+
+    // Create Handlers for each data type
+    mHandlerForKey.put(DATA_KEY_SESSIONS, mSessionsHandler = new SessionHandler(mContext));
+
+
+
+  }
+
 
   /**
    * Parses the conference data in the given objects and imports the data into the

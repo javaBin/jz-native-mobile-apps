@@ -15,6 +15,8 @@ public class Session {
   public String language;
   @SerializedName("abstract")
   public String description;
+  public String published;
+  public String video;
   public String title;
   public String room;
   public String conferenceId;
@@ -22,6 +24,9 @@ public class Session {
   public Speaker[] speakers;
   public String startTime;
   public String endTime;
+  public String slug;
+  public transient boolean isLivestream;
+
 
   public class RelatedContent {
     public String id;

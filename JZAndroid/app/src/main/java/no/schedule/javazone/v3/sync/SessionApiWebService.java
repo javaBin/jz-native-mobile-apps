@@ -1,5 +1,7 @@
 package no.schedule.javazone.v3.sync;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -7,6 +9,7 @@ import java.util.List;
 
 import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.io.model.Session;
+import no.schedule.javazone.v3.util.SettingsUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,20 +18,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SessionApiWebService implements Callback<SessionResult> {
   private static SessionApiWebService INSTANCE;
+  private static Context context;
   SessionApiService service;
 
-  public SessionApiWebService() {
+  public SessionApiWebService(Context context) {
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl(BuildConfig.SLEEPING_PILL_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build();
 
+    this.context = context;
     service = retrofit.create(SessionApiService.class);
   }
 
-  public static SessionApiWebService getInstance() {
+  public static SessionApiWebService getInstance(Context context) {
     if (INSTANCE == null) {
-      INSTANCE = new SessionApiWebService();
+      INSTANCE = new SessionApiWebService(context);
     }
     return INSTANCE;
   }
@@ -43,7 +48,13 @@ public class SessionApiWebService implements Callback<SessionResult> {
     if(response.isSuccessful()) {
 
       List<Session> changesList = response.body().sessions;
+
+      ConferenceDataHandler dataHandler = new ConferenceDataHandler(context);
+      // TODO apply datahandler to run
+
+
       // TODO set preference that you have loaded sessions
+      //SettingsUtils.setMarkSessionLoad(context, true);
 
 
     } else {
