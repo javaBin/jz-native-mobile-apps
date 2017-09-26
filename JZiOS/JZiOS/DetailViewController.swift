@@ -21,6 +21,25 @@ class DetailViewController: UIViewController {
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Show spinner here
+        SessionApiService.sharedInstance.getAllSessions().then { result -> Void in
+            self.loadSessions(sessionResult: result)
+            }.always {
+                // Hide spinner here
+            }
+            .catch { error in
+                print(error)
+            }
+    }
+    
+    func loadSessions(sessionResult:SessionResult)
+    {
+        print("Hello result")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

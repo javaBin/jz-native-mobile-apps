@@ -8,6 +8,10 @@ target 'JZiOS' do
   # Pods for JZiOS
   pod 'SwiftyJSON', :git => 'https://github.com/IBM-Swift/SwiftyJSON.git', :tag => '14.2.0'
   pod 'XCGLogger', '~> 4.0.0'
+  pod 'Alamofire', '~> 4.5'
+  pod 'ObjectMapper', '~> 2.2'
+  pod 'PromiseKit', '~> 4.4'
+  
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
