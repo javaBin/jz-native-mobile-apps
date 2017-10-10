@@ -8,33 +8,34 @@ import android.content.OperationApplicationException;
 import android.net.Uri;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGBuilder;
-import com.larvalabs.svgandroid.SVGParseException;
-import com.turbomanage.httpclient.BasicHttpClient;
 import com.turbomanage.httpclient.ConsoleRequestLogger;
 import com.turbomanage.httpclient.HttpResponse;
 import com.turbomanage.httpclient.RequestLogger;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
 import no.schedule.javazone.v3.io.JSONHandler;
-import no.schedule.javazone.v3.io.handler.SessionHandler;
+import no.schedule.javazone.v3.io.handler.BlocksHandler;
+import no.schedule.javazone.v3.io.handler.CardHandler;
+import no.schedule.javazone.v3.io.handler.MapPropertyHandler;
+import no.schedule.javazone.v3.io.handler.RoomsHandler;
+import no.schedule.javazone.v3.io.handler.SearchSuggestHandler;
+import no.schedule.javazone.v3.io.handler.SessionsHandler;
+import no.schedule.javazone.v3.io.handler.SpeakersHandler;
+import no.schedule.javazone.v3.io.handler.TagsHandler;
+import no.schedule.javazone.v3.io.model.Room;
 import no.schedule.javazone.v3.io.model.Session;
+import no.schedule.javazone.v3.io.model.Speaker;
+import no.schedule.javazone.v3.provider.ScheduleContract;
 
 import static no.schedule.javazone.v3.util.LogUtils.LOGD;
 import static no.schedule.javazone.v3.util.LogUtils.LOGE;
@@ -65,44 +66,43 @@ public class ConferenceDataHandler {
   private static final String DATA_KEY_SESSIONS = "sessions";
   private static final String DATA_KEY_SEARCH_SUGGESTIONS = "search_suggestions";
   private static final String DATA_KEY_MAP = "map";
-  private static final String DATA_KEY_HASHTAGS = "hashtags";
-  private static final String DATA_KEY_VIDEOS = "video_library";
 
   private static final String[] DATA_KEYS_IN_ORDER = {
       DATA_KEY_ROOMS,
       DATA_KEY_BLOCKS,
+
+      DATA_KEY_MAP,
+  };
+
+  private static final String[] KEYS_PROCESS = {
       DATA_KEY_CARDS,
       DATA_KEY_TAGS,
       DATA_KEY_SPEAKERS,
       DATA_KEY_SESSIONS,
-      DATA_KEY_SEARCH_SUGGESTIONS,
-      DATA_KEY_MAP,
-      DATA_KEY_HASHTAGS,
-      DATA_KEY_VIDEOS
+      DATA_KEY_SEARCH_SUGGESTIONS
   };
 
   private final Context mContext;
   private final Gson mGson = new Gson();
 
   // Handlers for each entity type:
-  /*
+
   private RoomsHandler mRoomsHandler;
   private BlocksHandler mBlocksHandler;
+  private SessionsHandler mSessionsHandler;
   private CardHandler mCardHandler;
   private TagsHandler mTagsHandler;
   private SpeakersHandler mSpeakersHandler;
-  private SessionsHandler mSessionsHandler;
   private SearchSuggestHandler mSearchSuggestHandler;
   private MapPropertyHandler mMapPropertyHandler;
-  private HashtagsHandler mHashtagsHandler;
-  private VideosHandler mVideosHandler; */
 
-  private SessionHandler mSessionsHandler;
 
 
   // Convenience map that maps the key name to its corresponding handler (e.g.
   // "blocks" to mBlocksHandler (to avoid very tedious if-elses)
-  private final HashMap<String, JSONHandler> mHandlerForKey = new HashMap<>();
+  private final HashMap<String, JSONHandler> mHandlerForKeyDataBootStrap = new HashMap<>();
+
+  private final HashMap<String, JSONHandler> mHandlerForKeyConference = new HashMap<>();
 
   // Tally of total content provider operations we carried out (for statistical purposes)
   private int mContentProviderOperationsDone = 0;
@@ -111,13 +111,22 @@ public class ConferenceDataHandler {
     mContext = ctx;
   }
 
-  public void applyConferenceData(List<Session> sessions, String dataTimestamp) {
-    LOGD(TAG, "Applying data from " + sessions.size() + " sessions, timestamp " + dataTimestamp);
+  public void applyConferenceData(List<Session> sessions) {
+    LOGD(TAG, "Applying data from " + sessions.size() + " sessions");
 
     // Create Handlers for each data type
-    mHandlerForKey.put(DATA_KEY_SESSIONS, mSessionsHandler = new SessionHandler(mContext));
+    mHandlerForKeyConference.put(DATA_KEY_ROOMS, mRoomsHandler = new RoomsHandler(mContext));
+    mHandlerForKeyConference.put(DATA_KEY_SESSIONS, mSessionsHandler = new SessionsHandler(mContext));
+
+    mHandlerForKeyConference.put(DATA_KEY_SEARCH_SUGGESTIONS, mSearchSuggestHandler =
+        new SearchSuggestHandler(mContext));
 
 
+    processData(sessions);
+
+
+    // mSessionsHandler.setTagMap(mTagsHandler.getTagMap());
+    // mSessionsHandler.setSpeakerMap(mSpeakersHandler.getSpeakerMap());
 
   }
 
@@ -127,46 +136,33 @@ public class ConferenceDataHandler {
    * content provider. The format of the data is documented at https://code.google.com/p/iosched.
    *
    * @param dataBodies       The collection of JSON objects to parse and import.
-   * @param dataTimestamp    The timestamp of the data. This should be in RFC1123 format.
    * @param downloadsAllowed Whether or not we are supposed to download data from the internet if
    *                         needed.
    * @throws IOException If there is a problem parsing the data.
    */
-  public void applyConferenceData(String[] dataBodies, String dataTimestamp,
+  public void applyConferenceData(String[] dataBodies,
                                   boolean downloadsAllowed) throws IOException {
-    LOGD(TAG, "Applying data from " + dataBodies.length + " files, timestamp " + dataTimestamp);
+    LOGD(TAG, "Applying data from " + dataBodies.length + " files");
 
     // create handlers for each data type
-    /*
-    mHandlerForKey.put(DATA_KEY_ROOMS, mRoomsHandler = new RoomsHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_BLOCKS, mBlocksHandler = new BlocksHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_TAGS, mTagsHandler = new TagsHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_SPEAKERS, mSpeakersHandler = new SpeakersHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_SESSIONS, mSessionsHandler = new SessionsHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_SEARCH_SUGGESTIONS, mSearchSuggestHandler =
+
+    mHandlerForKeyDataBootStrap.put(DATA_KEY_ROOMS, mRoomsHandler = new RoomsHandler(mContext));
+    mHandlerForKeyDataBootStrap.put(DATA_KEY_BLOCKS, mBlocksHandler = new BlocksHandler(mContext));
+    mHandlerForKeyDataBootStrap.put(DATA_KEY_SEARCH_SUGGESTIONS, mSearchSuggestHandler =
         new SearchSuggestHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_MAP, mMapPropertyHandler = new MapPropertyHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_HASHTAGS, mHashtagsHandler = new HashtagsHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_VIDEOS, mVideosHandler = new VideosHandler(mContext));
-    mHandlerForKey.put(DATA_KEY_CARDS, mCardHandler = new CardHandler(mContext));
-*/
-    // process the jsons. This will call each of the handlers when appropriate to deal
-    // with the objects we see in the data.
+    mHandlerForKeyDataBootStrap.put(DATA_KEY_MAP, mMapPropertyHandler = new MapPropertyHandler(mContext));
+
     LOGD(TAG, "Processing " + dataBodies.length + " JSON objects.");
     for (int i = 0; i < dataBodies.length; i++) {
       LOGD(TAG, "Processing json object #" + (i + 1) + " of " + dataBodies.length);
       processDataBody(dataBodies[i]);
     }
 
-    // the sessions handler needs to know the tag and speaker maps to process sessions
-   // mSessionsHandler.setTagMap(mTagsHandler.getTagMap());
-   // mSessionsHandler.setSpeakerMap(mSpeakersHandler.getSpeakerMap());
-
     // produce the necessary content provider operations
     ArrayList<ContentProviderOperation> batch = new ArrayList<>();
     for (String key : DATA_KEYS_IN_ORDER) {
       LOGI(TAG, "Building content provider operations for: " + key);
-      mHandlerForKey.get(key).makeContentProviderOperations(batch);
+      mHandlerForKeyDataBootStrap.get(key).makeContentProviderOperations(batch);
       LOGI(TAG, "Content provider operations so far: " + batch.size());
     }
     LOGD(TAG, "Total content provider operations: " + batch.size());
@@ -177,7 +173,7 @@ public class ConferenceDataHandler {
 
     // finally, push the changes into the Content Provider
     LOGI(TAG, "Applying " + batch.size() + " content provider operations.");
-    /*
+
     try {
       int operations = batch.size();
       if (operations > 0) {
@@ -201,10 +197,8 @@ public class ConferenceDataHandler {
       Uri uri = ScheduleContract.BASE_CONTENT_URI.buildUpon().appendPath(path).build();
       resolver.notifyChange(uri, null);
     }
-    */
 
-    // update our data timestamp
-    setDataTimestamp(dataTimestamp);
+
     LOGD(TAG, "Done applying conference data.");
   }
 
@@ -212,13 +206,6 @@ public class ConferenceDataHandler {
     return mContentProviderOperationsDone;
   }
 
-  /**
-   * Processes a conference data body and calls the appropriate data type handlers
-   * to process each of the objects represented therein.
-   *
-   * @param dataBody The body of data to process
-   * @throws IOException If there is an error parsing the data.
-   */
   private void processDataBody(String dataBody) throws IOException {
     JsonReader reader = new JsonReader(new StringReader(dataBody));
     JsonParser parser = new JsonParser();
@@ -229,9 +216,9 @@ public class ConferenceDataHandler {
       reader.beginObject();
 
       while (reader.hasNext()) {
-        // the key is "rooms", "speakers", "tracks", etc.
+
         final String key = reader.nextName();
-        final JSONHandler handler = mHandlerForKey.get(key);
+        final JSONHandler handler = mHandlerForKeyDataBootStrap.get(key);
         if (handler != null) {
           LOGD(TAG, "Processing key in conference data json: " + key);
           // pass the value to the corresponding handler
@@ -246,6 +233,25 @@ public class ConferenceDataHandler {
       reader.close();
     }
   }
+
+  private void processData(List<Session> sessions) {
+    List<Speaker> allSpeakers;
+    List<Room> allRooms;
+
+
+    for(String key: KEYS_PROCESS) {
+      final JSONHandler handler = mHandlerForKeyConference.get(key);
+      if(handler != null) {
+        LOGD(TAG, "Processing key in conference data json: " + key);
+        handler.process(sessions);
+      } else {
+        LOGW(TAG, "Skipping unknown key in conference data json: " + key);
+      }
+    }
+  }
+
+
+
 
   /**
    * Synchronise the map overlay files either from the local assets (if available) or from a

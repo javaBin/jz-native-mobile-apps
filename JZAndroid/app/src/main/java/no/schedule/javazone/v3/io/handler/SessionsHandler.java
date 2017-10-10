@@ -3,12 +3,10 @@ package no.schedule.javazone.v3.io.handler;
 import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -33,15 +31,15 @@ import static no.schedule.javazone.v3.util.LogUtils.LOGE;
 import static no.schedule.javazone.v3.util.LogUtils.LOGW;
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
-public class SessionHandler extends JSONHandler {
-  private static final String TAG = makeLogTag(SessionHandler.class);
+public class SessionsHandler extends JSONHandler {
+  private static final String TAG = makeLogTag(SessionsHandler.class);
   private HashMap<String, Session> mSessions = new HashMap<>();
   private HashMap<String, Tag> mTagMap = null;
   private HashMap<String, Speaker> mSpeakerMap = null;
 
   private int mDefaultSessionColor;
 
-  public SessionHandler(Context context) {
+  public SessionsHandler(Context context) {
     super(context);
     mDefaultSessionColor = ContextCompat.getColor(mContext, R.color.default_session_color);
   }
@@ -174,10 +172,6 @@ public class SessionHandler extends JSONHandler {
       LOGE(TAG, "Can't build speaker names -- speaker map is null.");
     }
 
-    int color = mDefaultSessionColor;
-
-    // TODO must include more fields here
-
     builder.withValue(ScheduleContract.SyncColumns.UPDATED, System.currentTimeMillis())
         .withValue(ScheduleContract.Sessions.SESSION_ID, session.id)
         .withValue(ScheduleContract.Sessions.SESSION_LEVEL, session.level)
@@ -192,15 +186,10 @@ public class SessionHandler extends JSONHandler {
         // we don't want to incur the performance penalty of having to do a
         // subquery for every record to figure out the list of tags of each session.
         .withValue(ScheduleContract.Sessions.SESSION_SPEAKER_NAMES, speakerNames)
-        .withValue(ScheduleContract.Sessions.SESSION_LIVESTREAM_ID,
-            session.isLivestream ? session.video : null)
-        .withValue(ScheduleContract.Sessions.SESSION_VIMEO_URL,
-            session.isLivestream ? null : session.video)
-        .withValue(ScheduleContract.Sessions.SESSION_NOTES_URL, null)        // Not available
+        .withValue(ScheduleContract.Sessions.SESSION_VIMEO_URL, session.video)
         .withValue(ScheduleContract.Sessions.ROOM_ID, session.room)
         .withValue(ScheduleContract.Sessions.SESSION_IMPORT_HASHCODE,
-            session.getImportHashCode())
-        .withValue(ScheduleContract.Sessions.SESSION_COLOR, color);
+            session.getImportHashCode());
     list.add(builder.build());
   }
 
@@ -259,6 +248,13 @@ public class SessionHandler extends JSONHandler {
     int SESSION_ID = 1;
     int SESSION_IMPORT_HASHCODE = 2;
   };
+
+  @Override
+  public void process(@NonNull List<Session> sessions) {
+    for(Session session: sessions) {
+      mSessions.put(session.id, session);
+    }
+  }
 
 
   @Override

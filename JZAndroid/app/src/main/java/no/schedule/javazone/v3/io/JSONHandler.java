@@ -32,7 +32,9 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.List;
 
+import no.schedule.javazone.v3.io.model.Session;
 import no.schedule.javazone.v3.util.IOUtils;
 
 public abstract class JSONHandler {
@@ -44,6 +46,8 @@ public abstract class JSONHandler {
     }
 
     public abstract void makeContentProviderOperations(ArrayList<ContentProviderOperation> list);
+
+    public abstract void process(@NonNull List<Session> sessions);
 
     public abstract void process(@NonNull Gson gson, @NonNull JsonElement element);
 

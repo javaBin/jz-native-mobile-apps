@@ -1,5 +1,5 @@
 import Foundation
-import SwiftyJSON
+import RealmSwift
 import ObjectMapper
 
 class SessionResult: Mappable {
@@ -13,7 +13,7 @@ class SessionResult: Mappable {
     }
 }
 
-class Session: Mappable {
+class Session: Object, Mappable {
     var intendedAudience: String?
     var endTimeZulu: String?
     var keywords: Array<String>?
@@ -32,9 +32,8 @@ class Session: Mappable {
     var endTime: String?
     var slug: String?
     
-    
-    
-    required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {

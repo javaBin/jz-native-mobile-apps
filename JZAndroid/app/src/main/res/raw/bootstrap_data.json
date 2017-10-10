@@ -1,0 +1,450 @@
+{
+  "blocks": [
+    {
+      "title": "Badge Pick-Up",
+      "subtitle": "Registration",
+      "type": "break",
+      "start": "2017-05-16T14:00:00.000Z",
+      "end": "2017-05-17T02:00:00.000Z"
+    },
+    {
+      "title": "Badge Pick-Up",
+      "subtitle": "Registration",
+      "type": "break",
+      "start": "2017-05-17T14:00:00.000Z",
+      "end": "2017-05-18T02:00:00.000Z"
+    },
+    {
+      "title": "Breakfast",
+      "subtitle": "",
+      "type": "break",
+      "kind": "meal",
+      "color": "#fdd330",
+      "start": "2017-05-17T14:00:00.000Z",
+      "end": "2017-05-17T16:30:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T16:00:00.000Z",
+      "end": "2017-05-17T17:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T17:00:00.000Z",
+      "end": "2017-05-17T18:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T18:00:00.000Z",
+      "end": "2017-05-17T19:00:00.000Z"
+    },
+    {
+      "title": "Lunch",
+      "subtitle": "",
+      "type": "break",
+      "kind": "meal",
+      "color": "#fdd330",
+      "start": "2017-05-17T18:30:00.000Z",
+      "end": "2017-05-17T21:30:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T19:00:00.000Z",
+      "end": "2017-05-17T20:00:00.000Z"
+    },
+    {
+      "title": "Codelabs",
+      "subtitle": "",
+      "type": "break",
+      "start": "2017-05-17T18:30:00.000Z",
+      "end": "2017-05-18T01:30:00.000Z"
+    },
+    {
+      "title": "Sandbox",
+      "subtitle": "",
+      "type": "break",
+      "start": "2017-05-17T18:30:00.000Z",
+      "end": "2017-05-18T01:30:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T20:00:00.000Z",
+      "end": "2017-05-17T21:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T21:00:00.000Z",
+      "end": "2017-05-17T22:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T22:00:00.000Z",
+      "end": "2017-05-17T23:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-17T23:00:00.000Z",
+      "end": "2017-05-18T00:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T00:00:00.000Z",
+      "end": "2017-05-18T01:00:00.000Z"
+    },
+    {
+      "title": "After Hours Party",
+      "subtitle": "",
+      "kind": "afterHours",
+      "color": "#bcc8fb",
+      "type": "break",
+      "start": "2017-05-18T02:00:00.000Z",
+      "end": "2017-05-18T05:00:00.000Z"
+    },
+    {
+      "title": "Badge Pick-Up",
+      "subtitle": "Registration",
+      "type": "break",
+      "start": "2017-05-18T15:00:00.000Z",
+      "end": "2017-05-19T02:00:00.000Z"
+    },
+    {
+      "title": "Breakfast",
+      "subtitle": "",
+      "type": "break",
+      "kind": "meal",
+      "color": "#fdd330",
+      "start": "2017-05-18T15:00:00.000Z",
+      "end": "2017-05-18T17:00:00.000Z"
+    },
+    {
+      "title": "Codelabs",
+      "subtitle": "",
+      "type": "break",
+      "start": "2017-05-18T15:30:00.000Z",
+      "end": "2017-05-19T02:00:00.000Z"
+    },
+    {
+      "title": "Sandbox",
+      "subtitle": "",
+      "type": "break",
+      "start": "2017-05-18T15:30:00.000Z",
+      "end": "2017-05-19T02:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T16:00:00.000Z",
+      "end": "2017-05-18T17:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T17:00:00.000Z",
+      "end": "2017-05-18T18:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T18:00:00.000Z",
+      "end": "2017-05-18T19:00:00.000Z"
+    },
+    {
+      "title": "Lunch",
+      "subtitle": "",
+      "type": "break",
+      "kind": "meal",
+      "color": "#fdd330",
+      "start": "2017-05-18T18:30:00.000Z",
+      "end": "2017-05-18T21:30:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T19:00:00.000Z",
+      "end": "2017-05-18T20:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T20:00:00.000Z",
+      "end": "2017-05-18T21:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T21:00:00.000Z",
+      "end": "2017-05-18T22:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T22:00:00.000Z",
+      "end": "2017-05-18T23:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-18T23:00:00.000Z",
+      "end": "2017-05-19T00:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T00:00:00.000Z",
+      "end": "2017-05-19T01:00:00.000Z"
+    },
+    {
+      "title": "Concert",
+      "subtitle": "",
+      "type": "break",
+      "kind": "concert",
+      "color": "#b1c0ff",
+      "start": "2017-05-19T03:00:00.000Z",
+      "end": "2017-05-19T05:00:00.000Z"
+    },
+    {
+      "title": "Badge Pick-Up",
+      "subtitle": "Registration",
+      "type": "break",
+      "start": "2017-05-19T15:00:00.000Z",
+      "end": "2017-05-19T23:00:00.000Z"
+    },
+    {
+      "title": "Breakfast",
+      "subtitle": "",
+      "type": "break",
+      "kind": "meal",
+      "color": "#fdd330",
+      "start": "2017-05-19T15:00:00.000Z",
+      "end": "2017-05-19T17:00:00.000Z"
+    },
+    {
+      "title": "Codelabs",
+      "subtitle": "",
+      "type": "break",
+      "start": "2017-05-19T15:30:00.000Z",
+      "end": "2017-05-19T23:00:00.000Z"
+    },
+    {
+      "title": "Sandbox",
+      "subtitle": "",
+      "type": "break",
+      "start": "2017-05-19T15:30:00.000Z",
+      "end": "2017-05-19T23:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T16:00:00.000Z",
+      "end": "2017-05-19T17:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T17:00:00.000Z",
+      "end": "2017-05-19T18:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T18:00:00.000Z",
+      "end": "2017-05-19T19:00:00.000Z"
+    },
+    {
+      "title": "Lunch",
+      "subtitle": "",
+      "type": "break",
+      "kind": "meal",
+      "color": "#fdd330",
+      "start": "2017-05-19T18:30:00.000Z",
+      "end": "2017-05-19T21:30:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T19:00:00.000Z",
+      "end": "2017-05-19T20:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T20:00:00.000Z",
+      "end": "2017-05-19T21:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T21:00:00.000Z",
+      "end": "2017-05-19T22:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T22:00:00.000Z",
+      "end": "2017-05-19T23:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-19T23:00:00.000Z",
+      "end": "2017-05-20T00:00:00.000Z"
+    },
+    {
+      "title": "",
+      "type": "free",
+      "subtitle": "",
+      "start": "2017-05-20T00:00:00.000Z",
+      "end": "2017-05-20T01:00:00.000Z"
+    }
+  ],
+  "map": {
+    "UUID": "E0B83F9E-4838-E761-B0D7-293A763DEBF2",
+    "regions": [
+      {
+        "name": "Room 1",
+        "level": 0,
+        "type": "session",
+        "description": "Room 1 (floor 0)",
+        "coordinates": {
+          "latitude": 59.91328879497513,
+          "longitude": 10.754499435424805
+        },
+        "major": 14441
+      },
+      {
+        "name": "Room 2",
+        "level": 0,
+        "type": "session",
+        "description": "Room 2 (floor 0)",
+        "coordinates": {
+          "latitude": 59.91281817520641,
+          "longitude": 10.754032731056213
+        },
+        "major": 36049
+      },
+      {
+        "name": "Room 3",
+        "level": 0,
+        "type": "session",
+        "description": "Room 3 (floor 0)",
+        "coordinates": {
+          "latitude": 59.91318122533049,
+          "longitude": 10.75537919998169
+        },
+        "major": 61068
+      },
+      {
+        "name": "Room 4",
+        "level": 1,
+        "type": "session",
+        "description": "Room 4 (floor 1)",
+        "coordinates": {
+          "latitude": 59.91321887474575,
+          "longitude": 10.755271911621094
+        },
+        "major": 8136
+      },
+      {
+        "name": "Room 5",
+        "level": 1,
+        "type": "session",
+        "description": "Room 5 (floor 1)",
+        "coordinates": {
+          "latitude": 59.91316777910043,
+          "longitude": 10.754247307777405
+        },
+        "major": 14282
+      },
+      {
+        "name": "Room 6",
+        "level": 1,
+        "type": "session",
+        "description": "Room 6 (floor 1)",
+        "coordinates": {
+          "latitude": 59.91286927138992,
+          "longitude": 10.754064917564392
+        },
+        "major": 45767
+      },
+      {
+        "name": "Room 7",
+        "level": 2,
+        "type": "session",
+        "description": "Room 7 (floor 2)",
+        "coordinates": {
+          "latitude": 59.91281279665619,
+          "longitude": 10.755169987678528
+        },
+        "major": 47589
+      },
+      {
+        "name": "Room 8",
+        "level": 2,
+        "type": "session",
+        "description": "Room 8 (floor 2)",
+        "coordinates": {
+          "latitude": 59.91336140428819,
+          "longitude": 10.754343867301941
+        },
+        "major": 58983
+      },
+      {
+        "name": "Region javaBin",
+        "level": 0,
+        "type": "booth",
+        "description": "javaBin Stand (floor 0)",
+        "coordinates": {
+          "latitude": 59.91297146352089,
+          "longitude": 10.754649639129639
+        },
+        "major": 4577
+      },
+      {
+        "name": "Region Main Entrance",
+        "level": 1,
+        "type": "booth",
+        "description": "Main Entrance (floor 1)",
+        "coordinates": {
+          "latitude": 59.912963395732504,
+          "longitude": 10.755733251571655
+        },
+        "major": 23797
+      }
+    ]
+  }
+}

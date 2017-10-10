@@ -205,17 +205,10 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
         + SessionsColumns.SESSION_REQUIREMENTS + " TEXT,"
         + SessionsColumns.SESSION_KEYWORDS + " TEXT,"
         + SessionsColumns.SESSION_VIMEO_URL + " TEXT,"
-        + SessionsColumns.SESSION_MODERATOR_URL + " TEXT,"
-        + SessionsColumns.SESSION_NOTES_URL + " TEXT,"
         + SessionsColumns.SESSION_CAL_EVENT_ID + " INTEGER,"
-        + SessionsColumns.SESSION_LIVESTREAM_ID + " TEXT,"
         + SessionsColumns.SESSION_TAGS + " TEXT,"
         + SessionsColumns.SESSION_SPEAKER_NAMES + " TEXT,"
         + SessionsColumns.SESSION_IMPORT_HASHCODE + " TEXT NOT NULL DEFAULT '',"
-        + SessionsColumns.SESSION_MAIN_TAG + " TEXT,"
-        + SessionsColumns.SESSION_COLOR + " INTEGER,"
-        + ScheduleContract.SessionsColumns.SESSION_CAPTIONS_URL + " TEXT,"
-        + SessionsColumns.SESSION_PHOTO_URL + " TEXT,"
         + "UNIQUE (" + SessionsColumns.SESSION_ID + ") ON CONFLICT REPLACE)");
 
     db.execSQL("CREATE TABLE " + Tables.SPEAKERS + " ("

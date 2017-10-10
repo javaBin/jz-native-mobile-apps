@@ -128,6 +128,11 @@ public class SettingsUtils {
     sp.edit().putBoolean(PREF_WELCOME_DONE, newValue).apply();
   }
 
+  public static void markDataBootstrapDone(final Context context) {
+    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+    sp.edit().putBoolean(BuildConfig.PREF_DATA_BOOTSTRAP_DONE, true).apply();
+  }
+
   /**
    * Return a long representing the last time a sync was attempted (regardless of success).
    *

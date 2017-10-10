@@ -40,8 +40,6 @@ public class ScheduleContract {
     String BLOCK_TYPE = "block_type";
     /** Extra subtitle for the block. */
     String BLOCK_SUBTITLE = "block_subtitle";
-    /** The kind of block */
-    String BLOCK_KIND = "block_kind";
   }
 
   interface TagsColumns {
@@ -113,32 +111,16 @@ public class ScheduleContract {
     String SESSION_KEYWORDS = "session_keywords";
     /** Full URL to YouTube. */
     String SESSION_VIMEO_URL = "session_vimeo_url";
-    /** Full URL to official session notes. */
-    String SESSION_NOTES_URL = "session_notes_url";
     /** User-specific flag indicating starred status. */
     String SESSION_IN_MY_SCHEDULE = "session_in_my_schedule";
     /** Key for session Calendar event. (Used in ICS or above) */
     String SESSION_CAL_EVENT_ID = "session_cal_event_id";
-    /** The YouTube live stream URL. */
-    String SESSION_LIVESTREAM_ID = "session_livestream_url";
-    /** The Moderator URL. */
-    String SESSION_MODERATOR_URL = "session_moderator_url";
     /** The set of tags the session has. This is a comma-separated list of tags. */
     String SESSION_TAGS = "session_tags";
     /** The names of the speakers on this session, formatted for display. */
     String SESSION_SPEAKER_NAMES = "session_speaker_names";
     /** The hashcode of the data used to create this record. */
     String SESSION_IMPORT_HASHCODE = "session_import_hashcode";
-    /** The session's main tag. */
-    String SESSION_MAIN_TAG = "session_main_tag";
-    /** The session's branding color. */
-    String SESSION_COLOR = "session_color";
-    /** The session's captions URL (for livestreamed sessions). */
-    String SESSION_CAPTIONS_URL = "session_captions_url";
-    /** The session interval when using the interval counter query. */
-    String SESSION_INTERVAL_COUNT = "session_interval_count";
-    /** The session's photo URL. */
-    String SESSION_PHOTO_URL = "session_photo_url";
   }
 
   interface SpeakersColumns {
@@ -422,27 +404,9 @@ public class ScheduleContract {
 
     public static final String SEARCH_SNIPPET = "search_snippet";
 
-    public static final String HAS_GIVEN_FEEDBACK = "has_given_feedback";
-
-    /**
-     * Column name used when performing INSERT or DELETE operations on a related sessions Uri,
-     * such as those returned by {@link #buildRelatedSessionsDirUri(String)}. For example, to
-     * mark that a session has another related session:
-     * <pre>
-     *     Uri uri = Sessions.buildRelatedSessionsDirUri(sessionId);
-     *     ContentValues values = new ContentValues();
-     *     values.put(Sessions.RELATED_SESSION_ID, relatedSessionId);
-     *     contentResolver.insert(uri, null, values);
-     * </pre>
-     */
-    public static final String RELATED_SESSION_ID = "related_session_id";
-
     // ORDER BY clauses
     public static final String SORT_BY_TIME = SESSION_START + " ASC," + SESSION_TITLE
         + " COLLATE NOCASE ASC";
-
-    public static final String LIVESTREAM_SELECTION =
-        SESSION_LIVESTREAM_ID + " is not null AND " + SESSION_LIVESTREAM_ID + "!=''";
 
     // Keynotes are always bookmarked and in "my schedule"
     public static final String IN_SCHEDULE_SELECTION = SESSION_IN_MY_SCHEDULE + " = 1 OR " +
