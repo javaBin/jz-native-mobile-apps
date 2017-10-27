@@ -8,7 +8,9 @@ public class Session {
   @SerializedName("sessionId")
   public String id;
   @SerializedName("intendedAudience")
-  public String tags;
+  public String intendedAudience;
+  @SerializedName("keywords")
+  public String[] tags;
   public String endTimeZulu;
   public String level;
   public String length;
@@ -41,32 +43,27 @@ public class Session {
     }
   }
 
-  public String getImportHashCode() {
-    return (new Random()).nextLong()+"";
-  }
-
   public String makeTagsList() {
     int i;
-    if (tags == null || tags.length() == 0) return "";
-
-    String splitTags[] = tags.split(",");
+    if (tags == null || tags.length == 0) return "";
     StringBuilder sb = new StringBuilder();
-    sb.append(splitTags[0]);
-    for (i = 1; i < splitTags.length; i++) {
-      sb.append(",").append(splitTags[i]);
+    sb.append(tags[0]);
+    for (i = 1; i < tags.length; i++) {
+      sb.append(",").append(tags[i]);
     }
     return sb.toString();
   }
 
   public boolean hasTag(String tag) {
-    if (tags == null || tags.length() == 0) return false;
-
-    String splitTags[] = tags.split(",");
-    for (String myTag : splitTags) {
+    for (String myTag : tags) {
       if (myTag.equals(tag)) {
         return true;
       }
     }
     return false;
+  }
+
+  public String getImportHashCode() {
+    return (new Random()).nextLong()+"";
   }
 }

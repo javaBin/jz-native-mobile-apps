@@ -34,6 +34,17 @@ public class SpeakersHandler extends JSONHandler {
   }
 
   @Override
+  public void process(@NonNull List<Session> sessions) {
+    for(Session session: sessions) {
+      for(Speaker speaker: session.speakers) {
+        speaker.id = speaker.getImportHashcode();
+        mSpeakers.put(speaker.getImportHashcode(), speaker);
+      }
+    }
+
+  }
+
+  @Override
   public void process(@NonNull Gson gson, @NonNull JsonElement element) {
     for (Speaker speaker : gson.fromJson(element, Speaker[].class)) {
       mSpeakers.put(speaker.id, speaker);
@@ -82,11 +93,6 @@ public class SpeakersHandler extends JSONHandler {
     LOGD(TAG, "Speakers: " + (isIncrementalUpdate ? "INCREMENTAL" : "FULL") + " update. " +
         updatedSpeakers + " to update, " + deletedSpeakers + " to delete. New total: " +
         mSpeakers.size());
-  }
-
-  @Override
-  public void process(@NonNull List<Session> sessions) {
-
   }
 
   private void buildSpeaker(boolean isInsert, Speaker speaker,

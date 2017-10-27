@@ -35,6 +35,7 @@ public class RoomsHandler extends JSONHandler {
   @Override
   public void process(@NonNull Gson gson, @NonNull JsonElement element) {
     for (Room room : gson.fromJson(element, Room[].class)) {
+      room.id = room.getImportedHashCode();
       mRooms.put(room.id, room);
     }
   }

@@ -202,6 +202,7 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
         + SessionsColumns.SESSION_LEVEL + " TEXT,"
         + SessionsColumns.SESSION_TITLE + " TEXT,"
         + SessionsColumns.SESSION_ABSTRACT + " TEXT,"
+        + SessionsColumns.SESSION_INTENDED_AUDIENCE + " TEXT,"
         + SessionsColumns.SESSION_REQUIREMENTS + " TEXT,"
         + SessionsColumns.SESSION_KEYWORDS + " TEXT,"
         + SessionsColumns.SESSION_VIMEO_URL + " TEXT,"

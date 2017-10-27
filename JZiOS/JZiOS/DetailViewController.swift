@@ -1,11 +1,3 @@
-//
-//  DetailViewController.swift
-//  JZiOS
-//
-//  Created by Khiem-Kim Ho Xuan on 12/09/2017.
-//  Copyright © 2017 Khiem-Kim Ho Xuan. All rights reserved.
-//
-
 import UIKit
 
 class DetailViewController: UIViewController {

@@ -105,6 +105,7 @@ public class ScheduleContract {
     String SESSION_TITLE = "session_title";
     /** Body of text explaining this session in detail. */
     String SESSION_ABSTRACT = "session_abstract";
+    String SESSION_INTENDED_AUDIENCE = "session_intended_audience";
     /** Requirements that attendees should meet. */
     String SESSION_REQUIREMENTS = "session_requirements";
     /** Kewords/tags for this session. */

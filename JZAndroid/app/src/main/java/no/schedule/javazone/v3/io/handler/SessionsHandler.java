@@ -34,7 +34,6 @@ import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 public class SessionsHandler extends JSONHandler {
   private static final String TAG = makeLogTag(SessionsHandler.class);
   private HashMap<String, Session> mSessions = new HashMap<>();
-  private HashMap<String, Tag> mTagMap = null;
   private HashMap<String, Speaker> mSpeakerMap = null;
 
   private int mDefaultSessionColor;
@@ -177,6 +176,7 @@ public class SessionsHandler extends JSONHandler {
         .withValue(ScheduleContract.Sessions.SESSION_LEVEL, session.level)
         .withValue(ScheduleContract.Sessions.SESSION_TITLE, session.title)
         .withValue(ScheduleContract.Sessions.SESSION_ABSTRACT, session.description)
+        .withValue(ScheduleContract.Sessions.SESSION_INTENDED_AUDIENCE, session.intendedAudience)
         .withValue(ScheduleContract.Sessions.SESSION_START, TimeUtils.timestampToMillis(session.startTime, 0))
         .withValue(ScheduleContract.Sessions.SESSION_END, TimeUtils.timestampToMillis(session.endTime, 0))
         .withValue(ScheduleContract.Sessions.SESSION_TAGS, session.makeTagsList())
@@ -221,19 +221,15 @@ public class SessionsHandler extends JSONHandler {
 
     // add a mapping (a session+tag tuple) for each tag in the session
     if (session.tags != null) {
-      String splitTags[] = session.tags.split(",");
-      for (String tag : splitTags) {
+      for (String tagName : session.tags) {
         list.add(ContentProviderOperation.newInsert(uri)
             .withValue(ScheduleDatabase.SessionsTags.SESSION_ID, session.id)
-            .withValue(ScheduleDatabase.SessionsTags.TAG_ID, tag)
+            .withValue(ScheduleDatabase.SessionsTags.TAG_ID, tagName)
             .build());
       }
     }
   }
 
-  public void setTagMap(HashMap<String, Tag> tagMap) {
-    mTagMap = tagMap;
-  }
   public void setSpeakerMap(HashMap<String, Speaker> speakerMap) {
     mSpeakerMap = speakerMap;
   }

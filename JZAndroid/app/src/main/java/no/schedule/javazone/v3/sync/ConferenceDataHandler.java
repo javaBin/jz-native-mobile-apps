@@ -70,16 +70,16 @@ public class ConferenceDataHandler {
   private static final String[] DATA_KEYS_IN_ORDER = {
       DATA_KEY_ROOMS,
       DATA_KEY_BLOCKS,
-
+   //   DATA_KEY_SEARCH_SUGGESTIONS,
       DATA_KEY_MAP,
   };
 
   private static final String[] KEYS_PROCESS = {
-      DATA_KEY_CARDS,
+  //    DATA_KEY_CARDS,
       DATA_KEY_TAGS,
       DATA_KEY_SPEAKERS,
       DATA_KEY_SESSIONS,
-      DATA_KEY_SEARCH_SUGGESTIONS
+ //     DATA_KEY_SEARCH_SUGGESTIONS
   };
 
   private final Context mContext;
@@ -115,7 +115,8 @@ public class ConferenceDataHandler {
     LOGD(TAG, "Applying data from " + sessions.size() + " sessions");
 
     // Create Handlers for each data type
-    mHandlerForKeyConference.put(DATA_KEY_ROOMS, mRoomsHandler = new RoomsHandler(mContext));
+    mHandlerForKeyConference.put(DATA_KEY_TAGS, mTagsHandler = new TagsHandler(mContext));
+    mHandlerForKeyConference.put(DATA_KEY_SPEAKERS, mSpeakersHandler = new SpeakersHandler(mContext));
     mHandlerForKeyConference.put(DATA_KEY_SESSIONS, mSessionsHandler = new SessionsHandler(mContext));
 
     mHandlerForKeyConference.put(DATA_KEY_SEARCH_SUGGESTIONS, mSearchSuggestHandler =
@@ -126,7 +127,10 @@ public class ConferenceDataHandler {
 
 
     // mSessionsHandler.setTagMap(mTagsHandler.getTagMap());
-    // mSessionsHandler.setSpeakerMap(mSpeakersHandler.getSpeakerMap());
+    mSessionsHandler.setSpeakerMap(mSpeakersHandler.getSpeakerMap());
+
+    // produce the necessary content provider operations
+    applyConferenceDataBatch(mHandlerForKeyConference, KEYS_PROCESS);
 
   }
 
@@ -159,17 +163,23 @@ public class ConferenceDataHandler {
     }
 
     // produce the necessary content provider operations
+    applyConferenceDataBatch(mHandlerForKeyDataBootStrap, DATA_KEYS_IN_ORDER);
+
+    LOGD(TAG, "Done applying conference data.");
+  }
+
+  private void applyConferenceDataBatch(HashMap<String, JSONHandler> dataSource, String [] keyProcess) {
     ArrayList<ContentProviderOperation> batch = new ArrayList<>();
-    for (String key : DATA_KEYS_IN_ORDER) {
+    for (String key : keyProcess) {
       LOGI(TAG, "Building content provider operations for: " + key);
-      mHandlerForKeyDataBootStrap.get(key).makeContentProviderOperations(batch);
+      dataSource.get(key).makeContentProviderOperations(batch);
       LOGI(TAG, "Content provider operations so far: " + batch.size());
     }
     LOGD(TAG, "Total content provider operations: " + batch.size());
 
     // download or process local map tile overlay files (SVG files)
     LOGD(TAG, "Processing map overlay files");
-   // processMapOverlayFiles(mMapPropertyHandler.getTileOverlays(), downloadsAllowed);
+    // processMapOverlayFiles(mMapPropertyHandler.getTileOverlays(), downloadsAllowed);
 
     // finally, push the changes into the Content Provider
     LOGI(TAG, "Applying " + batch.size() + " content provider operations.");
@@ -197,9 +207,6 @@ public class ConferenceDataHandler {
       Uri uri = ScheduleContract.BASE_CONTENT_URI.buildUpon().appendPath(path).build();
       resolver.notifyChange(uri, null);
     }
-
-
-    LOGD(TAG, "Done applying conference data.");
   }
 
   public int getContentProviderOperationsDone() {
@@ -236,7 +243,6 @@ public class ConferenceDataHandler {
 
   private void processData(List<Session> sessions) {
     List<Speaker> allSpeakers;
-    List<Room> allRooms;
 
 
     for(String key: KEYS_PROCESS) {

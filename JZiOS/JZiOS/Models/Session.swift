@@ -1,5 +1,4 @@
 import Foundation
-import RealmSwift
 import ObjectMapper
 
 class SessionResult: Mappable {
@@ -13,7 +12,7 @@ class SessionResult: Mappable {
     }
 }
 
-class Session: Object, Mappable {
+class Session: Mappable {
     var intendedAudience: String?
     var endTimeZulu: String?
     var keywords: Array<String>?
@@ -55,6 +54,10 @@ class Session: Object, Mappable {
         endTime             <- map["endTime"]
         slug                <- map["slug"]
         
+    }
+    
+    public func mapSpeakerToString() -> String {
+        return ""
     }
 }
 

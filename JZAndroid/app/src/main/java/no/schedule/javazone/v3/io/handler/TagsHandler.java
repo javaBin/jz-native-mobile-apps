@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +20,7 @@ import no.schedule.javazone.v3.io.model.Session;
 import no.schedule.javazone.v3.io.model.Tag;
 import no.schedule.javazone.v3.provider.ScheduleContract;
 import no.schedule.javazone.v3.provider.ScheduleContractHelper;
+import no.schedule.javazone.v3.provider.ScheduleDatabase;
 
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
@@ -28,6 +31,22 @@ public class TagsHandler extends JSONHandler {
 
   public TagsHandler(Context context) {
     super(context);
+  }
+
+  @Override
+  public void process(@NonNull List<Session> sessions) {
+    for(Session session: sessions) {
+      if (session.tags != null) {
+        for (String tagName : session.tags) {
+          if(tagName != null && !StringUtils.isEmpty(tagName)) {
+            Tag tag = new Tag();
+            tag.name = tagName;
+            tag.id = tag.getImportedHashCode();
+            mTags.put(tagName, new Tag());
+          }
+        }
+      }
+    }
   }
 
   @Override
@@ -46,7 +65,7 @@ public class TagsHandler extends JSONHandler {
     list.add(ContentProviderOperation.newDelete(uri).build());
     for (Tag tag : mTags.values()) {
       ContentProviderOperation.Builder builder = ContentProviderOperation.newInsert(uri);
-      builder.withValue(ScheduleContract.Tags.TAG_ID, tag.tag);
+      builder.withValue(ScheduleContract.Tags.TAG_ID, tag.id);
       builder.withValue(ScheduleContract.Tags.TAG_CATEGORY, tag.category);
       builder.withValue(ScheduleContract.Tags.TAG_NAME, tag.name);
       builder.withValue(ScheduleContract.Tags.TAG_ORDER_IN_CATEGORY, tag.order_in_category);
@@ -56,11 +75,6 @@ public class TagsHandler extends JSONHandler {
       builder.withValue(ScheduleContract.Tags.TAG_PHOTO_URL, tag.photoUrl);
       list.add(builder.build());
     }
-  }
-
-  @Override
-  public void process(@NonNull List<Session> sessions) {
-
   }
 
   public HashMap<String, Tag> getTagMap() {

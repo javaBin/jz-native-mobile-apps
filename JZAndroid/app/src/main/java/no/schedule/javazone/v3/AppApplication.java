@@ -77,7 +77,7 @@ public class AppApplication extends MultiDexApplication {
         // STUP FIREBASE CRASH ANALYTICS
 
         LOGD(TAG, "Analytics being prepared.");
-        AnalyticsHelper.prepareAnalytics(this);
+        //AnalyticsHelper.prepareAnalytics(this);
 
         // Ensure an updated security provider is installed into the system when a new one is
         // available via Google Play services.

@@ -13,22 +13,28 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import no.schedule.javazone.v3.io.JSONHandler;
 import no.schedule.javazone.v3.io.model.Session;
 import no.schedule.javazone.v3.provider.ScheduleContract;
 import no.schedule.javazone.v3.provider.ScheduleContractHelper;
+import no.schedule.javazone.v3.sync.ConferenceDataHandler;
 
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+import static no.schedule.javazone.v3.util.LogUtils.LOGI;
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
 public class MapPropertyHandler extends JSONHandler {
+  private static final String TAG = makeLogTag(MapPropertyHandler.class);
+
   public MapPropertyHandler(Context context) {
     super(context);
   }
 
   @Override
   public void makeContentProviderOperations(ArrayList<ContentProviderOperation> list) {
-
+    LOGI(TAG, "in here");
   }
 
   @Override
