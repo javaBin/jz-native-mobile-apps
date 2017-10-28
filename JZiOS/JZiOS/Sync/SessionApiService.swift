@@ -27,8 +27,7 @@ class SessionApiService {
                         reject(NSError(domain: "domainN", code: 0, userInfo: [NSLocalizedDescriptionKey: "Some error readinf response"]))
                         return
                     }
-                    
-                    print(responseJSON)
+
                     guard let sessionResult = Mapper<SessionResult>().map(JSONObject: responseJSON) else {
                         reject(NSError(domain: "domainN", code: 1, userInfo: [NSLocalizedDescriptionKey: "Some error mapping the object"]))
                         return

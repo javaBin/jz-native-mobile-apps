@@ -12,12 +12,11 @@
 		4C20B2F2BC2BE0889A3A90C8 /* Pods_JZiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E2D10CEC636FB7A5AF5662A /* Pods_JZiOS.framework */; };
 		502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */; };
 		502A9E141FA228F2004D1F39 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A9E131FA228F2004D1F39 /* MyScheduleViewController.swift */; };
+		5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */; };
 		50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EAF01F690B35009A3E29 /* URLConstants.swift */; };
 		50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EB2F1F69C57C009A3E29 /* JZiOS.xcdatamodel */; };
 		50A3EB331F6A615A009A3E29 /* SessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EB321F6A615A009A3E29 /* SessionApiService.swift */; };
 		50C1693A1F686F83005E8AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C169391F686F83005E8AC7 /* AppDelegate.swift */; };
-		50C1693C1F686F83005E8AC7 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1693B1F686F83005E8AC7 /* MasterViewController.swift */; };
-		50C1693E1F686F83005E8AC7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1693D1F686F83005E8AC7 /* DetailViewController.swift */; };
 		50C169411F686F83005E8AC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C1693F1F686F83005E8AC7 /* Main.storyboard */; };
 		50C169431F686F83005E8AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C169421F686F83005E8AC7 /* Assets.xcassets */; };
 		50C169461F686F83005E8AC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C169441F686F83005E8AC7 /* LaunchScreen.storyboard */; };
@@ -48,13 +47,12 @@
 		2CE83B840387BEFD1FB91C44 /* Pods-JZiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZiOS/Pods-JZiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewController.swift; sourceTree = "<group>"; };
 		502A9E131FA228F2004D1F39 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
+		5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		50A3EAF01F690B35009A3E29 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		50A3EB2F1F69C57C009A3E29 /* JZiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JZiOS.xcdatamodel; sourceTree = "<group>"; };
 		50A3EB321F6A615A009A3E29 /* SessionApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionApiService.swift; sourceTree = "<group>"; };
 		50C169361F686F83005E8AC7 /* JZiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JZiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C169391F686F83005E8AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		50C1693B1F686F83005E8AC7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		50C1693D1F686F83005E8AC7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		50C169401F686F83005E8AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50C169421F686F83005E8AC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C169451F686F83005E8AC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,6 +106,7 @@
 			children = (
 				502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */,
 				502A9E131FA228F2004D1F39 /* MyScheduleViewController.swift */,
+				5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,6 +135,13 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		5039CFFB1FA3884800CB9582 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		50C1692D1F686F83005E8AC7 = {
 			isa = PBXGroup;
 			children = (
@@ -161,13 +167,12 @@
 		50C169381F686F83005E8AC7 /* JZiOS */ = {
 			isa = PBXGroup;
 			children = (
+				5039CFFB1FA3884800CB9582 /* Views */,
 				502A9E0D1FA21A94004D1F39 /* Constants */,
 				502A9E0C1FA21A8D004D1F39 /* Sync */,
 				502A9E0A1FA21A65004D1F39 /* Models */,
 				502A9E091FA21A4D004D1F39 /* ViewControllers */,
 				50C169391F686F83005E8AC7 /* AppDelegate.swift */,
-				50C1693B1F686F83005E8AC7 /* MasterViewController.swift */,
-				50C1693D1F686F83005E8AC7 /* DetailViewController.swift */,
 				50C1693F1F686F83005E8AC7 /* Main.storyboard */,
 				50C169421F686F83005E8AC7 /* Assets.xcassets */,
 				50C169441F686F83005E8AC7 /* LaunchScreen.storyboard */,
@@ -530,10 +535,9 @@
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,
 				50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */,
 				50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */,
-				50C1693E1F686F83005E8AC7 /* DetailViewController.swift in Sources */,
 				502A9E141FA228F2004D1F39 /* MyScheduleViewController.swift in Sources */,
-				50C1693C1F686F83005E8AC7 /* MasterViewController.swift in Sources */,
 				50C1693A1F686F83005E8AC7 /* AppDelegate.swift in Sources */,
+				5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */,
 				50A3EB331F6A615A009A3E29 /* SessionApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

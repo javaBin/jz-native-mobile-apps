@@ -7,46 +7,40 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
-    
+    @IBOutlet weak var roomLabel: UILabel!
 }
 
-class SessionListViewController: UITableViewController {
+class SessionListViewController: UITableViewController, UISearchBarDelegate {
     var sessions: [Session]?
     var sections = Dictionary<String, Array<Session>>()
     var sortedSections = [String]()
+    var searchActive : Bool = false
     
-    func loadSessions(sessionResult:SessionResult)
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+    @IBOutlet weak var sessionSearchBar: UISearchBar!
+    
+    func loadSessions(sessionResult:SessionResult) {
         sessions = sessionResult.sessions
-        
         for session in sessions! {
-            
-            if let startDate = dateFormatter.date(from: session.startTime!) {
-            dateFormatter.dateFormat = "MMM dd yyyy"
-            
-            print("Dateobj: \(dateFormatter.string(from: startDate))")
-            
-            
-            
-            
-            
+            if let sectionDate = formatDate(dateString: session.startTime!, dateFormat: "MMM dd yyyy") {
+                if self.sections.index(forKey: sectionDate) == nil {
+                    self.sections[sectionDate] = [session]
+                }
+                else {
+                    self.sections[sectionDate]!.append(session)
+                    self.sections[sectionDate]!.sort(by: { $0.startTime! < $1.startTime! })
+                    self.sections[sectionDate]!.sort(by: { $0.endTime! < $1.endTime! })
+                }
+                
+                self.sortedSections = self.sections.keys.sorted()
             }
-            
-            
-            
         }
-        
-        
         
         self.tableView!.reloadData()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        sessionSearchBar.delegate = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -70,81 +64,93 @@ class SessionListViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sections.count
     }
     
-    /*
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return nil
-    } */
+        return sortedSections[section]
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sessions?.count ?? 0
+        
+        if(searchActive) {
+         //   return filtered.count
+        }
+        
+        return sections[sortedSections[section]]!.count
     }
     
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! SessionTableViewCell
-    
-        let session = sessions?[indexPath.row]
-        cell.titleLabel?.text = session?.title
-    
+        let section = sections[sortedSections[indexPath.section]]
+        let session = section![indexPath.row]
+        
+        cell.titleLabel?.text = session.title
+        cell.startTimeLabel?.text = formatDate(dateString: session.startTime, dateFormat: "HH:mm")
+        cell.endTimeLabel?.text = formatDate(dateString: session.endTime, dateFormat: "HH:mm")
+        cell.roomLabel?.text = session.room
      
-     return cell
+        return cell
      }
     
+    private func formatDate(dateString: String?, dateFormat: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        
+        if let sectionDate = dateFormatter.date(from: dateString!) {
+            dateFormatter.dateFormat = dateFormat
+            return dateFormatter.string(from: sectionDate)
+        }
+        
+        return nil
+    }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
     
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
     
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+      print("in here")
+       // if(filtered.count == 0){
+           // searchActive = false;
+      //  } else {
+          //  searchActive = true;
+      //  }
+    }
+    
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "sessionDetailSegue"{
+            var vc = segue.destination as! SessionDetailViewController
+            let indexPath = tableView.indexPathForSelectedRow
+            let section = sections[sortedSections[indexPath!.section]]
+            let session = section![indexPath!.row]
+            
+            vc.session = session
+            
+            
+            //Data has to be a variable name in your RandomViewController
+        }
      }
-     */
-    
-    
 }
 
