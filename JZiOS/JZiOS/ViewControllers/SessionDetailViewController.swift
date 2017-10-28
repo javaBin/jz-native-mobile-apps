@@ -1,18 +1,11 @@
-//
-//  SessionDetailViewController.swift
-//  JZiOS
-//
-//  Created by Khiem-Kim Ho Xuan on 27/10/2017.
-//  Copyright © 2017 Khiem-Kim Ho Xuan. All rights reserved.
-//
-
 import UIKit
 
-class SessionDetailViewController: UIViewController {
+class SessionDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var abstractTextView: UITextView!
     @IBOutlet weak var intendedAudienceTextView: UITextView!
+    @IBOutlet weak var speakerTableView: UITableView!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var subScrollView: UIView!
@@ -26,41 +19,74 @@ class SessionDetailViewController: UIViewController {
         abstractTextView?.text = session!.abstract
         intendedAudienceTextView?.text = session!.intendedAudience
         
-        /*
-        
-        let fixedWidth = abstractTextView.frame.size.width
-        abstractTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        let newSize = abstractTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        var newFrame = abstractTextView.frame
-        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        abstractTextView.frame = newFrame */
+        speakerTableView.delegate = self
+        speakerTableView.dataSource = self
+        speakerTableView.tableFooterView = UIView()
+        speakerTableView.isUserInteractionEnabled = true
+        speakerTableView.allowsSelection = true
+    
     }
-
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidLayoutSubviews() {
     
         var calculatedHeight: CGFloat = 0.0
-        var getSubView = self.scrollView.subviews[0]
+        let getSubView = self.scrollView.subviews[0]
+        var contentRect = CGRect.zero
         for uiView in getSubView.subviews {
             calculatedHeight += uiView.frame.size.height
+            contentRect = contentRect.union(uiView.frame)
         }
         
         
+        contentRect.size = CGSize(width:  scrollView.contentSize.width, height: calculatedHeight + 200)
         scrollView.contentSize.height = calculatedHeight + 200
+        
+        
+        var visibleRect = CGRect.zero;
+        visibleRect.origin = scrollView.contentOffset;
+        visibleRect.size = scrollView.contentSize
+        getSubView.frame = visibleRect
+        self.view.layoutIfNeeded()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return session!.speakers!.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = speakerTableView.dequeueReusableCell(withIdentifier: "SpeakerCell", for: indexPath) as! SpeakerTableViewCell
+        cell.speakerLabel?.text = session!.speakers![indexPath.row].name
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("IN here")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "speakerDetailSegue"{
+            var vc = segue.destination as! SpeakerDetailController
+            let indexPath = speakerTableView.indexPathForSelectedRow
+            
+            // vc.speaker = speaker
+        }
     }
-    */
+}
 
+class SpeakerTableViewCell: UITableViewCell {
+    @IBOutlet weak var speakerLabel: UILabel!
 }

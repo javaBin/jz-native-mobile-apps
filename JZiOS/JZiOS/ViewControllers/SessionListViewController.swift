@@ -15,6 +15,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
     var sections = Dictionary<String, Array<Session>>()
     var sortedSections = [String]()
     var searchActive : Bool = false
+    var refresher: UIRefreshControl?
     
     @IBOutlet weak var sessionSearchBar: UISearchBar!
     
@@ -41,6 +42,14 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         sessionSearchBar.delegate = self
+        refresher = UIRefreshControl()
+        self.tableView.addSubview(refresher!)
+        refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
+        refresher?.addTarget(self, action: #selector(getAllSessions), for: .valueChanged)
+        
+        getAllSessions()
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,14 +57,18 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         // Show spinner here
-        
-        SessionApiService.sharedInstance.getAllSessions().then { result -> Void in
+    }
+    
+    func getAllSessions() {
+    SessionApiService.sharedInstance.getAllSessions().then { result -> Void in
             self.loadSessions(sessionResult: result)
+            self.refresher?.endRefreshing()
             }.always {
                 // Hide spinner here
             }
             .catch { error in
                 print(error)
+                self.refresher?.endRefreshing()
         }
     }
     
@@ -96,20 +109,22 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
         return cell
      }
     
-    private func formatDate(dateString: String?, dateFormat: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
-        
-        if let sectionDate = dateFormatter.date(from: dateString!) {
-            dateFormatter.dateFormat = dateFormat
-            return dateFormatter.string(from: sectionDate)
-        }
-        
-        return nil
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "sessionDetailSegue"{
+            var vc = segue.destination as! SessionDetailViewController
+            let indexPath = tableView.indexPathForSelectedRow
+            let section = sections[sortedSections[indexPath!.section]]
+            let session = section![indexPath!.row]
+            
+            vc.session = session
+            
+            
+            //Data has to be a variable name in your RandomViewController
+        }
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -138,19 +153,17 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
       //  }
     }
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    private func formatDate(dateString: String?, dateFormat: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
         
-        if segue.identifier == "sessionDetailSegue"{
-            var vc = segue.destination as! SessionDetailViewController
-            let indexPath = tableView.indexPathForSelectedRow
-            let section = sections[sortedSections[indexPath!.section]]
-            let session = section![indexPath!.row]
-            
-            vc.session = session
-            
-            
-            //Data has to be a variable name in your RandomViewController
+        if let sectionDate = dateFormatter.date(from: dateString!) {
+            dateFormatter.dateFormat = dateFormat
+            return dateFormatter.string(from: sectionDate)
         }
-     }
+        
+        return nil
+    }
 }
 
