@@ -14,6 +14,10 @@
 		5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */; };
 		5039CFFF1FA45F8100CB9582 /* SpeakerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFFE1FA45F8100CB9582 /* SpeakerDetailController.swift */; };
 		5039D0011FA4720700CB9582 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */; };
+		5039D0031FA530CE00CB9582 /* MySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0021FA530CE00CB9582 /* MySession.swift */; };
+		5039D0061FA5B23500CB9582 /* MySessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0051FA5B23500CB9582 /* MySessionRepository.swift */; };
+		5039D0081FA5E25300CB9582 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0071FA5E25300CB9582 /* Repository.swift */; };
+		5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */; };
 		50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EAF01F690B35009A3E29 /* URLConstants.swift */; };
 		50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EB2F1F69C57C009A3E29 /* JZiOS.xcdatamodel */; };
 		50A3EB331F6A615A009A3E29 /* SessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EB321F6A615A009A3E29 /* SessionApiService.swift */; };
@@ -50,6 +54,10 @@
 		5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		5039CFFE1FA45F8100CB9582 /* SpeakerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailController.swift; sourceTree = "<group>"; };
 		5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
+		5039D0021FA530CE00CB9582 /* MySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySession.swift; sourceTree = "<group>"; };
+		5039D0051FA5B23500CB9582 /* MySessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySessionRepository.swift; sourceTree = "<group>"; };
+		5039D0071FA5E25300CB9582 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
 		50A3EAF01F690B35009A3E29 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		50A3EB2F1F69C57C009A3E29 /* JZiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JZiOS.xcdatamodel; sourceTree = "<group>"; };
 		50A3EB321F6A615A009A3E29 /* SessionApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionApiService.swift; sourceTree = "<group>"; };
@@ -118,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				50C1696C1F688D20005E8AC7 /* Session.swift */,
+				5039D0021FA530CE00CB9582 /* MySession.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,6 +154,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5039D0041FA5ADAD00CB9582 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				5039D0051FA5B23500CB9582 /* MySessionRepository.swift */,
+				5039D0071FA5E25300CB9582 /* Repository.swift */,
+				5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		50C1692D1F686F83005E8AC7 = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +189,7 @@
 		50C169381F686F83005E8AC7 /* JZiOS */ = {
 			isa = PBXGroup;
 			children = (
+				5039D0041FA5ADAD00CB9582 /* Database */,
 				5039CFFB1FA3884800CB9582 /* Views */,
 				502A9E0D1FA21A94004D1F39 /* Constants */,
 				502A9E0C1FA21A8D004D1F39 /* Sync */,
@@ -509,6 +529,8 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -520,6 +542,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,14 +559,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5039CFFF1FA45F8100CB9582 /* SpeakerDetailController.swift in Sources */,
+				5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */,
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,
 				50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */,
 				50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */,
 				5039D0011FA4720700CB9582 /* MyScheduleViewController.swift in Sources */,
+				5039D0061FA5B23500CB9582 /* MySessionRepository.swift in Sources */,
+				5039D0031FA530CE00CB9582 /* MySession.swift in Sources */,
 				50C1693A1F686F83005E8AC7 /* AppDelegate.swift in Sources */,
 				5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */,
 				50A3EB331F6A615A009A3E29 /* SessionApiService.swift in Sources */,
+				5039D0081FA5E25300CB9582 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

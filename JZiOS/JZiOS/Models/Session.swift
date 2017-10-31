@@ -1,5 +1,7 @@
 import Foundation
 import ObjectMapper
+import RealmSwift
+import ObjectMapper_Realm
 
 class SessionResult: Mappable {
     var sessions: [Session]?
@@ -12,33 +14,37 @@ class SessionResult: Mappable {
     }
 }
 
-class Session: Mappable {
-    var intendedAudience: String?
-    var endTimeZulu: String?
-    var keywords: Array<String>?
-    var format: String?
-    var language: String?
-    var sessionId: String?
-    var abstract: String?
-    var published: String?
-    var video: String?
-    var title: String?
-    var room: String?
-    var conferenceId: String?
-    var startTimeZulu: String?
-    var speakers: Array<Speaker>?
-    var startTime: String?
-    var endTime: String?
-    var slug: String?
+class Session: Object, Mappable {
+    dynamic var intendedAudience: String?
+    dynamic var endTimeZulu: String?
+    var tags: List<Tag>?
+    dynamic var format: String?
+    dynamic var language: String?
+    dynamic var sessionId: String?
+    dynamic var abstract: String?
+    dynamic var published: String?
+    dynamic var video: String?
+    dynamic var title: String?
+    dynamic var room: String?
+    dynamic var conferenceId: String?
+    dynamic var startTimeZulu: String?
+    var speakers: List<Speaker>?
+    dynamic var startTime: String?
+    dynamic var endTime: String?
+    dynamic var slug: String?
     
     required convenience init?(map: Map) {
         self.init()
     }
     
     func mapping(map: Map) {
+        if let unwrappedTags = map.JSON["keywords"] as? [String] {
+            tags = mapKeywordsToTags(keyWords: unwrappedTags)
+        }
+        
+        
         intendedAudience    <- map["intendedAudience"]
         endTimeZulu         <- map["endTimeZulu"]
-        keywords            <- map["keywords"]
         format              <- map["format"]
         language            <- map["language"]
         sessionId           <- map["sessionId"]
@@ -49,29 +55,79 @@ class Session: Mappable {
         room                <- map["room"]
         conferenceId        <- map["conferenceId"]
         startTimeZulu       <- map["startTimeZulu"]
-        speakers            <- map["speakers"]
+        speakers            <- (map["speakers"], ListTransformCustom<Speaker>())
         startTime           <- map["startTime"]
         endTime             <- map["endTime"]
         slug                <- map["slug"]
         
+        
     }
     
-    public func mapSpeakerToString() -> String {
-        return ""
+    public func mapSpeakerToString() -> String? {
+        return nil
+    }
+    
+    public func mapKeywordsToTags(keyWords: [String]?) -> List<Tag>? {
+        var tags: List<Tag>? = nil
+        
+        if !keyWords!.isEmpty {
+            tags = List<Tag>()
+        }
+        
+        for keyWord in keyWords! {
+            let tag = Tag()
+            tag.keyWord = keyWord
+            tags!.append(tag)
+        }
+        
+        return tags
     }
 }
 
-class Speaker: Mappable {
-    var pictureUrl: String?
-    var name: String?
-    var bio: String?
+class Speaker: Object, Mappable {
+    @objc dynamic var pictureUrl: String?
+    @objc dynamic var name: String?
+    @objc dynamic var bio: String?
     
-    required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
         pictureUrl      <- map["pictureUrl"]
         name            <- map["name"]
         bio             <- map["bio"]
+    }
+}
+
+class Tag: Object {
+     @objc dynamic var keyWord = ""
+}
+
+class ListTransformCustom<T:RealmSwift.Object> : TransformType where T:Mappable {
+    typealias Object = List<T>
+    typealias JSON = [AnyObject]
+    
+    let mapper = Mapper<T>()
+    
+    func transformFromJSON(_ value: Any?) -> Object? {
+        let results = List<T>()
+        if let objects = mapper.mapArray(JSONObject: value) {
+            for object in objects {
+                results.append(object)
+            }
+        }
+        return results
+    }
+    
+    func transformToJSON(_ value: Object?) -> JSON? {
+        var results = [AnyObject]()
+        if let value = value {
+            for obj in value {
+                let json = mapper.toJSON(obj)
+                results.append(json as AnyObject)
+            }
+        }
+        return results
     }
 }

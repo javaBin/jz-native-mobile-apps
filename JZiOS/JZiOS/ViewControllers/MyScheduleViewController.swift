@@ -1,17 +1,12 @@
-//
-//  MyScheduleViewController.swift
-//  JZiOS
-//
-//  Created by Khiem-Kim Ho Xuan on 28/10/2017.
-//  Copyright © 2017 Khiem-Kim Ho Xuan. All rights reserved.
-//
-
 import UIKit
 
 class MyScheduleViewController: UIViewController {
+    var repository: MySessionRepository?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("hello my schedule")
 
         // Do any additional setup after loading the view.
     }

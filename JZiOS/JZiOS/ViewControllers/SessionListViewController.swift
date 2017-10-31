@@ -16,11 +16,72 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
     var sortedSections = [String]()
     var searchActive : Bool = false
     var refresher: UIRefreshControl?
+    var repository: SessionRepository?
+    
     
     @IBOutlet weak var sessionSearchBar: UISearchBar!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sessionSearchBar.delegate = self
+        refresher = UIRefreshControl()
+        self.tableView.addSubview(refresher!)
+        refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
+        refresher?.addTarget(self, action: #selector(getAllSessionsFromSleepingPill), for: .valueChanged)
+        
+        let results = repository!.getAll()
+        
+        if(results != nil && results!.count == 0) {
+            getAllSessionsFromSleepingPill()
+        } else {
+            getAllSessionsFromDb(results)
+        }
+        
+        
+        
+        
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Show spinner here
+    }
+    
+    func getAllSessionsFromSleepingPill() {
+        // TODO delete all sessions in local db
+        repository!.deleteAll()
+        
+        
+        SessionApiService.sharedInstance.getAllSessions().then { result -> Void in
+            self.loadSessions(sessionResult: result)
+            self.refresher?.endRefreshing()
+            }.always {
+                // Hide spinner here
+            }
+            .catch { error in
+                print(error)
+                self.refresher?.endRefreshing()
+        }
+    }
+    
+    func getAllSessionsFromDb(_ results: [Session]?) {
+        self.refresher?.endRefreshing()
+        loadDataToTableView(results)
+    }
+    
     func loadSessions(sessionResult:SessionResult) {
         sessions = sessionResult.sessions
+        
+        repository!.addAsync(items: sessions!)
+        
+        loadDataToTableView(sessions)
+    }
+    
+    
+    func loadDataToTableView(_ sessions: [Session]?) {
         for session in sessions! {
             if let sectionDate = formatDate(dateString: session.startTime!, dateFormat: "MMM dd yyyy") {
                 if self.sections.index(forKey: sectionDate) == nil {
@@ -37,39 +98,6 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
         }
         
         self.tableView!.reloadData()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        sessionSearchBar.delegate = self
-        refresher = UIRefreshControl()
-        self.tableView.addSubview(refresher!)
-        refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
-        refresher?.addTarget(self, action: #selector(getAllSessions), for: .valueChanged)
-        
-        getAllSessions()
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        // Show spinner here
-    }
-    
-    func getAllSessions() {
-    SessionApiService.sharedInstance.getAllSessions().then { result -> Void in
-            self.loadSessions(sessionResult: result)
-            self.refresher?.endRefreshing()
-            }.always {
-                // Hide spinner here
-            }
-            .catch { error in
-                print(error)
-                self.refresher?.endRefreshing()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,14 +117,14 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
         // #warning Incomplete implementation, return the number of rows
         
         if(searchActive) {
-         //   return filtered.count
+            //   return filtered.count
         }
         
         return sections[sortedSections[section]]!.count
     }
     
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! SessionTableViewCell
         let section = sections[sortedSections[indexPath.section]]
         let session = section![indexPath.row]
@@ -105,9 +133,9 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
         cell.startTimeLabel?.text = formatDate(dateString: session.startTime, dateFormat: "HH:mm")
         cell.endTimeLabel?.text = formatDate(dateString: session.endTime, dateFormat: "HH:mm")
         cell.roomLabel?.text = session.room
-     
+        
         return cell
-     }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
@@ -145,12 +173,12 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-      print("in here")
-       // if(filtered.count == 0){
-           // searchActive = false;
-      //  } else {
-          //  searchActive = true;
-      //  }
+        print("in here")
+        // if(filtered.count == 0){
+        // searchActive = false;
+        //  } else {
+        //  searchActive = true;
+        //  }
     }
     
     private func formatDate(dateString: String?, dateFormat: String) -> String? {

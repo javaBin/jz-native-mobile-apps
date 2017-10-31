@@ -2,16 +2,43 @@
 import UIKit
 import XCGLogger
 import CoreData
-
+import Swinject
+import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let container = Container() { container in
+        // Repositories
+        container.register(MySessionRepository.self, name: "mySessionRepository") {
+            _ in MySessionRepository()
+        }
+        
+        container.register(SessionRepository.self, name: "sessionRepository") {
+            _ in SessionRepository()
+        }
+         
+         // Views         
+         container.storyboardInitCompleted(MyScheduleViewController.self) { r, c in
+         c.repository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
+         }
+        
+        container.storyboardInitCompleted(SessionListViewController.self) { r, c in
+            c.repository = r.resolve(SessionRepository.self, name: "sessionRepository")
+        }
+        
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.makeKeyAndVisible()
+        self.window = window
+        
+        let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
+        window.rootViewController = storyboard.instantiateInitialViewController() 
         return true
     }
 
