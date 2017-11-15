@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          }
         
         container.storyboardInitCompleted(SessionListViewController.self) { r, c in
-            c.repository = r.resolve(SessionRepository.self, name: "sessionRepository")
+            c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
+            c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
         }
         
     }

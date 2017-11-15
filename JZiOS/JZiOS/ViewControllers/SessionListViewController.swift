@@ -1,23 +1,52 @@
 import UIKit
 
+protocol SessionCellDelegate {
+    func favoriteButtonTapped(cell: SessionTableViewCell!)
+}
+
 class SessionTableViewCell: UITableViewCell {
-    
+    weak var session: Session!
+    var delegate: SessionCellDelegate?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        if let _ = delegate {
+            delegate?.favoriteButtonTapped(cell: self)
+        }
+    }
+    
 }
 
-class SessionListViewController: UITableViewController, UISearchBarDelegate {
+class SessionListViewController: UITableViewController, UISearchBarDelegate, SessionCellDelegate {
     var sessions: [Session]?
     var sections = Dictionary<String, Array<Session>>()
     var sortedSections = [String]()
     var searchActive : Bool = false
     var refresher: UIRefreshControl?
-    var repository: SessionRepository?
+    var sessionRepository: SessionRepository?
+    var mySessionRepository: MySessionRepository?
+
     
+    func favoriteButtonTapped(cell: SessionTableViewCell!) {
+        let findMySession = mySessionRepository!.getMySession(sessionId: cell.session.sessionId!)
+        
+        if findMySession != nil {
+            mySessionRepository!.delete(item: findMySession!)
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_border_2x"), for: .normal)
+        } else {
+            let mySessionObject = MySession()
+            mySessionObject.sessionId = cell.session!.sessionId!
+            
+            mySessionRepository!.add(item: mySessionObject)
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_2x"), for: .normal)
+
+        }
+    }
+
     
     @IBOutlet weak var sessionSearchBar: UISearchBar!
     
@@ -30,7 +59,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
         refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
         refresher?.addTarget(self, action: #selector(getAllSessionsFromSleepingPill), for: .valueChanged)
         
-        let results = repository!.getAll()
+        let results = sessionRepository!.getAll()
         
         if(results != nil && results!.count == 0) {
             getAllSessionsFromSleepingPill()
@@ -52,7 +81,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
     
     func getAllSessionsFromSleepingPill() {
         // TODO delete all sessions in local db
-        repository!.deleteAll()
+        sessionRepository!.deleteAll()
         
         
         SessionApiService.sharedInstance.getAllSessions().then { result -> Void in
@@ -75,7 +104,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
     func loadSessions(sessionResult:SessionResult) {
         sessions = sessionResult.sessions
         
-        repository!.addAsync(items: sessions!)
+        sessionRepository!.addAsync(items: sessions!)
         
         loadDataToTableView(sessions)
     }
@@ -129,10 +158,23 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate {
         let section = sections[sortedSections[indexPath.section]]
         let session = section![indexPath.row]
         
+        cell.session = session
         cell.titleLabel?.text = session.title
         cell.startTimeLabel?.text = formatDate(dateString: session.startTime, dateFormat: "HH:mm")
         cell.endTimeLabel?.text = formatDate(dateString: session.endTime, dateFormat: "HH:mm")
         cell.roomLabel?.text = session.room
+        cell.delegate = self
+
+        
+        let findMySession = mySessionRepository!.getMySession(sessionId: cell.session.sessionId!)
+        
+        if findMySession != nil && findMySession!.sessionId == session.sessionId! {
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_2x"), for: .normal)
+        } else {
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_border_2x"), for: .normal)
+
+        }
+
         
         return cell
     }

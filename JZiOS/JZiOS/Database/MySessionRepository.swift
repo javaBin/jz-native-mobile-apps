@@ -38,6 +38,12 @@ class MySessionRepository: Repository {
         return Array(result)
     }
     
+    func getMySession(sessionId: String) -> MySession? {
+        let result = realm.objects(MySession.self).filter("sessionId = %@", sessionId).first
+        return result
+    }
+    
+    
     func getAllMySessionsAsync() -> [MySession]? {
         let results: [MySession]? = nil
         DispatchQueue.global().async {
