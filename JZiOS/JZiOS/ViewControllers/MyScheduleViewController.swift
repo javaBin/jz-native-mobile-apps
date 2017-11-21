@@ -37,7 +37,7 @@ class MyScheduleViewController: UIViewController, UISearchBarDelegate, UITableVi
         
         self.myScheduleSegmentedControl.removeAllSegments()
         
-        for (index, conferenceDate) in ConferenceDates().enumerated() {
+        for (index, conferenceDate) in CommonDate.conferenceDates().enumerated() {
             self.myScheduleSegmentedControl.insertSegment(withTitle: conferenceDate, at: index, animated: false)
         }
         
@@ -51,14 +51,6 @@ class MyScheduleViewController: UIViewController, UISearchBarDelegate, UITableVi
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         // Show spinner here
-    }
-    
-    func ConferenceDates() -> [String] {
-        #if DEBUG
-            return Common.JavaZone2016Dates
-        #else
-            return Common.JavaZone2017Dates
-        #endif
     }
     
     func refreshAllMySessions() {
@@ -75,7 +67,7 @@ class MyScheduleViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
 
     func getAllMySessionsFromDb(_ results: [Session]?) {
-        let selectedSegmentDate = ConferenceDates()[self.segmentedSelected]
+        let selectedSegmentDate = CommonDate.conferenceDates()[self.segmentedSelected]
         loadDataToTableView(results, selectedDate: selectedSegmentDate)
     }
     

@@ -4,7 +4,11 @@ protocol SessionCellDelegate {
     func favoriteButtonTapped(cell: SessionTableViewCell!)
 }
 
-class SessionListViewController: UITableViewController, UISearchBarDelegate, SessionCellDelegate {
+class SessionListViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, SessionCellDelegate {
+    @IBOutlet weak var sessionSearchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mySessionSegmentedControl: UISegmentedControl!
+    
     var sessions: [Session]?
     var sections = Dictionary<String, Array<Session>>()
     var sortedSections = [String]()
@@ -13,7 +17,12 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
     var sessionRepository: SessionRepository?
     var speakerRepository: SpeakerRepository?
     var mySessionRepository: MySessionRepository?
-
+    var segmentedSelected = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mySessionSegmentedControl.selectedSegmentIndex = segmentedSelected
+    }
     
     func favoriteButtonTapped(cell: SessionTableViewCell!) {
         let findMySession = mySessionRepository!.getMySession(sessionId: cell.session.sessionId!)
@@ -29,15 +38,15 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
             cell.favoriteButton.setImage(UIImage.init(named: "ic_star_2x"), for: .normal)
         }
     }
-
-    
-    @IBOutlet weak var sessionSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sessionSearchBar.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
         refresher = UIRefreshControl()
-
+        
         if #available(iOS 10.0, *) {
             self.tableView.refreshControl = self.refresher
         } else {
@@ -48,6 +57,29 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
         refresher?.addTarget(self, action: "getAllSessionsFromSleepingPill", for: .valueChanged)
         
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Show spinner here
+        
+        self.refreshData()
+        self.mySessionSegmentedControl.removeAllSegments()
+        
+        for (index, conferenceDate) in CommonDate.conferenceDates().enumerated() {
+            self.mySessionSegmentedControl.insertSegment(withTitle: conferenceDate, at: index, animated: false)
+        }
+        
+        self.mySessionSegmentedControl.addTarget(self, action: #selector(self.selectedSegmentedDate), for: UIControlEvents.valueChanged)
+    }
+    
+    func selectedSegmentedDate(sender: UISegmentedControl) {
+        segmentedSelected = sender.selectedSegmentIndex
+        self.refreshData()
+    }
+    
+    func refreshData() {
         let results = sessionRepository!.getAll()
         
         if(results != nil && results!.count == 0) {
@@ -55,13 +87,6 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         } else {
             getAllSessionsFromDb(results)
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        // Show spinner here
     }
     
     func getAllSessionsFromSleepingPill() {
@@ -83,21 +108,32 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
     
     func getAllSessionsFromDb(_ results: [Session]?) {
         self.refresher?.endRefreshing()
-        loadDataToTableView(results)
+        
+        let selectedSegmentDate = CommonDate.conferenceDates()[self.segmentedSelected]
+        loadDataToTableView(results, selectedDate: selectedSegmentDate)
     }
     
     func loadSessions(sessionResult:SessionResult) {
         sessions = sessionResult.sessions
         sessionRepository!.addAsync(items: sessions!)
+        let selectedSegmentDate = CommonDate.conferenceDates()[self.segmentedSelected]
         
-        loadDataToTableView(sessions)
+        loadDataToTableView(sessions, selectedDate: selectedSegmentDate)
     }
     
     
-    func loadDataToTableView(_ sessions: [Session]?) {
+    func loadDataToTableView(_ sessions: [Session]?, selectedDate: String) {
         self.sections.removeAll()
-        for session in sessions! {
-            if let sectionDate = CommonDate.formatDate(dateString: session.startTime!, dateFormat: "MMM dd yyyy") {
+        
+        let sessionFilteredByDate = sessions?.filter {
+            (session) -> Bool in
+            let sessionStartDate = CommonDate.formatDate(dateString: session.startTime!, dateFormat: "dd.MM.YYYY")
+            return sessionStartDate == selectedDate
+            }.map { $0 }
+        
+        
+        for session in sessionFilteredByDate! {
+            if let sectionDate = CommonDate.resetMinutesFromDate(dateString: session.startTime!, dateFormat: "HH:mm") {
                 if self.sections.index(forKey: sectionDate) == nil {
                     self.sections[sectionDate] = [session]
                 }
@@ -119,15 +155,15 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         // Dispose of any resources that can be recreated.
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sortedSections[section]
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         if(searchActive) {
@@ -138,7 +174,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! SessionTableViewCell
         let section = sections[sortedSections[indexPath.section]]
         let session = section![indexPath.row]
@@ -149,7 +185,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         cell.endTimeLabel?.text = CommonDate.formatDate(dateString: session.endTime, dateFormat: "HH:mm")
         cell.roomLabel?.text = session.room
         cell.delegate = self
-
+        
         
         let findMySession = mySessionRepository!.getMySession(sessionId: cell.session.sessionId!)
         
@@ -157,13 +193,13 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
             cell.favoriteButton.setImage(UIImage.init(named: "ic_star_2x"), for: .normal)
         } else {
             cell.favoriteButton.setImage(UIImage.init(named: "ic_star_border_2x"), for: .normal)
-
+            
         }
-
+        
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -39,5 +39,13 @@ class CommonDate {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
         return dateFormatter
     }
+    
+    static func conferenceDates() -> [String] {
+        #if DEBUG
+            return Common.JavaZone2016Dates
+        #else
+            return Common.JavaZone2017Dates
+        #endif
+    }
 }
 
