@@ -4,23 +4,6 @@ protocol SessionCellDelegate {
     func favoriteButtonTapped(cell: SessionTableViewCell!)
 }
 
-class SessionTableViewCell: UITableViewCell {
-    weak var session: Session!
-    var delegate: SessionCellDelegate?
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subTitleLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
-    @IBOutlet weak var startTimeLabel: UILabel!
-    @IBOutlet weak var endTimeLabel: UILabel!
-    @IBOutlet weak var roomLabel: UILabel!
-    @IBAction func favoriteButtonTapped(_ sender: Any) {
-        if let _ = delegate {
-            delegate?.favoriteButtonTapped(cell: self)
-        }
-    }
-    
-}
-
 class SessionListViewController: UITableViewController, UISearchBarDelegate, SessionCellDelegate {
     var sessions: [Session]?
     var sections = Dictionary<String, Array<Session>>()
@@ -28,6 +11,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
     var searchActive : Bool = false
     var refresher: UIRefreshControl?
     var sessionRepository: SessionRepository?
+    var speakerRepository: SpeakerRepository?
     var mySessionRepository: MySessionRepository?
 
     
@@ -43,7 +27,6 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
             
             mySessionRepository!.add(item: mySessionObject)
             cell.favoriteButton.setImage(UIImage.init(named: "ic_star_2x"), for: .normal)
-
         }
     }
 
@@ -54,10 +37,16 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         super.viewDidLoad()
         sessionSearchBar.delegate = self
         refresher = UIRefreshControl()
-        self.tableView.addSubview(refresher!)
+
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = self.refresher
+        } else {
+            self.tableView.addSubview(self.refresher!)
+        }
+        
         refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
-        refresher?.addTarget(self, action: #selector(getAllSessionsFromSleepingPill), for: .valueChanged)
+        refresher?.addTarget(self, action: "getAllSessionsFromSleepingPill", for: .valueChanged)
         
         let results = sessionRepository!.getAll()
         
@@ -66,10 +55,6 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         } else {
             getAllSessionsFromDb(results)
         }
-        
-        
-        
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -82,7 +67,7 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
     func getAllSessionsFromSleepingPill() {
         // TODO delete all sessions in local db
         sessionRepository!.deleteAll()
-        
+        speakerRepository!.deleteAll()
         
         SessionApiService.sharedInstance.getAllSessions().then { result -> Void in
             self.loadSessions(sessionResult: result)
@@ -103,7 +88,6 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
     
     func loadSessions(sessionResult:SessionResult) {
         sessions = sessionResult.sessions
-        
         sessionRepository!.addAsync(items: sessions!)
         
         loadDataToTableView(sessions)
@@ -111,8 +95,9 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
     
     
     func loadDataToTableView(_ sessions: [Session]?) {
+        self.sections.removeAll()
         for session in sessions! {
-            if let sectionDate = formatDate(dateString: session.startTime!, dateFormat: "MMM dd yyyy") {
+            if let sectionDate = CommonDate.formatDate(dateString: session.startTime!, dateFormat: "MMM dd yyyy") {
                 if self.sections.index(forKey: sectionDate) == nil {
                     self.sections[sectionDate] = [session]
                 }
@@ -160,8 +145,8 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         
         cell.session = session
         cell.titleLabel?.text = session.title
-        cell.startTimeLabel?.text = formatDate(dateString: session.startTime, dateFormat: "HH:mm")
-        cell.endTimeLabel?.text = formatDate(dateString: session.endTime, dateFormat: "HH:mm")
+        cell.startTimeLabel?.text = CommonDate.formatDate(dateString: session.startTime, dateFormat: "HH:mm")
+        cell.endTimeLabel?.text = CommonDate.formatDate(dateString: session.endTime, dateFormat: "HH:mm")
         cell.roomLabel?.text = session.room
         cell.delegate = self
 
@@ -175,7 +160,6 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
 
         }
 
-        
         return cell
     }
     
@@ -221,19 +205,6 @@ class SessionListViewController: UITableViewController, UISearchBarDelegate, Ses
         //  } else {
         //  searchActive = true;
         //  }
-    }
-    
-    private func formatDate(dateString: String?, dateFormat: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
-        
-        if let sectionDate = dateFormatter.date(from: dateString!) {
-            dateFormatter.dateFormat = dateFormat
-            return dateFormatter.string(from: sectionDate)
-        }
-        
-        return nil
     }
 }
 

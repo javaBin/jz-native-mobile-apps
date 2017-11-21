@@ -10,6 +10,9 @@
 		2735140A3C34E6E612523AFC /* Pods_JZiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CD799FD8AF5CE6BA011FE7F /* Pods_JZiOSTests.framework */; };
 		46C2023509D0432BEDE96EA0 /* Pods_JZiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F8E863A8035F5112297BB0 /* Pods_JZiOSUITests.framework */; };
 		4C20B2F2BC2BE0889A3A90C8 /* Pods_JZiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E2D10CEC636FB7A5AF5662A /* Pods_JZiOS.framework */; };
+		50183FAE1FC493A700AE4FA7 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FAD1FC493A700AE4FA7 /* SessionTableViewCell.swift */; };
+		50183FB01FC49CA800AE4FA7 /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FAF1FC49CA800AE4FA7 /* CommonConstants.swift */; };
+		50183FB21FC4CFB500AE4FA7 /* SpeakerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FB11FC4CFB500AE4FA7 /* SpeakerRepository.swift */; };
 		502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */; };
 		5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */; };
 		5039CFFF1FA45F8100CB9582 /* SpeakerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFFE1FA45F8100CB9582 /* SpeakerDetailController.swift */; };
@@ -50,6 +53,9 @@
 /* Begin PBXFileReference section */
 		1E2D10CEC636FB7A5AF5662A /* Pods_JZiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE83B840387BEFD1FB91C44 /* Pods-JZiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZiOS/Pods-JZiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		50183FAD1FC493A700AE4FA7 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		50183FAF1FC49CA800AE4FA7 /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
+		50183FB11FC4CFB500AE4FA7 /* SpeakerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerRepository.swift; sourceTree = "<group>"; };
 		502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewController.swift; sourceTree = "<group>"; };
 		5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		5039CFFE1FA45F8100CB9582 /* SpeakerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailController.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				50A3EAF01F690B35009A3E29 /* URLConstants.swift */,
+				50183FAF1FC49CA800AE4FA7 /* CommonConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -150,6 +157,7 @@
 		5039CFFB1FA3884800CB9582 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				50183FAD1FC493A700AE4FA7 /* SessionTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 				5039D0051FA5B23500CB9582 /* MySessionRepository.swift */,
 				5039D0071FA5E25300CB9582 /* Repository.swift */,
 				5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */,
+				50183FB11FC4CFB500AE4FA7 /* SpeakerRepository.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -559,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5039CFFF1FA45F8100CB9582 /* SpeakerDetailController.swift in Sources */,
+				50183FB01FC49CA800AE4FA7 /* CommonConstants.swift in Sources */,
 				5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */,
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,
@@ -566,9 +576,11 @@
 				50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */,
 				5039D0011FA4720700CB9582 /* MyScheduleViewController.swift in Sources */,
 				5039D0061FA5B23500CB9582 /* MySessionRepository.swift in Sources */,
+				50183FAE1FC493A700AE4FA7 /* SessionTableViewCell.swift in Sources */,
 				5039D0031FA530CE00CB9582 /* MySession.swift in Sources */,
 				50C1693A1F686F83005E8AC7 /* AppDelegate.swift in Sources */,
 				5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */,
+				50183FB21FC4CFB500AE4FA7 /* SpeakerRepository.swift in Sources */,
 				50A3EB331F6A615A009A3E29 /* SessionApiService.swift in Sources */,
 				5039D0081FA5E25300CB9582 /* Repository.swift in Sources */,
 			);

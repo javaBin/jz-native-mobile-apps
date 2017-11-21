@@ -12,21 +12,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let container = Container() { container in
         // Repositories
+        container.register(SpeakerRepository.self, name: "speakerRepository") {
+            _ in SpeakerRepository()
+        }
+        
         container.register(MySessionRepository.self, name: "mySessionRepository") {
-            _ in MySessionRepository()
+            r in MySessionRepository(speakerRepository: r.resolve(SpeakerRepository.self, name: "speakerRepository"))
         }
         
         container.register(SessionRepository.self, name: "sessionRepository") {
-            _ in SessionRepository()
+            r in SessionRepository(speakerRepository: r.resolve(SpeakerRepository.self, name: "speakerRepository"))
         }
          
          // Views         
          container.storyboardInitCompleted(MyScheduleViewController.self) { r, c in
-         c.repository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
+         c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
          }
         
         container.storyboardInitCompleted(SessionListViewController.self) { r, c in
             c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
+            c.speakerRepository = r.resolve(SpeakerRepository.self, name: "speakerRepository")
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
         }
         

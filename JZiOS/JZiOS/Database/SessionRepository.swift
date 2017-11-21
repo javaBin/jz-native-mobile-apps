@@ -3,6 +3,11 @@ import RealmSwift
 
 class SessionRepository {
     let realm = try! Realm()
+    var speakerRepository: SpeakerRepository?
+    
+    init(speakerRepository: SpeakerRepository?) {
+        self.speakerRepository = speakerRepository
+    }
 
     func add(item: Session) {
         try! realm.write {
@@ -16,6 +21,7 @@ class SessionRepository {
             let realm = try! Realm()
             realm.beginWrite()
             for item in items {
+                self.speakerRepository!.addSpeakerAsync(speakers: item.speakers, session: item)
                 realm.create(Session.self, value: item)
             }
             try! realm.commitWrite()
@@ -40,12 +46,17 @@ class SessionRepository {
     func getAll() -> [Session]? {
         let realm = try! Realm()
         let result = realm.objects(Session.self).sorted( by: [SortDescriptor(keyPath: "startTime", ascending: true), SortDescriptor(keyPath: "endTime", ascending: true)])
+        let returnResult = Array(result)
+        
+        for session in returnResult {
+            session.speakers = speakerRepository!.getSpeakersForSession(session: session)
+        }
         
         if result == nil {
             return nil
         }
         
-        return Array(result)
+        return returnResult
     }
     
     func getAllSessionsAsync() -> [Session]? {

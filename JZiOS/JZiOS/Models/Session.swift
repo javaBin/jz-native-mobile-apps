@@ -63,10 +63,6 @@ class Session: Object, Mappable {
         
     }
     
-    public func mapSpeakerToString() -> String? {
-        return nil
-    }
-    
     public func mapKeywordsToTags(keyWords: [String]?) -> List<Tag>? {
         var tags: List<Tag>? = nil
         
@@ -88,6 +84,7 @@ class Speaker: Object, Mappable {
     @objc dynamic var pictureUrl: String?
     @objc dynamic var name: String?
     @objc dynamic var bio: String?
+    @objc dynamic var sessionId: String?
     
     required convenience init?(map: Map) {
         self.init()
@@ -97,11 +94,12 @@ class Speaker: Object, Mappable {
         pictureUrl      <- map["pictureUrl"]
         name            <- map["name"]
         bio             <- map["bio"]
+        sessionId         <- map["sessionId"]
     }
 }
 
 class Tag: Object {
-     @objc dynamic var keyWord = ""
+    @objc dynamic var keyWord = ""
 }
 
 class ListTransformCustom<T:RealmSwift.Object> : TransformType where T:Mappable {

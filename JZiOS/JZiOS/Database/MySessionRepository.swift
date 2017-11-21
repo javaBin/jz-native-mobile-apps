@@ -2,6 +2,12 @@ import Foundation
 import RealmSwift
 
 class MySessionRepository: Repository {
+    var speakerRepository: SpeakerRepository?
+    
+    init(speakerRepository: SpeakerRepository?) {
+        self.speakerRepository = speakerRepository
+    }
+
     override func add<T>(item: T) where T : MySession {
         try! realm.write {
             realm.create(MySession.self, value: item)
@@ -33,9 +39,20 @@ class MySessionRepository: Repository {
         }
     }
     
-    func getAll() -> [MySession]? {
-        let result = realm.objects(MySession.self) //.filter(NSPredicate(format: "name contains 'x'"))
-        return Array(result)
+    func getAll() -> [Session]? {
+        let mySessions = realm.objects(MySession.self) //.filter(NSPredicate(format: "name contains 'x'"))
+        let sessionIds = mySessions.map { mySession in mySession.sessionId }
+        
+        let predicate = NSPredicate(format: "sessionId IN %@", Array(sessionIds))
+        let result = realm.objects(Session.self).filter(predicate)
+        let returnResult = Array(result)
+
+        for session in returnResult {
+            session.speakers = speakerRepository!.getSpeakersForSession(session: session)
+        }
+        
+        
+        return returnResult
     }
     
     func getMySession(sessionId: String) -> MySession? {

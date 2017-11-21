@@ -62,13 +62,12 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return session!.speakers!.count
-        return 0
+        return session!.speakers!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = speakerTableView.dequeueReusableCell(withIdentifier: "SpeakerCell", for: indexPath) as! SpeakerTableViewCell
-       // cell.speakerLabel?.text = session!.speakers![indexPath.row].name
+        cell.speakerLabel?.text = session!.speakers![indexPath.row].name
         
         return cell
     }
