@@ -28,10 +28,13 @@ class SpeakerRepository: Repository {
     }
     
     override func deleteAll() {
-        let realm = try! Realm()
-        let allSpeakerObjects = realm.objects(Speaker.self)
-        try! realm.write {
-            realm.delete(allSpeakerObjects)
+        DispatchQueue.global().async {
+                let otherRealm = try! Realm()
+                let allSpeakerObjects = otherRealm.objects(Speaker.self)
+            try! otherRealm.write {
+                
+                otherRealm.delete(allSpeakerObjects)
+            }
         }
     }
 }

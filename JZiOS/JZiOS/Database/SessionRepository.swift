@@ -36,10 +36,16 @@ class SessionRepository {
     }
     
     func deleteAll() {
-        let realm = try! Realm()
-        let allSessionObjects = realm.objects(Session.self)
-        try! realm.write {
-            realm.delete(allSessionObjects)
+        DispatchQueue.global().async {
+            autoreleasepool {
+                let otherRealm = try! Realm()
+                let allSessionObjects = otherRealm.objects(Session.self)
+                try! otherRealm.write {
+
+                    otherRealm.delete(allSessionObjects)
+                }
+                
+            }
         }
     }
     
