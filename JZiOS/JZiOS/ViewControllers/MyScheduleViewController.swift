@@ -147,7 +147,6 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         let session = data![indexPath.row]
         
         cell.session = session
-        cell.favoriteButton.isHidden = true
         cell.titleLabel?.text = session.title
         cell.startTimeLabel?.text = CommonDate.formatDate(dateString: session.startTime, dateFormat: "HH:mm")
         cell.endTimeLabel?.text = CommonDate.formatDate(dateString: session.endTime, dateFormat: "HH:mm")
@@ -182,23 +181,28 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
+        sessionSearchBar.showsCancelButton = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false
+        sessionSearchBar.showsCancelButton = false 
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
         sessionSearchBar.text = ""
+        sessionSearchBar.showsCancelButton = false
+        sessionSearchBar.endEditing(true)
+        
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.refreshAllMySessions()
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
-        sessionSearchBar.showsCancelButton = false
+        sessionSearchBar.showsCancelButton = true
         
     }
     

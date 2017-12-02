@@ -13,6 +13,7 @@
 		50183FAE1FC493A700AE4FA7 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FAD1FC493A700AE4FA7 /* SessionTableViewCell.swift */; };
 		50183FB01FC49CA800AE4FA7 /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FAF1FC49CA800AE4FA7 /* CommonConstants.swift */; };
 		50183FB21FC4CFB500AE4FA7 /* SpeakerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FB11FC4CFB500AE4FA7 /* SpeakerRepository.swift */; };
+		50183FB41FD0C4E400AE4FA7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FB31FD0C4E400AE4FA7 /* TestViewController.swift */; };
 		502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */; };
 		5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */; };
 		5039CFFF1FA45F8100CB9582 /* SpeakerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFFE1FA45F8100CB9582 /* SpeakerDetailController.swift */; };
@@ -56,6 +57,7 @@
 		50183FAD1FC493A700AE4FA7 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		50183FAF1FC49CA800AE4FA7 /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		50183FB11FC4CFB500AE4FA7 /* SpeakerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerRepository.swift; sourceTree = "<group>"; };
+		50183FB31FD0C4E400AE4FA7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewController.swift; sourceTree = "<group>"; };
 		5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		5039CFFE1FA45F8100CB9582 /* SpeakerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */,
 				5039CFFE1FA45F8100CB9582 /* SpeakerDetailController.swift */,
 				5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */,
+				50183FB31FD0C4E400AE4FA7 /* TestViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 			files = (
 				5039CFFF1FA45F8100CB9582 /* SpeakerDetailController.swift in Sources */,
 				50183FB01FC49CA800AE4FA7 /* CommonConstants.swift in Sources */,
+				50183FB41FD0C4E400AE4FA7 /* TestViewController.swift in Sources */,
 				5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */,
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,
