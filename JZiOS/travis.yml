@@ -1,0 +1,4 @@
+language: swift
+osx_iamge: xcode9
+script:
+  - xcodebuild clean build -sdk iphonesimulator -project $JZiOS.xcodeproj -scheme JZiOS CODE_SIGNING_REQUIRED=NO

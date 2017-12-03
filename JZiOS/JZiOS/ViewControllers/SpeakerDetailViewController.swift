@@ -1,6 +1,14 @@
+//
+//  SpeakerDetailViewController.swift
+//  JZiOS
+//
+//  Created by Khiem-Kim Ho Xuan on 02/12/2017.
+//  Copyright © 2017 Khiem-Kim Ho Xuan. All rights reserved.
+//
+
 import UIKit
 
-class SpeakerDetailController: UIViewController {
+class SpeakerDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

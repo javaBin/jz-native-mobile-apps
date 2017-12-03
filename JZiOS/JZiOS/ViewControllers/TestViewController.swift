@@ -1,40 +1,63 @@
-//
-//  TestViewController.swift
-//  JZiOS
-//
-//  Created by Khiem-Kim Ho Xuan on 30/11/2017.
-//  Copyright © 2017 Khiem-Kim Ho Xuan. All rights reserved.
-//
-
 import UIKit
 
-class TestViewController: UIViewController {
-
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentStackView: UIStackView!
+class TestViewController:  UIViewController  {
+    @IBOutlet weak var sessionTitleLabel: UILabel!
+    @IBOutlet weak var roomLabel: UILabel!
+    @IBOutlet weak var abstractTextView: UITextView!
+    @IBOutlet weak var intendedAudienceTextView: UITextView!
     
-    @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var subStackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var session: Session?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        sessionTitleLabel?.text = session!.title
+        roomLabel?.text = session!.room
+        abstractTextView?.text = session!.abstract
+        intendedAudienceTextView?.text = session!.intendedAudience
+        
+        
+        if session!.speakers!.count > 0 {
+            for speaker in session!.speakers! {
+                if let speakerDetailView = Bundle.main.loadNibNamed("SpeakerUIView", owner: self, options: nil)?.first as? SpeakerUIView {
+                    speakerDetailView.speakerNameTitleLabel.text = speaker.name
+                    
+                    
+                    // TODO load image
+                    
+                    subStackView!.addArrangedSubview(speakerDetailView)
+                    scrollToEnd(speakerDetailView)
+                    
+                }
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    fileprivate func scrollToEnd(_ addedView: UIView) {
+        let contentViewHeight = scrollView.contentSize.height + addedView.bounds.height + subStackView.spacing
+        let offsetY = contentViewHeight - scrollView.bounds.height
+        if (offsetY > 0) {
+            scrollView.setContentOffset(CGPoint(x: scrollView.contentOffset.x, y: offsetY), animated: true)
+        }
     }
-    */
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "speakerDetailSegue"{
+            var vc = segue.destination as! SpeakerDetailViewController
+            
+            // vc.speaker = speaker
+        }
+    }
 }
+
+
+

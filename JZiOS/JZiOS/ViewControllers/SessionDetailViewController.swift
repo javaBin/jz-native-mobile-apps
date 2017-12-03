@@ -79,7 +79,7 @@ class SessionDetailViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "speakerDetailSegue"{
-            var vc = segue.destination as! SpeakerDetailController
+            var vc = segue.destination as! SpeakerDetailViewController
             let indexPath = speakerTableView.indexPathForSelectedRow
             
             // vc.speaker = speaker
