@@ -25,8 +25,9 @@ class TestViewController:  UIViewController  {
                 if let speakerDetailView = Bundle.main.loadNibNamed("SpeakerUIView", owner: self, options: nil)?.first as? SpeakerUIView {
                     speakerDetailView.speakerNameTitleLabel.text = speaker.name
                     
-                    
-                    // TODO load image
+                    if let pictureUrl = speaker.pictureUrl {
+                    speakerDetailView.speakerImageView.imageFromUrl(urlString: pictureUrl)
+                    }
                     
                     subStackView!.addArrangedSubview(speakerDetailView)
                     scrollToEnd(speakerDetailView)
