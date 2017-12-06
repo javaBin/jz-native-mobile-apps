@@ -24,9 +24,8 @@ class TestViewController:  UIViewController  {
             for speaker in session!.speakers! {
                 if let speakerDetailView = Bundle.main.loadNibNamed("SpeakerUIView", owner: self, options: nil)?.first as? SpeakerUIView {
                     speakerDetailView.speakerNameTitleLabel.text = speaker.name
-                    
                     if let pictureUrl = speaker.pictureUrl {
-                    speakerDetailView.speakerImageView.imageFromUrl(urlString: pictureUrl)
+                        speakerDetailView.speakerImageView.imageFromUrl(urlString: pictureUrl)
                     }
                     
                     subStackView!.addArrangedSubview(speakerDetailView)

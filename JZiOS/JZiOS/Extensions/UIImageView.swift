@@ -11,8 +11,20 @@ extension UIImageView {
             }
             DispatchQueue.main.async(execute: { () -> Void in
                 let image = UIImage(data: data!)
-                self.image = image
+                self.maskCircle(anyImage: image!)
             })
             
         }).resume()
-    }}
+    }
+    
+    public func maskCircle(anyImage: UIImage) {
+        self.contentMode = UIViewContentMode.scaleAspectFill
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = false
+        self.clipsToBounds = true
+        
+        self.image = anyImage
+    }
+    
+    
+}

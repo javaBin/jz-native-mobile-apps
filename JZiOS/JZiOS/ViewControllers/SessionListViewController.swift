@@ -12,6 +12,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     var sessions: [Session]?
     var sections = Dictionary<String, Array<Session>>()
     var sortedSections = [String]()
+    var filteredSections = Dictionary<String, Array<Session>>()
     var searchActive : Bool = false
     var refresher: UIRefreshControl?
     var sessionRepository: SessionRepository?
@@ -21,7 +22,11 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        sessionSearchBar.text = ""
+        sessionSearchBar.resignFirstResponder()
         mySessionSegmentedControl.selectedSegmentIndex = segmentedSelected
+        
+        
     }
     
     func favoriteButtonTapped(cell: SessionTableViewCell!) {
@@ -142,12 +147,19 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
                     self.sections[sectionDate]!.sort(by: { $0.startTime! < $1.startTime! })
                     self.sections[sectionDate]!.sort(by: { $0.endTime! < $1.endTime! })
                 }
-                
-                self.sortedSections = self.sections.keys.sorted()
             }
         }
         
-        self.tableView!.reloadData()
+        self.sortedSections = self.sections.keys.sorted()
+        
+        if(searchActive) {
+            filterSections(searchText: self.sessionSearchBar!.text!)
+        }
+        
+        DispatchQueue.main.async {
+            self.tableView!.reloadData()
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -156,6 +168,10 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if(searchActive) {
+            return filteredSections.count
+        }
+        
         return sections.count
     }
     
@@ -164,10 +180,8 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
         if(searchActive) {
-            //   return filtered.count
+            return filteredSections[sortedSections[section]] != nil ? filteredSections[sortedSections[section]]!.count : 0
         }
         
         return sections[sortedSections[section]]!.count
@@ -176,8 +190,16 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! SessionTableViewCell
-        let section = sections[sortedSections[indexPath.section]]
-        let session = section![indexPath.row]
+        
+        var data = sections[sortedSections[indexPath.section]]
+        
+        if(searchActive) {
+            data = filteredSections[sortedSections[indexPath.section]]
+        }
+        
+        let section = data
+        let session = data![indexPath.row]
+        
         
         cell.session = session
         cell.titleLabel?.text = session.title
@@ -207,8 +229,14 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         if segue.identifier == "sessionDetailSegue"{
             var vc = segue.destination as! SessionDetailViewController
             let indexPath = tableView.indexPathForSelectedRow
-            let section = sections[sortedSections[indexPath!.section]]
-            let session = section![indexPath!.row]
+            var data = sections[sortedSections[indexPath!.section]]
+            
+            if(searchActive) {
+                data = filteredSections[sortedSections[indexPath!.section]]
+            }
+            
+            let section = data
+            let session = data![indexPath!.row]
             
             vc.session = session
             
@@ -219,28 +247,69 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
+        sessionSearchBar.showsCancelButton = true
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
+        searchActive = false
+        sessionSearchBar.showsCancelButton = false
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
+        sessionSearchBar.text = ""
+        sessionSearchBar.showsCancelButton = false
+        sessionSearchBar.endEditing(true)
+        
+        DispatchQueue.main.async {
+            self.refreshData()
+        }
     }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
+        sessionSearchBar.showsCancelButton = true
         
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("in here")
-        // if(filtered.count == 0){
-        // searchActive = false;
-        //  } else {
-        //  searchActive = true;
-        //  }
+        if(sections.count == 0) {
+            searchActive = false;
+        } else {
+            searchActive = true;
+            
+            if(searchText.isEmpty) {
+                filteredSections = sections
+                searchActive = false
+                
+            } else {
+                filterSections(searchText: searchText)
+            }
+            
+            self.sortedSections = filteredSections.keys.sorted()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func filterSections(searchText: String) {
+        filteredSections.removeAll()
+        for section in self.sections {
+            
+            let filteredContent = section.value.filter { $0.title!.range(of: searchText, options: .caseInsensitive) != nil
+                //   || $0..range(of: searchText, options: .caseInsensitive) != nil
+                //   || $0.sentence.range(of: searchText, options: .caseInsensitive) != nil
+            }
+            
+            if !filteredContent.isEmpty {
+                filteredSections[section.key] = filteredContent
+            }
+        }
+        
+        self.sortedSections = filteredSections.keys.sorted()
     }
 }
 

@@ -30,18 +30,6 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         self.sessionSearchBar.delegate = self
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.refresher = UIRefreshControl()
-        
-        if #available(iOS 10.0, *) {
-            self.tableView.refreshControl = self.refresher
-        } else {
-            self.tableView.addSubview(self.refresher!)
-        }
-        
-        self.refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
-        self.refresher?.addTarget(self, action: #selector(self.refreshAllMySessions), for: UIControlEvents.valueChanged)
-        
         self.myScheduleSegmentedControl.removeAllSegments()
         
         for (index, conferenceDate) in CommonDate.conferenceDates().enumerated() {
