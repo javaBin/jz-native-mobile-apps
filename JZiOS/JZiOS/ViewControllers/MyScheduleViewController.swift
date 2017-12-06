@@ -147,27 +147,8 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "mySessionDetailSegue"{
-            let vc = segue.destination as! SessionDetailViewController
-            let indexPath = tableView.indexPathForSelectedRow
-            var data = sections[sortedSections[indexPath!.section]]
-            
-            if(searchActive) {
-                data = filteredSections[sortedSections[indexPath!.section]]
-            }
-            
-            let section = data
-            let session = data![indexPath!.row]
-            
-            vc.session = session
-            
-            
-            //Data has to be a variable name in your RandomViewController
-        }
-        
-        if segue.identifier == "testSegue"{
-            let vc = segue.destination as! TestViewController
+            let vc = segue.destination as! SessionDetailsViewController
             let indexPath = tableView.indexPathForSelectedRow
             var data = sections[sortedSections[indexPath!.section]]
             

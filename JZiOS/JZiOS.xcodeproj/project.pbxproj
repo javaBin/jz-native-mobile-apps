@@ -13,9 +13,8 @@
 		50183FAE1FC493A700AE4FA7 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FAD1FC493A700AE4FA7 /* SessionTableViewCell.swift */; };
 		50183FB01FC49CA800AE4FA7 /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FAF1FC49CA800AE4FA7 /* CommonConstants.swift */; };
 		50183FB21FC4CFB500AE4FA7 /* SpeakerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FB11FC4CFB500AE4FA7 /* SpeakerRepository.swift */; };
-		50183FB41FD0C4E400AE4FA7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FB31FD0C4E400AE4FA7 /* TestViewController.swift */; };
+		50183FB41FD0C4E400AE4FA7 /* SessionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50183FB31FD0C4E400AE4FA7 /* SessionDetailsViewController.swift */; };
 		502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */; };
-		5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */; };
 		5039D0011FA4720700CB9582 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */; };
 		5039D0031FA530CE00CB9582 /* MySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0021FA530CE00CB9582 /* MySession.swift */; };
 		5039D0061FA5B23500CB9582 /* MySessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0051FA5B23500CB9582 /* MySessionRepository.swift */; };
@@ -61,9 +60,8 @@
 		50183FAD1FC493A700AE4FA7 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		50183FAF1FC49CA800AE4FA7 /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		50183FB11FC4CFB500AE4FA7 /* SpeakerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerRepository.swift; sourceTree = "<group>"; };
-		50183FB31FD0C4E400AE4FA7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		50183FB31FD0C4E400AE4FA7 /* SessionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailsViewController.swift; sourceTree = "<group>"; };
 		502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewController.swift; sourceTree = "<group>"; };
-		5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
 		5039D0021FA530CE00CB9582 /* MySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySession.swift; sourceTree = "<group>"; };
 		5039D0051FA5B23500CB9582 /* MySessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySessionRepository.swift; sourceTree = "<group>"; };
@@ -131,9 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */,
-				5039CFF91FA34EF000CB9582 /* SessionDetailViewController.swift */,
 				5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */,
-				50183FB31FD0C4E400AE4FA7 /* TestViewController.swift */,
+				50183FB31FD0C4E400AE4FA7 /* SessionDetailsViewController.swift */,
 				503C84F01FD2E05600FFF4DF /* SpeakerDetailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -603,7 +600,7 @@
 				506AB7B71FD305B30032494E /* SpeakerUIView.swift in Sources */,
 				50183FB01FC49CA800AE4FA7 /* CommonConstants.swift in Sources */,
 				506AB7B11FD2F16A0032494E /* UIStackView.swift in Sources */,
-				50183FB41FD0C4E400AE4FA7 /* TestViewController.swift in Sources */,
+				50183FB41FD0C4E400AE4FA7 /* SessionDetailsViewController.swift in Sources */,
 				5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */,
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,
@@ -615,7 +612,6 @@
 				50183FAE1FC493A700AE4FA7 /* SessionTableViewCell.swift in Sources */,
 				5039D0031FA530CE00CB9582 /* MySession.swift in Sources */,
 				50C1693A1F686F83005E8AC7 /* AppDelegate.swift in Sources */,
-				5039CFFA1FA34EF000CB9582 /* SessionDetailViewController.swift in Sources */,
 				506AB7BB1FD5D4F90032494E /* UIImageView.swift in Sources */,
 				50183FB21FC4CFB500AE4FA7 /* SpeakerRepository.swift in Sources */,
 				50A3EB331F6A615A009A3E29 /* SessionApiService.swift in Sources */,

@@ -1,6 +1,6 @@
 import UIKit
 
-class TestViewController:  UIViewController  {
+class SessionDetailsViewController:  UIViewController  {
     @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var abstractTextView: UITextView!

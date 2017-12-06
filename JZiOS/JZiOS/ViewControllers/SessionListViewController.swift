@@ -227,7 +227,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "sessionDetailSegue"{
-            var vc = segue.destination as! SessionDetailViewController
+            var vc = segue.destination as! SessionDetailsViewController
             let indexPath = tableView.indexPathForSelectedRow
             var data = sections[sortedSections[indexPath!.section]]
             
