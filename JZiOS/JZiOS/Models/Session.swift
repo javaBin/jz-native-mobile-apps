@@ -63,6 +63,19 @@ class Session: Object, Mappable {
         
     }
     
+    public func makeSpeakerNamesCommaSeparatedString(speakers: List<Speaker>? ) -> String? {
+        var speakerNames: String? = nil
+        
+        if !speakers!.isEmpty {
+            speakerNames = speakers!.map { (speaker: Speaker) -> String in
+                var speakerName = speaker.name
+                return speakerName!
+                }.joined(separator: ", ")
+        }
+        
+        return speakerNames
+    }
+    
     public func mapKeywordsToTags(keyWords: [String]?) -> List<Tag>? {
         var tags: List<Tag>? = nil
         

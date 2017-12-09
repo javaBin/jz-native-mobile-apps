@@ -1,4 +1,5 @@
 import Foundation
+import AvatarImageView
 
 public struct Common {
     static let JavaZone2016Dates = ["06.09.2016", "07.09.2016", "08.09.2016"]
@@ -47,5 +48,9 @@ class CommonDate {
             return Common.JavaZone2017Dates
         #endif
     }
+}
+
+struct AvatarImageConfig: AvatarImageViewConfiguration {
+    let shape: Shape = .circle
 }
 

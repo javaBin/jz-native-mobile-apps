@@ -58,62 +58,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="BQj-ul-ccx">
-                                <rect key="frame" x="20" y="64" width="374" height="623"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5F-51-LYt">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="254"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-Cl-7e3">
-                                                <rect key="frame" x="82" y="23" width="210" height="208"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="208" id="UM4-3a-ACp"/>
-                                                    <constraint firstAttribute="width" constant="210" id="cTL-fU-TSp"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="RIB-Cl-7e3" firstAttribute="top" secondItem="y5F-51-LYt" secondAttribute="top" constant="23" id="45W-7e-HG9"/>
-                                            <constraint firstItem="RIB-Cl-7e3" firstAttribute="leading" secondItem="y5F-51-LYt" secondAttribute="leading" constant="82" id="GvC-zG-Ba8"/>
-                                            <constraint firstAttribute="bottom" secondItem="RIB-Cl-7e3" secondAttribute="bottom" constant="23" id="ZTs-OM-Y9w"/>
-                                            <constraint firstAttribute="trailing" secondItem="RIB-Cl-7e3" secondAttribute="trailing" constant="82.333333333333371" id="jCF-d3-C42"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bQ-IX-Ybz">
-                                        <rect key="frame" x="0.0" y="260" width="374" height="28.666666666666686"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3mc-qf-fC0">
-                                        <rect key="frame" x="0.0" y="294.66666666666674" width="374" height="328.33333333333326"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-Cl-7e3" customClass="AvatarImageView" customModule="AvatarImageView">
+                                <rect key="frame" x="127" y="89" width="160" height="160"/>
                                 <constraints>
-                                    <constraint firstItem="y5F-51-LYt" firstAttribute="leading" secondItem="BQj-ul-ccx" secondAttribute="leading" id="5f0-7R-q3s"/>
-                                    <constraint firstItem="5bQ-IX-Ybz" firstAttribute="top" secondItem="y5F-51-LYt" secondAttribute="bottom" constant="6" id="dMQ-MW-Ywp"/>
-                                    <constraint firstAttribute="trailing" secondItem="y5F-51-LYt" secondAttribute="trailing" id="yeR-QO-mSU"/>
-                                    <constraint firstItem="y5F-51-LYt" firstAttribute="top" secondItem="BQj-ul-ccx" secondAttribute="top" id="zm1-9T-qeA"/>
+                                    <constraint firstAttribute="width" constant="160" id="QCb-fe-0SB"/>
+                                    <constraint firstAttribute="height" constant="160" id="zzo-y9-1Mo"/>
                                 </constraints>
-                            </stackView>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3mc-qf-fC0">
+                                <rect key="frame" x="20" y="314" width="374" height="365"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bQ-IX-Ybz">
+                                <rect key="frame" x="20" y="277" width="374" height="28.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="BQj-ul-ccx" secondAttribute="trailing" id="C7f-TJ-GKW"/>
-                            <constraint firstItem="BQj-ul-ccx" firstAttribute="leading" secondItem="Vxh-dO-QeN" secondAttribute="leadingMargin" id="dgd-eS-Ys5"/>
-                            <constraint firstItem="BQj-ul-ccx" firstAttribute="top" secondItem="cAi-6f-lfb" secondAttribute="bottom" id="dx3-qa-Ul9"/>
-                            <constraint firstItem="L5J-QE-obX" firstAttribute="top" secondItem="BQj-ul-ccx" secondAttribute="bottom" id="fHd-Do-i0y"/>
+                            <constraint firstItem="3mc-qf-fC0" firstAttribute="trailing" secondItem="Vxh-dO-QeN" secondAttribute="trailingMargin" id="3Wz-6C-Mpe"/>
+                            <constraint firstItem="L5J-QE-obX" firstAttribute="top" secondItem="3mc-qf-fC0" secondAttribute="bottom" constant="8" id="6YG-jW-Iax"/>
+                            <constraint firstItem="3mc-qf-fC0" firstAttribute="top" secondItem="5bQ-IX-Ybz" secondAttribute="bottom" constant="8.3333333333333144" id="9Ec-00-au2"/>
+                            <constraint firstItem="3mc-qf-fC0" firstAttribute="top" secondItem="5bQ-IX-Ybz" secondAttribute="bottom" constant="8.3333333333333144" id="AtO-Mn-ejM"/>
+                            <constraint firstItem="5bQ-IX-Ybz" firstAttribute="trailing" secondItem="Vxh-dO-QeN" secondAttribute="trailingMargin" id="L7t-Ra-JoZ"/>
+                            <constraint firstItem="RIB-Cl-7e3" firstAttribute="leading" secondItem="Vxh-dO-QeN" secondAttribute="leadingMargin" constant="107" id="Oal-ix-LDt"/>
+                            <constraint firstItem="5bQ-IX-Ybz" firstAttribute="top" secondItem="RIB-Cl-7e3" secondAttribute="bottom" constant="28" id="UG1-7U-SHM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RIB-Cl-7e3" secondAttribute="trailing" constant="107" id="oju-zG-avn"/>
+                            <constraint firstItem="RIB-Cl-7e3" firstAttribute="top" secondItem="cAi-6f-lfb" secondAttribute="bottom" constant="25" id="v7w-XO-3gj"/>
+                            <constraint firstItem="3mc-qf-fC0" firstAttribute="leading" secondItem="Vxh-dO-QeN" secondAttribute="leadingMargin" id="vNl-ok-B9Z"/>
+                            <constraint firstItem="5bQ-IX-Ybz" firstAttribute="leading" secondItem="Vxh-dO-QeN" secondAttribute="leadingMargin" id="ySC-mI-iIu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SpeakerDetails" id="AjR-6P-nsA"/>
                     <connections>
                         <outlet property="speakerBioGraphyLabel" destination="3mc-qf-fC0" id="QNp-01-dzm"/>
-                        <outlet property="speakerImageView" destination="RIB-Cl-7e3" id="C0k-Vv-X7e"/>
+                        <outlet property="speakerImageView" destination="RIB-Cl-7e3" id="AWL-6B-y8b"/>
                         <outlet property="speakerNameLabel" destination="5bQ-IX-Ybz" id="fHm-l8-mw3"/>
                     </connections>
                 </viewController>
@@ -154,11 +138,11 @@
                                             <constraint firstAttribute="bottom" secondItem="Zym-y0-ClJ" secondAttribute="bottom" constant="23" id="mE8-1p-1K7"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bvy-XP-9o5">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvy-XP-9o5">
                                         <rect key="frame" x="0.0" y="97" width="414" height="474"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-4e-R4h" userLabel="SubStackView">
-                                                <rect key="frame" x="0.0" y="7.9999999999999716" width="414" height="496.33333333333326"/>
+                                            <stackView opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-4e-R4h" userLabel="SubStackView">
+                                                <rect key="frame" x="0.0" y="8" width="414" height="568.33333333333337"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you think?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYq-I1-XoQ">
                                                         <rect key="frame" x="133.33333333333331" y="0.0" width="147.33333333333331" height="20.333333333333332"/>
@@ -166,8 +150,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCB-q8-FAY" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="117" y="27.333333333333343" width="180" height="32"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCB-q8-FAY" customClass="CosmosView" customModule="Cosmos">
+                                                        <rect key="frame" x="117" y="27.333333333333343" width="180" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -178,14 +162,14 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you think?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AT-3M-jbe">
-                                                        <rect key="frame" x="133.33333333333331" y="66.333333333333343" width="147.33333333333331" height="20.333333333333329"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="What do you think?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AT-3M-jbe">
+                                                        <rect key="frame" x="133.33333333333331" y="84.333333333333343" width="147.33333333333331" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMb-P2-dMp" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="117" y="93.666666666666686" width="180" height="32"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMb-P2-dMp" customClass="CosmosView" customModule="Cosmos">
+                                                        <rect key="frame" x="117" y="111.66666666666669" width="180" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -196,14 +180,14 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you think?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBv-ZT-evc">
-                                                        <rect key="frame" x="133.33333333333331" y="132.66666666666669" width="147.33333333333331" height="20.333333333333343"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="What do you think?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBv-ZT-evc">
+                                                        <rect key="frame" x="133.33333333333331" y="168.66666666666669" width="147.33333333333331" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Fb-de-sMa" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="117" y="160" width="180" height="32"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Fb-de-sMa" customClass="CosmosView" customModule="Cosmos">
+                                                        <rect key="frame" x="117" y="196" width="180" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -214,14 +198,14 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you think?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wP-YD-ZQl">
-                                                        <rect key="frame" x="133.33333333333331" y="199" width="147.33333333333331" height="20.333333333333343"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="What do you think?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wP-YD-ZQl">
+                                                        <rect key="frame" x="133.33333333333331" y="253.00000000000003" width="147.33333333333331" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4o-0y-6Ud" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="117" y="226.33333333333331" width="180" height="32"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P4o-0y-6Ud" customClass="CosmosView" customModule="Cosmos">
+                                                        <rect key="frame" x="117" y="280.33333333333331" width="180" height="50"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -232,16 +216,16 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intended audience" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOm-52-85Y">
-                                                        <rect key="frame" x="126" y="265.33333333333331" width="162" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Intended audience" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOm-52-85Y">
+                                                        <rect key="frame" x="126" y="337.33333333333331" width="162" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZQ-5T-TED">
-                                                        <rect key="frame" x="22" y="296.33333333333331" width="370" height="200"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dZQ-5T-TED">
+                                                        <rect key="frame" x="22" y="368.33333333333337" width="370" height="200"/>
                                                         <subviews>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1m-mL-h2V">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n1m-mL-h2V">
                                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="200"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>

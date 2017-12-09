@@ -136,6 +136,7 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         
         cell.session = session
         cell.titleLabel?.text = session.title
+        cell.subTitleLabel?.text = session.makeSpeakerNamesCommaSeparatedString(speakers: session.speakers)
         cell.startTimeLabel?.text = CommonDate.formatDate(dateString: session.startTime, dateFormat: "HH:mm")
         cell.endTimeLabel?.text = CommonDate.formatDate(dateString: session.endTime, dateFormat: "HH:mm")
         cell.roomLabel?.text = session.room
@@ -220,7 +221,7 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         for section in self.sections {
             
             let filteredContent = section.value.filter { $0.title!.range(of: searchText, options: .caseInsensitive) != nil
-                //   || $0..range(of: searchText, options: .caseInsensitive) != nil
+                   || $0.makeSpeakerNamesCommaSeparatedString(speakers: $0.speakers)!.range(of: searchText, options: .caseInsensitive) != nil
                 //   || $0.sentence.range(of: searchText, options: .caseInsensitive) != nil
             }
             

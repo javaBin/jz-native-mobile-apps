@@ -1,9 +1,14 @@
 import UIKit
+import AvatarImageView
 
 class SpeakerUIView: UIView {
     @IBOutlet weak var speakerNameTitleLabel: UILabel!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var speakerImageView: UIImageView!
+    @IBOutlet weak var speakerImageView: AvatarImageView! {
+        didSet {
+            speakerImageView.configuration = AvatarImageConfig()
+        }
+    }
     
     var speaker: Speaker!
     

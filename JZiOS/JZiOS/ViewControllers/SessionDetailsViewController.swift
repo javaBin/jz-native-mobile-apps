@@ -31,7 +31,7 @@ class SessionDetailsViewController:  UIViewController  {
                     }
                     
                     let gesture = UITapGestureRecognizer(target: self, action: #selector (self.performSpeakerDetailSegue(sender:)))
-                    
+                    speakerDetailView.isUserInteractionEnabled = true
                     speakerDetailView.addGestureRecognizer(gesture)
                     subStackView!.addArrangedSubview(speakerDetailView)
                     scrollToEnd(speakerDetailView)
@@ -44,7 +44,7 @@ class SessionDetailsViewController:  UIViewController  {
     func performSpeakerDetailSegue(sender: UITapGestureRecognizer) {
         let speakerUIView = sender.view as! SpeakerUIView
         
-        self.performSegue(withIdentifier: "speakerDetailSegue", sender: speakerUIView.speaker)
+        self.performSegue(withIdentifier: "speakerDetailSegue", sender: speakerUIView)
     }
     
     fileprivate func scrollToEnd(_ addedView: UIView) {
@@ -64,6 +64,7 @@ class SessionDetailsViewController:  UIViewController  {
         
         if segue.identifier == "speakerDetailSegue"{
             var vc = segue.destination as! SpeakerDetailViewController
+            vc.speaker = (sender as! SpeakerUIView).speaker
         }
     }
 }
