@@ -200,6 +200,13 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		506AB7BD1FD894860032494E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		50C1692D1F686F83005E8AC7 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +233,7 @@
 		50C169381F686F83005E8AC7 /* JZiOS */ = {
 			isa = PBXGroup;
 			children = (
+				506AB7BD1FD894860032494E /* ViewModels */,
 				506AB7B81FD406330032494E /* Extensions */,
 				5039D0041FA5ADAD00CB9582 /* Database */,
 				5039CFFB1FA3884800CB9582 /* Views */,
@@ -562,6 +570,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-JZiOS/Pods-JZiOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -575,6 +584,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",

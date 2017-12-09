@@ -24,16 +24,27 @@ class SessionDetailsViewController:  UIViewController  {
             for speaker in session!.speakers! {
                 if let speakerDetailView = Bundle.main.loadNibNamed("SpeakerUIView", owner: self, options: nil)?.first as? SpeakerUIView {
                     speakerDetailView.speakerNameTitleLabel.text = speaker.name
+                    speakerDetailView.speaker = speaker
+
                     if let pictureUrl = speaker.pictureUrl {
                         speakerDetailView.speakerImageView.imageFromUrl(urlString: pictureUrl)
                     }
                     
+                    let gesture = UITapGestureRecognizer(target: self, action: #selector (self.performSpeakerDetailSegue(sender:)))
+                    
+                    speakerDetailView.addGestureRecognizer(gesture)
                     subStackView!.addArrangedSubview(speakerDetailView)
                     scrollToEnd(speakerDetailView)
                     
                 }
             }
         }
+    }
+    
+    func performSpeakerDetailSegue(sender: UITapGestureRecognizer) {
+        let speakerUIView = sender.view as! SpeakerUIView
+        
+        self.performSegue(withIdentifier: "speakerDetailSegue", sender: speakerUIView.speaker)
     }
     
     fileprivate func scrollToEnd(_ addedView: UIView) {
@@ -53,8 +64,6 @@ class SessionDetailsViewController:  UIViewController  {
         
         if segue.identifier == "speakerDetailSegue"{
             var vc = segue.destination as! SpeakerDetailViewController
-            
-            // vc.speaker = speaker
         }
     }
 }

@@ -15,6 +15,7 @@ target 'JZiOS' do
   pod 'RealmSwift', '2.10.2'
   pod 'Swinject', '~> 2.0.0'
   pod 'ObjectMapper+Realm', '~> 0.5'
+  pod 'Cosmos', '~> 11.0'
   
   # Uncomment if you use SwinjectStoryboard
   pod 'SwinjectStoryboard', '~> 1.0.0'

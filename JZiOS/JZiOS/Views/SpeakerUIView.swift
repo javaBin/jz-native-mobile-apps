@@ -5,6 +5,8 @@ class SpeakerUIView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var speakerImageView: UIImageView!
     
+    var speaker: Speaker!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
