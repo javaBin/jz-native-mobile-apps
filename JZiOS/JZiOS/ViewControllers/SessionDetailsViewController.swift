@@ -28,6 +28,8 @@ class SessionDetailsViewController:  UIViewController  {
 
                     if let pictureUrl = speaker.pictureUrl {
                         speakerDetailView.speakerImageView.imageFromUrl(urlString: pictureUrl)
+                    } else {
+                        CommonImageUtil.setDefaultSpeakerAvatarImage(imageView: speakerDetailView.speakerImageView, imageName: "mysteryman")                        
                     }
                     
                     let gesture = UITapGestureRecognizer(target: self, action: #selector (self.performSpeakerDetailSegue(sender:)))

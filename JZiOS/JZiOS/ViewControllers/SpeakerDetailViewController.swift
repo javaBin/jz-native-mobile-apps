@@ -6,7 +6,7 @@ class SpeakerDetailViewController: UIViewController {
     @IBOutlet weak var speakerImageView: AvatarImageView! {
         didSet {
             configureRoundAvatar()
-            setDefaultSpeakerAvatarImage()
+            CommonImageUtil.setDefaultSpeakerAvatarImage(imageView: self.speakerImageView, imageName: "mysteryman")
         }
     }
     
@@ -57,11 +57,5 @@ class SpeakerDetailViewController: UIViewController {
             })
             
         }).resume()
-    }
-    
-    func setDefaultSpeakerAvatarImage() {
-        var dataSpeakerDetailSource = SpeakerImageViewDataSource()
-        dataSpeakerDetailSource.avatar =  UIImage(named: "mysteryman")!
-        speakerImageView.dataSource = dataSpeakerDetailSource
     }
 }

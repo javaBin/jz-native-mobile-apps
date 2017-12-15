@@ -6,7 +6,7 @@ public struct Common {
     static let JavaZone2017Dates = ["13.09.2016", "14.09.2016"]
 }
 
-class CommonDate {
+public struct CommonDate {
     static func formatDate(dateString: String?, dateFormat: String) -> String? {
         let dateFormatter = setDefaultDateFormatter()
         
@@ -49,6 +49,15 @@ class CommonDate {
         #endif
     }
 }
+
+public struct CommonImageUtil {
+    public static func setDefaultSpeakerAvatarImage(imageView: AvatarImageView, imageName: String) {
+        var dataSpeakerDetailSource = SpeakerImageViewDataSource()
+        dataSpeakerDetailSource.avatar =  UIImage(named: imageName)!
+        imageView.dataSource = dataSpeakerDetailSource
+    }
+}
+
 
 struct AvatarImageConfig: AvatarImageViewConfiguration {
     let shape: Shape = .circle

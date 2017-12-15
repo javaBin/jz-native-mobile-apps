@@ -1,22 +1,25 @@
-
-
 import Foundation
 import Alamofire
 import PromiseKit
-import ObjectMapper
 
-class SessionApiService {
-    static let sharedInstance = SessionApiService()
+class FeedbackApiService {
+    static let sharedInstance = FeedbackApiService()
     private var manager: SessionManager
     
     private init() {
         self.manager = Alamofire.SessionManager.default
     }
     
+    private func generateUniqueDeviceId() -> String? {
+        let deviceId = UIDevice.current.identifierForVendor!.uuidString
+        // TODO
+        return nil
+    }
+    
     
     func getAllSessions() -> Promise<SessionResult>
     {
-        let url = JZURL.GetAllSessions
+        let url = JZURL.GetDevNullUrl
         return Promise { fulfill, reject in
             self.manager.request(url).validate(statusCode: 200..<300).responseJSON { response in
                 switch response.result {
@@ -27,11 +30,7 @@ class SessionApiService {
                         return
                     }
 
-                    guard let sessionResult = Mapper<SessionResult>().map(JSONObject: responseJSON) else {
-                        reject(NSError(domain: "domainN", code: 1, userInfo: [NSLocalizedDescriptionKey: "Some error mapping the object"]))
-                        return
-                    }
-                    fulfill(sessionResult)
+                   // fulfill(sessionResult)
                 case .failure(let error):
                     reject(error)
                 }
