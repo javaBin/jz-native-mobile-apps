@@ -24,8 +24,11 @@ class FeedbackApiService {
             "param2": "world"
         ]
         
+        let headers: HTTPHeaders = [
+            "Voter-ID": "\(generateUniqueDeviceId()?.toBase64())"]
+        
         return Promise { fulfill, reject in
-            self.manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
+            self.manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate(statusCode: 200..<300).responseJSON { response in
                 switch response.result {
                 case .success:
                     //to get JSON return value
