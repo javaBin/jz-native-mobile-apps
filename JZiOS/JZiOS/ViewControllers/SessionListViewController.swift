@@ -95,7 +95,6 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     }
     
     func getAllSessionsFromSleepingPill() {
-        // TODO delete all sessions in local db
         sessionRepository!.deleteAll()
         speakerRepository!.deleteAll()
         

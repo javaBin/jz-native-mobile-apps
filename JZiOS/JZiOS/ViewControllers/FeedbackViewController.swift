@@ -8,16 +8,26 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var contentCosmosView: CosmosView!
     @IBOutlet weak var speakerQualityCosmosView: CosmosView!
     @IBOutlet weak var otherCommentTextView: UITextView!
+    @IBOutlet weak var submitFeedbackButton: UIButton!
+    var session: Session!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        sessionTitleLabel.text = session!.title
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func onSubmitFeedbackClicked(_ sender: Any) {
+        let uniqueId = FeedbackApiService.sharedInstance.generateUniqueDeviceId()
+
+        // TODO remember to go back to session details when successful call.
+        // FeedbackApiService.sharedInstance.submitFeedback()
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
 
 }

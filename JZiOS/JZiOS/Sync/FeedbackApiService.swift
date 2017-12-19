@@ -10,18 +10,22 @@ class FeedbackApiService {
         self.manager = Alamofire.SessionManager.default
     }
     
-    private func generateUniqueDeviceId() -> String? {
+    public func generateUniqueDeviceId() -> String? {
         let deviceId = UIDevice.current.identifierForVendor!.uuidString
-        // TODO
-        return nil
+        return deviceId.toBase64()
     }
     
-    
-    func getAllSessions() -> Promise<SessionResult>
-    {
-        let url = JZURL.GetDevNullUrl
+    public func submitFeedback(session: Session) -> Promise<String> {
+        let eventId = session.conferenceId
+        let sessionId = session.sessionId
+        let url = "\(JZURL.GetDevNullUrl)/events/\(eventId)/sessions/\(sessionId)/feedbacks"
+        let parameters: Parameters = [
+            "param1": "hello",
+            "param2": "world"
+        ]
+        
         return Promise { fulfill, reject in
-            self.manager.request(url).validate(statusCode: 200..<300).responseJSON { response in
+            self.manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate(statusCode: 200..<300).responseJSON { response in
                 switch response.result {
                 case .success:
                     //to get JSON return value
@@ -29,8 +33,8 @@ class FeedbackApiService {
                         reject(NSError(domain: "domainN", code: 0, userInfo: [NSLocalizedDescriptionKey: "Some error reading response"]))
                         return
                     }
-
-                   // fulfill(sessionResult)
+                    
+                    fulfill("OK")
                 case .failure(let error):
                     reject(error)
                 }
