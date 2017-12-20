@@ -15,9 +15,9 @@ class FeedbackApiService {
         return deviceId.toBase64()
     }
     
-    public func submitFeedback(session: Session, feedback: Feedback) -> Promise<String> {
-        let eventId = session.conferenceId
-        let sessionId = session.sessionId
+    public func submitFeedback(session: Session!, feedback: Feedback) -> Promise<String> {
+        let eventId = session!.conferenceId!
+        let sessionId = session!.sessionId!
         let url = "\(JZURL.GetDevNullUrl)/events/\(eventId)/sessions/\(sessionId)/feedbacks"
         let parameters = feedback.toJSON()
         
@@ -34,7 +34,7 @@ class FeedbackApiService {
                         return
                     }
                     
-                    fulfill("OK")
+                    fulfill(response.result.description)
                 case .failure(let error):
                     reject(error)
                 }
