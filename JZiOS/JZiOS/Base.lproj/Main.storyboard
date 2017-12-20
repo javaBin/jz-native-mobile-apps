@@ -58,21 +58,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-Cl-7e3" customClass="AvatarImageView" customModule="AvatarImageView">
-                                <rect key="frame" x="127" y="89" width="160" height="160"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-Cl-7e3" customClass="AvatarImageView" customModule="AvatarImageView">
+                                <rect key="frame" x="127" y="89" width="180" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="QCb-fe-0SB"/>
-                                    <constraint firstAttribute="height" constant="160" id="zzo-y9-1Mo"/>
+                                    <constraint firstAttribute="height" constant="200" id="CUM-wr-0LN"/>
+                                    <constraint firstAttribute="width" constant="180" id="YnH-Vb-ds9"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3mc-qf-fC0">
-                                <rect key="frame" x="20" y="314" width="374" height="365"/>
+                                <rect key="frame" x="20" y="354" width="374" height="325"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bQ-IX-Ybz">
-                                <rect key="frame" x="20" y="277" width="374" height="28.666666666666686"/>
+                                <rect key="frame" x="20" y="317" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -82,13 +82,12 @@
                         <constraints>
                             <constraint firstItem="3mc-qf-fC0" firstAttribute="trailing" secondItem="Vxh-dO-QeN" secondAttribute="trailingMargin" id="3Wz-6C-Mpe"/>
                             <constraint firstItem="L5J-QE-obX" firstAttribute="top" secondItem="3mc-qf-fC0" secondAttribute="bottom" constant="8" id="6YG-jW-Iax"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RIB-Cl-7e3" secondAttribute="trailing" constant="87" id="96L-pD-SJQ"/>
                             <constraint firstItem="3mc-qf-fC0" firstAttribute="top" secondItem="5bQ-IX-Ybz" secondAttribute="bottom" constant="8.3333333333333144" id="9Ec-00-au2"/>
                             <constraint firstItem="3mc-qf-fC0" firstAttribute="top" secondItem="5bQ-IX-Ybz" secondAttribute="bottom" constant="8.3333333333333144" id="AtO-Mn-ejM"/>
                             <constraint firstItem="5bQ-IX-Ybz" firstAttribute="trailing" secondItem="Vxh-dO-QeN" secondAttribute="trailingMargin" id="L7t-Ra-JoZ"/>
-                            <constraint firstItem="RIB-Cl-7e3" firstAttribute="leading" secondItem="Vxh-dO-QeN" secondAttribute="leadingMargin" constant="107" id="Oal-ix-LDt"/>
-                            <constraint firstItem="5bQ-IX-Ybz" firstAttribute="top" secondItem="RIB-Cl-7e3" secondAttribute="bottom" constant="28" id="UG1-7U-SHM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RIB-Cl-7e3" secondAttribute="trailing" constant="107" id="oju-zG-avn"/>
-                            <constraint firstItem="RIB-Cl-7e3" firstAttribute="top" secondItem="cAi-6f-lfb" secondAttribute="bottom" constant="25" id="v7w-XO-3gj"/>
+                            <constraint firstItem="5bQ-IX-Ybz" firstAttribute="top" secondItem="RIB-Cl-7e3" secondAttribute="bottom" constant="28" id="Xsw-9u-GSy"/>
+                            <constraint firstItem="RIB-Cl-7e3" firstAttribute="top" secondItem="cAi-6f-lfb" secondAttribute="bottom" constant="25" id="r6u-15-1gw"/>
                             <constraint firstItem="3mc-qf-fC0" firstAttribute="leading" secondItem="Vxh-dO-QeN" secondAttribute="leadingMargin" id="vNl-ok-B9Z"/>
                             <constraint firstItem="5bQ-IX-Ybz" firstAttribute="leading" secondItem="Vxh-dO-QeN" secondAttribute="leadingMargin" id="ySC-mI-iIu"/>
                         </constraints>
@@ -159,6 +158,9 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                                 <real key="value" value="32"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How relevant was this session to your projects?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AT-3M-jbe">
@@ -176,6 +178,9 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                                 <real key="value" value="32"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                <real key="value" value="0.0"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
@@ -195,6 +200,9 @@
                                                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                                 <real key="value" value="32"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wP-YD-ZQl">
@@ -212,6 +220,9 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                                 <real key="value" value="32"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                <real key="value" value="0.0"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
@@ -283,7 +294,7 @@
                     <connections>
                         <outlet property="contentCosmosView" destination="0Fb-de-sMa" id="JON-oQ-1o7"/>
                         <outlet property="otherCommentTextView" destination="n1m-mL-h2V" id="sAT-2T-bHy"/>
-                        <outlet property="releveanceCosmosView" destination="hMb-P2-dMp" id="Nq9-OO-BZk"/>
+                        <outlet property="relevanceCosmosView" destination="hMb-P2-dMp" id="LG7-3f-0Sh"/>
                         <outlet property="sessionRatingCosmosView" destination="CCB-q8-FAY" id="5vN-gD-OiS"/>
                         <outlet property="sessionTitleLabel" destination="Zym-y0-ClJ" id="9Ws-wJ-raD"/>
                         <outlet property="speakerQualityCosmosView" destination="P4o-0y-6Ud" id="maB-Py-h2K"/>
@@ -354,7 +365,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VrN-KK-77T" id="cbs-jS-y38">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="69.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WcS-oP-Jc0">
@@ -698,7 +709,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jmr-WR-B1b" id="WOb-Th-wG2">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="69.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Qd3-OU-Nb0">

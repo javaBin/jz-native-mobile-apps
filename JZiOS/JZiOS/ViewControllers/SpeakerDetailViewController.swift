@@ -5,7 +5,7 @@ class SpeakerDetailViewController: UIViewController {
 
     @IBOutlet weak var speakerImageView: AvatarImageView! {
         didSet {
-            configureRoundAvatar()
+           //  configureRoundAvatar()
             CommonImageUtil.setDefaultSpeakerAvatarImage(imageView: self.speakerImageView, imageName: "mysteryman")
         }
     }

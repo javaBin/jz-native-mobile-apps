@@ -16,7 +16,7 @@ target 'JZiOS' do
   pod 'Swinject', '~> 2.0.0'
   pod 'ObjectMapper+Realm', '~> 0.5'
   pod 'Cosmos', '~> 11.0'
-  pod 'AvatarImageView', '2.0.0'
+  pod 'AvatarImageView', '2.0.3'
   pod 'Toast-Swift', '~> 2.0.0'
   
   # Uncomment if you use SwinjectStoryboard

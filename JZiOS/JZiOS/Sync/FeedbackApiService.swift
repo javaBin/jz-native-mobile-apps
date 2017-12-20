@@ -15,14 +15,11 @@ class FeedbackApiService {
         return deviceId.toBase64()
     }
     
-    public func submitFeedback(session: Session) -> Promise<String> {
+    public func submitFeedback(session: Session, feedback: Feedback) -> Promise<String> {
         let eventId = session.conferenceId
         let sessionId = session.sessionId
         let url = "\(JZURL.GetDevNullUrl)/events/\(eventId)/sessions/\(sessionId)/feedbacks"
-        let parameters: Parameters = [
-            "param1": "hello",
-            "param2": "world"
-        ]
+        let parameters = feedback.toJSON()
         
         let headers: HTTPHeaders = [
             "Voter-ID": "\(generateUniqueDeviceId()?.toBase64())"]
