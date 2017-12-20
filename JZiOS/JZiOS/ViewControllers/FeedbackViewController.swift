@@ -21,16 +21,16 @@ class FeedbackViewController: UIViewController {
     }
     
     @IBAction func onSubmitFeedbackClicked(_ sender: Any) {
-        let uniqueId = FeedbackApiService.sharedInstance.generateUniqueDeviceId()
-        let relevance = relevanceCosmosView.rating
-        let content = contentCosmosView.rating
-        let speakerQuality = speakerQualityCosmosView.rating
+        let rating = Int(sessionRatingCosmosView.rating)
+        let relevance = Int(relevanceCosmosView.rating)
+        let content = Int(contentCosmosView.rating)
+        let speakerQuality = Int(speakerQualityCosmosView.rating)
         let otherComment = otherCommentTextView.text
         
-        
+        let newFeedback = Feedback(overall: rating, relevance: relevance, content: content, quality: speakerQuality, comments: otherComment != nil ? otherComment! : "")
 
         // TODO remember to go back to session details when successful call.
-        // FeedbackApiService.sharedInstance.submitFeedback()
+        FeedbackApiService.sharedInstance.submitFeedback(session: self.session, feedback: newFeedback)
         self.navigationController?.popViewController(animated: true)
         
     }
