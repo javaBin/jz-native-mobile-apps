@@ -37,7 +37,7 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         }
         
         self.myScheduleSegmentedControl.addTarget(self, action: #selector(self.selectedSegmentedDate), for: UIControlEvents.valueChanged)
-                
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         // Show spinner here
@@ -221,7 +221,8 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         for section in self.sections {
             
             let filteredContent = section.value.filter { $0.title!.range(of: searchText, options: .caseInsensitive) != nil
-                   || $0.makeSpeakerNamesCommaSeparatedString(speakers: $0.speakers)!.range(of: searchText, options: .caseInsensitive) != nil
+                || $0.makeSpeakerNamesCommaSeparatedString(speakers: $0.speakers)!.range(of: searchText, options: .caseInsensitive) != nil
+                || $0.room!.range(of: searchText) != nil
                 //   || $0.sentence.range(of: searchText, options: .caseInsensitive) != nil
             }
             
