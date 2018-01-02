@@ -7,7 +7,6 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var myScheduleSegmentedControl: UISegmentedControl!
     @IBOutlet weak var sessionSearchBar: UISearchBar!
-    var fruits: [String] = []
     var searchActive : Bool = false
     var sessions: [Session]?
     var sections = Dictionary<String, Array<Session>>()
