@@ -9,7 +9,7 @@ struct JZURL {
     
     private struct DevUrls {
         static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2016"
-        static let DevNullUrl = "https://javazone.no/devnull/server"
+        static let DevNullUrl = "https://test.javazone.no/devnull/server"
     }
     
     

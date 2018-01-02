@@ -95,7 +95,6 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     }
     
     func getAllSessionsFromSleepingPill() {
-        // TODO delete all sessions in local db
         sessionRepository!.deleteAll()
         speakerRepository!.deleteAll()
         
@@ -302,6 +301,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
             
             let filteredContent = section.value.filter { $0.title!.range(of: searchText, options: .caseInsensitive) != nil
                 || $0.makeSpeakerNamesCommaSeparatedString(speakers: $0.speakers)!.range(of: searchText, options: .caseInsensitive) != nil
+                || $0.room!.range(of: searchText) != nil
                 //   || $0.sentence.range(of: searchText, options: .caseInsensitive) != nil
             }
             

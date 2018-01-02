@@ -39,6 +39,7 @@
 		50C1695C1F686F84005E8AC7 /* JZiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1695B1F686F84005E8AC7 /* JZiOSUITests.swift */; };
 		50C1696D1F688D20005E8AC7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1696C1F688D20005E8AC7 /* Session.swift */; };
 		50D52E641FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D52E631FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift */; };
+		50E02FA61FEA83D0004CD662 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E02FA51FEA83D0004CD662 /* Feedback.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		50C1695D1F686F84005E8AC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C1696C1F688D20005E8AC7 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		50D52E631FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerImageViewDataSource.swift; sourceTree = "<group>"; };
+		50E02FA51FEA83D0004CD662 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		7175F0050B18491998AB76D4 /* Pods-JZiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZiOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZiOSTests/Pods-JZiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CD799FD8AF5CE6BA011FE7F /* Pods_JZiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83626405F70E36954FB51F7A /* Pods-JZiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZiOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JZiOSTests/Pods-JZiOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				50C1696C1F688D20005E8AC7 /* Session.swift */,
 				5039D0021FA530CE00CB9582 /* MySession.swift */,
 				50D52E631FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift */,
+				50E02FA51FEA83D0004CD662 /* Feedback.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,18 +207,9 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		506AB7B91FD406C10032494E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		50C1692D1F686F83005E8AC7 = {
 			isa = PBXGroup;
 			children = (
-				506AB7B91FD406C10032494E /* Resources */,
 				50C169381F686F83005E8AC7 /* JZiOS */,
 				50C1694F1F686F84005E8AC7 /* JZiOSTests */,
 				50C1695A1F686F84005E8AC7 /* JZiOSUITests */,
@@ -575,31 +569,53 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-JZiOS/Pods-JZiOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AvatarImageView/AvatarImageView.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvatarImageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -627,6 +643,7 @@
 				5039D0011FA4720700CB9582 /* MyScheduleViewController.swift in Sources */,
 				501DA5C41FE2CD7900956F75 /* FeedbackViewController.swift in Sources */,
 				503C84F11FD2E05600FFF4DF /* SpeakerDetailViewController.swift in Sources */,
+				50E02FA61FEA83D0004CD662 /* Feedback.swift in Sources */,
 				5039D0061FA5B23500CB9582 /* MySessionRepository.swift in Sources */,
 				50183FAE1FC493A700AE4FA7 /* SessionTableViewCell.swift in Sources */,
 				5039D0031FA530CE00CB9582 /* MySession.swift in Sources */,
