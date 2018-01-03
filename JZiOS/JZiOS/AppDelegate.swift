@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
-        window.rootViewController = storyboard.instantiateInitialViewController() 
+        window.rootViewController = storyboard.instantiateInitialViewController()
         return true
     }
 
