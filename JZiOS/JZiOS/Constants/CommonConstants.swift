@@ -1,4 +1,5 @@
 import Foundation
+import UserNotifications
 import AvatarImageView
 
 public struct Common {
@@ -61,5 +62,40 @@ public struct CommonImageUtil {
 
 struct AvatarImageConfig: AvatarImageViewConfiguration {
     let shape: Shape = .circle
+}
+
+public struct CommonNotificationUtil {
+    static func createMySessionNotificationContent(session: Session) -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = "Don't forget"
+        content.body = "Buy some milk"
+        content.sound = UNNotificationSound.default()
+        
+        return content
+    }
+    
+    static func createNotificationTrigger(session: Session) -> UNNotificationTrigger {
+        let date = Date(timeIntervalSinceNow: 3600)
+        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+        return UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                             repeats: false)
+    }
+    
+    static func addNotification(selectedSession: Session) {
+        
+        // TODO, check if notification already exists at the current time interval. If it does, then do not add
+        let center = UNUserNotificationCenter.current()
+        let identifier = selectedSession.sessionId!
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: createMySessionNotificationContent(session: selectedSession),
+                                            trigger: createNotificationTrigger(session: selectedSession))
+        center.add(request, withCompletionHandler: { (error) in
+            if let error = error {
+            }
+        })
+    }
+    
+    
+    
 }
 

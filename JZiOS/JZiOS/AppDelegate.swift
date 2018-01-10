@@ -35,6 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
         }
         
+        container.storyboardInitCompleted(SettingsViewController.self) { r, c in
+            c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
+            
+        }
+        
+        
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
