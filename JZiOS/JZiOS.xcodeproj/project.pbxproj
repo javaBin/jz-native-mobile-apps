@@ -17,6 +17,7 @@
 		501DA5C41FE2CD7900956F75 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501DA5C31FE2CD7800956F75 /* FeedbackViewController.swift */; };
 		501DA5C61FE2D91D00956F75 /* FeedbackApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501DA5C51FE2D91D00956F75 /* FeedbackApiService.swift */; };
 		501DA5C81FE2DE2900956F75 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501DA5C71FE2DE2900956F75 /* String.swift */; };
+		501DAF412003C3C00052AFFA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501DAF402003C3C00052AFFA /* SettingsViewController.swift */; };
 		502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */; };
 		5039D0011FA4720700CB9582 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */; };
 		5039D0031FA530CE00CB9582 /* MySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0021FA530CE00CB9582 /* MySession.swift */; };
@@ -69,6 +70,7 @@
 		501DA5C31FE2CD7800956F75 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		501DA5C51FE2D91D00956F75 /* FeedbackApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackApiService.swift; sourceTree = "<group>"; };
 		501DA5C71FE2DE2900956F75 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		501DAF402003C3C00052AFFA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		502A9E111FA21BF2004D1F39 /* SessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewController.swift; sourceTree = "<group>"; };
 		5039D0001FA4720700CB9582 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
 		5039D0021FA530CE00CB9582 /* MySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySession.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				50183FB31FD0C4E400AE4FA7 /* SessionDetailsViewController.swift */,
 				503C84F01FD2E05600FFF4DF /* SpeakerDetailViewController.swift */,
 				501DA5C31FE2CD7800956F75 /* FeedbackViewController.swift */,
+				501DAF402003C3C00052AFFA /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -571,7 +574,6 @@
 				"${BUILT_PRODUCTS_DIR}/AvatarImageView/AvatarImageView.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
@@ -597,7 +599,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvatarImageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
@@ -637,6 +638,7 @@
 				50183FB41FD0C4E400AE4FA7 /* SessionDetailsViewController.swift in Sources */,
 				5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */,
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
+				501DAF412003C3C00052AFFA /* SettingsViewController.swift in Sources */,
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,
 				50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */,
 				50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */,
