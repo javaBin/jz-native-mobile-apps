@@ -1,8 +1,11 @@
 import UIKit
 import UserNotifications
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
+    var mySessionRepository: MySessionRepository?
     var sessionRepository: SessionRepository?
+    @IBOutlet weak var generalSettingsCell: GeneralSettingsCell!
+    var isGrantedNotificationAccess = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,6 +15,7 @@ class SettingsViewController: UIViewController {
         
         center.requestAuthorization(options: options) {
             (granted, error) in
+            self.isGrantedNotificationAccess = granted
             if !granted {
                 print("Something went wrong")
             }

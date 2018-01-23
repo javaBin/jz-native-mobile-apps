@@ -95,7 +95,19 @@ public struct CommonNotificationUtil {
         })
     }
     
+    static func removeNotification(selectedSession: Session) {
+        let center = UNUserNotificationCenter.current()
+        
+        center.removePendingNotificationRequests(withIdentifiers: [selectedSession.sessionId!])
+    }
     
-    
+    static func getAllPendingNotifications() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {requests -> () in
+            print("\(requests.count) requests -------")
+            for request in requests{
+                print(request.identifier)
+            }
+        })
+    }
 }
 

@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         container.storyboardInitCompleted(SettingsViewController.self) { r, c in
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
+            c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
             
         }
         
