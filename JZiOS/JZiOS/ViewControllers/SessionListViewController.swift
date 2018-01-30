@@ -34,13 +34,13 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         
         if findMySession != nil {
             mySessionRepository!.delete(item: findMySession!)
-            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_border_2x"), for: .normal)
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_border_48pt"), for: .normal)
         } else {
             let mySessionObject = MySession()
             mySessionObject.sessionId = cell.session!.sessionId!
             
             mySessionRepository!.add(item: mySessionObject)
-            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_2x"), for: .normal)
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_48pt"), for: .normal)
         }
     }
     
@@ -212,9 +212,9 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         let findMySession = mySessionRepository!.getMySession(sessionId: cell.session.sessionId!)
         
         if findMySession != nil && findMySession!.sessionId == session.sessionId! {
-            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_2x"), for: .normal)
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_48pt"), for: .normal)
         } else {
-            cell.favoriteButton.setImage(UIImage.init(named: "ic_star_border_2x"), for: .normal)
+            cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_border_48pt"), for: .normal)
             
         }
         

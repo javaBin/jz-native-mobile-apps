@@ -34,11 +34,11 @@
                                 <constraint firstAttribute="width" constant="32" id="dty-Sg-8SF"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="speaker name" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQx-tY-9v1">
-                            <rect key="frame" x="90" y="18" width="196" height="25"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQx-tY-9v1">
+                            <rect key="frame" x="90" y="18" width="187" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="196" id="5Vl-rl-Dqk"/>
-                                <constraint firstAttribute="width" secondItem="WQx-tY-9v1" secondAttribute="height" multiplier="196:25" id="tCo-eK-Zu0"/>
+                                <constraint firstAttribute="width" constant="187" id="5Vl-rl-Dqk"/>
+                                <constraint firstAttribute="width" secondItem="WQx-tY-9v1" secondAttribute="height" multiplier="196:25" constant="-9" id="tCo-eK-Zu0"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -50,7 +50,7 @@
                         <constraint firstItem="zLE-kS-mk6" firstAttribute="leading" secondItem="0q2-wY-Gqi" secondAttribute="leading" constant="294" id="4zu-hi-uH4"/>
                         <constraint firstItem="zLE-kS-mk6" firstAttribute="top" secondItem="0q2-wY-Gqi" secondAttribute="top" constant="18" id="Ick-qP-IiZ"/>
                         <constraint firstAttribute="bottom" secondItem="rWi-mo-0ln" secondAttribute="bottom" constant="6" id="KRq-k9-e8m"/>
-                        <constraint firstAttribute="trailing" secondItem="WQx-tY-9v1" secondAttribute="trailing" constant="48" id="MJN-Wm-qV5"/>
+                        <constraint firstAttribute="trailing" secondItem="WQx-tY-9v1" secondAttribute="trailing" constant="57" id="MJN-Wm-qV5"/>
                         <constraint firstItem="WQx-tY-9v1" firstAttribute="leading" secondItem="0q2-wY-Gqi" secondAttribute="leading" constant="90" id="SCg-bj-Ugq"/>
                         <constraint firstItem="rWi-mo-0ln" firstAttribute="top" secondItem="0q2-wY-Gqi" secondAttribute="top" constant="6" id="V8e-y4-rVQ"/>
                         <constraint firstItem="WQx-tY-9v1" firstAttribute="top" secondItem="0q2-wY-Gqi" secondAttribute="top" constant="18" id="aec-l1-tgU"/>
@@ -85,7 +85,7 @@
         </view>
     </objects>
     <resources>
-        <image name="disclosure" width="50" height="80"/>
+        <image name="disclosure" width="13" height="14"/>
         <image name="mysteryman" width="200" height="200"/>
     </resources>
 </document>

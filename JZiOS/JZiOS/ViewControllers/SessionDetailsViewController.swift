@@ -6,6 +6,7 @@ class SessionDetailsViewController:  UIViewController  {
     @IBOutlet weak var abstractTextView: UITextView!
     @IBOutlet weak var intendedAudienceTextView: UITextView!
     
+    @IBOutlet weak var feedbackButton: UIButton!
     @IBOutlet weak var subStackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -19,6 +20,7 @@ class SessionDetailsViewController:  UIViewController  {
         abstractTextView?.text = session!.abstract
         intendedAudienceTextView?.text = session!.intendedAudience
         
+        // showFeedbackButtonFiveMinutesBeforeEndTime(session: session)
         
         if session!.speakers!.count > 0 {
             for speaker in session!.speakers! {
@@ -39,6 +41,25 @@ class SessionDetailsViewController:  UIViewController  {
                     scrollToEnd(speakerDetailView)
                     
                 }
+            }
+        }
+    }
+    
+    private func showFeedbackButtonFiveMinutesBeforeEndTime(session: Session?) {
+        let dateFormatter = CommonDate.defaultDateFormatter()
+        if let sessionDate = dateFormatter.date(from: session!.endTime!) {
+            let calendar = Calendar.current
+            let newDate = calendar.date(byAdding: .minute, value: -5, to: sessionDate)
+            
+            let currentDate = CommonDate.getCurrentDate()
+            
+            if currentDate >= newDate! {
+                self.feedbackButton.isHidden = false
+            } else {
+                /*
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: <#T##UInt64#>)) {
+                    self.feedbackButton.isHidden = false
+                } */
             }
         }
     }

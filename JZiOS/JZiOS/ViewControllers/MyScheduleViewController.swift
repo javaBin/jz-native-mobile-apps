@@ -232,4 +232,5 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         
         self.sortedSections = filteredSections.keys.sorted()
     }
+    
 }

@@ -1,5 +1,6 @@
 import UIKit
 import Cosmos
+import QuartzCore
 
 class FeedbackViewController: UIViewController {
     @IBOutlet weak var sessionTitleLabel: UILabel!
@@ -14,6 +15,8 @@ class FeedbackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sessionTitleLabel.text = session!.title
+        otherCommentTextView.layer.borderColor = UIColor.darkGray.cgColor
+        otherCommentTextView.layer.borderWidth = 1.0
     }
 
     override func didReceiveMemoryWarning() {

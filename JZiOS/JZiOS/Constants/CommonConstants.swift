@@ -9,7 +9,7 @@ public struct Common {
 
 public struct CommonDate {
     static func formatDate(dateString: String?, dateFormat: String) -> String? {
-        let dateFormatter = setDefaultDateFormatter()
+        let dateFormatter = defaultDateFormatter()
         
         if let sectionDate = dateFormatter.date(from: dateString!) {
             dateFormatter.dateFormat = dateFormat
@@ -20,7 +20,7 @@ public struct CommonDate {
     }
     
     static func resetMinutesFromDate(dateString: String?, dateFormat: String) -> String? {
-        let dateFormatter = setDefaultDateFormatter()
+        let dateFormatter = defaultDateFormatter()
         
         if let sectionDate = dateFormatter.date(from: dateString!) {
             let greg = Calendar(identifier: .gregorian)
@@ -35,11 +35,17 @@ public struct CommonDate {
         return nil
     }
     
-    private static func setDefaultDateFormatter()  -> DateFormatter {
+    public static func defaultDateFormatter()  -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
         return dateFormatter
+    }
+    
+    public static func getCurrentDate() -> Date {
+        let date = Date()
+        let calendar = Calendar.current
+        return date
     }
     
     static func conferenceDates() -> [String] {

@@ -25,6 +25,7 @@
 		5039D0081FA5E25300CB9582 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0071FA5E25300CB9582 /* Repository.swift */; };
 		5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */; };
 		503C84F11FD2E05600FFF4DF /* SpeakerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C84F01FD2E05600FFF4DF /* SpeakerDetailViewController.swift */; };
+		504CB0492020EC72008CF003 /* UIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CB0482020EC72008CF003 /* UIVIew.swift */; };
 		506AB7B11FD2F16A0032494E /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB7B01FD2F16A0032494E /* UIStackView.swift */; };
 		506AB7B51FD304230032494E /* SpeakerUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506AB7B41FD304230032494E /* SpeakerUIView.xib */; };
 		506AB7B71FD305B30032494E /* SpeakerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB7B61FD305B30032494E /* SpeakerUIView.swift */; };
@@ -79,6 +80,7 @@
 		5039D0071FA5E25300CB9582 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
 		503C84F01FD2E05600FFF4DF /* SpeakerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewController.swift; sourceTree = "<group>"; };
+		504CB0482020EC72008CF003 /* UIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIew.swift; sourceTree = "<group>"; };
 		506AB7B01FD2F16A0032494E /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		506AB7B41FD304230032494E /* SpeakerUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeakerUIView.xib; sourceTree = "<group>"; };
 		506AB7B61FD305B30032494E /* SpeakerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerUIView.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				506AB7B01FD2F16A0032494E /* UIStackView.swift */,
 				506AB7BA1FD5D4F90032494E /* UIImageView.swift */,
 				501DA5C71FE2DE2900956F75 /* String.swift */,
+				504CB0482020EC72008CF003 /* UIVIew.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				50183FB21FC4CFB500AE4FA7 /* SpeakerRepository.swift in Sources */,
 				50A3EB331F6A615A009A3E29 /* SessionApiService.swift in Sources */,
 				507A3BF1200FCB7C00A5497C /* GeneralSettingsCell.swift in Sources */,
+				504CB0492020EC72008CF003 /* UIVIew.swift in Sources */,
 				50D52E641FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift in Sources */,
 				5039D0081FA5E25300CB9582 /* Repository.swift in Sources */,
 			);
