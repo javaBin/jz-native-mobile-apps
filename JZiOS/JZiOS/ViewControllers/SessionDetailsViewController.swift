@@ -12,11 +12,13 @@ class SessionDetailsViewController:  UIViewController  {
     
     var session: Session?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var startTime = CommonDate.formatDate(dateString: session!.startTime, dateFormat: "HH:mm")
+        var endTime = CommonDate.formatDate(dateString: session!.endTime, dateFormat: "HH:mm")
         sessionTitleLabel?.text = session!.title
-        roomLabel?.text = session!.room
+        roomLabel?.text = "\(startTime!) - \(endTime!), \(session!.room!)"
         abstractTextView?.text = session!.abstract
         intendedAudienceTextView?.text = session!.intendedAudience
         
