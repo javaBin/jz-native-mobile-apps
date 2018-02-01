@@ -4,7 +4,7 @@ import AvatarImageView
 
 public struct Common {
     static let JavaZone2016Dates = ["06.09.2016", "07.09.2016", "08.09.2016"]
-    static let JavaZone2017Dates = ["13.09.2016", "14.09.2016"]
+    static let JavaZone2017Dates = ["13.09.2017", "14.09.2017"]
 }
 
 public struct CommonDate {
