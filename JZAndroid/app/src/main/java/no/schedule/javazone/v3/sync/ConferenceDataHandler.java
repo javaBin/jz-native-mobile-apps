@@ -56,7 +56,7 @@ public class ConferenceDataHandler {
 
   // symbolic timestamp to use when we are missing timestamp data (which means our data is
   // really old or nonexistent)
-  private static final String DEFAULT_TIMESTAMP = "Sat, 1 Jan 2000 00:00:00 GMT";
+  private static final String DEFAULT_TIMESTAMP = "Sat, 1 Jan 2000 00:00:00 CET";
 
   private static final String DATA_KEY_ROOMS = "rooms";
   private static final String DATA_KEY_BLOCKS = "blocks";

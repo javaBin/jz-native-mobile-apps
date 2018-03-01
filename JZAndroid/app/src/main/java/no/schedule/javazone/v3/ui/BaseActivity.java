@@ -24,7 +24,10 @@ import android.widget.TextView;
 import com.google.android.gms.auth.GoogleAuthUtil;
 
 import no.schedule.javazone.v3.R;
+import no.schedule.javazone.v3.navigation.AppNavigationView;
+import no.schedule.javazone.v3.navigation.AppNavigationViewAsBottomNavImpl;
 import no.schedule.javazone.v3.navigation.NavigationModel;
+import no.schedule.javazone.v3.ui.widget.BadgedBottomNavigationView;
 import no.schedule.javazone.v3.ui.widget.MultiSwipeRefreshLayout;
 import no.schedule.javazone.v3.util.AnalyticsHelper;
 import no.schedule.javazone.v3.util.ConnectivityUtils;
@@ -38,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
     private static final String TAG = makeLogTag(BaseActivity.class);
     // Navigation drawer
-    //private AppNavigationView mAppNavigationView;
+    private AppNavigationView mAppNavigationView;
     // Toolbar
     private Toolbar mToolbar;
     private TextView mToolbarTitle;
@@ -180,11 +183,22 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (mAppNavigationView != null) {
+            mAppNavigationView.updateNavigationItems();
+        }
+        invalidateOptionsMenu();
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+
+        final BadgedBottomNavigationView bottomNav = (BadgedBottomNavigationView)
+            findViewById(R.id.bottom_navigation);
+        if (bottomNav != null) {
+            mAppNavigationView = new AppNavigationViewAsBottomNavImpl(bottomNav);
+            mAppNavigationView.activityReady(this, getSelfNavDrawerItem());
+        }
 
         trySetupSwipeRefresh();
     }

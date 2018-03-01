@@ -292,7 +292,6 @@ public class ScheduleModel implements Model<ScheduleModel.MyScheduleQueryEnum,
             if (callback != null && mScheduleData.indexOfKey(dayId) >= 0) {
                 callback.onModelUpdated(this, MyScheduleQueryEnum.SCHEDULE);
             }
-
             // Update cached data
             mScheduleHelper.getScheduleDataAsync(new LoadScheduleDataListener() {
                 @Override

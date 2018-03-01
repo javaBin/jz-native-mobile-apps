@@ -186,24 +186,12 @@ public class SchedulePagerFragment extends Fragment implements ScheduleView {
             @Override
             public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child,
                        View directTargetChild, View target, int nestedScrollAxes) {
-                return (nestedScrollAxes & View.SCROLL_AXIS_VERTICAL) != 0
-                        && mFiltersBar.getVisibility() == VISIBLE;
+                return (nestedScrollAxes & View.SCROLL_AXIS_VERTICAL) != 0;
             }
 
             @Override
             public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child,
                   View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-                float filtersOffset = mFiltersBar.getTranslationY();
-                int filtersHeight = mFiltersBar.getHeight();
-                if (dyConsumed > 0
-                        && appBarCollapsedListener.isCollapsed()
-                        && filtersOffset > -filtersHeight) {
-                    int offset = (int) Math.max(filtersOffset - dyConsumed, -filtersHeight);
-                    offsetFilters(filtersHeight, offset);
-                } else if (dyConsumed < 0 && filtersOffset < 0f) {
-                    int offset = (int) Math.min(filtersOffset - dyConsumed, 0f);
-                    offsetFilters(filtersHeight, offset);
-                }
             }});
 
         AnalyticsHelper.sendScreenView("Schedule for Day " + mToday, getActivity());

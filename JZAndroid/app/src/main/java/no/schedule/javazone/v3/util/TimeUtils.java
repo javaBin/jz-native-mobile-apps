@@ -19,6 +19,7 @@ import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.ui.UIUtils;
 
+import static no.schedule.javazone.v3.util.LogUtils.LOGD;
 import static no.schedule.javazone.v3.util.LogUtils.LOGW;
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
@@ -34,26 +35,26 @@ public class TimeUtils {
       | DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_TIME;
 
   private static final SimpleDateFormat[] ACCEPTED_TIMESTAMP_FORMATS = {
-      new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.US),
-      new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.US),
-      new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US),
-      new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.US),
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US),
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US),
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US),
-      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss Z", Locale.US)
+//      new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH),
+//      new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy", Locale.ENGLISH),
+//      new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH),
+//      new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ENGLISH),
+//      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH),
+//      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH),
+//      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH),
+//      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss Z", Locale.ENGLISH),
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm", Locale.ENGLISH)
   };
 
   private static final SimpleDateFormat VALID_IFMODIFIEDSINCE_FORMAT =
-      new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.US);
+      new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
 
   public static Date parseTimestamp(String timestamp) {
     for (SimpleDateFormat format : ACCEPTED_TIMESTAMP_FORMATS) {
-      // TODO: We shouldn't be forcing the time zone when parsing dates.
-      format.setTimeZone(TimeZone.getTimeZone("GMT"));
       try {
         return format.parse(timestamp);
       } catch (ParseException ex) {
+        LOGD(TAG, "Timestamp format error: " + ex.getMessage());
         continue;
       }
     }
