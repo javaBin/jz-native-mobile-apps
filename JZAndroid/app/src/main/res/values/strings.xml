@@ -108,9 +108,15 @@ Develop and Distribute). -->
 
     <!-- Short text label indicating a grouping of themes -->
     <string name="themes">Themes</string>
-
-
-
+    <string name="my_schedule_rate_this_session">Rate this session</string>
+    <string name="add_bookmark">Add bookmark</string>
+    <string name="title_my_main">My schedule</string>
+    <string name="add_bookmark_hint">Event saved in My schedule</string>
+    <string name="remove_bookmark_hint">Event removed from My schedule</string>
+    <string name="bookmark_hint_optout">Got it</string>
+    <string name="remove_bookmark">Event removed from My schedule</string>
+    <string name="clear_filters">Clear filters</string>
+    <string name="navdrawer_item_my_schedule">Schedule</string>
 
 
 </resources>

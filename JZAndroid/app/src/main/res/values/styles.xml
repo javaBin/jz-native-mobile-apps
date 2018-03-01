@@ -203,6 +203,12 @@
         <item name="maxRating">5</item>
     </style>
 
+
+    <style name="Widget.Design.CollapsingToolbar" parent="android:Widget">
+        <item name="expandedTitleMargin">32dp</item>
+        <item name="statusBarScrim">?attr/colorPrimaryDark</item>
+    </style>
+
     <style name="Widget.JZSched.CollapsingHeader" parent="@style/Widget.Design.CollapsingToolbar">
         <item name="scrimAnimationDuration">200</item>
         <item name="scrimVisibleHeightTrigger">130dp</item>

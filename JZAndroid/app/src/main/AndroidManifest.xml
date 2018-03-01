@@ -62,7 +62,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JZSched" >
         <activity
-            android:name=".MainActivity"
+            android:name=".schedule.ScheduleActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

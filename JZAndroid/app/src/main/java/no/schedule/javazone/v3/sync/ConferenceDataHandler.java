@@ -76,7 +76,6 @@ public class ConferenceDataHandler {
 
   private static final String[] KEYS_PROCESS = {
   //    DATA_KEY_CARDS,
-      DATA_KEY_TAGS,
       DATA_KEY_SPEAKERS,
       DATA_KEY_SESSIONS,
  //     DATA_KEY_SEARCH_SUGGESTIONS
@@ -115,7 +114,7 @@ public class ConferenceDataHandler {
     LOGD(TAG, "Applying data from " + sessions.size() + " sessions");
 
     // Create Handlers for each data type
-    mHandlerForKeyConference.put(DATA_KEY_TAGS, mTagsHandler = new TagsHandler(mContext));
+   // mHandlerForKeyConference.put(DATA_KEY_TAGS, mTagsHandler = new TagsHandler(mContext));
     mHandlerForKeyConference.put(DATA_KEY_SPEAKERS, mSpeakersHandler = new SpeakersHandler(mContext));
     mHandlerForKeyConference.put(DATA_KEY_SESSIONS, mSessionsHandler = new SessionsHandler(mContext));
 

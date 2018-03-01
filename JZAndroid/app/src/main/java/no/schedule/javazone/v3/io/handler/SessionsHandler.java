@@ -155,11 +155,11 @@ public class SessionsHandler extends JSONHandler {
       mStringBuilder.setLength(0);
       if (session.speakers != null) {
         for (int i = 0; i < session.speakers.length; ++i) {
-          if (mSpeakerMap.containsKey(session.speakers[i])) {
+          if (mSpeakerMap.containsKey(session.speakers[i].getImportHashcode())) {
             mStringBuilder
                 .append(i == 0 ? "" :
                     i == session.speakers.length - 1 ? " and " : ", ")
-                .append(mSpeakerMap.get(session.speakers[i]).name.trim());
+                .append(mSpeakerMap.get(session.speakers[i].getImportHashcode()).name.trim());
           } else {
             LOGW(TAG, "Unknown speaker ID " + session.speakers[i] + " in session " +
                 session.id);
