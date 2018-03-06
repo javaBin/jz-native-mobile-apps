@@ -5,18 +5,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
-
-import com.google.firebase.crash.FirebaseCrash;
 
 import java.util.Date;
 
@@ -25,12 +17,9 @@ import no.schedule.javazone.v3.archframework.PresenterImpl;
 import no.schedule.javazone.v3.injection.ModelProvider;
 import no.schedule.javazone.v3.model.ScheduleHelper;
 import no.schedule.javazone.v3.navigation.NavigationModel;
-import no.schedule.javazone.v3.sync.SessionApiWebService;
 import no.schedule.javazone.v3.ui.BaseActivity;
 import no.schedule.javazone.v3.util.SessionsHelper;
-import no.schedule.javazone.v3.util.SettingsUtils;
 import no.schedule.javazone.v3.util.TimeUtils;
-import schedule.ScheduleModel;
 
 import static no.schedule.javazone.v3.util.LogUtils.LOGD;
 import static no.schedule.javazone.v3.util.LogUtils.LOGE;

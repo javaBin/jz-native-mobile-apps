@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package schedule;
+package no.schedule.javazone.v3.schedule;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -30,9 +30,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.Config;
-import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.archframework.Model;
 import no.schedule.javazone.v3.archframework.QueryEnum;
 import no.schedule.javazone.v3.archframework.UserActionEnum;
@@ -40,9 +38,7 @@ import no.schedule.javazone.v3.model.ScheduleHelper;
 import no.schedule.javazone.v3.model.ScheduleItem;
 import no.schedule.javazone.v3.provider.ScheduleContract;
 import no.schedule.javazone.v3.util.AnalyticsHelper;
-import no.schedule.javazone.v3.util.ParserUtils;
 import no.schedule.javazone.v3.util.SessionsHelper;
-import no.schedule.javazone.v3.util.SettingsUtils;
 import no.schedule.javazone.v3.util.ThrottledContentObserver;
 
 import static no.schedule.javazone.v3.util.LogUtils.LOGD;

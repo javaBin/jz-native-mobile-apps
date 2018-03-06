@@ -14,7 +14,6 @@
 
 package no.schedule.javazone.v3.schedule;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
@@ -32,7 +31,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,10 +40,6 @@ import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.util.AnalyticsHelper;
 import no.schedule.javazone.v3.util.TimeUtils;
-import schedule.ScheduleModel;
-
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
 
 public class SchedulePagerFragment extends Fragment implements ScheduleView {
 

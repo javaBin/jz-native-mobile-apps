@@ -17,6 +17,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Schedule -->
-    <style name="Theme.IOSched.Schedule" parent="@style/Theme.IOSched.Immersive" />
+    <style name="Theme.JZSched.Schedule" parent="@style/Theme.JZSched.Immersive" />
 
 </resources>

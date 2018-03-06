@@ -117,6 +117,23 @@ Develop and Distribute). -->
     <string name="remove_bookmark">Event removed from My schedule</string>
     <string name="clear_filters">Clear filters</string>
     <string name="navdrawer_item_my_schedule">Schedule</string>
+    <string name="close_and_go_back">Close and go back</string>
+    <string name="description_map">Map</string>
+    <string name="description_share">Share</string>
+    <string name="time_hint_about_to_start_min"><![CDATA[This session will start in <xliff:g id=\"minutes\">%1$d</xliff:g> min.]]></string>
+    <string name="empty_session_detail">No session details found.</string>
+    <string name="rate_session">Rate session</string>
+    <string name="add_to_schedule">Add to schedule</string>
+    <string name="session_details_a11y_session_added">Session added to your schedule</string>
+    <string name="session_details_a11y_session_removed">Session removed from your schedule</string>
+    <string name="remove_from_schedule">Remove from schedule</string>
+    <string name="share_template"><![CDATA[Check out \\\'<xliff:g id=\"title\">%1$s</xliff:g>\\\' at <xliff:g id=\"hashtags\">%2$s</xliff:g> <xliff:g id=\"url\">%3$s</xliff:g>]]></string>
+    <string name="title_share">Share using</string>
+    <string name="time_hint_session_ended">This session has ended.</string>
+    <string name="time_hint_started_min"><![CDATA[This session is happening now! (started <xliff:g id=\"minutes\">%1$d</xliff:g> min. ago)]]></string>
+    <string name="time_hint_started_just">This session is happening now! (just started)</string>
+    <string name="time_hint_about_to_start_shortly">This session is about to start (less than 1 minute).</string>
+    <string name="title_session_detail">Session Information</string>
 
 
 </resources>
