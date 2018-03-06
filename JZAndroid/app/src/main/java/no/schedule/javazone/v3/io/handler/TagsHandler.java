@@ -42,7 +42,7 @@ public class TagsHandler extends JSONHandler {
             Tag tag = new Tag();
             tag.name = tagName;
             tag.id = tag.getImportedHashCode();
-            mTags.put(tagName, new Tag());
+            mTags.put(tagName, tag);
           }
         }
       }

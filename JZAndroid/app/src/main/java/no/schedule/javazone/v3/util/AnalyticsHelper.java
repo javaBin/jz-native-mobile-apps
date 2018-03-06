@@ -95,13 +95,12 @@ public class AnalyticsHelper {
   /**
    * Log a specific event under the {@code category}, {@code action}, and {@code label}.
    */
-  public static void sendEvent(String category, String action, String label, long value) {
+  public static void sendEvent(String category, String action, String label) {
 
     LOGD(TAG, "Event recorded: \n" +
         "\tCategory: " + category +
         "\tAction: " + action +
-        "\tLabel: " + label +
-        "\tValue: " + value);
+        "\tLabel: " + label);
 
     convertToFAEvent(category, action, label);
   }

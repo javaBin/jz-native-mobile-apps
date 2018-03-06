@@ -4,12 +4,15 @@ import android.content.ContentProvider;
 import android.net.Uri;
 import android.text.format.Time;
 
+import com.google.api.client.util.DateTime;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.TimeZone;
 import java.util.regex.Pattern;
 
-/**
-    * Various utility methods used by {@link com.google.samples.apps.iosched.io.JSONHandler}.
-    */
+
 public class ParserUtils {
   /** Used to sanitize a string to be {@link Uri} safe. */
   private static final Pattern sSanitizePattern = Pattern.compile("[^a-z0-9-_]");
@@ -31,9 +34,17 @@ public class ParserUtils {
    * milliseconds since the epoch.
    */
   public static long parseTime(String timestamp) {
-    final Time time = new Time();
-    time.parse3339(timestamp);
-    return time.toMillis(false);
+    DateTime dateTimeNew = new DateTime(timestamp);
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+    String datetimeString = dateTimeNew.toString();
+    long timeParsed = 0;
+    try {
+      timeParsed = simpleDateFormat.parse(datetimeString).getTime();
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+
+    return timeParsed;
   }
 
   public static String joinStrings(String connector, ArrayList<String> strings, StringBuilder recycle) {
