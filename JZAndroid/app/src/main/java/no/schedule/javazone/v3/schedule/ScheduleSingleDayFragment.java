@@ -16,7 +16,6 @@
 
 package no.schedule.javazone.v3.schedule;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.database.Cursor;
@@ -41,7 +40,6 @@ import no.schedule.javazone.v3.archframework.UpdatableView;
 import no.schedule.javazone.v3.provider.ScheduleContract;
 import no.schedule.javazone.v3.util.SessionsHelper;
 import no.schedule.javazone.v3.util.TimeUtils;
-import schedule.ScheduleModel;
 
 /**
  * This is used by the {@link android.support.v4.view.ViewPager} used by the narrow layout in {@link

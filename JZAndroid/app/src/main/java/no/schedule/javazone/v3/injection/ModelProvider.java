@@ -20,8 +20,9 @@ import android.support.v4.app.LoaderManager;
 
 import no.schedule.javazone.v3.archframework.Model;
 import no.schedule.javazone.v3.model.ScheduleHelper;
+import no.schedule.javazone.v3.session.SessionDetailModel;
 import no.schedule.javazone.v3.util.SessionsHelper;
-import schedule.ScheduleModel;
+import no.schedule.javazone.v3.schedule.ScheduleModel;
 
 
 /**
@@ -33,7 +34,7 @@ public class ModelProvider {
 //    @SuppressLint("StaticFieldLeak")
 //    private static SessionDetailModel stubSessionDetailModel = null;
 
-//    @SuppressLint("StaticFieldLeak")
+    //    @SuppressLint("StaticFieldLeak")
     private static ScheduleModel stubScheduleModel = null;
 
 //    @SuppressLint("StaticFieldLeak")
@@ -42,14 +43,11 @@ public class ModelProvider {
     @SuppressLint("StaticFieldLeak")
 //    private static SessionFeedbackModel stubSessionFeedbackModel = null;
 
-//    public static SessionDetailModel provideSessionDetailModel(Uri sessionUri, Context context,
-//                                                               SessionsHelper sessionsHelper, LoaderManager loaderManager) {
-//        if (stubSessionDetailModel != null) {
-//            return stubSessionDetailModel;
-//        } else {
-//            return new SessionDetailModel(sessionUri, context, sessionsHelper, loaderManager);
-//        }
-//    }
+    public static SessionDetailModel provideSessionDetailModel(Uri sessionUri, Context context,
+                                                               SessionsHelper sessionsHelper, LoaderManager loaderManager) {
+        return new SessionDetailModel(sessionUri, context, sessionsHelper, loaderManager);
+
+    }
 
     public static ScheduleModel provideMyScheduleModel(ScheduleHelper scheduleHelper,
                                                        SessionsHelper sessionsHelper, Context context) {

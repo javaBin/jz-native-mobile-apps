@@ -21,14 +21,13 @@ import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
 
 import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.provider.ScheduleContract;
-import schedule.ScheduleModel;
+import no.schedule.javazone.v3.schedule.ScheduleModel;
 
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
