@@ -44,18 +44,6 @@
     <color name="text_primary_light">@color/greyish_brown</color>
     <color name="text_primary_light_disabled">#42424242</color>
 
-    <!-- 2016 palette -->
-    <color name="io16_primary_cyan">#ff25c5d9</color>
-    <color name="io16_primary_purple">#ff5d6abf</color>
-    <color name="io16_primary_blue_grey">#ff445963</color>
-    <color name="io16_grey">#ffafbdc4</color>
-    <color name="io16_light_grey">#ffebeef0</color>
-    <color name="io16_accent_red">#ffff5151</color>
-    <color name="io16_accent_cyan">#ff4ccfe0</color>
-    <color name="io16_accent_light_cyan">#ff8cedea</color>
-    <color name="io16_accent_green">#ff7bb241</color>
-    <color name="io16_accent_yellow">#ffffc927</color>
-    <color name="io16_accent_purple">#ff7885ca</color>
     <color name="large_dark_icon">#66000000</color>
     <color name="map_icon">#ffb4b4b4</color>
     <color name="dark_status_bar">#ff949595</color>

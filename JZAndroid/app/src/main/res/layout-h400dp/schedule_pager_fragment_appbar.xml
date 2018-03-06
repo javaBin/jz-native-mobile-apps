@@ -24,14 +24,14 @@
 
     <android.support.design.widget.CollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar"
+        style="@style/Widget.JZSched.CollapsingHeader.Tabs"
         android:layout_width="match_parent"
         android:layout_height="@dimen/extended_appbar_height"
         android:fitsSystemWindows="true"
         android:minHeight="?actionBarSize"
         android:theme="@style/ThemeOverlay.DarkToolbar"
         app:contentScrim="?colorPrimary"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed"
-        style="@style/Widget.JZSched.CollapsingHeader.Tabs">
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
         <include layout="@layout/animated_appbar" />
 
