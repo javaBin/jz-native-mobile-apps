@@ -93,8 +93,8 @@
 
     <style name="Theme.JZSched.Welcome" parent="@style/Theme.JZSched.Immersive" />
 
-    <!-- My I/O -->
-    <style name="Theme.JZSched.MyIo" parent="@style/Theme.JZSched.Immersive" />
+    <!-- My Schedule -->
+    <style name="Theme.JZSched.MySchedule" parent="@style/Theme.JZSched.Immersive" />
 
     <!-- Schedule -->
     <style name="Theme.JZSched.Schedule" parent="@style/Theme.JZSched" />
@@ -190,8 +190,9 @@
     </style>
 
     <style name="Widget.JZSched.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
-        <item name="itemIconTint">@color/nav_icon_tint</item>
-        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="itemIconTint">@color/selector_bottom_nav</item>
+        <item name="itemTextColor">@color/selector_bottom_nav</item>
+        <item name="android:background">@color/theme_primary</item>
         <item name="android:elevation" tools:targetApi="lollipop">@dimen/bottom_nav_elevation</item>
         <item name="badgeColor">?colorAccent</item>
         <item name="badgeRadius">3dp</item>

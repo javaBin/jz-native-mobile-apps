@@ -75,11 +75,20 @@
 
 
         <activity
+            android:name=".myschedule.MyScheduleActivity"
+            android:exported="true"
+            android:label="@string/title_my_schedule"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.JZSched.MySchedule">
+        </activity>
+
+
+        <activity
             android:name=".schedule.ScheduleActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.JZSched.MyIo" />
+            android:theme="@style/Theme.JZSched.Schedule" />
 
         <activity
             android:name="no.schedule.javazone.v3.session.SessionDetailActivity"

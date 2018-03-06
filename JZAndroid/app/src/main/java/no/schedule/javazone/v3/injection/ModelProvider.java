@@ -38,7 +38,7 @@ public class ModelProvider {
     private static ScheduleModel stubScheduleModel = null;
 
 //    @SuppressLint("StaticFieldLeak")
-//    private static MyIOModel stubMyIOModel = null;
+//    private static MyScheduleModel stubMyIOModel = null;
 
     @SuppressLint("StaticFieldLeak")
 //    private static SessionFeedbackModel stubSessionFeedbackModel = null;

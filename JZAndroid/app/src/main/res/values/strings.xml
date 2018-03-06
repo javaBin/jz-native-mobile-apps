@@ -134,6 +134,10 @@ Develop and Distribute). -->
     <string name="time_hint_started_just">This session is happening now! (just started)</string>
     <string name="time_hint_about_to_start_shortly">This session is about to start (less than 1 minute).</string>
     <string name="title_session_detail">Session Information</string>
+    <string name="title_my_schedule">My Schedule</string>
+    <string name="navdrawer_item_my_io">My Schedule</string>
+    <string name="description_avatar">Avatar</string>
+    <string name="add_events">Add events</string>
 
 
 </resources>

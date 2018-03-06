@@ -74,7 +74,7 @@ public class SessionApiWebService implements Callback<SessionResult> {
 
 
         // TODO set preference that you have loaded sessions
-       // SettingsUtils.setMarkSessionLoad(context, true);
+       //SettingsUtils.setMarkSessionLoad(context, true);
         SettingsUtils.markDataBootstrapDone(context);
 
         context.getContentResolver().notifyChange(Uri.parse(ScheduleContract.CONTENT_AUTHORITY),
