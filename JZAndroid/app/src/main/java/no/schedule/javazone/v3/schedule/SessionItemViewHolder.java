@@ -49,9 +49,7 @@ public class SessionItemViewHolder extends ScheduleItemViewHolder
         implements DividerDecoration.Divided {
 
     private final TextView mTitle;
-    private final TextView mReservationStatus;
     private final TextView mDescription;
-    private final ViewGroup mTagsHolder;
     private final ImageButton mBookmark;
     private final Button mRate;
 
@@ -64,9 +62,7 @@ public class SessionItemViewHolder extends ScheduleItemViewHolder
         super(itemView, timeFormat);
         mCallbacks = callbacks;
         mTitle = (TextView) itemView.findViewById(R.id.slot_title);
-        mReservationStatus = (TextView) itemView.findViewById(R.id.reserve_status);
         mDescription = (TextView) itemView.findViewById(R.id.slot_description);
-        mTagsHolder = (FlexboxLayout) itemView.findViewById(R.id.tags_holder);
         mBookmark = (ImageButton) itemView.findViewById(R.id.bookmark);
        // mLiveNow = itemView.findViewById(R.id.live_now_badge);
         mRate = (Button) itemView.findViewById(R.id.give_feedback_button);

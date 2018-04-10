@@ -21,6 +21,7 @@ import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.archframework.Model;
 import no.schedule.javazone.v3.archframework.QueryEnum;
 import no.schedule.javazone.v3.archframework.UserActionEnum;
+import no.schedule.javazone.v3.myschedule.MyScheduleActivity;
 import no.schedule.javazone.v3.schedule.ScheduleActivity;
 
 /**
@@ -86,10 +87,11 @@ public class NavigationModel implements Model<NavigationModel.NavigationQueryEnu
      * List of all possible navigation items.
      */
     public enum NavigationItemEnum {
-//        MY_IO(R.id.myio_nav_item, R.string.navdrawer_item_my_io, R.drawable.ic_nav_myio,
-//                MyIOActivity.class, true),
+
         SCHEDULE(R.id.schedule_nav_item, R.string.navdrawer_item_my_schedule,
                 R.drawable.ic_nav_schedule, ScheduleActivity.class, true),
+        MY_SCHEDULE(R.id.my_schedule_nav_item, R.string.navdrawer_item_my_io, R.drawable.ic_nav_myschedule,
+                MyScheduleActivity.class, true),
 //        FEED(R.id.feed_nav_item, R.string.navdrawer_item_feed,
 //                R.drawable.ic_nav_feed, FeedActivity.class, true),
 //        MAP(R.id.map_nav_item, R.string.navdrawer_item_map, R.drawable.ic_nav_map,

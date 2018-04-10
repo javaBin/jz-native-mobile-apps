@@ -40,15 +40,11 @@ public abstract class BaseActivity extends AppCompatActivity implements
         MultiSwipeRefreshLayout.CanChildScrollUpCallback {
 
     private static final String TAG = makeLogTag(BaseActivity.class);
-    // Navigation drawer
     private AppNavigationView mAppNavigationView;
-    // Toolbar
     private Toolbar mToolbar;
     private TextView mToolbarTitle;
-    // SwipeRefreshLayout allows the user to swipe the screen down to trigger a manual refresh
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
-    // handle to our sync observer (that notifies us about changes in our sync state)
     private Object mSyncObserverHandle;
 
     /**
@@ -166,11 +162,6 @@ public abstract class BaseActivity extends AppCompatActivity implements
         }
     }
 
-    /**
-     * Returns the navigation drawer item that corresponds to this Activity. Subclasses of
-     * BaseActivity override this to indicate what nav drawer item corresponds to them Return
-     * NAVDRAWER_ITEM_INVALID to mean that this Activity should not have a Nav Drawer.
-     */
     protected NavigationModel.NavigationItemEnum getSelfNavDrawerItem() {
         return NavigationModel.NavigationItemEnum.INVALID;
     }

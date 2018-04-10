@@ -28,7 +28,7 @@
         <path
             android:name="schedule_slash_1"
             android:fillAlpha="1"
-            android:fillColor="@color/aqua_marine"
+            android:fillColor="@color/jz_red"
             android:pathData="M -1.5,-29.69 l 3.0,0.0 l 0.0,59.38 l -3.0,0.0 l 0.0,-59.38 Z" />
     </group>
     <group
@@ -38,7 +38,7 @@
         <path
             android:name="schedule_slash_2"
             android:fillAlpha="0"
-            android:fillColor="@color/aqua_marine"
+            android:fillColor="@color/jz_red_light"
             android:pathData="M -1.5,-29.69 l 3.0,0.0 l 0.0,59.38 l -3.0,0.0 l 0.0,-59.38 Z" />
     </group>
     <group
@@ -48,7 +48,7 @@
         <path
             android:name="schedule_slash_3"
             android:fillAlpha="0"
-            android:fillColor="@color/aqua_marine"
+            android:fillColor="@color/jz_orange"
             android:pathData="M -1.5,-29.69 l 3.0,0.0 l 0.0,59.38 l -3.0,0.0 l 0.0,-59.38 Z" />
     </group>
     <group
@@ -58,7 +58,7 @@
         <path
             android:name="schedule_slash_4"
             android:fillAlpha="0"
-            android:fillColor="@color/aqua_marine"
+            android:fillColor="@color/jz_yellow"
             android:pathData="M -1.5,-29.69 l 3.0,0.0 l 0.0,59.38 l -3.0,0.0 l 0.0,-59.38 Z" />
     </group>
     <group
@@ -68,7 +68,7 @@
         <path
             android:name="schedule_slash_5"
             android:fillAlpha="0"
-            android:fillColor="@color/aqua_marine"
+            android:fillColor="@color/jz_red"
             android:pathData="M -1.5,-29.69 l 3.0,0.0 l 0.0,59.38 l -3.0,0.0 l 0.0,-59.38 Z" />
     </group>
     <group
@@ -79,7 +79,7 @@
         <path
             android:name="schedule_slash_6"
             android:fillAlpha="0"
-            android:fillColor="@color/aqua_marine"
+            android:fillColor="@color/jz_red_light"
             android:pathData="M -1.5,-29.69 l 3.0,0.0 l 0.0,59.38 l -3.0,0.0 l 0.0,-59.38 Z" />
     </group>
 </vector>
