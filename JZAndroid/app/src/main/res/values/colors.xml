@@ -19,6 +19,15 @@
     <color name="background">#ffffffff</color>
     <color name="content_background">@null</color>
 
+
+    <!-- JavaZone main colors -->
+    <color name="jz_main_gray">#2f302f</color>
+    <color name="jz_main_gray_darker">#1c1c1c</color>
+    <color name="jz_red">#a61e32</color>
+    <color name="jz_red_light">#e94441</color>
+    <color name="jz_yellow">#f7ae1a</color>
+    <color name="jz_orange">#e97a42</color>
+
     <!-- 2017 palette -->
     <color name="lightish_blue">#536dfe</color>
     <color name="lightish_blue_a11y">#4a5cfe</color>
@@ -72,7 +81,7 @@
 
     <!-- Session Detail colors. -->
     <color name="session_detail_tag_text">@color/session_detail_interactive_element</color>
-    <color name="fab_not_in_schedule">@color/lightish_blue</color>
+    <color name="fab_not_in_schedule">@color/jz_orange</color>
     <color name="fab_in_schedule">@android:color/white</color>
     <color name="fab_press_ripple">#1a000000</color>
     <color name="session_tag_stroke">#80546e7a</color>
@@ -80,8 +89,8 @@
     <color name="speaker_social_link">@color/session_detail_interactive_element</color>
     <color name="session_detail_interactive_element">#ff546e7a</color>
 
-    <color name="theme_primary">@color/lightish_blue</color>
-    <color name="theme_primary_dark">#3C53BB</color>
+    <color name="theme_primary">@color/jz_main_gray</color>
+    <color name="theme_primary_dark">@color/jz_main_gray_darker</color>
 
     <color name="theme_accent_1">#00b0ff</color>
     <color name="theme_accent_2">#e91e63</color>

@@ -29,13 +29,13 @@
         <path
             android:name="line1"
             android:pathData="M7,11L17,11"
-            android:strokeColor="@color/lightish_blue"
+            android:strokeColor="@color/jz_orange"
             android:strokeLineCap="square"
             android:strokeWidth="2.4" />
         <path
             android:name="line2"
             android:pathData="M12,6L12,16"
-            android:strokeColor="@color/lightish_blue"
+            android:strokeColor="@color/jz_orange"
             android:strokeLineCap="square"
             android:strokeWidth="2.4" />
     </group>

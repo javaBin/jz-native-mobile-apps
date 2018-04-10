@@ -34,10 +34,10 @@
             style="@style/Widget.JZSched.CollapsingHeader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neon_blue"
+            android:background="@color/theme_primary"
             android:fitsSystemWindows="true"
             android:minHeight="?actionBarSize"
-            app:contentScrim="@color/neon_blue"
+            app:contentScrim="@color/theme_primary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <include layout="@layout/animated_appbar" />
@@ -57,7 +57,8 @@
                     style="@style/ProductSans.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_my_schedule" />
+                    android:text="@string/title_my_schedule"
+                    android:textColor="@color/app_white"/>
 
             </android.support.v7.widget.Toolbar>
 

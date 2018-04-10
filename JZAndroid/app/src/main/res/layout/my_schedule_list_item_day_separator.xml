@@ -39,9 +39,10 @@
 
     <Button
         android:id="@+id/add_events"
-        style="@style/Widget.JZSched.Button.Aqua"
+        style="@style/Widget.JZSched.Button.Accent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/app_white"
         android:text="@string/add_events" />
 
 </LinearLayout>

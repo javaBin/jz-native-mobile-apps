@@ -419,7 +419,7 @@ public class SessionDetailFragment extends Fragment implements
                 mAddScheduleFab,
                 UIUtils.BACKGROUND_TINT,
                 isInSchedule ? Color.WHITE
-                        : ContextCompat.getColor(getContext(), R.color.lightish_blue));
+                        : ContextCompat.getColor(getContext(), R.color.jz_orange));
         backgroundColor.setDuration(400L);
         backgroundColor.setInterpolator(AnimationUtils.loadInterpolator(getContext(),
                 android.R.interpolator.fast_out_slow_in));

@@ -48,6 +48,7 @@
     <Button
         android:id="@+id/give_feedback_button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/jz_orange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/spacing_micro"

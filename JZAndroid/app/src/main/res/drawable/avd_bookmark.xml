@@ -25,7 +25,7 @@
             <objectAnimator
                 android:propertyName="fillColor"
                 android:valueFrom="@android:color/white"
-                android:valueTo="@color/lightish_blue"
+                android:valueTo="@color/jz_orange"
                 android:duration="300"
                 android:interpolator="@android:interpolator/fast_out_linear_in"
                 android:valueType="colorType" />
@@ -71,7 +71,7 @@
 
             <objectAnimator
                 android:propertyName="strokeColor"
-                android:valueFrom="@color/lightish_blue"
+                android:valueFrom="@color/jz_orange"
                 android:valueTo="@android:color/white"
                 android:duration="120"
                 android:interpolator="@android:interpolator/linear"
@@ -103,7 +103,7 @@
 
             <objectAnimator
                 android:propertyName="strokeColor"
-                android:valueFrom="@color/lightish_blue"
+                android:valueFrom="@color/jz_orange"
                 android:valueTo="@android:color/white"
                 android:duration="120"
                 android:interpolator="@android:interpolator/linear"
