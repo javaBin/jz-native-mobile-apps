@@ -217,7 +217,7 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
         + SyncColumns.UPDATED + " INTEGER NOT NULL,"
         + SpeakersColumns.SPEAKER_ID + " TEXT NOT NULL,"
         + SpeakersColumns.SPEAKER_NAME + " TEXT,"
-        + SpeakersColumns.SPEAKER_IMAGE_URL + " TEXT,"
+        + SpeakersColumns.PICTURE_URL + " TEXT,"
         + SpeakersColumns.SPEAKER_COMPANY + " TEXT,"
         + SpeakersColumns.SPEAKER_ABSTRACT + " TEXT,"
         + SpeakersColumns.SPEAKER_URL + " TEXT,"
