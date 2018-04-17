@@ -131,15 +131,13 @@ public class ScheduleContract {
     /** Name of this speaker. */
     String SPEAKER_NAME = "speaker_name";
     /** Profile photo of this speaker. */
-    String SPEAKER_IMAGE_URL = "speaker_image_url";
+    String PICTURE_URL = "picture_url";
     /** Company this speaker works for. */
     String SPEAKER_COMPANY = "speaker_company";
     /** Body of text describing this speaker in detail. */
     String SPEAKER_ABSTRACT = "speaker_abstract";
     /** Deprecated. Full URL to the speaker's profile. */
     String SPEAKER_URL = "speaker_url";
-    /** Full URL to the the speaker's G+ profile. */
-    String SPEAKER_PLUSONE_URL = "plusone_url";
     /** Full URL to the the speaker's Twitter profile. */
     String SPEAKER_TWITTER_URL = "twitter_url";
     /** The hashcode of the data used to create this record. */

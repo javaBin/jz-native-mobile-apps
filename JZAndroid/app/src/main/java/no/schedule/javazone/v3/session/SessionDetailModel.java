@@ -40,6 +40,7 @@ import no.schedule.javazone.v3.archframework.QueryEnum;
 import no.schedule.javazone.v3.archframework.UserActionEnum;
 import no.schedule.javazone.v3.model.ScheduleItem;
 import no.schedule.javazone.v3.model.ScheduleItemHelper;
+import no.schedule.javazone.v3.provider.ScheduleContract;
 import no.schedule.javazone.v3.ui.UIUtils;
 import no.schedule.javazone.v3.util.AnalyticsHelper;
 import no.schedule.javazone.v3.util.SessionsHelper;
@@ -283,15 +284,15 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
                 readDataFromSessionCursor(cursor);
                 mSessionLoaded = true;
                 success = true;
+            } else if (SessionDetailQueryEnum.SPEAKERS == query) {
+                readDataFromSpeakersCursor(cursor);
+                success = true;
             }
 //            } else if (SessionDetailQueryEnum.FEEDBACK == query) {
 //                readDataFromFeedbackCursor(cursor);
 //                success = true;
-//            } else if (SessionDetailQueryEnum.SPEAKERS == query) {
-//                readDataFromSpeakersCursor(cursor);
-//                success = true;
-//            }
-        }
+            }
+
 
         return success;
     }
@@ -368,20 +369,17 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
             }
 
             final String speakerImageUrl = cursor.getString(
-                    cursor.getColumnIndex(Speakers.SPEAKER_IMAGE_URL));
+                    cursor.getColumnIndex(Speakers.PICTURE_URL));
             final String speakerCompany = cursor.getString(
                     cursor.getColumnIndex(Speakers.SPEAKER_COMPANY));
             final String speakerUrl = cursor.getString(
                     cursor.getColumnIndex(Speakers.SPEAKER_URL));
-            final String speakerPlusoneUrl = cursor.getString(
-                    cursor.getColumnIndex(Speakers.SPEAKER_PLUSONE_URL));
             final String speakerTwitterUrl = cursor.getString(
                     cursor.getColumnIndex(Speakers.SPEAKER_TWITTER_URL));
             final String speakerAbstract = cursor.getString(
                     cursor.getColumnIndex(Speakers.SPEAKER_ABSTRACT));
 
-            mSpeakers.add(new Speaker(speakerName, speakerImageUrl, speakerCompany, speakerUrl,
-                    speakerPlusoneUrl, speakerTwitterUrl, speakerAbstract));
+            mSpeakers.add(new Speaker(speakerName, speakerImageUrl, speakerCompany, speakerUrl,speakerTwitterUrl, speakerAbstract));
         }
     }
 
@@ -400,11 +398,11 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
                 loader = getCursorLoaderInstance(mContext, mSessionUri,
                         SessionDetailQueryEnum.SESSIONS.getProjection(), null, null, null);
                 break;
-//            case SPEAKERS:
-//                Uri speakersUri = getSpeakersDirUri(mSessionId);
-//                loader = getCursorLoaderInstance(mContext, speakersUri,
-//                        SessionDetailQueryEnum.SPEAKERS.getProjection(), null, null,
-//                        Speakers.DEFAULT_SORT);
+            case SPEAKERS:
+                Uri speakersUri = getSpeakersDirUri(mSessionId);
+                loader = getCursorLoaderInstance(mContext, speakersUri,
+                        SessionDetailQueryEnum.SPEAKERS.getProjection(), null, null,
+                        Speakers.DEFAULT_SORT);
 //                break;
 //            case FEEDBACK:
 //                Uri feedbackUri = getFeedbackUri(mSessionId);
@@ -515,14 +513,14 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
                 Sessions.ROOM_ID,
                 Rooms.ROOM_NAME,
                 Sessions.SESSION_TAGS,
-                Sessions.SESSION_SPEAKER_NAMES});
-//        SPEAKERS(1, new String[]{ScheduleContract.Speakers.SPEAKER_NAME,
-//                ScheduleContract.Speakers.SPEAKER_IMAGE_URL,
-//                ScheduleContract.Speakers.SPEAKER_COMPANY,
-//                ScheduleContract.Speakers.SPEAKER_ABSTRACT,
-//                ScheduleContract.Speakers.SPEAKER_URL,
-//                ScheduleContract.Speakers.SPEAKER_PLUSONE_URL,
-//                ScheduleContract.Speakers.SPEAKER_TWITTER_URL}),
+                Sessions.SESSION_SPEAKER_NAMES}),
+        SPEAKERS(1, new String[]{
+            ScheduleContract.Speakers.SPEAKER_NAME,
+                ScheduleContract.Speakers.PICTURE_URL,
+                ScheduleContract.Speakers.SPEAKER_COMPANY,
+                ScheduleContract.Speakers.SPEAKER_ABSTRACT,
+                ScheduleContract.Speakers.SPEAKER_URL,
+                ScheduleContract.Speakers.SPEAKER_TWITTER_URL});
        // FEEDBACK(2, new String[]{ScheduleContract.Feedback.SESSION_ID}),
 
         private int id;
@@ -580,19 +578,16 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
 
         private String mUrl;
 
-        private String mPlusoneUrl;
-
         private String mTwitterUrl;
 
         private String mAbstract;
 
-        public Speaker(String name, String imageUrl, String company, String url, String plusoneUrl,
+        public Speaker(String name, String imageUrl, String company, String url,
                 String twitterUrl, String anAbstract) {
             mName = name;
             mImageUrl = imageUrl;
             mCompany = company;
             mUrl = url;
-            mPlusoneUrl = plusoneUrl;
             mTwitterUrl = twitterUrl;
             mAbstract = anAbstract;
         }
@@ -611,10 +606,6 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
 
         public String getUrl() {
             return mUrl;
-        }
-
-        public String getPlusoneUrl() {
-            return mPlusoneUrl;
         }
 
         public String getTwitterUrl() {

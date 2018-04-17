@@ -234,7 +234,7 @@ public class ScheduleProvider extends ContentProvider {
         }
         // Now that we have two cursors, we merge the cursors and return a unified view
         // of the two result sets.
-        return createMergedSearchCursor(tags, search);
+       return createMergedSearchCursor(tags, search);
       }
     }
   }
@@ -413,16 +413,6 @@ public class ScheduleProvider extends ContentProvider {
     return retVal;
   }
 
-  /**
-   * Notifies the system that the given {@code uri} data has changed.
-   * <p/>
-   * We only notify changes if the uri wasn't called by the sync adapter, to avoid issuing a large
-   * amount of notifications while doing a sync. The
-   * {@link no.schedule.javazone.v3.sync.no.schedule.javazone.v3.sync.ConferenceDataHandler} notifies all top level
-   * conference paths once the conference data sync is done, and the
-   * {@link com.google.samples.apps.iosched.sync.userdata.AbstractUserDataSyncHelper} notifies all
-   * user data related paths once the user data sync is done.
-   */
   private void notifyChange(Uri uri) {
     if (!ScheduleContractHelper.isUriCalledFromServiceApi(uri)) {
       Context context = getContext();

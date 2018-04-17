@@ -397,9 +397,9 @@ public class SessionDetailFragment extends Fragment implements
 //            case FEEDBACK:
 //                updateFeedbackButton(data);
 //                break;
-//            case SPEAKERS:
-//                displaySpeakersData(data);
-//                break;
+            case SPEAKERS:
+                displaySpeakersData(data);
+                break;
             default:
                 break;
         }
