@@ -1,4 +1,6 @@
 import UIKit
+import SVProgressHUD
+
 
 protocol SessionCellDelegate {
     func favoriteButtonTapped(cell: SessionTableViewCell!)
@@ -103,6 +105,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
             self.refresher?.endRefreshing()
             }.always {
                 // Hide spinner here
+                SVProgressHUD.dismiss()
             }
             .catch { error in
                 print(error)
