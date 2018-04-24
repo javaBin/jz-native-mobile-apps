@@ -43,6 +43,7 @@
 		50C1696D1F688D20005E8AC7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1696C1F688D20005E8AC7 /* Session.swift */; };
 		50D52E641FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D52E631FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift */; };
 		50E02FA61FEA83D0004CD662 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E02FA51FEA83D0004CD662 /* Feedback.swift */; };
+		50FB1987208F9768000C969D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB1986208F9768000C969D /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		50C1696C1F688D20005E8AC7 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		50D52E631FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerImageViewDataSource.swift; sourceTree = "<group>"; };
 		50E02FA51FEA83D0004CD662 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		50FB1986208F9768000C969D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7175F0050B18491998AB76D4 /* Pods-JZiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZiOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZiOSTests/Pods-JZiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CD799FD8AF5CE6BA011FE7F /* Pods_JZiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83626405F70E36954FB51F7A /* Pods-JZiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZiOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JZiOSTests/Pods-JZiOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				506AB7BA1FD5D4F90032494E /* UIImageView.swift */,
 				501DA5C71FE2DE2900956F75 /* String.swift */,
 				504CB0482020EC72008CF003 /* UIVIew.swift */,
+				50FB1986208F9768000C969D /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */,
 				5039D0011FA4720700CB9582 /* MyScheduleViewController.swift in Sources */,
 				501DA5C41FE2CD7900956F75 /* FeedbackViewController.swift in Sources */,
+				50FB1987208F9768000C969D /* UIViewController.swift in Sources */,
 				503C84F11FD2E05600FFF4DF /* SpeakerDetailViewController.swift in Sources */,
 				50E02FA61FEA83D0004CD662 /* Feedback.swift in Sources */,
 				5039D0061FA5B23500CB9582 /* MySessionRepository.swift in Sources */,

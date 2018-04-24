@@ -24,7 +24,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sessionSearchBar.text = ""
+       // sessionSearchBar.text = ""
         sessionSearchBar.resignFirstResponder()
         mySessionSegmentedControl.selectedSegmentIndex = segmentedSelected
         
@@ -110,6 +110,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
             .catch { error in
                 print(error)
                 self.refresher?.endRefreshing()
+                SVProgressHUD.showError(withStatus: "Could not get sessions. Please pull to refresh")
         }
     }
     

@@ -14,7 +14,6 @@ class SessionApiService {
         self.manager = Alamofire.SessionManager.default
     }
     
-    
     func getAllSessions() -> Promise<SessionResult>
     {
         let url = JZURL.GetAllSessions

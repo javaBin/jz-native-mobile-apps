@@ -17,8 +17,8 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sessionSearchBar.text = ""
-        sessionSearchBar.resignFirstResponder() //kills keyboard
+        //sessionSearchBar.text = ""
+        sessionSearchBar.resignFirstResponder()
         myScheduleSegmentedControl.selectedSegmentIndex = segmentedSelected
         
         refreshAllMySessions()
