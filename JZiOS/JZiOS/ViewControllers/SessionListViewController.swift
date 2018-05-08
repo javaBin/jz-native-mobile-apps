@@ -1,4 +1,6 @@
 import UIKit
+import SVProgressHUD
+
 
 protocol SessionCellDelegate {
     func favoriteButtonTapped(cell: SessionTableViewCell!)
@@ -22,7 +24,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sessionSearchBar.text = ""
+       // sessionSearchBar.text = ""
         sessionSearchBar.resignFirstResponder()
         mySessionSegmentedControl.selectedSegmentIndex = segmentedSelected
         
@@ -103,10 +105,12 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
             self.refresher?.endRefreshing()
             }.always {
                 // Hide spinner here
+                SVProgressHUD.dismiss()
             }
             .catch { error in
                 print(error)
                 self.refresher?.endRefreshing()
+                SVProgressHUD.showError(withStatus: "Could not get sessions. Please pull to refresh")
         }
     }
     
@@ -231,7 +235,11 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
             let indexPath = tableView.indexPathForSelectedRow
             var data = sections[sortedSections[indexPath!.section]]
             
-            if(searchActive) {
+            if data == nil {
+                return
+            }
+            
+            if(searchActive && filteredSections.count > 0) {
                 data = filteredSections[sortedSections[indexPath!.section]]
             }
             

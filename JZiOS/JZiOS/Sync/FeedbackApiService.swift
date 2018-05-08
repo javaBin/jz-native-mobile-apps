@@ -1,6 +1,7 @@
 import Foundation
 import Alamofire
 import PromiseKit
+import SVProgressHUD
 
 class FeedbackApiService {
     static let sharedInstance = FeedbackApiService()
@@ -24,6 +25,7 @@ class FeedbackApiService {
         let headers: HTTPHeaders = [
             "Voter-ID": "\(generateUniqueDeviceId()!.toBase64())"]
         
+        SVProgressHUD.show()
         return Promise { fulfill, reject in
             self.manager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate(statusCode: 200..<300).responseJSON { response in
                 switch response.result {

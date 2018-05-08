@@ -6,7 +6,7 @@ target 'JZiOS' do
   use_frameworks!
 
   # Pods for JZiOS
-  pod 'SwiftyJSON', :git => 'https://github.com/IBM-Swift/SwiftyJSON.git', :tag => '14.2.0'
+  pod 'SwiftyJSON', '~> 4.0'
   pod 'XCGLogger', '~> 4.0.0'
   pod 'Alamofire', '~> 4.5'
   pod 'ObjectMapper', '~> 2.2'
@@ -21,6 +21,7 @@ target 'JZiOS' do
   pod 'Firebase/Core'
   pod 'Firebase/Crash'
   pod 'Firebase/Firestore'
+  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   
   # Uncomment if you use SwinjectStoryboard
   pod 'SwinjectStoryboard', '~> 1.0.0'

@@ -1,8 +1,9 @@
 import UIKit
 import Cosmos
 import QuartzCore
+import SVProgressHUD
 
-class FeedbackViewController: UIViewController {
+class FeedbackViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var sessionRatingCosmosView: CosmosView!
     @IBOutlet weak var relevanceCosmosView: CosmosView!
@@ -17,10 +18,22 @@ class FeedbackViewController: UIViewController {
         sessionTitleLabel.text = session!.title
         otherCommentTextView.layer.borderColor = UIColor.darkGray.cgColor
         otherCommentTextView.layer.borderWidth = 1.0
+        
+        self.otherCommentTextView.delegate = self
+        self.hideKeyboard()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            self.view.endEditing(true)
+            return false
+        }
+        
+        return true
     }
     
     @IBAction func onSubmitFeedbackClicked(_ sender: Any) {
@@ -33,10 +46,17 @@ class FeedbackViewController: UIViewController {
         let newFeedback = Feedback(overall: rating, relevance: relevance, content: content, quality: speakerQuality, comments: otherComment != nil ? otherComment! : "")
 
         // TODO remember to go back to session details when successful call.
-        FeedbackApiService.sharedInstance.submitFeedback(session: self.session, feedback: newFeedback)
-        self.navigationController?.popViewController(animated: true)
-        
+        FeedbackApiService.sharedInstance.submitFeedback(session: self.session, feedback: newFeedback).then { result -> Void in
+            self.navigationController?.popViewController(animated: true)
+            
+            SVProgressHUD.showSuccess(withStatus: "Thank you! Feedback has been given")
+            }.always {
+                // Hide spinner here
+                SVProgressHUD.dismiss()
+            }
+            .catch { error in
+                print(error)
+                SVProgressHUD.showError(withStatus: "Failed to give feedback. Please try again")
+        }
     }
-    
-
 }

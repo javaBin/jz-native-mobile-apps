@@ -4,6 +4,7 @@ import XCGLogger
 import CoreData
 import Swinject
 import SwinjectStoryboard
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -52,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         return true
     }
 

@@ -4,6 +4,7 @@ import Foundation
 import Alamofire
 import PromiseKit
 import ObjectMapper
+import SVProgressHUD
 
 class SessionApiService {
     static let sharedInstance = SessionApiService()
@@ -13,10 +14,10 @@ class SessionApiService {
         self.manager = Alamofire.SessionManager.default
     }
     
-    
     func getAllSessions() -> Promise<SessionResult>
     {
         let url = JZURL.GetAllSessions
+        SVProgressHUD.show()
         return Promise { fulfill, reject in
             self.manager.request(url).validate(statusCode: 200..<300).responseJSON { response in
                 switch response.result {
