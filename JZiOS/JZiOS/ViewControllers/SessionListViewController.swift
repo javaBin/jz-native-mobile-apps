@@ -235,7 +235,11 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
             let indexPath = tableView.indexPathForSelectedRow
             var data = sections[sortedSections[indexPath!.section]]
             
-            if(searchActive) {
+            if data == nil {
+                return
+            }
+            
+            if(searchActive && filteredSections.count > 0) {
                 data = filteredSections[sortedSections[indexPath!.section]]
             }
             

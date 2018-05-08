@@ -126,7 +126,7 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
         
         var data = sections[sortedSections[indexPath.section]]
         
-        if(searchActive) {
+        if(searchActive && filteredSections.count > 0) {
             data = filteredSections[sortedSections[indexPath.section]]
         }
         
