@@ -35,6 +35,7 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import io.doist.recyclerviewext.sticky_headers.StickyHeadersLinearLayoutManager;
 import no.schedule.javazone.v3.R;
+import no.schedule.javazone.v3.feedback.SessionFeedbackActivity;
 import no.schedule.javazone.v3.io.model.Tag;
 import no.schedule.javazone.v3.myschedule.MyScheduleContract.MyScheduleView;
 import no.schedule.javazone.v3.provider.ScheduleContract;
@@ -152,7 +153,7 @@ public class MyScheduleFragment extends Fragment implements MyScheduleView, MySc
     @Override
     public void onFeedbackClicked(String sessionId, String sessionTitle) {
         AnalyticsHelper.sendEvent("My Schedule", "Feedback", sessionTitle);
-        //SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
+        SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
     }
 
     @Override

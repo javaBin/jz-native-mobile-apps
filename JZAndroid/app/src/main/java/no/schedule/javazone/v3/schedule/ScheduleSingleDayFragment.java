@@ -37,6 +37,7 @@ import io.doist.recyclerviewext.sticky_headers.StickyHeadersLinearLayoutManager;
 import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.archframework.UpdatableView;
+import no.schedule.javazone.v3.feedback.SessionFeedbackActivity;
 import no.schedule.javazone.v3.provider.ScheduleContract;
 import no.schedule.javazone.v3.util.SessionsHelper;
 import no.schedule.javazone.v3.util.TimeUtils;
@@ -225,7 +226,7 @@ public class ScheduleSingleDayFragment extends Fragment
         args.putString(ScheduleModel.SESSION_ID_KEY, sessionId);
         args.putString(ScheduleModel.SESSION_TITLE_KEY, sessionTitle);
         mListener.onUserAction(ScheduleModel.MyScheduleUserActionEnum.FEEDBACK, args);
-       // SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
+        SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
     }
 
     private void initViews() {

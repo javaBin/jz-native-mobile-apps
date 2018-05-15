@@ -82,9 +82,6 @@
     <!-- Shown as the title of the user's schedule for yesterday -->
     <string name="day_title_yesterday">Yesterday</string>
 
-    <!-- Text indicating the session has ended -->
-    <string name="session_finished">Ended</string>
-
     <!-- Shown in a drop-down list on the main screen, indicating that all conference themes
 are being displayed. Themes are major categories for sessions (the themes are Design,
 Develop and Distribute). -->
@@ -139,5 +136,30 @@ Develop and Distribute). -->
     <string name="description_avatar">Avatar</string>
     <string name="add_events">Add events</string>
 
+    <!-- Accessibility announcement to confirm the feedback rating made for a session by the user. -->
+    <string name="feedback_rating_confirmation">Your rating: %1$d out of %2$d stars"</string>
+
+    <!-- Accessibility announcement for an item in the custom feedback rating view. For example, "one star".  -->
+    <string name="feedback_rating_value">%1$d star</string>
+
+
+    <string name="session_rating_label_text">Session rating:</string>
+    <string name="session_feedback_advanced">Too advanced</string>
+    <string name="session_feedback_basic">Too basic</string>
+    <string name="session_feedback_content_label_text">Based on the description/my expectations, the content was:</string>
+    <string name="session_feedback_notification_ticker">Provide session feedback</string>
+    <string name="session_feedback_not_so_awesome">Not so awesome</string>
+    <string name="session_feedback_awesome">Awesome</string>
+    <string name="session_feedback_not_at_all_relevant">Not at all</string>
+    <string name="session_feedback_extremely_relevant">Extremely</string>
+    <string name="session_feedback_outstanding">Outstanding</string>
+    <string name="session_feedback_poor">Poor</string>
+    <string name="session_feedback_relevance"> How relevant was this session to your projects?  </string>
+    <string name="session_feedback_speaker_quality">Speaker quality:</string>
+    <string name="feedback_comment_text">Any other comments?</string>
+
+    <string name="session_finished">Ended</string>
+    <string name="session_feedback_submitlink">Submit Feedback</string>
+    <string name="session_give_feedback_message">How was this session? Would you like to send feedback?</string>
 
 </resources>

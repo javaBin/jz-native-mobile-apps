@@ -68,6 +68,7 @@ import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.archframework.UpdatableView;
+import no.schedule.javazone.v3.feedback.SessionFeedbackActivity;
 import no.schedule.javazone.v3.injection.ModelProvider;
 import no.schedule.javazone.v3.schedule.ScheduleDayAdapter;
 import no.schedule.javazone.v3.session.SessionDetailModel.SessionDetailUserActionEnum;
@@ -746,6 +747,6 @@ public class SessionDetailFragment extends Fragment implements
 
     @Override
     public void onFeedbackClicked(String sessionId, String sessionTitle) {
-        //SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
+        SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
     }
 }

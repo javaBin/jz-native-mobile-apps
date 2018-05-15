@@ -25,4 +25,6 @@ public class Constants {
      * each year. Note, res/xml/settings_prefs.xml must be updated when this value is updated.
      */
     public static final String CONFERENCE_YEAR_PREF_POSTFIX = "_2017";
+    public static final String SESSION_ID = "SESSION_ID";
+
 }

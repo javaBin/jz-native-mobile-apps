@@ -43,6 +43,9 @@ android {
         buildConfigField("String", "CONFERENCE_DAY2_START", "\"${conference_day2_start}\"")
         buildConfigField("String", "CONFERENCE_DAY2_END", "\"${conference_day2_end}\"")
 
+        buildConfigField("String", "SESSION_FEEDBACK_WEB_URI_TEST", "\"${session_feedback_web_uri_test}\"")
+        buildConfigField("String", "SESSION_FEEDBACK_WEB_URI", "\"${session_feedback_web_uri}\"")
+
         resValue("string", "pref_conf_messages_enabled", "pref_conf_messages_enabled_${conf_version}")
         buildConfigField("String", "PREF_CONF_MESSAGES_ENABLED", "\"pref_conf_messages_enabled_${conf_version}\"")
 
