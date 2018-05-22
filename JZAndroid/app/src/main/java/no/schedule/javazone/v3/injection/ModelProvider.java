@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.support.v4.app.LoaderManager;
 
 import no.schedule.javazone.v3.archframework.Model;
+import no.schedule.javazone.v3.feedback.SessionFeedbackModel;
 import no.schedule.javazone.v3.model.ScheduleHelper;
 import no.schedule.javazone.v3.session.SessionDetailModel;
 import no.schedule.javazone.v3.util.SessionsHelper;
@@ -36,6 +37,9 @@ public class ModelProvider {
 
     //    @SuppressLint("StaticFieldLeak")
     private static ScheduleModel stubScheduleModel = null;
+
+    @SuppressLint("StaticFieldLeak")
+    private static SessionFeedbackModel stubSessionFeedbackModel = null;
 
 //    @SuppressLint("StaticFieldLeak")
 //    private static MyScheduleModel stubMyIOModel = null;
@@ -58,14 +62,13 @@ public class ModelProvider {
         return model;
     }
 
-//    public static SessionFeedbackModel provideSessionFeedbackModel(Uri sessionUri, Context context,
-//            FeedbackHelper feedbackHelper, LoaderManager loaderManager) {
-//        if (stubSessionFeedbackModel != null) {
-//            return stubSessionFeedbackModel;
-//        } else {
-//            return new SessionFeedbackModel(loaderManager, sessionUri, context, feedbackHelper);
-//        }
-//    }
+    public static SessionFeedbackModel provideSessionFeedbackModel(Uri sessionUri, Context context, LoaderManager loaderManager) {
+        if (stubSessionFeedbackModel != null) {
+            return stubSessionFeedbackModel;
+        } else {
+            return new SessionFeedbackModel(loaderManager, sessionUri, context);
+        }
+    }
 
     public static void setStubModel(Model model) {
 //        if (model instanceof SessionFeedbackModel) {

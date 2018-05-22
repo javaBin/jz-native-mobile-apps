@@ -2,6 +2,8 @@ package no.schedule.javazone.v3.sync;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,6 +16,7 @@ import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.io.JSONHandler;
 import no.schedule.javazone.v3.io.model.Session;
 import no.schedule.javazone.v3.provider.ScheduleContract;
+import no.schedule.javazone.v3.ui.widget.MultiSwipeRefreshLayout;
 import no.schedule.javazone.v3.util.LogUtils;
 import no.schedule.javazone.v3.util.SettingsUtils;
 import retrofit2.Call;
@@ -28,6 +31,8 @@ public class SessionApiWebService implements Callback<SessionResult> {
   private static SessionApiWebService INSTANCE;
   private static Context context;
   SessionApiService service;
+
+  private SwipeRefreshLayout mRefreshing;
 
   private static final String TAG = LogUtils.makeLogTag(SessionApiWebService.class);
 
@@ -54,8 +59,17 @@ public class SessionApiWebService implements Callback<SessionResult> {
     sessions.enqueue(this);
   }
 
+  public void setRefreshSwipe(@NonNull SwipeRefreshLayout swipeRefresh) {
+    mRefreshing = swipeRefresh;
+  }
+
   @Override
   public void onResponse(Call<SessionResult> call, Response<SessionResult> response) {
+    if(mRefreshing != null) {
+      mRefreshing.setRefreshing(false);
+    }
+
+
     if(response.isSuccessful()) {
 
       try {

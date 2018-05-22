@@ -1,11 +1,8 @@
 package no.schedule.javazone.v3.feedback;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
-
-import com.turbomanage.httpclient.BasicHttpClient;
 
 import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.io.model.Feedback;
@@ -23,11 +20,19 @@ public class FeedbackApiHelper
 {
   private static final String TAG = makeLogTag(FeedbackApiHelper.class);
 
-  private static FeedbackApiService INSTANCE;
-  private static Activity activity;
+  private static FeedbackApiHelper INSTANCE;
+  private static Context context;
   private FeedbackApiService service;
 
-  public FeedbackApiHelper(Activity activity) {
+  public static FeedbackApiHelper getInstance(Context context) {
+    if (INSTANCE == null) {
+      INSTANCE = new FeedbackApiHelper(context);
+    }
+    return INSTANCE;
+  }
+
+
+  public FeedbackApiHelper(Context context) {
     String mode = "RELEASE";
     if(BuildConfig.DEBUG) {
       mode = "TEST";
@@ -44,13 +49,13 @@ public class FeedbackApiHelper
         .addConverterFactory(new ToStringConverterFactory())
         .build();
 
-    this.activity = activity;
+    this.context = context;
     service = retrofit.create(FeedbackApiService.class);
 
   }
 
-  public void setActivity(Activity activity) {
-    this.activity = activity;
+  public void setActivity(Context context) {
+    this.context = context;
   }
 
 
@@ -62,18 +67,16 @@ public class FeedbackApiHelper
   public Callback retrofitCallBack = new Callback() {
     @Override
     public void onResponse(Call call, Response response) {
-      Toast.makeText(activity,
+      Toast.makeText(context,
           "Thank you for the feedback!",
           Toast.LENGTH_SHORT).show();
-      activity.finish();
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
-      Toast.makeText(activity,
+      Toast.makeText(context,
           "Thank you for the feedback!",
           Toast.LENGTH_SHORT).show();
-      activity.finish();
     }
   };
 }

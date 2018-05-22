@@ -63,6 +63,13 @@
             android:ellipsize="end"
             android:lines="1"
             tools:text="Google" />
+        <TextView
+            android:id="@+id/speaker_twitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            tools:text="twitterstuff" />
 
         <TextView
             android:id="@+id/speaker_abstract"

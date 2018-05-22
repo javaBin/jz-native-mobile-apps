@@ -65,6 +65,10 @@ public class ScheduleItem implements Cloneable, Comparable<ScheduleItem> {
     public String subtitle = "";
     public String room;
 
+    public String conferenceId = "";
+
+    public String speakerNames = "";
+
     // is the item a Keynote session
     public boolean isKeynote = false;
 

@@ -45,10 +45,11 @@ public class ScheduleItemHelper {
             Sessions.SESSION_TITLE,
             Sessions.SESSION_START,
             Sessions.SESSION_END,
-            Sessions.ROOM_NAME,
+            Sessions.ROOM_ID,
             Sessions.SESSION_IN_MY_SCHEDULE,
             Sessions.SESSION_SPEAKER_NAMES,
             Sessions.SESSION_TAGS,
+            Sessions.SESSION_CONFERENCE,
     };
 
     /**
@@ -118,16 +119,18 @@ public class ScheduleItemHelper {
             item.title = cursor.getString(cursor.getColumnIndex(Sessions.SESSION_TITLE));
             item.startTime = cursor.getLong(cursor.getColumnIndex(Sessions.SESSION_START));
             item.endTime = cursor.getLong(cursor.getColumnIndex(Sessions.SESSION_END));
+            item.speakerNames = cursor.getString(cursor.getColumnIndex(Sessions.SESSION_SPEAKER_NAMES));
 
             item.subtitle = UIUtils.formatSessionSubtitle(
-                    cursor.getString(cursor.getColumnIndex(Sessions.ROOM_NAME)),
+                    cursor.getString(cursor.getColumnIndex(Sessions.ROOM_ID)),
                     cursor.getString(cursor.getColumnIndex(Sessions.SESSION_SPEAKER_NAMES)),
                     context);
-            item.room = cursor.getString(cursor.getColumnIndex(Sessions.ROOM_NAME));
+            item.room = cursor.getString(cursor.getColumnIndex(Sessions.ROOM_ID));
 
             item.sessionType = detectSessionType(
                     cursor.getString(cursor.getColumnIndex(Sessions.SESSION_TAGS)));
             String tags = cursor.getString(cursor.getColumnIndex(Sessions.SESSION_TAGS));
+            item.conferenceId = cursor.getString(cursor.getColumnIndex(Sessions.SESSION_CONFERENCE));
 
             item.inSchedule =
                     cursor.getInt(cursor.getColumnIndex(Sessions.SESSION_IN_MY_SCHEDULE)) != 0;

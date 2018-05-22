@@ -188,6 +188,7 @@ public class SessionsHandler extends JSONHandler {
         .withValue(ScheduleContract.Sessions.SESSION_SPEAKER_NAMES, speakerNames)
         .withValue(ScheduleContract.Sessions.SESSION_VIMEO_URL, session.video)
         .withValue(ScheduleContract.Sessions.ROOM_ID, session.room)
+        .withValue(ScheduleContract.Sessions.SESSION_CONFERENCE, session.conferenceId)
         .withValue(ScheduleContract.Sessions.SESSION_IMPORT_HASHCODE,
             session.getImportHashCode());
     list.add(builder.build());

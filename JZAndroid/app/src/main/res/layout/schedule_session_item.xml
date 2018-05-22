@@ -21,6 +21,16 @@
         android:textAppearance="@style/Schedule.ItemTitle"
         tools:text="You want me to measure what!? Turning qualitative
         information into quantitative data" />
+    <TextView
+        android:id="@+id/speaker_names"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/spacing_micro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/slot_title"
+        android:textAppearance="@style/Schedule.SubTitle"
+        tools:text="Rustam M" />
 
     <TextView
         android:id="@+id/slot_description"
@@ -29,7 +39,7 @@
         android:paddingTop="@dimen/spacing_micro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/slot_title"
+        app:layout_constraintTop_toBottomOf="@id/speaker_names"
         android:paddingEnd="@dimen/padding_normal"
         tools:text="9:00 AM - 11:30 AM / Room 1" />
 

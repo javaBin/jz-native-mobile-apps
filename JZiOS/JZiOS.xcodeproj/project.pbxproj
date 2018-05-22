@@ -25,6 +25,7 @@
 		5039D0081FA5E25300CB9582 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D0071FA5E25300CB9582 /* Repository.swift */; };
 		5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */; };
 		503C84F11FD2E05600FFF4DF /* SpeakerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C84F01FD2E05600FFF4DF /* SpeakerDetailViewController.swift */; };
+		5042A20D20AB44B700EC7545 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5042A20C20AB44B700EC7545 /* Request.swift */; };
 		504CB0492020EC72008CF003 /* UIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CB0482020EC72008CF003 /* UIVIew.swift */; };
 		506AB7B11FD2F16A0032494E /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506AB7B01FD2F16A0032494E /* UIStackView.swift */; };
 		506AB7B51FD304230032494E /* SpeakerUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 506AB7B41FD304230032494E /* SpeakerUIView.xib */; };
@@ -82,6 +83,7 @@
 		5039D0071FA5E25300CB9582 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		5039D00C1FA8F0C700CB9582 /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
 		503C84F01FD2E05600FFF4DF /* SpeakerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerDetailViewController.swift; sourceTree = "<group>"; };
+		5042A20C20AB44B700EC7545 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		504CB0482020EC72008CF003 /* UIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIew.swift; sourceTree = "<group>"; };
 		506AB7B01FD2F16A0032494E /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		506AB7B41FD304230032494E /* SpeakerUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeakerUIView.xib; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				501DA5C71FE2DE2900956F75 /* String.swift */,
 				504CB0482020EC72008CF003 /* UIVIew.swift */,
 				50FB1986208F9768000C969D /* UIViewController.swift */,
+				5042A20C20AB44B700EC7545 /* Request.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				506AB7B11FD2F16A0032494E /* UIStackView.swift in Sources */,
 				50183FB41FD0C4E400AE4FA7 /* SessionDetailsViewController.swift in Sources */,
 				5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */,
+				5042A20D20AB44B700EC7545 /* Request.swift in Sources */,
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
 				501DAF412003C3C00052AFFA /* SettingsViewController.swift in Sources */,
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,

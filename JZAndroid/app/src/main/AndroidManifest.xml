@@ -54,7 +54,7 @@
 
     <application
         android:name=".AppApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -112,6 +112,19 @@
             <!-- URLs are indexed in search engines in the form:
                  https://events.google.com/io2016/schedule?sid=<session_id>
                  so direct session links are captured in MySchedule. -->
+        </activity>
+
+        <activity
+            android:name="no.schedule.javazone.v3.feedback.SessionFeedbackActivity"
+            android:exported="false"
+            android:label="@string/title_session_feedback"
+            android:theme="@style/Theme.JZSched.Feedback"
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName=".myschedule.MyScheduleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
 

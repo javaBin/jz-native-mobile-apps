@@ -161,5 +161,6 @@ Develop and Distribute). -->
     <string name="session_finished">Ended</string>
     <string name="session_feedback_submitlink">Submit Feedback</string>
     <string name="session_give_feedback_message">How was this session? Would you like to send feedback?</string>
+    <string name="title_session_feedback">Session Feedback</string>
 
 </resources>
