@@ -209,6 +209,7 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
         + SessionsColumns.SESSION_CAL_EVENT_ID + " INTEGER,"
         + SessionsColumns.SESSION_TAGS + " TEXT,"
         + SessionsColumns.SESSION_SPEAKER_NAMES + " TEXT,"
+        + SessionsColumns.SESSION_CONFERENCE + " TEXT,"
         + SessionsColumns.SESSION_IMPORT_HASHCODE + " TEXT NOT NULL DEFAULT '',"
         + "UNIQUE (" + SessionsColumns.SESSION_ID + ") ON CONFLICT REPLACE)");
 
@@ -394,7 +395,7 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
       ConferenceDataHandler.resetDataTimestamp(mContext);
       if (account != null) {
         LOGI(TAG, "DB upgrade complete. Requesting resync.");
-        new SessionApiWebService(mContext).getAllSessions(BuildConfig.SLEEPING_PILL_SLUG_URL);
+        SessionApiWebService.getInstance(mContext).getAllSessions(BuildConfig.SLEEPING_PILL_SLUG_URL);
       }
     }
   }

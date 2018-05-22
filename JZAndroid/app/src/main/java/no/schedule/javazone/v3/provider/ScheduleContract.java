@@ -120,6 +120,7 @@ public class ScheduleContract {
     String SESSION_TAGS = "session_tags";
     /** The names of the speakers on this session, formatted for display. */
     String SESSION_SPEAKER_NAMES = "session_speaker_names";
+    String SESSION_CONFERENCE = "session_conference";
     /** The hashcode of the data used to create this record. */
     String SESSION_IMPORT_HASHCODE = "session_import_hashcode";
   }

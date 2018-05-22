@@ -38,6 +38,7 @@ import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.archframework.ModelWithLoaderManager;
 import no.schedule.javazone.v3.archframework.QueryEnum;
 import no.schedule.javazone.v3.archframework.UserActionEnum;
+import no.schedule.javazone.v3.feedback.SessionFeedbackActivity;
 import no.schedule.javazone.v3.model.ScheduleItem;
 import no.schedule.javazone.v3.model.ScheduleItemHelper;
 import no.schedule.javazone.v3.provider.ScheduleContract;
@@ -85,8 +86,6 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
     private String mUrl = "";
 
     private String mRoomId;
-
-    private String mRoomName;
 
     private String[] mTags;
 
@@ -318,7 +317,6 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
                 .getLong(cursor.getColumnIndex(Sessions.SESSION_START));
         mSessionEnd = cursor.getLong(cursor.getColumnIndex(Sessions.SESSION_END));
 
-        mRoomName = cursor.getString(cursor.getColumnIndex(Sessions.ROOM_NAME));
         mRoomId = cursor.getString(cursor.getColumnIndex(Sessions.ROOM_ID));
 
         mSessionAbstract = cursor
@@ -339,14 +337,14 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
 
     @VisibleForTesting
     public void formatSubtitle() {
-        mSubtitle = UIUtils.formatSessionSubtitle(mSessionStart, mSessionEnd, mRoomName, mBuffer,
+        mSubtitle = UIUtils.formatSessionSubtitle(mSessionStart, mSessionEnd, mRoomId, mBuffer,
                 mContext);
     }
 
-//    public Intent getFeedbackIntent() {
-//        return new Intent(Intent.ACTION_VIEW, mSessionUri, mContext,
-//                SessionFeedbackActivity.class);
-//    }
+    public Intent getFeedbackIntent() {
+        return new Intent(Intent.ACTION_VIEW, mSessionUri, mContext,
+                SessionFeedbackActivity.class);
+    }
 
     private void readDataFromFeedbackCursor(Cursor cursor) {
         mHasFeedback = cursor.getCount() > 0;
@@ -513,6 +511,7 @@ public class SessionDetailModel extends ModelWithLoaderManager<SessionDetailMode
                 Sessions.ROOM_ID,
                 Rooms.ROOM_NAME,
                 Sessions.SESSION_TAGS,
+                Sessions.SESSION_CONFERENCE,
                 Sessions.SESSION_SPEAKER_NAMES}),
         SPEAKERS(1, new String[]{
             ScheduleContract.Speakers.SPEAKER_NAME,

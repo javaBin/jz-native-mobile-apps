@@ -23,7 +23,9 @@ class FeedbackApiService {
         let parameters = feedback.toJSON()
         
         let headers: HTTPHeaders = [
-            "Voter-ID": "\(generateUniqueDeviceId()!.toBase64())"]
+            "Voter-ID": "\(generateUniqueDeviceId()!.toBase64())",
+            "Content-Type": "application/json",
+            "Accept": "application/json"]
         
         SVProgressHUD.show()
         return Promise { fulfill, reject in
@@ -32,7 +34,7 @@ class FeedbackApiService {
                 case .success:
                     //to get JSON return value
                     guard let responseJSON = response.result.value as? AnyObject else {
-                        reject(NSError(domain: "domainN", code: 0, userInfo: [NSLocalizedDescriptionKey: "Some error reading response"]))
+                        reject(NSError(domain: "domain", code: 0, userInfo: [NSLocalizedDescriptionKey: "Some error reading response"]))
                         return
                     }
                     

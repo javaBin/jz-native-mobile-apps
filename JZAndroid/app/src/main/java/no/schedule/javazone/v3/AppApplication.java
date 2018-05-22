@@ -95,7 +95,7 @@ public class AppApplication extends MultiDexApplication {
         }
 
         if(!SettingsUtils.isMarkSessionLoadedDone(this)) {
-            new SessionApiWebService(this).getAllSessions(BuildConfig.SLEEPING_PILL_SLUG_URL);
+            SessionApiWebService.getInstance(this).getAllSessions(BuildConfig.SLEEPING_PILL_SLUG_URL);
         }
     }
 

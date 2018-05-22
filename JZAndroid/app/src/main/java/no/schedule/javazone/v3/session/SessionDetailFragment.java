@@ -41,7 +41,9 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.NestedScrollView.OnScrollChangeListener;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.transition.Transition;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -68,6 +70,7 @@ import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.archframework.UpdatableView;
+import no.schedule.javazone.v3.feedback.SessionFeedbackActivity;
 import no.schedule.javazone.v3.injection.ModelProvider;
 import no.schedule.javazone.v3.schedule.ScheduleDayAdapter;
 import no.schedule.javazone.v3.session.SessionDetailModel.SessionDetailUserActionEnum;
@@ -589,6 +592,7 @@ public class SessionDetailFragment extends Fragment implements
             ImageView speakerImage = (ImageView) speakerView.findViewById(R.id.speaker_image);
             TextView speakerName = (TextView) speakerView.findViewById(R.id.speaker_name);
             TextView speakerCompany = (TextView) speakerView.findViewById(R.id.speaker_company);
+            TextView speakerTwitter = (TextView) speakerView.findViewById(R.id.speaker_twitter);
             TextView speakerAbstract = (TextView) speakerView.findViewById(R.id.speaker_abstract);
 
             speakerName.setText(speaker.getName());
@@ -597,6 +601,17 @@ public class SessionDetailFragment extends Fragment implements
             } else {
                 speakerCompany.setText(speaker.getCompany());
             }
+
+            if(TextUtils.isEmpty(speaker.getTwitterUrl())) {
+                speakerTwitter.setVisibility(GONE);
+            } else {
+                String twitterUrl = "<a href=\"https://twitter.com/" + speaker.getTwitterUrl().substring(1) + "\">"
+                    + speaker.getTwitterUrl() +"</a>";
+                speakerTwitter.setMovementMethod(LinkMovementMethod.getInstance());
+                speakerTwitter.setText(Html.fromHtml(twitterUrl));
+            }
+
+
             if (!TextUtils.isEmpty(speaker.getImageUrl()) && mImageLoader != null) {
                 mImageLoader.loadImage(speaker.getImageUrl(), speakerImage);
             }
@@ -673,8 +688,8 @@ public class SessionDetailFragment extends Fragment implements
                 @Override
                 public void onClick(View v) {
                     sendUserAction(SessionDetailUserActionEnum.GIVE_FEEDBACK, null);
-                   // Intent intent = data.getFeedbackIntent();
-                   // startActivity(intent);
+                   Intent intent = data.getFeedbackIntent();
+                   startActivity(intent);
                 }
             });
         } else {
@@ -746,6 +761,6 @@ public class SessionDetailFragment extends Fragment implements
 
     @Override
     public void onFeedbackClicked(String sessionId, String sessionTitle) {
-        //SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
+        SessionFeedbackActivity.launchFeedback(getContext(), sessionId);
     }
 }

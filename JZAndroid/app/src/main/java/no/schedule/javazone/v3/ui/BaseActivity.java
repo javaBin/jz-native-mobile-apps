@@ -23,10 +23,12 @@ import android.widget.TextView;
 
 import com.google.android.gms.auth.GoogleAuthUtil;
 
+import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.navigation.AppNavigationView;
 import no.schedule.javazone.v3.navigation.AppNavigationViewAsBottomNavImpl;
 import no.schedule.javazone.v3.navigation.NavigationModel;
+import no.schedule.javazone.v3.sync.SessionApiWebService;
 import no.schedule.javazone.v3.ui.widget.BadgedBottomNavigationView;
 import no.schedule.javazone.v3.ui.widget.MultiSwipeRefreshLayout;
 import no.schedule.javazone.v3.util.AnalyticsHelper;
@@ -142,8 +144,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
     private void trySetupSwipeRefresh() {
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         if (mSwipeRefreshLayout != null) {
-            mSwipeRefreshLayout.setColorSchemeResources(R.color.sunflower_yellow, R.color.neon_blue,
-                    R.color.lightish_blue, R.color.aqua_marine);
+            mSwipeRefreshLayout.setColorSchemeResources(R.color.jz_yellow, R.color.jz_orange,
+                    R.color.jz_red_light, R.color.jz_red);
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
@@ -202,7 +204,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
     protected void requestDataRefresh() {
         LOGD(TAG, "Requesting manual data refresh.");
-        // SyncHelper.requestManualSync();
+        SessionApiWebService.getInstance(this).setRefreshSwipe(mSwipeRefreshLayout);
+        SessionApiWebService.getInstance(this).getAllSessions(BuildConfig.SLEEPING_PILL_SLUG_URL);
+
     }
 
     @Override

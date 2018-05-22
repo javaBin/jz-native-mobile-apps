@@ -49,6 +49,7 @@ public class SessionItemViewHolder extends ScheduleItemViewHolder
         implements DividerDecoration.Divided {
 
     private final TextView mTitle;
+    private final TextView mSubTitle;
     private final TextView mDescription;
     private final ImageButton mBookmark;
     private final Button mRate;
@@ -62,6 +63,7 @@ public class SessionItemViewHolder extends ScheduleItemViewHolder
         super(itemView, timeFormat);
         mCallbacks = callbacks;
         mTitle = (TextView) itemView.findViewById(R.id.slot_title);
+        mSubTitle = (TextView) itemView.findViewById(R.id.speaker_names);
         mDescription = (TextView) itemView.findViewById(R.id.slot_description);
         mBookmark = (ImageButton) itemView.findViewById(R.id.bookmark);
        // mLiveNow = itemView.findViewById(R.id.live_now_badge);
@@ -128,6 +130,7 @@ public class SessionItemViewHolder extends ScheduleItemViewHolder
         final Context context = itemView.getContext();
 
         mTitle.setText(item.title);
+        setSpeakerNames(mSubTitle, item);
         setDescription(mDescription, item);
 
         boolean isLivestreamed = item.isKeynote()

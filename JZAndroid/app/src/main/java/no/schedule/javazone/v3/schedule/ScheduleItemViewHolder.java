@@ -44,6 +44,14 @@ public abstract class ScheduleItemViewHolder extends RecyclerView.ViewHolder {
         mTimeFormat = timeFormat;
     }
 
+    void setSpeakerNames(@NonNull TextView speakerView, @NonNull ScheduleItem item) {
+        if(item == null || TextUtils.isEmpty(item.speakerNames)) {
+            speakerView.setText(item.speakerNames);
+        } else {
+            speakerView.setText(item.speakerNames);
+        }
+    }
+
     void setDescription(@NonNull TextView descriptionView, @NonNull ScheduleItem item) {
         descriptionView.setText(formatDescription(descriptionView.getContext(), item, mTimeFormat));
         if (mTimeFormat != SPAN) {
