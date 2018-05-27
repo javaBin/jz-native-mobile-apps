@@ -21,9 +21,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.multidex.MultiDexApplication;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.security.ProviderInstaller;
-import com.google.firebase.crash.FirebaseCrash;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
@@ -61,20 +60,19 @@ public class AppApplication extends MultiDexApplication {
 
          */
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        //FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-        // .setDeveloperModeEnabled(BuildConfig.DEBUG)
-         //       .build();
-        //FirebaseRemoteConfig.getInstance().setConfigSettings(configSettings);
-        //FirebaseRemoteConfig.getInstance().setDefaults(R.xml.remote_config_defaults);
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+         .setDeveloperModeEnabled(BuildConfig.DEBUG)
+                .build();
+        FirebaseRemoteConfig.getInstance().setConfigSettings(configSettings);
+        FirebaseRemoteConfig.getInstance().setDefaults(R.xml.remote_config_defaults);
        // mRefWatcher = LeakCanary.install(this);
 
         TimeUtils.setAppStartTime(getApplicationContext(), System.currentTimeMillis());
-        // STUP FIREBASE CRASH ANALYTICS
 
         LOGD(TAG, "Analytics being prepared.");
         AnalyticsHelper.prepareAnalytics(this);
 
-        // Ensure an updated security provider is installed into the system when a new one is
+      // Ensure an updated security provider is installed into the system when a new one is
         // available via Google Play services.
         try {
             ProviderInstaller.installIfNeededAsync(getApplicationContext(),
@@ -92,6 +90,7 @@ public class AppApplication extends MultiDexApplication {
                     });
         } catch (Exception ignorable) {
             LOGE(TAG, "Unknown issue trying to install a new security provider.", ignorable);
+
         }
 
         if(!SettingsUtils.isMarkSessionLoadedDone(this)) {

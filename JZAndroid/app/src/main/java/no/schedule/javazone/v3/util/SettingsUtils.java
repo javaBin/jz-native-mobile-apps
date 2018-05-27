@@ -269,6 +269,11 @@ public class SettingsUtils {
     sp.unregisterOnSharedPreferenceChangeListener(listener);
   }
 
+  public static boolean hasDeclinedWifiSetup(Context context) {
+    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+    return sp.getBoolean(PREF_DECLINED_WIFI_SETUP, false);
+  }
+
   public static void updateNotificationSubscriptions(Context context) {
     /*
     if (shouldShowNotifications(context)) {

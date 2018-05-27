@@ -31,7 +31,7 @@ public class NavigationConfig {
             NavigationItemEnum.MY_SCHEDULE,
 //            NavigationItemEnum.FEED,
 //            NavigationItemEnum.MAP,
-//            NavigationItemEnum.INFO,
+            NavigationItemEnum.INFO,
     };
 
     private static NavigationItemEnum[] concatenateItems(NavigationItemEnum[] first,
@@ -69,9 +69,9 @@ public class NavigationConfig {
 //                case MAP:
 //                    includeItem = BuildConfig.ENABLE_MAP_IN_NAVIGATION;
 //                    break;
-//                case INFO:
-//                    includeItem = BuildConfig.ENABLE_INFO_IN_NAVIGATION;
-//                    break;
+                case INFO:
+                    includeItem = true;
+                    break;
             }
 
             if (includeItem) {

@@ -15,6 +15,6 @@
      limitations under the License.
 -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:color="?attr/colorControlNormal" app:state_collapsed="true" />
+    <item android:color="@color/app_white" app:state_collapsed="true" />
     <item android:color="@color/app_white" />
 </selector>
