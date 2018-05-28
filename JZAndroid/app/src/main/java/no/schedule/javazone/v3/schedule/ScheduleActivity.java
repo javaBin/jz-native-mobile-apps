@@ -85,6 +85,15 @@ public class ScheduleActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
+    public static void launchScheduleWithFilterTag(Context context, String tag) {
+        Intent intent = new Intent(context, ScheduleActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        if (tag != null) {
+//            intent.putExtra(EXTRA_FILTER_TAG, tag);
+//        }
+        context.startActivity(intent);
+    }
+
     @Override
     protected NavigationModel.NavigationItemEnum getSelfNavDrawerItem() {
         return NavigationModel.NavigationItemEnum.SCHEDULE;

@@ -26,10 +26,11 @@
         android:id="@+id/collapsing_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/extended_appbar_height"
-        android:background="@color/lighter_grey"
+        android:background="@color/theme_primary"
         android:fitsSystemWindows="true"
         android:minHeight="?actionBarSize"
-        app:contentScrim="@color/lighter_grey"
+        app:contentScrim="?colorPrimary"
+        android:theme="@style/ThemeOverlay.DarkToolbar"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         style="@style/Widget.JZSched.CollapsingHeader.Tabs">
 

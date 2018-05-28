@@ -18,7 +18,7 @@
     <!-- Root styles that vary by API level -->
 
     <!-- Prevents crash on certain devices to namespace conflict -->
-    <style name="FrameworkRoot.Theme" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="FrameworkRoot.Theme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <style name="Theme.JZSched" parent="FrameworkRoot.Theme">
         <item name="colorPrimary">@color/theme_primary</item>
@@ -73,7 +73,8 @@
     <style name="Theme.JZSched.Search" parent="Theme.JZSched.Light">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
-        <item name="autoCompleteTextViewStyle">@style/Widget.JZSched.Search.AutoCompleteTextView</item>
+        <item name="autoCompleteTextViewStyle">@style/Widget.JZSched.Search.AutoCompleteTextView
+        </item>
         <item name="searchViewStyle">@style/Widget.JZSched.SearchView</item>
         <item name="colorControlNormal">@color/body_text_2</item>
         <item name="colorControlActivated">@color/theme_accent_1</item>
@@ -95,19 +96,19 @@
         <item name="android:textColor">@color/app_white</item>
     </style>
 
-    <style name="Theme.JZSched.Welcome" parent="@style/Theme.JZSched.Immersive" />
+    <style name="Theme.JZSched.Welcome" parent="@style/Theme.JZSched.Immersive"/>
 
     <!-- My Schedule -->
-    <style name="Theme.JZSched.MySchedule" parent="@style/Theme.JZSched.Immersive" />
+    <style name="Theme.JZSched.MySchedule" parent="@style/Theme.JZSched.Immersive"/>
 
     <!-- Schedule -->
-    <style name="Theme.JZSched.Schedule" parent="@style/Theme.JZSched" />
+    <style name="Theme.JZSched.Schedule" parent="@style/Theme.JZSched"/>
 
     <!-- Feed -->
-    <style name="Theme.JZSched.Feed" parent="@style/Theme.JZSched.Immersive" />
+    <style name="Theme.JZSched.Feed" parent="@style/Theme.JZSched.Immersive"/>
 
     <!-- Map -->
-    <style name="Theme.JZSched.Map" parent="@style/Theme.JZSched.Immersive" />
+    <style name="Theme.JZSched.Map" parent="@style/Theme.JZSched.Immersive"/>
 
     <!-- Info -->
     <style name="Theme.JZSched.Info" parent="@style/Theme.JZSched.Immersive">
@@ -123,15 +124,19 @@
         <item name="colorAccent">@color/jz_orange</item>
     </style>
 
-    <style name="ThemeOverlay.DarkToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="ThemeOverlay.DarkToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="ThemeOverlay.LightToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar" />
+    <style name="ThemeOverlay.LightToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar"/>
 
-    <style name="ThemeOverlay.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light" />
+    <style name="ThemeOverlay.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light"/>
 
     <style name="Theme.JZSched.SessionDetails" parent="Theme.JZSched">
-        <item name="android:windowSharedElementEnterTransition">@transition/session_details_shared_enter</item>
-        <item name="android:windowSharedElementReturnTransition">@transition/session_details_shared_return</item>
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/session_details_shared_enter
+        </item>
+        <item name="android:windowSharedElementReturnTransition">
+            @transition/session_details_shared_return
+        </item>
         <item name="android:windowEnterTransition">@transition/fade_system_chrome</item>
         <item name="android:statusBarColor">@color/immersive_status_bar</item>
         <item name="reserveButtonStyle">@style/Widget.JZSched.ReserveButton</item>
@@ -160,7 +165,8 @@
     </style>
 
     <style name="TextAppearance.Map.SessionSubtitle" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">14sp</item> <!-- bug in AppCompat, can remove this when it's fixed -->
+        <item name="android:textSize">14sp
+        </item> <!-- bug in AppCompat, can remove this when it's fixed -->
         <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
@@ -174,7 +180,7 @@
     </style>
 
     <!-- Widget styles-->
-    <style name="Widget.JZSched" parent="android:Widget" />
+    <style name="Widget.JZSched" parent="android:Widget"/>
 
     <style name="Widget.JZSched.TextView" parent="@android:style/Widget.Material.TextView">
         <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
@@ -192,6 +198,7 @@
     <style name="Widget.JZSched.Button.Aqua" parent="@style/Widget.AppCompat.Button">
         <item name="android:backgroundTint">@color/aqua_marine</item>
     </style>
+
     <style name="Widget.JZSched.Button.Accent" parent="@style/Widget.AppCompat.Button">
         <item name="android:backgroundTint">@color/jz_orange</item>
     </style>
@@ -383,4 +390,8 @@
 
 
     <string name="live_now">Live Now</string>
+
+    <style name="Theme.JZSched.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="Theme.JZSched.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>
