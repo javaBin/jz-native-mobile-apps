@@ -23,7 +23,6 @@ class RemoteConfigValues {
     
     func fetchCloudValues() {
         let fetchDuration: TimeInterval = 1800
-        activateDebugMode()
         RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) {
             [weak self] (status, error) in
             
@@ -36,12 +35,6 @@ class RemoteConfigValues {
             print ("Retrieved values from the cloud!")
             self?.fetchComplete = true
             self?.loadingDoneCallback?()
-        }
-    }
-    
-    func activateDebugMode() {
-        if let debugSettings = RemoteConfigSettings(developerModeEnabled: true) {
-            RemoteConfig.remoteConfig().configSettings = debugSettings
         }
     }
     

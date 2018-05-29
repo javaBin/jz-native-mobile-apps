@@ -1,82 +1,90 @@
 PODS:
-  - Alamofire (4.6.0)
+  - Alamofire (4.7.2)
   - AvatarImageView (2.0.3)
-  - BoringSSL (9.1):
-    - BoringSSL/Implementation (= 9.1)
-    - BoringSSL/Interface (= 9.1)
-  - BoringSSL/Implementation (9.1):
-    - BoringSSL/Interface (= 9.1)
-  - BoringSSL/Interface (9.1)
+  - BoringSSL (10.0.3):
+    - BoringSSL/Implementation (= 10.0.3)
+    - BoringSSL/Interface (= 10.0.3)
+  - BoringSSL/Implementation (10.0.3):
+    - BoringSSL/Interface (= 10.0.3)
+  - BoringSSL/Interface (10.0.3)
   - Cosmos (11.0.3)
   - Crashlytics (3.10.2):
     - Fabric (~> 1.7.7)
   - Fabric (1.7.7)
-  - Firebase/Core (4.8.0):
-    - FirebaseAnalytics (= 4.0.5)
-    - FirebaseCore (= 4.0.13)
-  - Firebase/Crash (4.8.0):
+  - Firebase/Core (5.0.1):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.0)
+  - Firebase/CoreOnly (5.0.1):
+    - FirebaseCore (= 5.0.1)
+  - Firebase/Crash (5.0.1):
     - Firebase/Core
-    - FirebaseCrash (= 2.0.2)
-  - Firebase/Firestore (4.8.0):
+    - FirebaseCrash (= 3.0.0)
+  - Firebase/Firestore (5.0.1):
+    - Firebase/CoreOnly
+    - FirebaseFirestore (= 0.12.1)
+  - Firebase/RemoteConfig (5.0.1):
     - Firebase/Core
-    - FirebaseFirestore (= 0.9.4)
-  - Firebase/RemoteConfig (4.8.0):
-    - Firebase/Core
-    - FirebaseRemoteConfig (= 2.1.0)
-  - FirebaseABTesting (1.0.0):
-    - FirebaseCore (~> 4.0)
-    - Protobuf (~> 3.1)
-  - FirebaseAnalytics (4.0.5):
-    - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
+    - FirebaseRemoteConfig (= 3.0.0)
+  - FirebaseABTesting (2.0.0):
+    - FirebaseCore (~> 5.0)
+    - Protobuf (~> 3.5)
+  - FirebaseAnalytics (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.13):
+  - FirebaseCore (5.0.1):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseCrash (2.0.2):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
+  - FirebaseCrash (3.0.0):
+    - FirebaseAnalytics (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - Protobuf (~> 3.1)
-  - FirebaseFirestore (0.9.4):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseCore (~> 4.0)
+    - Protobuf (~> 3.5)
+  - FirebaseFirestore (0.12.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseFirestore/abseil-cpp (= 0.12.1)
     - gRPC-ProtoRPC (~> 1.0)
     - leveldb-library (~> 1.18)
     - Protobuf (~> 3.1)
-  - FirebaseInstanceID (2.0.8):
-    - FirebaseCore (~> 4.0)
-  - FirebaseRemoteConfig (2.1.0):
-    - FirebaseABTesting (~> 1.0)
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseFirestore/abseil-cpp (0.12.1):
+    - FirebaseCore (~> 5.0)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
     - Protobuf (~> 3.1)
-  - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/Logger (2.1.3):
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
-    - GoogleToolboxForMac/Defines (= 2.1.3)
-  - gRPC (1.8.0):
-    - gRPC-RxLibrary (= 1.8.0)
-    - gRPC/Main (= 1.8.0)
-  - gRPC-Core (1.8.0):
-    - gRPC-Core/Implementation (= 1.8.0)
-    - gRPC-Core/Interface (= 1.8.0)
-  - gRPC-Core/Implementation (1.8.0):
-    - BoringSSL (~> 9.0)
-    - gRPC-Core/Interface (= 1.8.0)
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseRemoteConfig (3.0.0):
+    - FirebaseABTesting (~> 2.0)
+    - FirebaseAnalytics (~> 5.0)
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - Protobuf (~> 3.5)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - gRPC (1.12.0):
+    - gRPC-RxLibrary (= 1.12.0)
+    - gRPC/Main (= 1.12.0)
+  - gRPC-Core (1.12.0):
+    - gRPC-Core/Implementation (= 1.12.0)
+    - gRPC-Core/Interface (= 1.12.0)
+  - gRPC-Core/Implementation (1.12.0):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core/Interface (= 1.12.0)
     - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.8.0)
-  - gRPC-ProtoRPC (1.8.0):
-    - gRPC (= 1.8.0)
-    - gRPC-RxLibrary (= 1.8.0)
+  - gRPC-Core/Interface (1.12.0)
+  - gRPC-ProtoRPC (1.12.0):
+    - gRPC (= 1.12.0)
+    - gRPC-RxLibrary (= 1.12.0)
     - Protobuf (~> 3.0)
-  - gRPC-RxLibrary (1.8.0)
-  - gRPC/Main (1.8.0):
-    - gRPC-Core (= 1.8.0)
-    - gRPC-RxLibrary (= 1.8.0)
+  - gRPC-RxLibrary (1.12.0)
+  - gRPC/Main (1.12.0):
+    - gRPC-Core (= 1.12.0)
+    - gRPC-RxLibrary (= 1.12.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -87,16 +95,16 @@ PODS:
   - "ObjectMapper+Realm (0.5)":
     - ObjectMapper
     - RealmSwift
-  - PromiseKit (4.5.0):
-    - PromiseKit/Foundation (= 4.5.0)
-    - PromiseKit/QuartzCore (= 4.5.0)
-    - PromiseKit/UIKit (= 4.5.0)
-  - PromiseKit/CorePromise (4.5.0)
-  - PromiseKit/Foundation (4.5.0):
+  - PromiseKit (4.5.2):
+    - PromiseKit/Foundation (= 4.5.2)
+    - PromiseKit/QuartzCore (= 4.5.2)
+    - PromiseKit/UIKit (= 4.5.2)
+  - PromiseKit/CorePromise (4.5.2)
+  - PromiseKit/Foundation (4.5.2):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.5.0):
+  - PromiseKit/QuartzCore (4.5.2):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.5.0):
+  - PromiseKit/UIKit (4.5.2):
     - PromiseKit/CorePromise
   - Protobuf (3.5.0)
   - Realm (2.10.2):
@@ -105,7 +113,7 @@ PODS:
   - RealmSwift (2.10.2):
     - Realm (= 2.10.2)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.0.0)
+  - SwiftyJSON (4.1.0)
   - Swinject (2.0.0)
   - SwinjectStoryboard (1.0.0):
     - Swinject (= 2.0.0)
@@ -117,7 +125,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AvatarImageView (= 2.0.3)
-  - Cosmos (~> 11.0)
+  - Cosmos (~> 11.0.3)
   - Crashlytics (~> 3.10.2)
   - Fabric (~> 1.7.7)
   - Firebase/Core
@@ -181,40 +189,40 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AvatarImageView: 25541e2051124e730c7a1b97f5e5b9345fbc1cfc
-  BoringSSL: 84318770d120503ab1a6aaf1df777c5ca053697e
+  BoringSSL: c46efb47593135382bc0934196f16d2f726f5f36
   Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
   Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
   Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
-  Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
-  FirebaseABTesting: d07d0ee833b842d5153549e4c7e2e2cb1c23a3f9
-  FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
-  FirebaseCore: 3c02ec652db3d03fdc8bc6d9154af3e20d64b6f5
-  FirebaseCrash: a7d980468dc8aa2db9792493c3e02722d601f6ab
-  FirebaseFirestore: 0fb0301657759bdd7a4bc37a436e543a86b189ad
-  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
-  FirebaseRemoteConfig: 451fe8e9c43ac1e7a137ad2a42189bfc8c2c3ebc
-  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  gRPC: cc3f797b97bf221a9e535e8e012a6f99b1d7f797
-  gRPC-Core: 250fd60016c4e4c413279f4002679b0e14e7df26
-  gRPC-ProtoRPC: 5b934b29a95b94b0f871d4fc361ff52269476765
-  gRPC-RxLibrary: 7c57a1b2ff2f9cafb0face35bbfa0a326281295d
+  Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
+  FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
+  FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
+  FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
+  FirebaseCrash: 8900571fd763fd5bdda04522ec53da979456e3ce
+  FirebaseFirestore: f686b8e83f3cf8bbc37db6e98e01029a14f01f55
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseRemoteConfig: 3c57e4644bd6976b671ae0b725cd709f198bd1f5
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  gRPC: 9362451032695e2dfb7bafcd3740e3a27939e4ff
+  gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
+  gRPC-ProtoRPC: a1bd56fb1991a8dae4581250d7259eddabb66779
+  gRPC-RxLibrary: 1ed5314e8b38cd6e55c9bfa048387136ae925ce9
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
   "ObjectMapper+Realm": 3188789fb77c189c7a83cb625333a607eb61a08f
-  PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
+  PromiseKit: 743e497a5f505a470d3bbbf4ce0663c1268af0a4
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
   RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   Swinject: 2e964a80d70ab09b3949c99032711f89147bfd60
   SwinjectStoryboard: 8e0d3c0202b64172bdf915d55e8dc83d9c4e7863
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: d3448c0399613cb274ac9be61276aede6b31e015
+PODFILE CHECKSUM: 1bad80a402905b457e52d54b959a7be9cbc9fed3
 
 COCOAPODS: 1.5.3

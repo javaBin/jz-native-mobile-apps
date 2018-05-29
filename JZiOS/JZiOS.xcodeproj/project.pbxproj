@@ -38,6 +38,9 @@
 		508E323B20BDA0500037091E /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E323A20BDA0500037091E /* EventViewController.swift */; };
 		508E323D20BDA7F80037091E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508E323C20BDA7F80037091E /* MapKit.framework */; };
 		508E324020BDA8110037091E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508E323F20BDA8110037091E /* NetworkExtension.framework */; };
+		508E324220BDB42D0037091E /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E324120BDB42D0037091E /* UITextView.swift */; };
+		508E324420BDB4C20037091E /* OpenSourceLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E324320BDB4C20037091E /* OpenSourceLicenseViewController.swift */; };
+		50928ABF20BDBCF900C181E2 /* licenses.html in Resources */ = {isa = PBXBuildFile; fileRef = 50928ABE20BDBCF900C181E2 /* licenses.html */; };
 		5096221320A1F52F0087A200 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5096221220A1F52F0087A200 /* AboutViewController.swift */; };
 		50A3EAF11F690B35009A3E29 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EAF01F690B35009A3E29 /* URLConstants.swift */; };
 		50A3EB301F69C57C009A3E29 /* JZiOS.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 50A3EB2F1F69C57C009A3E29 /* JZiOS.xcdatamodel */; };
@@ -49,6 +52,7 @@
 		50C169511F686F84005E8AC7 /* JZiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C169501F686F84005E8AC7 /* JZiOSTests.swift */; };
 		50C1695C1F686F84005E8AC7 /* JZiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1695B1F686F84005E8AC7 /* JZiOSUITests.swift */; };
 		50C1696D1F688D20005E8AC7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C1696C1F688D20005E8AC7 /* Session.swift */; };
+		50C93CE220BDC93400573760 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C93CE120BDC93400573760 /* AboutTableViewController.swift */; };
 		50D52E641FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D52E631FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift */; };
 		50E02FA61FEA83D0004CD662 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E02FA51FEA83D0004CD662 /* Feedback.swift */; };
 		50FB1987208F9768000C969D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB1986208F9768000C969D /* UIViewController.swift */; };
@@ -103,6 +107,9 @@
 		508E323C20BDA7F80037091E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		508E323E20BDA8110037091E /* JZiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JZiOS.entitlements; sourceTree = "<group>"; };
 		508E323F20BDA8110037091E /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		508E324120BDB42D0037091E /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		508E324320BDB4C20037091E /* OpenSourceLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicenseViewController.swift; sourceTree = "<group>"; };
+		50928ABE20BDBCF900C181E2 /* licenses.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = licenses.html; sourceTree = "<group>"; };
 		5096221220A1F52F0087A200 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		50A3EAF01F690B35009A3E29 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		50A3EB2F1F69C57C009A3E29 /* JZiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JZiOS.xcdatamodel; sourceTree = "<group>"; };
@@ -120,6 +127,7 @@
 		50C1695B1F686F84005E8AC7 /* JZiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JZiOSUITests.swift; sourceTree = "<group>"; };
 		50C1695D1F686F84005E8AC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50C1696C1F688D20005E8AC7 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		50C93CE120BDC93400573760 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		50D52E631FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerImageViewDataSource.swift; sourceTree = "<group>"; };
 		50E02FA51FEA83D0004CD662 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		50FB1986208F9768000C969D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +182,8 @@
 				5096221220A1F52F0087A200 /* AboutViewController.swift */,
 				508E323120BC603C0037091E /* InfoViewController.swift */,
 				508E323A20BDA0500037091E /* EventViewController.swift */,
+				508E324320BDB4C20037091E /* OpenSourceLicenseViewController.swift */,
+				50C93CE120BDC93400573760 /* AboutTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +248,7 @@
 				504CB0482020EC72008CF003 /* UIVIew.swift */,
 				50FB1986208F9768000C969D /* UIViewController.swift */,
 				5042A20C20AB44B700EC7545 /* Request.swift */,
+				508E324120BDB42D0037091E /* UITextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +299,7 @@
 				50C169391F686F83005E8AC7 /* AppDelegate.swift */,
 				50C1693F1F686F83005E8AC7 /* Main.storyboard */,
 				50C169421F686F83005E8AC7 /* Assets.xcassets */,
+				50928ABE20BDBCF900C181E2 /* licenses.html */,
 				50C169441F686F83005E8AC7 /* LaunchScreen.storyboard */,
 				50A3EB2F1F69C57C009A3E29 /* JZiOS.xcdatamodel */,
 				50C169471F686F83005E8AC7 /* Info.plist */,
@@ -459,6 +471,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50928ABF20BDBCF900C181E2 /* licenses.html in Resources */,
 				50C169461F686F83005E8AC7 /* LaunchScreen.storyboard in Resources */,
 				50C169431F686F83005E8AC7 /* Assets.xcassets in Resources */,
 				508E323420BC6DB00037091E /* GoogleService-Info.plist in Resources */,
@@ -630,6 +643,7 @@
 				50183FB41FD0C4E400AE4FA7 /* SessionDetailsViewController.swift in Sources */,
 				5039D00D1FA8F0C700CB9582 /* SessionRepository.swift in Sources */,
 				5042A20D20AB44B700EC7545 /* Request.swift in Sources */,
+				508E324420BDB4C20037091E /* OpenSourceLicenseViewController.swift in Sources */,
 				50C1696D1F688D20005E8AC7 /* Session.swift in Sources */,
 				501DAF412003C3C00052AFFA /* SettingsViewController.swift in Sources */,
 				502A9E121FA21BF2004D1F39 /* SessionListViewController.swift in Sources */,
@@ -641,6 +655,7 @@
 				503C84F11FD2E05600FFF4DF /* SpeakerDetailViewController.swift in Sources */,
 				50E02FA61FEA83D0004CD662 /* Feedback.swift in Sources */,
 				5039D0061FA5B23500CB9582 /* MySessionRepository.swift in Sources */,
+				508E324220BDB42D0037091E /* UITextView.swift in Sources */,
 				50183FAE1FC493A700AE4FA7 /* SessionTableViewCell.swift in Sources */,
 				5039D0031FA530CE00CB9582 /* MySession.swift in Sources */,
 				508E323B20BDA0500037091E /* EventViewController.swift in Sources */,
@@ -653,6 +668,7 @@
 				5096221320A1F52F0087A200 /* AboutViewController.swift in Sources */,
 				50D52E641FDBF3CC0008BEF6 /* SpeakerImageViewDataSource.swift in Sources */,
 				5039D0081FA5E25300CB9582 /* Repository.swift in Sources */,
+				50C93CE220BDC93400573760 /* AboutTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
