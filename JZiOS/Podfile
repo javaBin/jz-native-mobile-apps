@@ -19,8 +19,11 @@ target 'JZiOS' do
   pod 'AvatarImageView', '2.0.3'
   pod 'Toast-Swift', '~> 2.0.0'
   pod 'Firebase/Core'
+  pod 'Firebase/RemoteConfig'
   pod 'Firebase/Crash'
   pod 'Firebase/Firestore'
+  pod 'Fabric', '~> 1.7.7'
+  pod 'Crashlytics', '~> 3.10.2'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   
   # Uncomment if you use SwinjectStoryboard

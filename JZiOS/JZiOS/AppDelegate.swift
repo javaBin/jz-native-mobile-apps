@@ -5,6 +5,7 @@ import CoreData
 import Swinject
 import SwinjectStoryboard
 import SVProgressHUD
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             c.speakerRepository = r.resolve(SpeakerRepository.self, name: "speakerRepository")
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
         }
-        
+                
         container.storyboardInitCompleted(SettingsViewController.self) { r, c in
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
             c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
@@ -50,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
+        FirebaseApp.configure()
+        let _ = RemoteConfigValues.sharedInstance
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()

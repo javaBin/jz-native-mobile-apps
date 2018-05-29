@@ -394,4 +394,9 @@
     <style name="Theme.JZSched.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="Theme.JZSched.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <style name="SplashTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/jzappsplash</item>
+    </style>
 </resources>

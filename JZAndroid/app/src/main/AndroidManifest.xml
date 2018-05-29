@@ -82,6 +82,12 @@
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/Theme.JZSched.Schedule"/>
+        <activity
+            android:name=".ui.SplashScreenActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/SplashTheme.Base"/>
         <!--
  This activity alias lets us change the main entry point without breaking launcher
      shortcuts. DO NOT change its android:name attribute.
@@ -89,7 +95,7 @@
         <activity-alias
             android:name=".Launcher"
             android:label="@string/app_name"
-            android:targetActivity=".schedule.ScheduleActivity">
+            android:targetActivity=".ui.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
