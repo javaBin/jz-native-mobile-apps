@@ -34,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.ViewSwitcher;
 
 import io.doist.recyclerviewext.sticky_headers.StickyHeadersLinearLayoutManager;
+import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.archframework.UpdatableView;

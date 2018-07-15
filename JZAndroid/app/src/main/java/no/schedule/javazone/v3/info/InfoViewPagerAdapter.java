@@ -34,11 +34,11 @@ public class InfoViewPagerAdapter extends FragmentPagerAdapter {
 
     private final static String TAG = makeLogTag(InfoViewPagerAdapter.class);
 
-    private final static int NUM_PAGES = 4;
+    private final static int NUM_PAGES = 3;
     private final static int EVENT_INDEX = 0;
     private final static int TRAVEL_INDEX = 1;
-    private final static int SETTINGS_INDEX = 2;
-    private final static int ABOUT_INDEX = 3;
+    private final static int SETTINGS_INDEX = 1;
+    private final static int ABOUT_INDEX = 2;
 
     private Context mContext;
 
@@ -69,9 +69,9 @@ public class InfoViewPagerAdapter extends FragmentPagerAdapter {
             case EVENT_INDEX:
                 mFragments[position] = new EventFragment();
                 break;
-            case TRAVEL_INDEX:
-                mFragments[position] = new TravelFragment();
-                break;
+//            case TRAVEL_INDEX:
+//                mFragments[position] = new TravelFragment();
+//                break;
             case ABOUT_INDEX:
                 mFragments[position] = new AboutFragment();
                 break;
@@ -89,12 +89,12 @@ public class InfoViewPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
-    public void updateTravelInfo(TravelInfo travelInfo) {
-        BaseInfoFragment infoFragment = getItem(TRAVEL_INDEX);
-        if (infoFragment instanceof TravelFragment) {
-            ((TravelFragment) infoFragment).updateInfo(travelInfo);
-        }
-    }
+//    public void updateTravelInfo(TravelInfo travelInfo) {
+//        BaseInfoFragment infoFragment = getItem(TRAVEL_INDEX);
+//        if (infoFragment instanceof TravelFragment) {
+//            ((TravelFragment) infoFragment).updateInfo(travelInfo);
+//        }
+//    }
 
     public void updateAboutInfo(AboutInfo aboutInfo) {
         BaseInfoFragment infoFragment = getItem(ABOUT_INDEX);

@@ -3,15 +3,14 @@ import Foundation
 
 struct JZURL {
     private struct ProdUrls {
-        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2017"
-        static let DevNullUrl = "https://javazone.no/devnull/server"
+        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2018"
+        static let DevNullUrl = "https://devnull.javazone.no"
     }
     
     private struct DevUrls {
-        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2016"
-        static let DevNullUrl = "https://test.javazone.no/devnull/server"
-    }
-    
+        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2017"
+        static let DevNullUrl = "https://devnull.javazone.no"
+    } 
     
     static var GetAllSessions: String {
         #if DEBUG

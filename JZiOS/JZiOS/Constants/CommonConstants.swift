@@ -3,8 +3,8 @@ import UserNotifications
 import AvatarImageView
 
 public struct Common {
-    static let JavaZone2016Dates = ["06.09.2016", "07.09.2016", "08.09.2016"]
     static let JavaZone2017Dates = ["13.09.2017", "14.09.2017"]
+    static let JavaZone2018Dates = ["12.09.2018", "13.09.2018"]
 }
 
 public struct CommonDate {
@@ -50,9 +50,9 @@ public struct CommonDate {
     
     static func conferenceDates() -> [String] {
         #if DEBUG
-            return Common.JavaZone2016Dates
-        #else
             return Common.JavaZone2017Dates
+        #else
+            return Common.JavaZone2018Dates
         #endif
     }
 }

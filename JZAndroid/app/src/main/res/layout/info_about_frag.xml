@@ -36,6 +36,7 @@
             android:id="@+id/additionalInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:cardTitle="@string/faq_additional_info_title" />
 
         <Button
@@ -50,6 +51,7 @@
             style="@style/Settings.LinkButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="@string/about_privacy_policy" />
 
         <Button

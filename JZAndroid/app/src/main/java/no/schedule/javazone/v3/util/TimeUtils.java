@@ -2,6 +2,7 @@ package no.schedule.javazone.v3.util;
 
 
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.text.format.DateUtils;

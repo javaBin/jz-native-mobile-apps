@@ -16,7 +16,10 @@ class InfoViewController: UIViewController {
         settingsContainer.isHidden = true
         aboutContainer.isHidden = true
         
+        infoSegmentedControl.removeSegment(at: 1, animated: false)
+        infoSegmentedControl.removeSegment(at: 2, animated: false)
         infoSegmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+        
     }
     
     
@@ -28,7 +31,7 @@ class InfoViewController: UIViewController {
             travelContainer.isHidden = true
             settingsContainer.isHidden = true
             aboutContainer.isHidden = true
-        case 3:
+        case 1:
             eventContainer.isHidden = true
             travelContainer.isHidden = true
             settingsContainer.isHidden = true

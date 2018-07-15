@@ -83,7 +83,7 @@ public class SessionsHelper {
                         sp.edit().putBoolean(SettingsUtils.PREF_SKIP_BOOKMARK_HINTS, true).apply();
                     }
                 })
-                .setActionTextColor(ContextCompat.getColor(view.getContext(), R.color.aqua_marine))
+                .setActionTextColor(ContextCompat.getColor(view.getContext(), R.color.jz_orange))
                 .show();
     }
 }
