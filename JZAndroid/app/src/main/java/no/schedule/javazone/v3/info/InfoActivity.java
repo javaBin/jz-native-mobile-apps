@@ -27,7 +27,7 @@ public class InfoActivity extends BaseActivity {
     mPresenter = new InfoPresenter(this, infoPagerFragment);
     mPresenter.initEventInfo();
     mPresenter.initAboutInfo();
-    mPresenter.initTravelInfo();
+    //mPresenter.initTravelInfo();
     infoPagerFragment.setPresenter(mPresenter);
   }
 

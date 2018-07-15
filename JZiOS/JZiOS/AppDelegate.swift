@@ -5,11 +5,17 @@ import CoreData
 import Swinject
 import SwinjectStoryboard
 import SVProgressHUD
+import Firebase
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
     
     let container = Container() { container in
         // Repositories
@@ -35,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             c.speakerRepository = r.resolve(SpeakerRepository.self, name: "speakerRepository")
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
         }
-        
+                
         container.storyboardInitCompleted(SettingsViewController.self) { r, c in
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
             c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
@@ -50,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
+        FirebaseApp.configure()
+        let _ = RemoteConfigValues.sharedInstance
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()

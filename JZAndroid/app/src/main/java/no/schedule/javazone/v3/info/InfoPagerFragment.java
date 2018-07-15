@@ -140,7 +140,7 @@ public class InfoPagerFragment extends Fragment implements InfoContract.View {
 
     @Override
     public void showTravelInfo(TravelInfo travelInfo) {
-        mViewPagerAdapter.updateTravelInfo(travelInfo);
+        // mViewPagerAdapter.updateTravelInfo(travelInfo);
     }
 
     @Override

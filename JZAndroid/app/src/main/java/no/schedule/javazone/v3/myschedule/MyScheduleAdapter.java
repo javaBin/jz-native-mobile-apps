@@ -55,6 +55,7 @@ class MyScheduleAdapter extends Adapter<ViewHolder> implements StickyHeaders, St
     private static final List<DaySeparator> DAY_SEPARATORS;
 
     static {
+
         DAY_SEPARATORS = new ArrayList<>(Config.CONFERENCE_DAYS.length + 1);
 
         for (int i = 0; i < Config.CONFERENCE_DAYS.length; i++) {

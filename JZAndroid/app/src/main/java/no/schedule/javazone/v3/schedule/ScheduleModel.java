@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import no.schedule.javazone.v3.BuildConfig;
 import no.schedule.javazone.v3.Config;
 import no.schedule.javazone.v3.archframework.Model;
 import no.schedule.javazone.v3.archframework.QueryEnum;

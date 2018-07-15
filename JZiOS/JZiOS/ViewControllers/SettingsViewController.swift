@@ -26,11 +26,37 @@ class SettingsViewController: UITableViewController {
                 // Notifications not allowed
             }
         }
+        
+        
+        //notification trigger can be based on time, calendar or location
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval:2.0, repeats: false)
+        
+        //create request to display
+        let request = UNNotificationRequest(identifier: "ContentIdentifier", content: createNotificationContent(), trigger: trigger)
+        
+        //add request to notification center
+        center.add(request) { (error) in
+            if error != nil {
+                print("error \(String(describing: error))")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func createNotificationContent() -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = " Jurassic Park"
+        content.subtitle = "Lunch"
+        content.body = "Its lunch time at the park, please join us for a dinosaur feeding"
+        content.sound = UNNotificationSound.default()
+        
+        
+        
+        return content
     }
     
 
