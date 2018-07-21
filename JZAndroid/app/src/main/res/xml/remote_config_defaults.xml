@@ -47,11 +47,11 @@ the License.
     </entry>
     <entry>
         <key>default_wifi_network</key>
-        <value>schidliy</value>
+        <value>JavaZone</value>
     </entry>
     <entry>
         <key>default_wifi_password</key>
-        <value>dope</value>
+        <empty/>
     </entry>
     <entry>
         <key>event_sandbox_description</key>
@@ -67,7 +67,7 @@ the License.
     </entry>
     <entry>
         <key>event_after_hours_description</key>
-        <value><![CDATA[After sessions end for the day, stick around Shoreline for two evenings filled with food, drinks and fun. We’ll throw a party on the evening of the 17th, and host a concert in the Amphitheatre on the 18th.]]></value>
+        <value><![CDATA[More information will be pushed shortly to your device]]></value>
     </entry>
     <entry>
         <key>travel_shuttle_service_description</key>

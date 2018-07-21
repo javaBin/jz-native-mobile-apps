@@ -1,12 +1,8 @@
 package no.schedule.javazone.v3.sync;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +12,6 @@ import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.io.JSONHandler;
 import no.schedule.javazone.v3.io.model.Session;
 import no.schedule.javazone.v3.provider.ScheduleContract;
-import no.schedule.javazone.v3.ui.widget.MultiSwipeRefreshLayout;
 import no.schedule.javazone.v3.util.LogUtils;
 import no.schedule.javazone.v3.util.SettingsUtils;
 import retrofit2.Call;
@@ -91,7 +86,7 @@ public class SessionApiWebService implements Callback<SessionResult> {
        //SettingsUtils.setMarkSessionLoad(context, true);
         SettingsUtils.markDataBootstrapDone(context);
 
-        context.getContentResolver().notifyChange(Uri.parse(ScheduleContract.CONTENT_AUTHORITY),
+        context.getContentResolver().notifyChange(ScheduleContract.BASE_CONTENT_URI,
             null, false);
 
       } catch(IOException ex) {
