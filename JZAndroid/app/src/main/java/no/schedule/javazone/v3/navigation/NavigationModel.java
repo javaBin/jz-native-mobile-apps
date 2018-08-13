@@ -21,6 +21,7 @@ import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.archframework.Model;
 import no.schedule.javazone.v3.archframework.QueryEnum;
 import no.schedule.javazone.v3.archframework.UserActionEnum;
+import no.schedule.javazone.v3.digitalpass.DigitalPassActivity;
 import no.schedule.javazone.v3.info.InfoActivity;
 import no.schedule.javazone.v3.myschedule.MyScheduleActivity;
 import no.schedule.javazone.v3.schedule.ScheduleActivity;
@@ -97,6 +98,8 @@ public class NavigationModel implements Model<NavigationModel.NavigationQueryEnu
 //                R.drawable.ic_nav_feed, FeedActivity.class, true),
 //        MAP(R.id.map_nav_item, R.string.navdrawer_item_map, R.drawable.ic_nav_map,
 //                MapActivity.class, true),
+        DIGITAL_PASS(R.id.digital_pass_nav_item, R.string.navdrawer_item_digital_pass,
+                R.drawable.ic_badge_pickup, DigitalPassActivity.class, true),
         INFO(R.id.info_nav_item, R.string.navdrawer_item_info,
                 R.drawable.ic_nav_info, InfoActivity.class, true),
         INVALID(12, 0, 0, null);
