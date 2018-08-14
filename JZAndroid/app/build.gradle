@@ -111,93 +111,92 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:support-v4:26.1.0'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
-    compile "com.android.support:cardview-v7:25.3.1"
-    compile "com.android.support:support-v13:25.3.1"
-    compile "com.android.support:recyclerview-v7:25.3.1"
-    compile "com.android.support:preference-v7:25.3.1"
-    compile "com.android.support:transition:25.3.1"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.crashlytics.sdk.android:crashlytics:2.9.3'
+    api 'com.android.support:appcompat-v7:26.1.0'
+    api 'com.android.support:design:26.1.0'
+    api 'com.android.support:support-vector-drawable:26.1.0'
+    api "com.android.support:cardview-v7:26.1.0"
+    api "com.android.support:support-v13:26.1.0"
+    api "com.android.support:recyclerview-v7:26.1.0"
+    api "com.android.support:preference-v7:26.1.0"
+    api "com.android.support:transition:26.1.0"
+    api 'com.android.support.constraint:constraint-layout:1.1.2'
+    api 'com.android.support:multidex:1.0.3'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.crashlytics.sdk.android:crashlytics:2.9.4'
 
-    compile project(':JavaZoneApiClient')
+    implementation project(':JavaZoneApiClient')
 
     // JSON utility library.
-    compile 'com.google.code.gson:gson:2.8.0'
+    api 'com.google.code.gson:gson:2.8.0'
 
     // Glide library, used to handle asynchronous loading and caching of images.
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    api 'com.github.bumptech.glide:glide:3.7.0'
 
 
-    compile('com.google.api-client:google-api-client:1.22.0') {
+    api('com.google.api-client:google-api-client:1.22.0') {
         // Dependency org.apache.httpcomponents:httpclient:4.0.1
         // conflicts with the internal version provided by Android.
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
     }
 
     // Google Play services split client libs.
-    compile "com.google.android.gms:play-services-analytics:11.0.2"
-    compile "com.google.android.gms:play-services-auth:11.0.2"
-    compile "com.google.android.gms:play-services-maps:11.0.2"
-    compile "com.google.android.gms:play-services-plus:11.0.2"
+    api "com.google.android.gms:play-services-analytics:16.0.1"
+    api "com.google.android.gms:play-services-auth:16.0.0"
+    api "com.google.android.gms:play-services-maps:15.0.1"
+    api "com.google.android.gms:play-services-plus:15.0.1"
 
 
-    compile files('../third_party/disklrucache/libs/disklrucache-2.0.2.jar')
-    compile files('../third_party/basic-http-client/libs/basic-http-client-android-0.88.jar')
+    api files('../third_party/disklrucache/libs/disklrucache-2.0.2.jar')
+    api files('../third_party/basic-http-client/libs/basic-http-client-android-0.88.jar')
     // SVG processor for the Conference Map overlay.
-    compile(name: 'svg-android-2.0.7-20150515.214425-1', ext: 'jar')
+    api(name: 'svg-android-2.0.7-20150515.214425-1', ext: 'jar')
 
-    compile(name: 'StickyHeaders-release', ext: 'aar')
+    api(name: 'StickyHeaders-release', ext: 'aar')
 
     // Google Maps Android API utility library
-    compile('com.google.maps.android:android-maps-utils:0.4+') {
+    api('com.google.maps.android:android-maps-utils:0.4+') {
         exclude group: "com.google.android.gms"
     }
 
     // Added to resolve conflicts between the app build and the test build. The app build resolves
     // the jsr305 dependency to version 1.3.9, but in the test build the espresso-core dependency
-    // resolves jsr305 to 2.0.1. Declaring a compile dependency on jsr305 2.0.1 will ensure 2.0.1 or
+    // resolves jsr305 to 2.0.1. Declaring a implementation dependency on jsr305 2.0.1 will ensure 2.0.1 or
     // greater is used for both app and test builds.
-    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    api 'com.google.code.findbugs:jsr305:3.0.2'
 
-    compile 'com.google.android:flexbox:0.2.6'
+    api 'com.google.android:flexbox:0.2.6'
 
-    compile('uk.co.chrisjenx:calligraphy:2.2.0') {
+    api('uk.co.chrisjenx:calligraphy:2.2.0') {
         exclude group: 'com.android.support:design'
     }
-    compile 'com.airbnb.android:lottie:2.0.0-beta4'
+    api 'com.airbnb.android:lottie:2.0.0-beta4'
 
     // Firebase libraries
-    compile "com.google.firebase:firebase-core:11.0.2"
-    compile "com.google.firebase:firebase-messaging:11.0.2"
-    compile "com.google.firebase:firebase-appindexing:11.0.2"
-    compile "com.google.firebase:firebase-database:11.0.2"
-    compile "com.google.firebase:firebase-config:11.0.2"
-    compile "com.google.firebase:firebase-auth:11.0.2"
-    compile "com.google.firebase:firebase-config:11.0.2"
+    api "com.google.firebase:firebase-core:16.0.1"
+    api "com.google.firebase:firebase-messaging:17.3.0"
+    api "com.google.firebase:firebase-appindexing:16.0.1"
+    api "com.google.firebase:firebase-database:16.0.1"
+    api "com.google.firebase:firebase-config:16.0.0"
+    api "com.google.firebase:firebase-auth:16.0.3"
+    api "com.google.firebase:firebase-config:16.0.0"
 
-    compile "org.apache.commons:commons-lang3:3.5"
+    api "org.apache.commons:commons-lang3:3.5"
 
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.hamcrest:hamcrest-core:1.3'
-    testCompile 'org.mockito:mockito-core:1.10.8'
-    testCompile 'org.powermock:powermock-api-mockito:1.6.4'
-    testCompile 'org.powermock:powermock-module-junit4-rule-agent:1.6.4'
-    testCompile 'org.powermock:powermock-module-junit4-rule:1.6.4'
-    testCompile 'org.powermock:powermock-module-junit4:1.6.4'
-    testCompile 'org.json:json:20090211'
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'org.hamcrest:hamcrest-core:1.3'
+    androidTestImplementation 'org.mockito:mockito-core:1.10.19'
+    androidTestImplementation 'org.powermock:powermock-api-mockito:1.6.4'
+    androidTestImplementation 'org.powermock:powermock-module-junit4-rule-agent:1.6.4'
+    androidTestImplementation 'org.powermock:powermock-module-junit4-rule:1.6.4'
+    androidTestImplementation 'org.powermock:powermock-module-junit4:1.6.4'
+    androidTestImplementation 'org.json:json:20090211'
 }
 
 apply plugin: 'com.google.gms.google-services'
