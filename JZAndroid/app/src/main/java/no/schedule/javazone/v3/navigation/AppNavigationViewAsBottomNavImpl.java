@@ -16,6 +16,7 @@ package no.schedule.javazone.v3.navigation;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -63,7 +64,11 @@ public class AppNavigationViewAsBottomNavImpl extends AppNavigationViewAbstractI
         final NavigationItemEnum navItem = NavigationItemEnum.getById(item.getItemId());
         if (navItem != null && navItem != mSelfItem) {
             itemSelected(navItem);
-            AnalyticsHelper.sendEvent("primary nav", "click", item.getTitle().toString());
+
+            if(item != null && !TextUtils.isEmpty(item.getTitle())) {
+                AnalyticsHelper.sendEvent("primary nav", "click", item.getTitle().toString());
+            }
+
             // Return true so that BottomNavigationView updates itself to show the new item
             return true;
         }
