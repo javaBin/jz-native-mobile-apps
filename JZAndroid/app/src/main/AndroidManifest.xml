@@ -74,6 +74,7 @@
             android:exported="true"
             android:label="@string/title_my_schedule"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JZSched.MySchedule">
         </activity>
         <activity
@@ -81,12 +82,14 @@
             android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JZSched.Schedule"/>
         <activity
             android:name=".ui.SplashScreenActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme.Base"/>
         <!--
  This activity alias lets us change the main entry point without breaking launcher
@@ -107,6 +110,7 @@
             android:name=".session.SessionDetailActivity"
             android:exported="true"
             android:label="@string/title_session_detail"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JZSched.SessionDetails">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -134,6 +138,7 @@
             android:name=".feedback.SessionFeedbackActivity"
             android:exported="false"
             android:label="@string/title_session_feedback"
+            android:screenOrientation="portrait"
             android:parentActivityName=".myschedule.MyScheduleActivity"
             android:theme="@style/Theme.JZSched.Feedback"
             android:windowSoftInputMode="adjustPan">
@@ -198,6 +203,7 @@
         <activity
             android:name=".info.InfoActivity"
             android:label="@string/title_activity_info"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JZSched">
         </activity>
     </application>
