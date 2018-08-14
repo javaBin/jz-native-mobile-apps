@@ -120,7 +120,7 @@ public class SessionDetailFragment extends Fragment implements
 
     private ImageView mShareButton;
 
-    private ImageView mMapButton;
+    //private ImageView mMapButton;
 
     private NestedScrollView mScrollView;
 
@@ -276,13 +276,13 @@ public class SessionDetailFragment extends Fragment implements
                 getActivity().onNavigateUp();
             }
         });
-        mMapButton = (ImageView) mToolbar.findViewById(R.id.map);
-        mMapButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendUserAction(SessionDetailUserActionEnum.SHOW_MAP, null);
-            }
-        });
+        //mMapButton = (ImageView) mToolbar.findViewById(R.id.map);
+        //mMapButton.setOnClickListener(new OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        sendUserAction(SessionDetailUserActionEnum.SHOW_MAP, null);
+        //    }
+        //});
         mShareButton = (ImageView) mToolbar.findViewById(R.id.share);
         mShareButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -377,10 +377,11 @@ public class SessionDetailFragment extends Fragment implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final int itemId = item.getItemId();
-        if (itemId == R.id.menu_map_room) {
-            sendUserAction(SessionDetailUserActionEnum.SHOW_MAP, null);
-            return true;
-        } else if (itemId == R.id.menu_share) {
+        //if (itemId == R.id.menu_map_room) {
+        //    sendUserAction(SessionDetailUserActionEnum.SHOW_MAP, null);
+        //    return true;
+        //} else
+        if (itemId == R.id.menu_share) {
             sendUserAction(SessionDetailUserActionEnum.SHOW_SHARE, null);
             return true;
         }
@@ -524,7 +525,7 @@ public class SessionDetailFragment extends Fragment implements
 
     private void setToolbarTint(ColorStateList tintList) {
         mBackButton.setImageTintList(tintList);
-        mMapButton.setImageTintList(tintList);
+        //mMapButton.setImageTintList(tintList);
         mShareButton.setImageTintList(tintList);
     }
 
