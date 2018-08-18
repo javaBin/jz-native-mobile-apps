@@ -521,6 +521,7 @@ public class SessionDetailFragment extends Fragment implements
 //                R.color.theme_primary));
         mPhotoView.setBackgroundColor(getContext().getResources().getColor(
                 R.color.theme_primary));
+        mPhotoView.setImageResource(R.drawable.ic_logo);
     }
 
     private void setToolbarTint(ColorStateList tintList) {
