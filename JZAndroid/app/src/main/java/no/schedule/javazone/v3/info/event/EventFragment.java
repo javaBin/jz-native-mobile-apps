@@ -43,7 +43,7 @@ public class EventFragment extends BaseInfoFragment<EventInfo> implements EventV
     private TextView mWiFiPasswordText;
     private Button mWiFiSave;
 //    private EventView mSandboxEventContent;
-    private EventView mSessionEventContent;
+//    private EventView mSessionEventContent;
 //    private EventView mOfficeHoursEventContent;
     private EventView mAfterHoursEventContent;
 
@@ -64,7 +64,7 @@ public class EventFragment extends BaseInfoFragment<EventInfo> implements EventV
             }
         });
 //        mSandboxEventContent = (EventView) root.findViewById(R.id.sandbox_event);
-        mSessionEventContent = (EventView) root.findViewById(R.id.codelabs_event);
+//        mSessionEventContent = (EventView) root.findViewById(R.id.codelabs_event);
 //        mOfficeHoursEventContent = (EventView) root.findViewById(R.id.officehours_event);
         mAfterHoursEventContent = (EventView) root.findViewById(R.id.afterhours_event);
 //        mSandboxEventContent.setEventViewClickListener(this);
