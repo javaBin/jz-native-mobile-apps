@@ -60,4 +60,12 @@ public class DigitalPassFragment extends Fragment{
             }
         });
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (cameraSource != null) {
+            cameraSource.release();
+        }
+    }
 }
