@@ -102,6 +102,7 @@
             <!--app:eventIcon="@drawable/ic_sandbox"-->
             <!--app:eventTitle="@string/event_sandbox_title" />-->
 
+        <!--
         <no.schedule.javazone.v3.info.event.EventView
             android:id="@+id/codelabs_event"
             android:layout_width="match_parent"
@@ -112,7 +113,7 @@
             app:sessionsText="@string/view_sessions_text"
             app:mapLinkUri="@string/view_codelabs_map_url"
             app:scheduleFilterTag="@string/codelabs_filter_tag" />
-
+        -->
         <!--<no.schedule.javazone.v3.info.event.EventView-->
             <!--android:id="@+id/officehours_event"-->
             <!--android:layout_width="match_parent"-->

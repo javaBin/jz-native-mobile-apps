@@ -93,7 +93,8 @@ class MyScheduleAdapter extends Adapter<ViewHolder> implements StickyHeaders, St
             // Add the items to our list, interleaving separators as we go
             long separatorTime = DAY_SEPARATORS.get(day).mStartTime;
             for (ScheduleItem item : items) {
-                if (item.startTime >= separatorTime) {
+                // We need to iterate here in case the first day is empty
+                while (item.startTime >= separatorTime && day < DAY_SEPARATORS.size()) {
                     // add the separator first
                     newData.add(new SeparatorSpacer());
                     newData.add(DAY_SEPARATORS.get(day));
