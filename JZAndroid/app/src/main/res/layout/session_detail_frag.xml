@@ -100,6 +100,7 @@
                     android:color="@color/session_detail_toolbar_text_tint_normal"
                     />
 
+                <!--
                 <ImageView
                     android:id="@+id/map"
                     android:layout_width="?actionBarSize"
@@ -109,6 +110,7 @@
                     android:duplicateParentState="true"
                     android:scaleType="center"
                     app:srcCompat="@drawable/ic_action_map" />
+                    -->
 
                 <ImageView
                     android:id="@+id/share"
