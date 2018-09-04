@@ -7,14 +7,14 @@ public class Feedback implements Serializable {
   private int relevance;
   private int content;
   private int quality;
-  private String comment;
+  private String comments;
 
   public Feedback(int overall, int relevance, int content, int quality, String comment) {
     this.overall = overall;
     this.relevance = relevance;
     this.content = content;
     this.quality = quality;
-    this.comment = comment;
+    this.comments = comment;
   }
 
   public int getOverall() {
@@ -49,9 +49,9 @@ public class Feedback implements Serializable {
     this.quality = quality;
   }
 
-  public String getComment() { return comment; }
+  public String getComments() { return comments; }
 
-  public void setComment(String f) {
-    this.comment = f;
+  public void setComments(String f) {
+    this.comments = f;
   }
 }
