@@ -25,8 +25,8 @@ android {
         applicationId "no.schedule.javazone.v3"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 5
-        versionName "5"
+        versionCode 6
+        versionName "6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
