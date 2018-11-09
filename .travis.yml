@@ -19,8 +19,8 @@ matrix:
         components:
           - tools
           - platform-tools
-          - build-tools-25.0.3
-          - android-25
+          - build-tools-26.0.2
+          - android-26
           - extra-google-m2repository
           - extra-android-m2repository
         licenses:
@@ -35,7 +35,7 @@ matrix:
         - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
       script:
         - echo yes | sdkmanager "tools"
-        - echo yes | sdkmanager "platforms;android-25" # Latest platform required by SDK tools
+        - echo yes | sdkmanager "platforms;android-26" # Latest platform required by SDK tools
         - echo yes | sdkmanager "extras;android;m2repository"
         - echo yes | sdkmanager "extras;google;m2repository"
         - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
@@ -43,10 +43,11 @@ matrix:
         - ./gradlew build
 
     - language: swift
-      osx_image: xcode9
+      osx_image: xcode10.1
       before_script:
         - cd JZiOS
         - pod update
+        - pod init
         - pod install
       script:
         - xcodebuild clean build -sdk iphonesimulator CODE_SIGN_IDENTITY="" -workspace JZiOS.xcworkspace -scheme JZiOS ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
