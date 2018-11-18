@@ -67,15 +67,23 @@ public class FeedbackApiHelper
   public Callback retrofitCallBack = new Callback() {
     @Override
     public void onResponse(Call call, Response response) {
-      Toast.makeText(context,
-          "Thank you for the feedback!",
-          Toast.LENGTH_SHORT).show();
+
+      if(response.isSuccessful()) {
+        Toast.makeText(context,
+                "Thank you for the feedback!",
+                Toast.LENGTH_SHORT).show();
+      } else {
+        Toast.makeText(context,
+                "Vote failed! Please try again",
+                Toast.LENGTH_SHORT).show();
+      }
+
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
       Toast.makeText(context,
-          "Thank you for the feedback!",
+          "Vote failed please try again",
           Toast.LENGTH_SHORT).show();
     }
   };

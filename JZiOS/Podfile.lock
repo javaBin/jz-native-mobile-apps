@@ -1,107 +1,140 @@
 PODS:
   - Alamofire (4.7.3)
-  - AvatarImageView (2.0.3)
-  - Cosmos (11.0.3)
-  - Crashlytics (3.10.5):
-    - Fabric (~> 1.7.9)
-  - Fabric (1.7.9)
-  - Firebase/Core (5.4.0):
+  - AvatarImageView (2.2.0)
+  - Cosmos (17.0.0)
+  - Crashlytics (3.11.1):
+    - Fabric (~> 1.8.1)
+  - Fabric (1.8.2)
+  - Firebase/Core (5.12.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.0.1)
-  - Firebase/CoreOnly (5.4.0):
-    - FirebaseCore (= 5.0.5)
-  - Firebase/Crash (5.4.0):
+    - FirebaseAnalytics (= 5.3.0)
+  - Firebase/CoreOnly (5.12.0):
+    - FirebaseCore (= 5.1.7)
+  - Firebase/Crash (5.12.0):
     - Firebase/Core
-    - FirebaseCrash (= 3.0.0)
-  - Firebase/RemoteConfig (5.4.0):
+    - FirebaseCrash (= 3.1.1)
+  - Firebase/RemoteConfig (5.12.0):
     - Firebase/Core
-    - FirebaseRemoteConfig (= 3.0.0)
+    - FirebaseRemoteConfig (= 3.1.0)
   - FirebaseABTesting (2.0.0):
     - FirebaseCore (~> 5.0)
     - Protobuf (~> 3.5)
-  - FirebaseAnalytics (5.0.1):
-    - FirebaseCore (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseAnalytics (5.3.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleAppMeasurement (~> 5.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.0.5):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseCrash (3.0.0):
-    - FirebaseAnalytics (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
+  - FirebaseCore (5.1.7):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseCrash (3.1.1):
+    - FirebaseAnalytics (~> 5.1)
+    - FirebaseInstanceID (~> 3.2)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - Protobuf (~> 3.5)
-  - FirebaseInstanceID (3.1.1):
-    - FirebaseCore (~> 5.0)
-  - FirebaseRemoteConfig (3.0.0):
+  - FirebaseInstanceID (3.3.0):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebaseRemoteConfig (3.1.0):
     - FirebaseABTesting (~> 2.0)
-    - FirebaseAnalytics (~> 5.0)
-    - FirebaseCore (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - FirebaseAnalytics (~> 5.3)
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleUtilities/Environment (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - Protobuf (~> 3.5)
+  - GoogleAppMeasurement (5.3.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
   - GoogleToolboxForMac/Defines (2.1.4)
   - GoogleToolboxForMac/Logger (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - ObjectMapper (2.2.9)
+  - GoogleUtilities/AppDelegateSwizzler (5.3.4):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.3.4)
+  - GoogleUtilities/Logger (5.3.4):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.3.4):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.3.4):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.3.4)"
+  - GoogleUtilities/Reachability (5.3.4):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.3.4):
+    - GoogleUtilities/Logger
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - ObjectMapper (3.3.0)
   - "ObjectMapper+Realm (0.6)":
     - ObjectMapper
     - RealmSwift
-  - PromiseKit (4.5.2):
-    - PromiseKit/Foundation (= 4.5.2)
-    - PromiseKit/QuartzCore (= 4.5.2)
-    - PromiseKit/UIKit (= 4.5.2)
-  - PromiseKit/CorePromise (4.5.2)
-  - PromiseKit/Foundation (4.5.2):
+  - PromiseKit (6.5.2):
+    - PromiseKit/CorePromise (= 6.5.2)
+    - PromiseKit/Foundation (= 6.5.2)
+    - PromiseKit/UIKit (= 6.5.2)
+  - PromiseKit/CorePromise (6.5.2)
+  - PromiseKit/Foundation (6.5.2):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.5.2):
+  - PromiseKit/UIKit (6.5.2):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.5.2):
-    - PromiseKit/CorePromise
-  - Protobuf (3.6.0)
-  - Realm (2.10.2):
-    - Realm/Headers (= 2.10.2)
-  - Realm/Headers (2.10.2)
-  - RealmSwift (2.10.2):
-    - Realm (= 2.10.2)
+  - Protobuf (3.6.1)
+  - Realm (3.11.1):
+    - Realm/Headers (= 3.11.1)
+  - Realm/Headers (3.11.1)
+  - RealmSwift (3.11.1):
+    - Realm (= 3.11.1)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.1.0)
-  - Swinject (2.0.0)
-  - SwinjectStoryboard (1.0.0):
-    - Swinject (= 2.0.0)
-  - Toast-Swift (2.0.0)
-  - XCGLogger (4.0.0):
-    - XCGLogger/Core (= 4.0.0)
-  - XCGLogger/Core (4.0.0)
+  - SwiftyJSON (4.2.0)
+  - Swinject (2.5.0)
+  - SwinjectStoryboard (2.1.0):
+    - Swinject (~> 2.5)
+  - Toast-Swift (4.0.0)
+  - XCGLogger (6.1.0):
+    - XCGLogger/Core (= 6.1.0)
+  - XCGLogger/Core (6.1.0):
+    - ObjcExceptionBridging
 
 DEPENDENCIES:
-  - Alamofire (~> 4.5)
-  - AvatarImageView (= 2.0.3)
-  - Cosmos (~> 11.0.3)
-  - Crashlytics (~> 3.10.2)
-  - Fabric (~> 1.7.7)
+  - Alamofire
+  - AvatarImageView
+  - Cosmos
+  - Crashlytics
+  - Fabric
   - Firebase/Core
   - Firebase/Crash
   - Firebase/RemoteConfig
-  - ObjectMapper (~> 2.2)
-  - "ObjectMapper+Realm (~> 0.5)"
-  - PromiseKit (~> 4.4)
-  - Realm (= 2.10.2)
-  - RealmSwift (= 2.10.2)
+  - ObjectMapper
+  - "ObjectMapper+Realm"
+  - PromiseKit
+  - Realm
+  - RealmSwift
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
-  - SwiftyJSON (~> 4.0)
-  - Swinject (~> 2.0.0)
-  - SwinjectStoryboard (~> 1.0.0)
-  - Toast-Swift (~> 2.0.0)
-  - XCGLogger (~> 4.0.0)
+  - SwiftyJSON
+  - Swinject
+  - SwinjectStoryboard
+  - Toast-Swift
+  - XCGLogger
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -117,8 +150,11 @@ SPEC REPOS:
     - FirebaseCrash
     - FirebaseInstanceID
     - FirebaseRemoteConfig
+    - GoogleAppMeasurement
     - GoogleToolboxForMac
+    - GoogleUtilities
     - nanopb
+    - ObjcExceptionBridging
     - ObjectMapper
     - "ObjectMapper+Realm"
     - PromiseKit
@@ -142,32 +178,35 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AvatarImageView: 25541e2051124e730c7a1b97f5e5b9345fbc1cfc
-  Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
-  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
-  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
-  Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
+  AvatarImageView: afe8e7eb50181ca3f095e21034f245676b535c55
+  Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
+  Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
+  Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
+  Firebase: 9190018e296139d938b99521cde0c15a6e8d2946
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
-  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
-  FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
-  FirebaseCrash: 8900571fd763fd5bdda04522ec53da979456e3ce
-  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
-  FirebaseRemoteConfig: 3c57e4644bd6976b671ae0b725cd709f198bd1f5
+  FirebaseAnalytics: 63202d2665de4e6adcbdce189135255d8b5962ba
+  FirebaseCore: 027d350adc039aa5483357c6f56556f117c5170e
+  FirebaseCrash: fd373fbf5f9d1e235a984f2c7e446a5f26b968e8
+  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
+  GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
+  GoogleUtilities: abb092d2c12e817fa3e0e7b274987dd72fb86ec3
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   "ObjectMapper+Realm": 4cf44ed3202a73f08594e21e13eb3f8aa9b5a664
-  PromiseKit: 743e497a5f505a470d3bbbf4ce0663c1268af0a4
-  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
-  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
-  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
+  PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  Realm: 037c5919b9ceb59d6beed5d3b031096856b119b3
+  RealmSwift: c9580133e73ef40ed340401af2dbc9a5790dfea7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
-  Swinject: 2e964a80d70ab09b3949c99032711f89147bfd60
-  SwinjectStoryboard: 8e0d3c0202b64172bdf915d55e8dc83d9c4e7863
-  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
-  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
+  SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
+  Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
+  XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: 760d1f45eb980679b098d52966b58933419d6513
+PODFILE CHECKSUM: c78d789250eafea365def56f4954f0fc99b091b8
 
 COCOAPODS: 1.5.3

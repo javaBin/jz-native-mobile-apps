@@ -107,7 +107,6 @@ public class SessionFeedbackFragment extends Fragment
     for (UserActionListener<SessionFeedbackUserActionEnum> listener : listeners) {
       listener.onUserAction(SessionFeedbackUserActionEnum.SUBMIT, args);
     }
-    getActivity().finish();
   }
 
   @Override

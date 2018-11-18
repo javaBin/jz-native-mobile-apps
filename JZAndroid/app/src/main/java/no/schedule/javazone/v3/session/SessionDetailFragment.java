@@ -224,8 +224,11 @@ public class SessionDetailFragment extends Fragment implements
                                        int oldScrollY) {
                 if (scrollY > mTitle.getBottom()) {
                     fadeInToolbarTitle();
+                    setToolbarTint(mIconTintCollapsing);
+
                 } else {
                     fadeOutToolbarTitle();
+                    setToolbarTint(mIconTintNormal);
                 }
             }
         });

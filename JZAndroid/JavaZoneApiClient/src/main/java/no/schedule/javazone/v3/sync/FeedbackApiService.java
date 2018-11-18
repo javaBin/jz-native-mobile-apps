@@ -13,14 +13,14 @@ import retrofit2.http.Path;
 
 public interface FeedbackApiService {
   @Headers( "Content-Type: application/json" )
-  @POST("/server/events/{eventId}/sessions/{sessionId}/feedbacks")
-  Call<String> postSessionFeedback(@Path("eventId") String eventId,
+  @POST("/events/{eventId}/sessions/{sessionId}/feedbacks")
+  Call<Object> postSessionFeedback(@Path("eventId") String eventId,
                                    @Path("sessionId") String sessionId,
                                    @Header("Voter-ID") String voterId,
                                    @Body Feedback jzFeedbackBody);
 
   @Headers("Content-Type: application/json")
-  @POST("/server/events/58b3bfaa-4981-11e5-a151-feff819cdc9f/sessions/58b3c298-4981-11e5-a151-feff819cdc9f/feedbacks")
+  @POST("/events/58b3bfaa-4981-11e5-a151-feff819cdc9f/sessions/58b3c298-4981-11e5-a151-feff819cdc9f/feedbacks")
   Call<String> postSessionFeedbackTest(@Header("Voter-ID") String voterId,
                                        @Body Feedback jzFeedbackBody,
                                        Callback<JsonElement> success);
