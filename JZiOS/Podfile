@@ -1,52 +1,31 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '12.1'
 
 target 'JZiOS' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for JZiOS
-  pod 'SwiftyJSON', '~> 4.0'
-  pod 'XCGLogger', '~> 4.0.0'
-  pod 'Alamofire', '~> 4.5'
-  pod 'ObjectMapper', '~> 2.2'
-  pod 'PromiseKit', '~> 4.4'
-  pod 'Realm', '2.10.2'
-  pod 'RealmSwift', '2.10.2'
-  pod 'Swinject', '~> 2.0.0'
-  pod 'ObjectMapper+Realm', '~> 0.5'
-  pod 'Cosmos', '~> 11.0.3'
-  pod 'AvatarImageView', '2.0.3'
-  pod 'Toast-Swift', '~> 2.0.0'
+  pod 'SwiftyJSON'
+  pod 'XCGLogger'
+  pod 'Alamofire'
+  pod 'ObjectMapper'
+  pod 'PromiseKit'
+  pod 'Realm'
+  pod 'RealmSwift'
+  pod 'Swinject'
+  pod 'ObjectMapper+Realm'
+  pod 'Cosmos'
+  pod 'AvatarImageView'
+  pod 'Toast-Swift'
   pod 'Firebase/Core'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Crash'
-  pod 'Fabric', '~> 1.7.7'
-  pod 'Crashlytics', '~> 3.10.2'
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   
   # Uncomment if you use SwinjectStoryboard
-  pod 'SwinjectStoryboard', '~> 1.0.0'
-  
-
-  post_install do |installer|
-    installer.pods_project.targets.each do |target|
-      target.build_configurations.each do |config|
-        config.build_settings['SWIFT_VERSION'] = '3.0'
-        config.build_settings.delete('CODE_SIGNING_ALLOWED')
-        config.build_settings.delete('CODE_SIGNING_REQUIRED')
-      end
-    end
-  end
-
-  target 'JZiOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'JZiOSUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  pod 'SwinjectStoryboard'
 
 end

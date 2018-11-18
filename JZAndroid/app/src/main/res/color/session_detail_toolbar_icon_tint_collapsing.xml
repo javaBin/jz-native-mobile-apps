@@ -18,5 +18,5 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:color="?attr/colorControlNormal" app:state_collapsed="false" />
-    <item android:color="@android:color/white" />
+    <item android:color="@android:color/black" />
 </selector>
