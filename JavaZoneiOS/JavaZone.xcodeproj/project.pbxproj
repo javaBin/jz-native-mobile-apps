@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5034AEAC21983F0400897145 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034AEAB21983F0400897145 /* Bundle.swift */; };
 		5036B9412195906600752C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036B9402195906600752C6A /* AppDelegate.swift */; };
 		5036B9482195906600752C6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B9462195906600752C6A /* Main.storyboard */; };
 		5036B94A2195906800752C6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5036B9492195906800752C6A /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		17B2F1AD67EDB6ABBA8E42B2 /* Pods-JavaZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JavaZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JavaZone/Pods-JavaZone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A081B0CC546769845C407B3 /* Pods_JavaZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JavaZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5034AEAB21983F0400897145 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5036B93D2195906600752C6A /* JavaZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036B9402195906600752C6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5036B9472195906600752C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				50F663322195998C00284E79 /* UIViewController.swift */,
 				50F663332195998C00284E79 /* UIImageView.swift */,
 				50F663342195998C00284E79 /* UITextView.swift */,
+				5034AEAB21983F0400897145 /* Bundle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F663442195998C00284E79 /* Session.swift in Sources */,
+				5034AEAC21983F0400897145 /* Bundle.swift in Sources */,
 				50F663482195998C00284E79 /* GeneralSettingsCell.swift in Sources */,
 				50F663522195998C00284E79 /* String.swift in Sources */,
 				50F663452195998C00284E79 /* SpeakerImageViewDataSource.swift in Sources */,

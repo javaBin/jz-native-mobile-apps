@@ -130,7 +130,7 @@ UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableView
             data = filteredSections[sortedSections[indexPath.section]]
         }
         
-        let section = data
+        _ = data
         let session = data![indexPath.row]
         
         cell.session = session

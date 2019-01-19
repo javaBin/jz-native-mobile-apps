@@ -27,7 +27,6 @@ class SpeakerDetailViewController: UIViewController {
             speakerNameLabel.text = speaker!.name
             speakerBioGraphyLabel.text = speaker!.bio
             speakerBioGraphyLabel.contentInset = UIEdgeInsets.init(top: -7.0,left: 0.0,bottom: 0.0,right: 0.0)
-            
         }
     }
 

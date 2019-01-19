@@ -19,12 +19,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "no.schedule.javazone.v3"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 6
         versionName "6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -116,24 +116,24 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    api 'com.android.support:appcompat-v7:26.1.0'
-    api 'com.android.support:design:26.1.0'
-    api 'com.android.support:support-vector-drawable:26.1.0'
-    api "com.android.support:cardview-v7:26.1.0"
-    api "com.android.support:support-v13:26.1.0"
-    api "com.android.support:recyclerview-v7:26.1.0"
-    api "com.android.support:preference-v7:26.1.0"
-    api "com.android.support:transition:26.1.0"
-    api 'com.android.support.constraint:constraint-layout:1.1.2'
+    api 'com.android.support:appcompat-v7:28.0.0'
+    api 'com.android.support:design:28.0.0'
+    api 'com.android.support:support-vector-drawable:28.0.0'
+    api "com.android.support:cardview-v7:28.0.0"
+    api "com.android.support:support-v13:28.0.0"
+    api "com.android.support:recyclerview-v7:28.0.0"
+    api "com.android.support:preference-v7:28.0.0"
+    api "com.android.support:transition:28.0.0"
+    api 'com.android.support.constraint:constraint-layout:1.1.3'
     api 'com.android.support:multidex:1.0.3'
     api 'com.squareup.retrofit2:retrofit:2.3.0'
     api 'com.squareup.retrofit2:converter-gson:2.3.0'
-    api 'com.crashlytics.sdk.android:crashlytics:2.9.4'
+    api 'com.crashlytics.sdk.android:crashlytics:2.9.6'
 
     implementation project(':JavaZoneApiClient')
 
     // JSON utility library.
-    api 'com.google.code.gson:gson:2.8.0'
+    api 'com.google.code.gson:gson:2.8.2'
 
     // Glide library, used to handle asynchronous loading and caching of images.
     api 'com.github.bumptech.glide:glide:3.7.0'
@@ -178,15 +178,15 @@ dependencies {
     api 'com.airbnb.android:lottie:2.0.0-beta4'
 
     // Firebase libraries
-    api "com.google.firebase:firebase-core:16.0.1"
-    api "com.google.firebase:firebase-messaging:17.3.0"
-    api "com.google.firebase:firebase-appindexing:16.0.1"
-    api "com.google.firebase:firebase-database:16.0.1"
-    api "com.google.firebase:firebase-config:16.0.0"
-    api "com.google.firebase:firebase-auth:16.0.3"
-    api "com.google.firebase:firebase-config:16.0.0"
+    api "com.google.firebase:firebase-core:16.0.5"
+    api "com.google.firebase:firebase-messaging:17.3.4"
+    api "com.google.firebase:firebase-appindexing:16.0.2"
+    api "com.google.firebase:firebase-database:16.0.5"
+    api "com.google.firebase:firebase-config:16.1.0"
+    api "com.google.firebase:firebase-auth:16.0.5"
+    api "com.google.firebase:firebase-config:16.1.0"
 
-    api "org.apache.commons:commons-lang3:3.5"
+    api "org.apache.commons:commons-lang3:3.6"
 
 
     androidTestImplementation 'junit:junit:4.12'
@@ -196,7 +196,7 @@ dependencies {
     androidTestImplementation 'org.powermock:powermock-module-junit4-rule-agent:1.6.4'
     androidTestImplementation 'org.powermock:powermock-module-junit4-rule:1.6.4'
     androidTestImplementation 'org.powermock:powermock-module-junit4:1.6.4'
-    androidTestImplementation 'org.json:json:20090211'
+    androidTestImplementation 'org.json:json:20160212'
 }
 
 apply plugin: 'com.google.gms.google-services'

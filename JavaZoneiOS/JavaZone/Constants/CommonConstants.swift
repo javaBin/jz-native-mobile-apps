@@ -67,49 +67,79 @@ public struct CommonImageUtil {
 
 
 struct AvatarImageConfig: AvatarImageViewConfiguration {
-    let shape: Shape = .circle
+    var shape: Shape = .circle
 }
 
 public struct CommonNotificationUtil {
-    static func createMySessionNotificationContent(session: Session) -> UNMutableNotificationContent {
+    static func scheduleNotification(session: Session, withDate date: Date?, sessionRemove: Bool) {
+        if(sessionRemove) {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [session.sessionId!])
+            return
+        }
+        
+        if Date() > date! {
+            return
+        }
+        
+        addNotifications(session: session, date: date)
+    }
+    
+    static func addNotifications(session: Session, date: Date?) {
+        createAndAddNotification(sessionId: session.sessionId!, sessionTitle: session.title!, date: date)
+    }
+
+    static func createAndAddNotification(sessionId: String, sessionTitle: String, date: Date?) {
+        let identifier = sessionId
+        let notificationContent = createMySessionNotificationContent(sessionTitle: sessionTitle)
+        
+        let dateComponents = Calendar.autoupdatingCurrent.dateComponents([.day, .month, .year, .hour, .minute, .second], from: date!)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let notificationRequest = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(notificationRequest) { error in
+            if let e = error {
+                print("Error \(e.localizedDescription)")
+            }
+        }
+    }
+    
+    static func createMySessionNotificationContent(sessionTitle: String) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = "Don't forget"
-        content.body = "Buy some milk"
+        content.title = "\(sessionTitle)"
+        content.body = "The session is about to start soon!"
         content.sound = UNNotificationSound.default
         
         return content
     }
     
-    static func createNotificationTrigger(session: Session) -> UNNotificationTrigger {
-        let date = Date(timeIntervalSinceNow: 3600)
-        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
-        return UNCalendarNotificationTrigger(dateMatching: triggerDate,
-                                             repeats: false)
+    static func getStartDate(startTime: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        dateFormatter.timeZone = TimeZone(identifier: "GMT+1")
+        
+        let date = dateFormatter.date(from: "2018-11-10T09:39")
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .timeZone], from: date!)
+        let sessionDate = calendar.date(from: dateComponents)
+        let returnDate = calendar.date(byAdding: .minute, value: -15, to: sessionDate!)
+        return returnDate
     }
     
-    static func addNotification(selectedSession: Session) {
-        
-        // TODO, check if notification already exists at the current time interval. If it does, then do not add
-        let center = UNUserNotificationCenter.current()
-        let identifier = selectedSession.sessionId!
-        let request = UNNotificationRequest(identifier: identifier,
-                                            content: createMySessionNotificationContent(session: selectedSession),
-                                            trigger: createNotificationTrigger(session: selectedSession))
-        center.add(request, withCompletionHandler: { (error) in
-            if error != nil {
+    static func resumeStarredSessions(mySessionList: [MySession]) {
+        for mySession in mySessionList {
+            let sessionStartTime = getStartDate(startTime: mySession.startTime)
+            
+            if(sessionStartTime! >= Date()) {
+                createAndAddNotification(sessionId: mySession.sessionId, sessionTitle: mySession.sessionTitle, date: sessionStartTime)
             }
-        })
-    }
-    
-    static func removeNotification(selectedSession: Session) {
-        let center = UNUserNotificationCenter.current()
+        }
         
-        center.removePendingNotificationRequests(withIdentifiers: [selectedSession.sessionId!])
-    }
-    
-    static func getAllPendingNotifications() {
+        
+        
+        
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {requests -> () in
-            print("\(requests.count) requests -------")
             for request in requests{
                 print(request.identifier)
             }

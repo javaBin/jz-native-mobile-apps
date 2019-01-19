@@ -17,6 +17,5 @@ class AboutTableViewController: UITableViewController {
                 UIApplication.shared.open(link)
             }
         }
-        
     }
 }
