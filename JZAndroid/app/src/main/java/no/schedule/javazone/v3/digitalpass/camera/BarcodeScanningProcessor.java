@@ -1,4 +1,4 @@
-package no.schedule.javazone.v3.digitalpass;
+package no.schedule.javazone.v3.digitalpass.camera;
 
 // Copyright 2018 Google LLC
 //

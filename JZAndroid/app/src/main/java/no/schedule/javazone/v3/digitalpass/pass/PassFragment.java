@@ -1,11 +1,11 @@
-package no.schedule.javazone.v3.digitalpass;
+package no.schedule.javazone.v3.digitalpass.pass;
 
 import android.Manifest;
-import android.app.Fragment;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -17,12 +17,16 @@ import java.io.IOException;
 import android.widget.ImageView;
 
 import no.schedule.javazone.v3.R;
+import no.schedule.javazone.v3.digitalpass.camera.BarcodeScanningProcessor;
+import no.schedule.javazone.v3.digitalpass.camera.CameraSource;
+import no.schedule.javazone.v3.digitalpass.camera.CameraSourcePreview;
+import no.schedule.javazone.v3.digitalpass.camera.GraphicOverlay;
 
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
-public class DigitalPassFragment extends Fragment{
+public class PassFragment extends Fragment {
 
-    private static final String TAG = makeLogTag(DigitalPassFragment.class);
+    private static final String TAG = makeLogTag(PassFragment.class);
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
 
     private CameraSource cameraSource = null;
@@ -32,7 +36,7 @@ public class DigitalPassFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_digital_pass, container, false);
+        return inflater.inflate(R.layout.digital_pass_fragment, container, false);
     }
 
     @Override
