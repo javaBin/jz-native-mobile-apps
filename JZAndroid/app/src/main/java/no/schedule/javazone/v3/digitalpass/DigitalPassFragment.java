@@ -1,20 +1,25 @@
 package no.schedule.javazone.v3.digitalpass;
 
-import android.Manifest;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
+
+import net.glxn.qrgen.android.QRCode;
 
 import java.io.IOException;
-import android.widget.ImageView;
 
 import no.schedule.javazone.v3.R;
 
@@ -46,11 +51,22 @@ public class DigitalPassFragment extends Fragment{
             avd.start();
         }
         final Button button = (Button) getView().findViewById(R.id.scann_button);
+        /*
         preview = (CameraSourcePreview) getView().findViewById(R.id.firePreview);
         graphicOverlay = (GraphicOverlay) getView().findViewById(R.id.fireFaceOverlay);
         if (cameraSource == null) {
             cameraSource = new CameraSource(this.getActivity(), graphicOverlay);
         }
+        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this));
+        try {
+            Log.d(TAG, "onClick: start camera");
+            preview.start(cameraSource, graphicOverlay);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
+        //onQrScanned(null);
+        /*
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
@@ -70,6 +86,7 @@ public class DigitalPassFragment extends Fragment{
                 }
             }
         });
+        */
     }
 
     @Override
@@ -80,13 +97,25 @@ public class DigitalPassFragment extends Fragment{
         }
     }
 
+    public void onQrScanned(FirebaseVisionBarcode barcode) {
+        Log.d("Barcode", barcode.getDisplayValue());
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.myqr), barcode.getDisplayValue());
+        editor.commit();
+
+        Bitmap myBitmap = QRCode.from(barcode.getDisplayValue()).bitmap();
+        ImageView myImage = (ImageView) getView().findViewById(R.id.my_qr);
+        myImage.setImageBitmap(myBitmap);
+    }
+
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CAMERA: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == getContext().getPackageManager().PERMISSION_GRANTED) {
-                    cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor());
+                    cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this));
                     try {
                         Log.d(TAG, "onClick: start camera");
                         preview.start(cameraSource, graphicOverlay);

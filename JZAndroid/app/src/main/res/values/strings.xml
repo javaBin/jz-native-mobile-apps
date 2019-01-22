@@ -132,6 +132,8 @@ Develop and Distribute). -->
     <string name="description_avatar">Avatar</string>
     <string name="add_events">Add events</string>
 
+    <string name="myqr">My QR</string>
+
     <!-- Accessibility announcement to confirm the feedback rating made for a session by the user. -->
     <string name="feedback_rating_confirmation">Your rating: %1$d out of %2$d stars"</string>
 

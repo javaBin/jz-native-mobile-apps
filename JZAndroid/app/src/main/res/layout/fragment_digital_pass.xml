@@ -32,8 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="bottom"
-                app:contentInsetStart="@dimen/padding_normal"
                 android:paddingEnd="@dimen/my_schedule_toolbar_avatar_margin"
+                app:contentInsetStart="@dimen/padding_normal"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.ToolbarPopup">
 
@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/title_digital_pass"
-                    android:textColor="@color/app_white"/>
+                    android:textColor="@color/app_white" />
 
             </android.support.v7.widget.Toolbar>
 
@@ -57,36 +57,20 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <Button
-        android:id="@+id/scann_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Scann QR code" />
+        <ImageView
+            android:id="@+id/my_qr"
+            android:layout_width="142dp"
+            android:layout_height="142dp"
+            app:srcCompat="@drawable/break_icon_background" />
 
-    </ViewSwitcher>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="339dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="200dp">
-
-        <no.schedule.javazone.v3.digitalpass.CameraSourcePreview
-            android:id="@+id/firePreview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true">
-
-        <no.schedule.javazone.v3.digitalpass.GraphicOverlay
-            android:id="@+id/fireFaceOverlay"
+        <Button
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_gravity="bottom"
+            android:text="Button" />
 
-        </no.schedule.javazone.v3.digitalpass.CameraSourcePreview>
-
-    </FrameLayout>
+    </ViewSwitcher>
 
 
 </android.support.design.widget.CoordinatorLayout>
