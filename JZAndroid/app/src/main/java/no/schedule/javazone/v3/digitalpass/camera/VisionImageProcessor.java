@@ -1,4 +1,4 @@
-package no.schedule.javazone.v3.digitalpass;
+package no.schedule.javazone.v3.digitalpass.camera;
 
 // Copyright 2018 Google LLC
 //
@@ -20,6 +20,9 @@ import android.media.Image;
 import com.google.firebase.ml.common.FirebaseMLException;
 
 import java.nio.ByteBuffer;
+
+import no.schedule.javazone.v3.digitalpass.camera.FrameMetadata;
+import no.schedule.javazone.v3.digitalpass.camera.GraphicOverlay;
 
 /** An inferface to process the images with different ML Kit detectors and custom image models. */
 public interface VisionImageProcessor {

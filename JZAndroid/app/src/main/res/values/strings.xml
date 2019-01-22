@@ -128,6 +128,7 @@ Develop and Distribute). -->
     <string name="title_my_schedule">My Schedule</string>
     <string name="navdrawer_item_my_io">My Schedule</string>
     <string name="title_digital_pass">Digital Pass</string>
+    <string name="title_stamp">Stamps</string>
     <string name="navdrawer_item_digital_pass">Digital Pass</string>
     <string name="description_avatar">Avatar</string>
     <string name="add_events">Add events</string>
