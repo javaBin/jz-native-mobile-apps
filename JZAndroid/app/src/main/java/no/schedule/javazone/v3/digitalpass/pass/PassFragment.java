@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import android.support.v4.app.ActivityCompat;
+
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 
 import net.glxn.qrgen.android.QRCode;
@@ -37,6 +39,7 @@ public class PassFragment extends Fragment{
     private CameraSource cameraSource = null;
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
+    private PassFragment pf = this;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,13 +57,13 @@ public class PassFragment extends Fragment{
             ((ImageView) header).setImageDrawable(avd);
             avd.start();
         }
-        final Button button = (Button) getView().findViewById(R.id.scann_button);
-        /*
+        final Button button = (Button) getView().findViewById(R.id.scan_button);
         preview = (CameraSourcePreview) getView().findViewById(R.id.firePreview);
         graphicOverlay = (GraphicOverlay) getView().findViewById(R.id.fireFaceOverlay);
         if (cameraSource == null) {
             cameraSource = new CameraSource(this.getActivity(), graphicOverlay);
         }
+        /*
         cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this));
         try {
             Log.d(TAG, "onClick: start camera");
@@ -70,17 +73,16 @@ public class PassFragment extends Fragment{
         }
         */
         //onQrScanned(null);
-        /*
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CAMERA)
                         != getContext().getPackageManager().PERMISSION_GRANTED) {
                     // Permission is not granted
                     ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{Manifest.permission.CAMERA},
+                            new String[]{android.Manifest.permission.CAMERA},
                             MY_PERMISSIONS_REQUEST_CAMERA);
                 }else{
-                    cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor());
+                    cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(pf));
                     try {
                         Log.d(TAG, "onClick: start camera");
                         preview.start(cameraSource, graphicOverlay);
@@ -90,7 +92,6 @@ public class PassFragment extends Fragment{
                 }
             }
         });
-        */
     }
 
     @Override
@@ -108,7 +109,11 @@ public class PassFragment extends Fragment{
         editor.putString(getString(R.string.myqr), barcode.getDisplayValue());
         editor.commit();
 
-        Bitmap myBitmap = QRCode.from(barcode.getDisplayValue()).bitmap();
+        cameraSource.release();
+        graphicOverlay.setVisibility(View.GONE);
+        preview.setVisibility(ViewGroup.GONE);
+
+        Bitmap myBitmap = QRCode.from(barcode.getRawValue()).bitmap();
         ImageView myImage = (ImageView) getView().findViewById(R.id.my_qr);
         myImage.setImageBitmap(myBitmap);
     }

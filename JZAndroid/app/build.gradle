@@ -186,9 +186,11 @@ dependencies {
     api "com.google.firebase:firebase-config:16.0.0"
     api "com.google.firebase:firebase-auth:16.0.3"
     api "com.google.firebase:firebase-config:16.0.0"
+    api 'com.google.firebase:firebase-ml-vision:16.0.0'
 
     api "org.apache.commons:commons-lang3:3.5"
 
+    implementation 'com.github.kenglxn.QRGen:android:2.5.0'
 
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'org.hamcrest:hamcrest-core:1.3'
