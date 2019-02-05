@@ -45,7 +45,7 @@ matrix:
     - language: swift
       osx_image: xcode10.1
       before_script:
-        - cd JZiOS
+        - cd JavaZoneiOS
         - pod update
         - pod init
         - pod install
