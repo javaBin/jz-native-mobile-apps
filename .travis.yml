@@ -46,7 +46,6 @@ matrix:
       osx_image: xcode10.1
       before_script:
         - cd JavaZoneiOS
-        - pod update
         - pod init
         - pod install
       script:
