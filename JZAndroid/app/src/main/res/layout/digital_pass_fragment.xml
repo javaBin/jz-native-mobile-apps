@@ -8,40 +8,43 @@
     android:fitsSystemWindows="true"
     app:statusBarBackground="@null">
 
-    <ViewSwitcher
-        android:id="@+id/loading_switcher"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <Button
-        android:id="@+id/scann_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Scan QR code" />
-
-    </ViewSwitcher>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="339dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="200dp">
-
-        <no.schedule.javazone.v3.digitalpass.camera.CameraSourcePreview
-            android:id="@+id/firePreview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true">
-
-        <no.schedule.javazone.v3.digitalpass.camera.GraphicOverlay
-            android:id="@+id/fireFaceOverlay"
+        <Button
+            android:id="@+id/scan_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="100dp"
+            android:text="Button" />
 
-        </no.schedule.javazone.v3.digitalpass.camera.CameraSourcePreview>
+    <ImageView
+        android:id="@+id/my_qr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/break_icon_background" />
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+            <no.schedule.javazone.v3.digitalpass.camera.CameraSourcePreview
+                android:id="@+id/firePreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true">
+
+                <no.schedule.javazone.v3.digitalpass.camera.GraphicOverlay
+                    android:id="@+id/fireFaceOverlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true" />
+
+            </no.schedule.javazone.v3.digitalpass.camera.CameraSourcePreview>
+
     </FrameLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

@@ -25,8 +25,8 @@ android {
         applicationId "no.schedule.javazone.v3"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 6
-        versionName "6"
+        versionCode 3
+        versionName "3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -151,7 +151,7 @@ dependencies {
     api "com.google.android.gms:play-services-auth:16.0.0"
     api "com.google.android.gms:play-services-maps:15.0.1"
     api "com.google.android.gms:play-services-plus:15.0.1"
-    api 'com.google.android.gms:play-services-vision:15.0.2'
+
 
     api files('../third_party/disklrucache/libs/disklrucache-2.0.2.jar')
     api files('../third_party/basic-http-client/libs/basic-http-client-android-0.88.jar')
@@ -190,6 +190,7 @@ dependencies {
 
     api "org.apache.commons:commons-lang3:3.5"
 
+    implementation 'com.github.kenglxn.QRGen:android:2.5.0'
 
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'org.hamcrest:hamcrest-core:1.3'
