@@ -22,9 +22,6 @@ import net.glxn.qrgen.android.QRCode;
 
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
-import no.schedule.javazone.v3.digitalpass.camera.CameraSource;
-import no.schedule.javazone.v3.digitalpass.camera.CameraSourcePreview;
-import no.schedule.javazone.v3.digitalpass.camera.GraphicOverlay;
 
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
@@ -32,11 +29,6 @@ public class PassFragment extends Fragment{
 
     private static final String TAG = makeLogTag(PassFragment.class);
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
-
-    private CameraSource cameraSource = null;
-    private CameraSourcePreview preview;
-    private GraphicOverlay graphicOverlay;
-    private PassFragment pf = this;
 
     static final int BARCODE_REQUEST = 0;
 
@@ -56,7 +48,38 @@ public class PassFragment extends Fragment{
             ((ImageView) header).setImageDrawable(avd);
             avd.start();
         }
-        final Button button = (Button) getView().findViewById(R.id.scan_button);
+
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String barcode = sharedPref.getString(getString(R.string.myqr), null);
+        if (barcode != null){
+            hasBarcode(barcode);
+        } else {
+            noBarcode();
+
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        if (requestCode == BARCODE_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                String barcode = data.getStringExtra("barcode");
+                Log.d("barcode", barcode);
+
+                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.myqr), barcode);
+                editor.commit();
+                hasBarcode(barcode);
+            }
+        }
+    }
+
+    private void noBarcode (){
+        ImageView myImage = getView().findViewById(R.id.my_qr);
+        myImage.setImageDrawable(getResources().getDrawable(R.drawable.qr_code));
+        final Button button = getView().findViewById(R.id.scan_button);
+        button.setText("Scan QR Code");
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CAMERA)
@@ -72,39 +95,22 @@ public class PassFragment extends Fragment{
                 }
             }
         });
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String barcode = sharedPref.getString(getString(R.string.myqr), null);
-        if (barcode != null){
-            Bitmap myBitmap = QRCode.from(barcode).bitmap();
-            ImageView myImage = (ImageView) getView().findViewById(R.id.my_qr);
-            myImage.setImageBitmap(myBitmap);
-        }
     }
-
-    public void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
-        if (requestCode == BARCODE_REQUEST) {
-            if (resultCode == Activity.RESULT_OK) {
-                String barcode = data.getStringExtra("barcode");
-                Log.d("barcode", barcode);
-
+    private void hasBarcode (String barcode){
+        Bitmap myBitmap = QRCode.from(barcode).bitmap();
+        ImageView myImage = getView().findViewById(R.id.my_qr);
+        myImage.setImageBitmap(myBitmap);
+        final Button button = getView().findViewById(R.id.scan_button);
+        button.setText("Delete QR Code");
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.myqr), barcode);
+                editor.remove(getString(R.string.myqr));
                 editor.commit();
-                Bitmap myBitmap = QRCode.from(barcode).bitmap();
-                ImageView myImage = (ImageView) getView().findViewById(R.id.my_qr);
-                myImage.setImageBitmap(myBitmap);
+                noBarcode();
             }
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (cameraSource != null) {
-            cameraSource.release();
-        }
+        });
     }
 
 }
