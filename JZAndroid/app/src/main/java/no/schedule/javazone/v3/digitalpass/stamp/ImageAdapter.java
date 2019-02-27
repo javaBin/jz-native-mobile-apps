@@ -2,6 +2,7 @@ package no.schedule.javazone.v3.digitalpass.stamp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -43,17 +44,12 @@ public class ImageAdapter extends BaseAdapter {
 
         imageView.setImageResource(mStamps[position].getImage());
 
-        if(mStamps[position].isTagged()){
-            int color = Color.parseColor("#AE6118");
-            imageView.setColorFilter(color);
-        }
-
         return imageView;
     }
 
 
     private Stamp[] mStamps = {
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
+            new Stamp(R.drawable.vaadin, "vaadin", "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest", "url"),
             new Stamp(R.drawable.miles, "miles", "test", "url"),
             new Stamp(R.drawable.seven_n, "7N", "test", "url"),
             new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
