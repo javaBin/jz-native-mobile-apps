@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -28,9 +28,6 @@ import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 public class PassFragment extends Fragment{
 
     private static final String TAG = makeLogTag(PassFragment.class);
-    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
-
-    static final int BARCODE_REQUEST = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,7 +58,7 @@ public class PassFragment extends Fragment{
 
     public void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
-        if (requestCode == BARCODE_REQUEST) {
+        if (requestCode == CameraActivity.BARCODE_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
                 String barcode = data.getStringExtra("barcode");
                 Log.d("barcode", barcode);
@@ -82,20 +79,13 @@ public class PassFragment extends Fragment{
         button.setText("Scan QR Code");
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CAMERA)
-                        != getContext().getPackageManager().PERMISSION_GRANTED) {
-                    // Permission is not granted
-                    ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{android.Manifest.permission.CAMERA},
-                            MY_PERMISSIONS_REQUEST_CAMERA);
-                }else{
                     startActivityForResult(
                             new Intent(getActivity(), CameraActivity.class),
-                            BARCODE_REQUEST);
+                            CameraActivity.BARCODE_REQUEST);
                 }
-            }
         });
     }
+
     private void hasBarcode (String barcode){
         Bitmap myBitmap = QRCode.from(barcode).bitmap();
         ImageView myImage = getView().findViewById(R.id.my_qr);
@@ -112,5 +102,4 @@ public class PassFragment extends Fragment{
             }
         });
     }
-
 }

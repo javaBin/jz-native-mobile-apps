@@ -14,7 +14,7 @@
 
         <!-- YOUR CUSTOM VIEWS HERE -->
         <ImageView
-            android:id="@+id/stampLogo"
+            android:id="@+id/dialog_stamp_logo"
             android:layout_width="223dp"
             android:layout_height="142dp"
             android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/stampDescription"
+            android:id="@+id/dialog_stamp_description"
             android:layout_width="240dp"
             android:layout_height="182dp"
             android:layout_marginTop="20dp"
@@ -36,12 +36,12 @@
             android:text="@string/eula_legal_text"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
-            app:layout_constraintTop_toBottomOf="@+id/stampLogo"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_logo"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="59dp" />
 
         <Button
-            android:id="@+id/scanButton"
+            android:id="@+id/dialog_scan_button"
             android:layout_width="181dp"
             android:layout_height="49dp"
             android:layout_marginTop="36dp"
@@ -50,11 +50,11 @@
             android:text="Scan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stampDescription"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_description"
             app:layout_constraintVertical_bias="0.944" />
 
         <ImageButton
-            android:id="@+id/mapButton"
+            android:id="@+id/dialog_map_button"
             android:layout_width="50dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
@@ -62,10 +62,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/scanButton"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_scan_button"
             app:layout_constraintHorizontal_bias="0.962"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stampDescription"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_description"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_action_map" />
 

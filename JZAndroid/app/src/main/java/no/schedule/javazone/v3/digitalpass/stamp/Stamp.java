@@ -7,12 +7,14 @@ public class Stamp {
     private String url;
     private double x, y;
     private boolean tagged;
+    private String qrCode;
 
-    public Stamp(int image, String name, String description, String url) {
+    public Stamp(int image, String name, String description, String url, String qrCode) {
         this.image = image;
         this.name = name;
         this.description = description;
         this.url = url;
+        this.qrCode = qrCode;
         tagged = false;
     }
 
@@ -51,5 +53,7 @@ public class Stamp {
     public boolean isTagged() {
         return tagged;
     }
+
+    public String getQrCode() { return qrCode; }
 }
 
