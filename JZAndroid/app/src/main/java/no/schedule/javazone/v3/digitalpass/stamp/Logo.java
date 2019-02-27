@@ -1,18 +1,16 @@
 package no.schedule.javazone.v3.digitalpass.stamp;
 
-public class Stamp {
-    private int image;
+public class Logo {
+    private String image;
     private String name;
     private String description;
-    private String url;
     private double x, y;
     private boolean tagged;
 
-    public Stamp(int image, String name, String description, String url) {
+    public Logo(String image, String name, String description) {
         this.image = image;
         this.name = name;
         this.description = description;
-        this.url = url;
         tagged = false;
     }
 
@@ -28,7 +26,7 @@ public class Stamp {
         this.tagged = tagged;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 

@@ -3,8 +3,6 @@ package no.schedule.javazone.v3.digitalpass.stamp;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,7 @@ import android.widget.GridView;
 
 import no.schedule.javazone.v3.R;
 
-public class StampListFragment extends Fragment {
+public class StampFragment extends Fragment {
 
     private GridView gridview;
     private ImageAdapter logoAdapter;
@@ -22,13 +20,13 @@ public class StampListFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public StampListFragment() {
+    public StampFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.digital_pass_stamp_list_fragment, container, false);
+        return inflater.inflate(R.layout.digital_pass_stamp_fragment, container, false);
     }
 
     @Override
@@ -42,16 +40,12 @@ public class StampListFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                showStampDialog(position);
+                selectLogo(id);
             }
         });
+
     }
 
-
-    public void showStampDialog(int position) {
-        FragmentManager fm = getFragmentManager();
-        StampDialogFragment stampDialog = StampDialogFragment.newInstance();
-        stampDialog.setStamp(logoAdapter.getItem(position));
-        stampDialog.show(fm, "stamp_dialog");
+    private void selectLogo(long id){
     }
 }

@@ -1,7 +1,6 @@
 package no.schedule.javazone.v3.digitalpass.stamp;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,11 +16,11 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return mStamps.length;
+        return mThumbIds.length;
     }
 
-    public Stamp getItem(int position) {
-        return mStamps[position];
+    public Object getItem(int position) {
+        return null;
     }
 
     public long getItemId(int position) {
@@ -41,75 +40,29 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mStamps[position].getImage());
-
-        if(mStamps[position].isTagged()){
-            int color = Color.parseColor("#AE6118");
-            imageView.setColorFilter(color);
-        }
-
+        imageView.setImageResource(mThumbIds[position]);
         return imageView;
     }
 
-
-    private Stamp[] mStamps = {
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.vaadin, "vaadin", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
-            new Stamp(R.drawable.miles, "miles", "test", "url"),
-            new Stamp(R.drawable.seven_n, "7N", "test", "url"),
+    // references to our images
+    private Integer[] mThumbIds = {
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
+            R.drawable.vaadin, R.drawable.miles, R.drawable.seven_n,
     };
 }
