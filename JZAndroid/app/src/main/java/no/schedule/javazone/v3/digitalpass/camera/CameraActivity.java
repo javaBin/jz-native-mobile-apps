@@ -81,4 +81,11 @@ public class CameraActivity extends BaseActivity {
         finish();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (cameraSource != null) {
+            cameraSource.release();
+        }
+    }
 }
