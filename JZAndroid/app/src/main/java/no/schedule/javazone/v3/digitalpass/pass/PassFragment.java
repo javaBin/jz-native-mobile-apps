@@ -31,14 +31,11 @@ import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 public class PassFragment extends Fragment{
 
     private static final String TAG = makeLogTag(PassFragment.class);
-    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
 
     private CameraSource cameraSource = null;
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
     private PassFragment pf = this;
-
-    static final int BARCODE_REQUEST = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,18 +56,10 @@ public class PassFragment extends Fragment{
         final Button button = (Button) getView().findViewById(R.id.scan_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CAMERA)
-                        != getContext().getPackageManager().PERMISSION_GRANTED) {
-                    // Permission is not granted
-                    ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{android.Manifest.permission.CAMERA},
-                            MY_PERMISSIONS_REQUEST_CAMERA);
-                }else{
                     startActivityForResult(
                             new Intent(getActivity(), CameraActivity.class),
-                            BARCODE_REQUEST);
+                            CameraActivity.BARCODE_REQUEST);
                 }
-            }
         });
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         String barcode = sharedPref.getString(getString(R.string.myqr), null);
@@ -83,7 +72,7 @@ public class PassFragment extends Fragment{
 
     public void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
-        if (requestCode == BARCODE_REQUEST) {
+        if (requestCode == CameraActivity.BARCODE_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
                 String barcode = data.getStringExtra("barcode");
                 Log.d("barcode", barcode);
