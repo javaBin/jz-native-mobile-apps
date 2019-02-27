@@ -14,6 +14,8 @@ import no.schedule.javazone.v3.R;
 
 public class StampListFragment extends Fragment {
 
+    static int DIALOG_STAMP = 10;
+
     private GridView gridview;
     private ImageAdapter logoAdapter;
 
@@ -35,6 +37,7 @@ public class StampListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         logoAdapter = new ImageAdapter(getContext());
+
         gridview = view.findViewById(R.id.gridview);
         gridview.setAdapter(logoAdapter);
 
@@ -50,7 +53,12 @@ public class StampListFragment extends Fragment {
     public void showStampDialog(int position) {
         FragmentManager fm = getFragmentManager();
         StampDialogFragment stampDialog = StampDialogFragment.newInstance();
+        stampDialog.setTargetFragment(this, DIALOG_STAMP);
         stampDialog.setStamp(logoAdapter.getItem(position));
         stampDialog.show(fm, "stamp_dialog");
+    }
+
+    public void refreshList(){
+        logoAdapter.notifyDataSetChanged();
     }
 }

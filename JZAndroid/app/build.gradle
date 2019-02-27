@@ -191,6 +191,7 @@ dependencies {
     api "org.apache.commons:commons-lang3:3.5"
 
     implementation 'com.github.kenglxn.QRGen:android:2.5.0'
+    implementation 'com.opencsv:opencsv:3.9'
 
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'org.hamcrest:hamcrest-core:1.3'
