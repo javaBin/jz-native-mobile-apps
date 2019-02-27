@@ -3,6 +3,7 @@ package no.schedule.javazone.v3.digitalpass.stamp;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
@@ -79,7 +80,12 @@ public class StampDialogFragment extends DialogFragment {
                 Log.d("barcode", barcode);
                 if(barcode.equals(stamp.getQrCode())) {
                     stamp.setTagged(true);
-
+                    StampListFragment slf = (StampListFragment) getTargetFragment();
+                    slf.refreshList();
+                    SharedPreferences sharedPref = getActivity().getSharedPreferences("StampPref", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(stamp.getName(), barcode);
+                    editor.commit();
                 }else{
                     // @Todo Finn ut hva som skjer hvis den scannede QR-koden ikke matcher denen logoen
                 }
