@@ -40,7 +40,7 @@ public class CameraActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.CAMERA},
                     MY_PERMISSIONS_REQUEST_CAMERA);
-        } else {
+        }else{
             setupCamera();
         }
     }

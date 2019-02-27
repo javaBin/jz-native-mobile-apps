@@ -1,16 +1,21 @@
 package no.schedule.javazone.v3.digitalpass.stamp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 
 import no.schedule.javazone.v3.R;
+import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
 
 public class StampListFragment extends Fragment {
 
@@ -47,6 +52,14 @@ public class StampListFragment extends Fragment {
                 showStampDialog(position);
             }
         });
+
+        final Button button = view.findViewById(R.id.stamp_list_scan_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivityForResult(
+                        new Intent(getActivity(), CameraActivity.class), CameraActivity.BARCODE_REQUEST);
+            }
+        });
     }
 
 
@@ -60,5 +73,16 @@ public class StampListFragment extends Fragment {
 
     public void refreshList(){
         logoAdapter.notifyDataSetChanged();
+    }
+  
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CameraActivity.BARCODE_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                String barcode = data.getStringExtra("barcode");
+                Log.d("barcode", barcode);
+            }else{
+                // @Todo Finn ut hva som skjer hvis den scannede QR-koden ikke matcher denen logoen
+            }
+        }
     }
 }
