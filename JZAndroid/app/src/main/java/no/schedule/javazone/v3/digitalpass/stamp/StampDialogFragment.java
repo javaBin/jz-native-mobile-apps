@@ -2,10 +2,7 @@ package no.schedule.javazone.v3.digitalpass.stamp;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
@@ -16,12 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import net.glxn.qrgen.android.QRCode;
-
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
-import no.schedule.javazone.v3.digitalpass.pass.PassFragment;
 
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
