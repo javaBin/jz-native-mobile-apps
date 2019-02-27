@@ -593,7 +593,7 @@ We would not be what we are today without YOU! Thank you for your support and co
                                     <constraint firstAttribute="width" secondItem="5bQ-IX-Ybz" secondAttribute="height" multiplier="374:29" id="apG-8Y-UvY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-Cl-7e3" customClass="AvatarImageView" customModule="AvatarImageView">
@@ -1488,31 +1488,12 @@ We would not be what we are today without YOU! Thank you for your support and co
                         <color key="barTintColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ekz-Rk-Agm" kind="relationship" relationship="rootViewController" id="s5V-gx-EcG"/>
+                        <segue destination="1Bs-9r-43R" kind="relationship" relationship="rootViewController" id="x9N-ee-WQg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hdo-cE-LVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5452" y="-59"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="gCL-9b-2f5">
-            <objects>
-                <viewController id="ekz-Rk-Agm" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TVM-Hz-EKm"/>
-                        <viewControllerLayoutGuide type="bottom" id="G2B-Em-gcx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OJ7-ub-huK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="GMN-HU-Amr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lLi-7q-d8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4649" y="-60"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="qn0-u5-LzW">
@@ -1578,6 +1559,259 @@ We would not be what we are today without YOU! Thank you for your support and co
             </objects>
             <point key="canvasLocation" x="-3428.985507246377" y="759.37500000000011"/>
         </scene>
+        <!--Vision Controller-->
+        <scene sceneID="Hxm-e9-WXC">
+            <objects>
+                <viewController storyboardIdentifier="viewController" id="ja8-Lt-7BU" customClass="VisionController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zIb-JW-wkM"/>
+                        <viewControllerLayoutGuide type="bottom" id="o1o-ys-I5S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vdj-1N-QGY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2B5-aL-h4X">
+                                <rect key="frame" x="0.0" y="557" width="414" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="3yK-Dd-3Si"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </pickerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="t6y-ZX-bvW" userLabel="Top Toolbar">
+                                <rect key="frame" x="0.0" y="32" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="X7f-fb-bEy"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fvL-Dy-xWd"/>
+                                    <barButtonItem image="photo_library" id="HhA-qR-sXM" userLabel="Photo Library Button">
+                                        <connections>
+                                            <action selector="openPhotoLibrary:" destination="ja8-Lt-7BU" id="4j0-1Z-yvf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="IuW-30-MX2"/>
+                                    <barButtonItem image="photo_camera" id="737-Ia-mkB" userLabel="Photo Camera Button">
+                                        <connections>
+                                            <action selector="openCamera:" destination="ja8-Lt-7BU" id="F9Y-cg-2Su"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="87C-MU-pGH"/>
+                                    <barButtonItem image="video_camera" id="cLW-Ne-ncq" userLabel="Video Camera Button">
+                                        <connections>
+                                            <segue destination="1Et-Yy-ZzF" kind="show" id="fS8-a2-tQ0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ArN-Qd-uMR"/>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-q8-CDE">
+                                <rect key="frame" x="0.0" y="76" width="414" height="443"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="MLa-PS-eBk" userLabel="Bottom Toolbar">
+                                <rect key="frame" x="0.0" y="519" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nZN-OQ-zdo"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sVR-no-UQg"/>
+                                    <barButtonItem title="Detect" id="qzV-3a-Zoj" userLabel="Detect Button">
+                                        <connections>
+                                            <action selector="detect:" destination="ja8-Lt-7BU" id="daY-nV-GYr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Next image" id="403-Dd-dTb">
+                                        <connections>
+                                            <action selector="changeImage:" destination="ja8-Lt-7BU" id="egc-yh-Qxc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FbO-qf-yyX"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="t6y-ZX-bvW" secondAttribute="trailing" id="4xf-EE-kft"/>
+                            <constraint firstItem="1WK-q8-CDE" firstAttribute="leading" secondItem="Vdj-1N-QGY" secondAttribute="leading" id="8wL-Yi-c7j"/>
+                            <constraint firstItem="t6y-ZX-bvW" firstAttribute="top" secondItem="zIb-JW-wkM" secondAttribute="bottom" constant="12" id="8xE-QV-Igm"/>
+                            <constraint firstItem="MLa-PS-eBk" firstAttribute="leading" secondItem="Vdj-1N-QGY" secondAttribute="leading" id="EUY-vp-LQL"/>
+                            <constraint firstAttribute="trailing" secondItem="1WK-q8-CDE" secondAttribute="trailing" id="HL0-14-1gc"/>
+                            <constraint firstItem="MLa-PS-eBk" firstAttribute="top" secondItem="1WK-q8-CDE" secondAttribute="bottom" id="NLx-79-g7J"/>
+                            <constraint firstAttribute="trailing" secondItem="MLa-PS-eBk" secondAttribute="trailing" id="OGF-5j-NLQ"/>
+                            <constraint firstItem="2B5-aL-h4X" firstAttribute="leading" secondItem="Vdj-1N-QGY" secondAttribute="leading" id="RgC-41-MN3"/>
+                            <constraint firstItem="2B5-aL-h4X" firstAttribute="top" secondItem="MLa-PS-eBk" secondAttribute="bottom" constant="-6" id="bAd-4c-t2S"/>
+                            <constraint firstItem="t6y-ZX-bvW" firstAttribute="leading" secondItem="Vdj-1N-QGY" secondAttribute="leading" id="bKI-AU-7Dm"/>
+                            <constraint firstItem="1WK-q8-CDE" firstAttribute="top" secondItem="t6y-ZX-bvW" secondAttribute="bottom" id="dEx-HU-jCf"/>
+                            <constraint firstItem="o1o-ys-I5S" firstAttribute="top" secondItem="2B5-aL-h4X" secondAttribute="bottom" constant="-1" id="nY6-Uk-3Fu"/>
+                            <constraint firstAttribute="trailing" secondItem="2B5-aL-h4X" secondAttribute="trailing" id="r5p-TG-6Ne"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GF8-Ok-oJm">
+                        <barButtonItem key="backBarButtonItem" title=" " id="jvc-pe-Akw"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="52G-7Q-F16" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5452" y="695"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="b4x-fM-74y">
+            <objects>
+                <viewController id="1Et-Yy-ZzF" customClass="CameraViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3dw-M7-t8c"/>
+                        <viewControllerLayoutGuide type="bottom" id="9hp-CO-DaY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TIl-53-LxK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zk-tu-JTp" userLabel="Camera View">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1zk-tu-JTp" firstAttribute="leading" secondItem="TIl-53-LxK" secondAttribute="leading" id="FHt-gB-4cP"/>
+                            <constraint firstAttribute="trailing" secondItem="1zk-tu-JTp" secondAttribute="trailing" id="UzN-G0-HQL"/>
+                            <constraint firstItem="1zk-tu-JTp" firstAttribute="bottom" secondItem="9hp-CO-DaY" secondAttribute="top" id="Zx3-57-d2g"/>
+                            <constraint firstItem="1zk-tu-JTp" firstAttribute="top" secondItem="3dw-M7-t8c" secondAttribute="bottom" id="kdJ-Rf-A3u"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="u7r-Po-MXO">
+                        <rightBarButtonItems>
+                            <barButtonItem image="switch_camera" id="2AB-Mt-f2m" userLabel="Switch Camera Button">
+                                <connections>
+                                    <action selector="switchCameraWithSender:" destination="1Et-Yy-ZzF" id="GUt-vB-DKX"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Detectors" id="Zd3-H5-AWC" userLabel="Detectors Button">
+                                <connections>
+                                    <action selector="selectDetectorWithSender:" destination="1Et-Yy-ZzF" id="wkN-56-TZO"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cameraView" destination="1zk-tu-JTp" id="rMw-CO-9gl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bgp-wZ-QAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4604" y="695"/>
+        </scene>
+        <!--DigitalPassMain-->
+        <scene sceneID="oVA-OE-nhF">
+            <objects>
+                <viewController id="1Bs-9r-43R" userLabel="DigitalPassMain" customClass="DigitalPassMainViewController" customModule="JavaZone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Gz-8U-xC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kmx-aA-Hh9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kYe-ww-Gnw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLl-6t-twj">
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" text="" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Tsq-sr-h18">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <color key="barTintColor" red="0.090196078430000007" green="0.1137254902" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="1Bs-9r-43R" id="Isi-uk-6jf"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.1137254902" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Tsq-sr-h18" secondAttribute="bottom" id="ZRa-6m-9zK"/>
+                                    <constraint firstItem="Tsq-sr-h18" firstAttribute="leading" secondItem="sLl-6t-twj" secondAttribute="leading" id="foo-4h-0NY"/>
+                                    <constraint firstAttribute="height" constant="44" id="gxb-l1-bXa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tsq-sr-h18" secondAttribute="trailing" id="paG-sv-Lby"/>
+                                    <constraint firstItem="Tsq-sr-h18" firstAttribute="top" secondItem="sLl-6t-twj" secondAttribute="top" id="vgN-8f-CxH"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qW5-m8-gdl">
+                                <rect key="frame" x="0.0" y="106" width="414" height="566"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vtQ-Ua-OjJ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1Bs-9r-43R" id="jSL-GO-VEy"/>
+                                    <outlet property="delegate" destination="1Bs-9r-43R" id="gkb-Bc-3dk"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qW5-m8-gdl" secondAttribute="trailing" id="0Kn-BS-ffl"/>
+                            <constraint firstItem="qW5-m8-gdl" firstAttribute="leading" secondItem="kYe-ww-Gnw" secondAttribute="leading" id="3og-aS-leQ"/>
+                            <constraint firstItem="sLl-6t-twj" firstAttribute="leading" secondItem="kYe-ww-Gnw" secondAttribute="leading" id="D3w-5t-iNh"/>
+                            <constraint firstItem="Kmx-aA-Hh9" firstAttribute="top" secondItem="qW5-m8-gdl" secondAttribute="bottom" constant="15" id="LC0-6c-m4a"/>
+                            <constraint firstAttribute="trailing" secondItem="sLl-6t-twj" secondAttribute="trailing" id="ac2-6p-gtd"/>
+                            <constraint firstItem="sLl-6t-twj" firstAttribute="top" secondItem="8Gz-8U-xC0" secondAttribute="bottom" id="gEC-0U-dgp"/>
+                            <constraint firstItem="qW5-m8-gdl" firstAttribute="top" secondItem="sLl-6t-twj" secondAttribute="bottom" constant="-2" id="sd8-gy-UBH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Omf-ug-ps4">
+                        <barButtonItem key="rightBarButtonItem" width="60" id="pSk-Yc-6kN">
+                            <view key="customView" contentMode="scaleToFill" id="Dyb-iB-6uX" userLabel="Container View">
+                                <rect key="frame" x="323" y="5.6666666666666679" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKL-pS-wo2" userLabel="Switch Layout Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="1Bs-9r-43R" eventType="touchUpInside" id="duj-ke-NnE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAE-1J-cq4" customClass="SwitchLayoutButton" customModule="DisplaySwitcher">
+                                        <rect key="frame" x="47" y="5" width="18" height="18"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="18" id="brL-he-WKQ"/>
+                                            <constraint firstAttribute="height" constant="18" id="qHH-dt-FoE"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" red="0.6705882353" green="0.97254901959999995" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="OKL-pS-wo2" secondAttribute="trailing" id="ADg-DV-KJ7"/>
+                                    <constraint firstItem="HAE-1J-cq4" firstAttribute="leading" secondItem="Dyb-iB-6uX" secondAttribute="leading" constant="47" id="Hdd-Ya-HWv"/>
+                                    <constraint firstItem="OKL-pS-wo2" firstAttribute="leading" secondItem="Dyb-iB-6uX" secondAttribute="leading" id="SH8-Xo-tLJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="OKL-pS-wo2" secondAttribute="bottom" id="ciA-LF-VrX"/>
+                                    <constraint firstItem="OKL-pS-wo2" firstAttribute="top" secondItem="Dyb-iB-6uX" secondAttribute="top" id="hfu-wb-hFL"/>
+                                    <constraint firstItem="HAE-1J-cq4" firstAttribute="top" secondItem="Dyb-iB-6uX" secondAttribute="top" constant="5" id="s82-fB-kje"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="qW5-m8-gdl" id="iRc-B1-HHb"/>
+                        <outlet property="rotationButton" destination="HAE-1J-cq4" id="PXn-Vg-vzw"/>
+                        <outlet property="searchBar" destination="Tsq-sr-h18" id="wwS-mb-8TL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XQi-iH-dk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="BOo-rZ-mBb"/>
+            </objects>
+            <point key="canvasLocation" x="-6643.4782608695659" y="694.56521739130437"/>
+        </scene>
     </scenes>
     <resources>
         <image name="EyeTemplate" width="16" height="16"/>
@@ -1587,9 +1821,13 @@ We would not be what we are today without YOU! Thank you for your support and co
         <image name="ic_map_white" width="24" height="24"/>
         <image name="ic_schedule_white" width="24" height="24"/>
         <image name="pass_white_24pt" width="24" height="24"/>
+        <image name="photo_camera" width="16" height="16"/>
+        <image name="photo_library" width="16" height="16"/>
+        <image name="switch_camera" width="16" height="16"/>
+        <image name="video_camera" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="R6Q-pd-LJb"/>
+        <segue reference="9ii-b8-aWo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

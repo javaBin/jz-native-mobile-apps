@@ -10,8 +10,19 @@
 		5034AEAC21983F0400897145 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034AEAB21983F0400897145 /* Bundle.swift */; };
 		5036B9412195906600752C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036B9402195906600752C6A /* AppDelegate.swift */; };
 		5036B9482195906600752C6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B9462195906600752C6A /* Main.storyboard */; };
-		5036B94A2195906800752C6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5036B9492195906800752C6A /* Assets.xcassets */; };
 		5036B94D2195906800752C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B94B2195906800752C6A /* LaunchScreen.storyboard */; };
+		5051D4AD21F336E6003EDCC5 /* VisionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AC21F336E6003EDCC5 /* VisionController.swift */; };
+		5051D4B021F34915003EDCC5 /* MLKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */; };
+		5051D4B121F34915003EDCC5 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AF21F34915003EDCC5 /* UIUtilities.swift */; };
+		5051D4B321F3491D003EDCC5 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B221F3491D003EDCC5 /* CameraViewController.swift */; };
+		5051D4B521F35758003EDCC5 /* DigitalPassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */; };
+		5051D4BA21F35F8A003EDCC5 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B921F35F8A003EDCC5 /* UserDataProvider.swift */; };
+		5051D4BC21F35F9E003EDCC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BB21F35F9E003EDCC5 /* User.swift */; };
+		5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */; };
+		5051D4C421F35FD1003EDCC5 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5051D4C221F35FD1003EDCC5 /* UserCollectionViewCell.xib */; };
+		5051D4C521F35FD1003EDCC5 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4C321F35FD1003EDCC5 /* UserCollectionViewCell.swift */; };
+		5051D54E21F63D30003EDCC5 /* Shared in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54D21F63D30003EDCC5 /* Shared */; };
+		5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54F21F63E81003EDCC5 /* Assets.xcassets */; };
 		50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */; };
 		50ACA196219598AA004F4B1C /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA195219598AA004F4B1C /* CommonConstants.swift */; };
 		50F663192195997A00284E79 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F663182195997A00284E79 /* URLConstants.swift */; };
@@ -60,9 +71,20 @@
 		5036B93D2195906600752C6A /* JavaZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036B9402195906600752C6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5036B9472195906600752C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5036B9492195906800752C6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5036B94C2195906800752C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5036B94E2195906800752C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5051D4AC21F336E6003EDCC5 /* VisionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionController.swift; sourceTree = "<group>"; };
+		5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLKitExtensions.swift; sourceTree = "<group>"; };
+		5051D4AF21F34915003EDCC5 /* UIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
+		5051D4B221F3491D003EDCC5 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPassMainViewController.swift; sourceTree = "<group>"; };
+		5051D4B921F35F8A003EDCC5 /* UserDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
+		5051D4BB21F35F9E003EDCC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
+		5051D4C221F35FD1003EDCC5 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
+		5051D4C321F35FD1003EDCC5 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		5051D54D21F63D30003EDCC5 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shared; path = ../Shared; sourceTree = "<group>"; };
+		5051D54F21F63E81003EDCC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValues.swift; sourceTree = "<group>"; };
 		50ACA195219598AA004F4B1C /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		50F663182195997A00284E79 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
@@ -127,6 +149,7 @@
 		5036B9342195906600752C6A = {
 			isa = PBXGroup;
 			children = (
+				5051D54D21F63D30003EDCC5 /* Shared */,
 				50F663642195AC3500284E79 /* disclosure.png */,
 				50F663632195AC3500284E79 /* licenses.html */,
 				5036B93F2195906600752C6A /* JavaZone */,
@@ -147,6 +170,9 @@
 		5036B93F2195906600752C6A /* JavaZone */ = {
 			isa = PBXGroup;
 			children = (
+				5051D54F21F63E81003EDCC5 /* Assets.xcassets */,
+				5051D4BD21F35FB0003EDCC5 /* Protocols */,
+				5051D4B621F35F5B003EDCC5 /* DataProviders */,
 				50F663612195A90600284E79 /* GoogleService-Info.plist */,
 				50F663282195998C00284E79 /* Database */,
 				50F6632D2195998C00284E79 /* Extensions */,
@@ -158,16 +184,66 @@
 				50ACA1912195984D004F4B1C /* Utilities */,
 				5036B9402195906600752C6A /* AppDelegate.swift */,
 				5036B9462195906600752C6A /* Main.storyboard */,
-				5036B9492195906800752C6A /* Assets.xcassets */,
 				5036B94B2195906800752C6A /* LaunchScreen.storyboard */,
 				5036B94E2195906800752C6A /* Info.plist */,
 			);
 			path = JavaZone;
 			sourceTree = "<group>";
 		};
+		5051D4B621F35F5B003EDCC5 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				5051D4B721F35F8A003EDCC5 /* DataProviders */,
+			);
+			path = DataProviders;
+			sourceTree = "<group>";
+		};
+		5051D4B721F35F8A003EDCC5 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				5051D4B821F35F8A003EDCC5 /* UserDataProvider */,
+			);
+			path = DataProviders;
+			sourceTree = "<group>";
+		};
+		5051D4B821F35F8A003EDCC5 /* UserDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5051D4B921F35F8A003EDCC5 /* UserDataProvider.swift */,
+			);
+			path = UserDataProvider;
+			sourceTree = "<group>";
+		};
+		5051D4BD21F35FB0003EDCC5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		5051D4C021F35FD1003EDCC5 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5051D4C121F35FD1003EDCC5 /* UserCollectionViewCell */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		5051D4C121F35FD1003EDCC5 /* UserCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5051D4C221F35FD1003EDCC5 /* UserCollectionViewCell.xib */,
+				5051D4C321F35FD1003EDCC5 /* UserCollectionViewCell.swift */,
+			);
+			path = UserCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		50ACA1912195984D004F4B1C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */,
+				5051D4AF21F34915003EDCC5 /* UIUtilities.swift */,
 				50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */,
 			);
 			path = Utilities;
@@ -194,6 +270,7 @@
 		50F6631D2195998C00284E79 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5051D4BB21F35F9E003EDCC5 /* User.swift */,
 				50F6631E2195998C00284E79 /* MySession.swift */,
 				50F6631F2195998C00284E79 /* Session.swift */,
 				50F663202195998C00284E79 /* Db */,
@@ -213,6 +290,7 @@
 		50F663232195998C00284E79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5051D4C021F35FD1003EDCC5 /* CollectionViewCells */,
 				50F663242195998C00284E79 /* SpeakerUIView.swift */,
 				50F663252195998C00284E79 /* GeneralSettingsCell.swift */,
 				50F663262195998C00284E79 /* SessionTableViewCell.swift */,
@@ -250,6 +328,7 @@
 		50F663352195998C00284E79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5051D4B221F3491D003EDCC5 /* CameraViewController.swift */,
 				50F663362195998C00284E79 /* AboutTableViewController.swift */,
 				50F663372195998C00284E79 /* SpeakerDetailViewController.swift */,
 				50F663382195998C00284E79 /* EventViewController.swift */,
@@ -261,6 +340,8 @@
 				50F6633E2195998C00284E79 /* OpenSourceLicenseViewController.swift */,
 				50F6633F2195998C00284E79 /* AboutViewController.swift */,
 				50F663402195998C00284E79 /* SettingsViewController.swift */,
+				5051D4AC21F336E6003EDCC5 /* VisionController.swift */,
+				5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -334,10 +415,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */,
 				50F663652195AC3500284E79 /* licenses.html in Resources */,
+				5051D4C421F35FD1003EDCC5 /* UserCollectionViewCell.xib in Resources */,
 				50F663662195AC3500284E79 /* disclosure.png in Resources */,
 				5036B94D2195906800752C6A /* LaunchScreen.storyboard in Resources */,
-				5036B94A2195906800752C6A /* Assets.xcassets in Resources */,
+				5051D54E21F63D30003EDCC5 /* Shared in Resources */,
 				50F663622195A90600284E79 /* GoogleService-Info.plist in Resources */,
 				50F6634A2195998C00284E79 /* SpeakerUIView.xib in Resources */,
 				5036B9482195906600752C6A /* Main.storyboard in Resources */,
@@ -357,6 +440,9 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AvatarImageView/AvatarImageView.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/DisplaySwitcher/DisplaySwitcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
@@ -379,6 +465,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvatarImageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DisplaySwitcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
@@ -427,6 +516,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F663442195998C00284E79 /* Session.swift in Sources */,
+				5051D4BA21F35F8A003EDCC5 /* UserDataProvider.swift in Sources */,
+				5051D4AD21F336E6003EDCC5 /* VisionController.swift in Sources */,
 				5034AEAC21983F0400897145 /* Bundle.swift in Sources */,
 				50F663482195998C00284E79 /* GeneralSettingsCell.swift in Sources */,
 				50F663522195998C00284E79 /* String.swift in Sources */,
@@ -440,11 +531,15 @@
 				50F663562195998C00284E79 /* AboutTableViewController.swift in Sources */,
 				50F663432195998C00284E79 /* MySession.swift in Sources */,
 				50ACA196219598AA004F4B1C /* CommonConstants.swift in Sources */,
+				5051D4B021F34915003EDCC5 /* MLKitExtensions.swift in Sources */,
+				5051D4B121F34915003EDCC5 /* UIUtilities.swift in Sources */,
 				50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */,
 				50F663592195998C00284E79 /* FeedbackViewController.swift in Sources */,
 				50F663472195998C00284E79 /* SpeakerUIView.swift in Sources */,
 				50F6634E2195998C00284E79 /* SpeakerRepository.swift in Sources */,
+				5051D4B321F3491D003EDCC5 /* CameraViewController.swift in Sources */,
 				50F663422195998C00284E79 /* FeedbackApiService.swift in Sources */,
+				5051D4C521F35FD1003EDCC5 /* UserCollectionViewCell.swift in Sources */,
 				50F6634F2195998C00284E79 /* UIVIew.swift in Sources */,
 				50F663532195998C00284E79 /* UIViewController.swift in Sources */,
 				50F663192195997A00284E79 /* URLConstants.swift in Sources */,
@@ -459,9 +554,12 @@
 				50F6635F2195998C00284E79 /* AboutViewController.swift in Sources */,
 				50F6634B2195998C00284E79 /* MySessionRepository.swift in Sources */,
 				50F6635C2195998C00284E79 /* MyScheduleViewController.swift in Sources */,
+				5051D4B521F35758003EDCC5 /* DigitalPassMainViewController.swift in Sources */,
+				5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */,
 				50F6635A2195998C00284E79 /* SessionDetailsViewController.swift in Sources */,
 				50F663412195998C00284E79 /* SessionApiService.swift in Sources */,
 				50F663572195998C00284E79 /* SpeakerDetailViewController.swift in Sources */,
+				5051D4BC21F35F9E003EDCC5 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

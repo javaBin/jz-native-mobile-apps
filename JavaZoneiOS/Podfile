@@ -24,6 +24,7 @@ target 'JavaZone' do
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Crash'
   pod 'Fabric'
+  pod 'DisplaySwitcher', :git => 'https://github.com/Yalantis/DisplaySwitcher.git'
   pod 'Crashlytics'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   
