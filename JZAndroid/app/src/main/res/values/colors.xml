@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright 2015 Google Inc. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +12,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
-<!-- Colors common among all features in the app. -->
+  --><!-- Colors common among all features in the app. -->
 <resources>
     <color name="background">#ffffffff</color>
     <color name="content_background">@null</color>
@@ -128,5 +126,7 @@
 
     <!-- search -->
     <color name="dialog_background">#7f000000</color>
+
+    <color name="black_overlay">#66000000</color>
 
 </resources>

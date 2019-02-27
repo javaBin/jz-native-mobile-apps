@@ -242,4 +242,8 @@ Develop and Distribute). -->
         faq_additional_info_description</string>
     <string name="about_javazone">About JavaZone</string>
 
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>
