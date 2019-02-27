@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.pass.PassFragment;
-import no.schedule.javazone.v3.digitalpass.stamp.StampFragment;
+import no.schedule.javazone.v3.digitalpass.stamp.StampListFragment;
 import no.schedule.javazone.v3.info.BaseInfoFragment;
 
 import static no.schedule.javazone.v3.util.LogUtils.LOGD;
@@ -52,7 +52,7 @@ public class DigitalPassViewPagerAdapter extends FragmentPagerAdapter {
                 mFragments[position] = new PassFragment();
                 break;
             case STAMP_INDEX:
-                mFragments[position] = new StampFragment();
+                mFragments[position] = new StampListFragment();
                 break;
         }
 
