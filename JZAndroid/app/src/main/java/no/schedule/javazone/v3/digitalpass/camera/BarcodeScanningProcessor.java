@@ -26,26 +26,16 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import java.io.IOException;
 import java.util.List;
 
-import no.schedule.javazone.v3.digitalpass.pass.PassFragment;
-
 /** Barcode Detector Demo. */
 public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseVisionBarcode>> {
 
     private static final String TAG = "BarcodeScanProc";
 
     private final FirebaseVisionBarcodeDetector detector;
-    private final PassFragment dpf;
-//    private final CameraActivity ca;
+    private final CameraActivity ca;
 
-    public BarcodeScanningProcessor(PassFragment dpf) {
-///    public BarcodeScanningProcessor(CameraActivity ca, PassFragment dpf) {
-        // Note that if you know which format of barcode your app is dealing with, detection will be
-        // faster to specify the supported barcode formats one by one, e.g.
-        // new FirebaseVisionBarcodeDetectorOptions.Builder()
-        //     .setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE)
-        //     .build();
-//        this.ca = ca;
-        this.dpf = dpf;
+    public BarcodeScanningProcessor(CameraActivity ca) {
+        this.ca = ca;
         detector = FirebaseVision.getInstance().getVisionBarcodeDetector();
     }
 
@@ -73,8 +63,7 @@ public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseV
             FirebaseVisionBarcode barcode = barcodes.get(i);
             BarcodeGraphic barcodeGraphic = new BarcodeGraphic(graphicOverlay, barcode);
             graphicOverlay.add(barcodeGraphic);
-            this.dpf.onQrScanned(barcode);
-//            Log.d(TAG, "onSuccess: " + barcode.getDisplayValue());
+            this.ca.onQrScanned(barcode.getDisplayValue());
         }
     }
 
