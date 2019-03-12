@@ -1,21 +1,15 @@
 import UIKit
 
-class User {
+class Company {
     
     var name: String
-    var surname: String
     var avatar: UIImage
-    var postsCount: Int
-    var commentsCount: Int
-    var likesCount: Int
+    var hasStamped: Bool
 
-    init(name: String, surname: String, avatar: UIImage, postsCount: Int, commentsCount: Int, likesCount: Int) {
+    init(name: String, avatar: UIImage, hasStamped: Bool) {
         self.name = name
-        self.surname = surname
         self.avatar = avatar
-        self.postsCount = postsCount
-        self.commentsCount = commentsCount
-        self.likesCount = likesCount
+        self.hasStamped = hasStamped
     }
     
 }

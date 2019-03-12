@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50241E892238485400BD2B6D /* CompanyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50241E882238485400BD2B6D /* CompanyDetailViewController.swift */; };
 		5034AEAC21983F0400897145 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034AEAB21983F0400897145 /* Bundle.swift */; };
 		5036B9412195906600752C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036B9402195906600752C6A /* AppDelegate.swift */; };
 		5036B9482195906600752C6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B9462195906600752C6A /* Main.storyboard */; };
@@ -16,11 +17,11 @@
 		5051D4B121F34915003EDCC5 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AF21F34915003EDCC5 /* UIUtilities.swift */; };
 		5051D4B321F3491D003EDCC5 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B221F3491D003EDCC5 /* CameraViewController.swift */; };
 		5051D4B521F35758003EDCC5 /* DigitalPassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */; };
-		5051D4BA21F35F8A003EDCC5 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B921F35F8A003EDCC5 /* UserDataProvider.swift */; };
+		5051D4BA21F35F8A003EDCC5 /* CompanyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B921F35F8A003EDCC5 /* CompanyDataProvider.swift */; };
 		5051D4BC21F35F9E003EDCC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BB21F35F9E003EDCC5 /* User.swift */; };
 		5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */; };
-		5051D4C421F35FD1003EDCC5 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5051D4C221F35FD1003EDCC5 /* UserCollectionViewCell.xib */; };
-		5051D4C521F35FD1003EDCC5 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4C321F35FD1003EDCC5 /* UserCollectionViewCell.swift */; };
+		5051D4C421F35FD1003EDCC5 /* CompanyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5051D4C221F35FD1003EDCC5 /* CompanyCollectionViewCell.xib */; };
+		5051D4C521F35FD1003EDCC5 /* CompanyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4C321F35FD1003EDCC5 /* CompanyCollectionViewCell.swift */; };
 		5051D54E21F63D30003EDCC5 /* Shared in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54D21F63D30003EDCC5 /* Shared */; };
 		5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54F21F63E81003EDCC5 /* Assets.xcassets */; };
 		50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		17B2F1AD67EDB6ABBA8E42B2 /* Pods-JavaZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JavaZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JavaZone/Pods-JavaZone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A081B0CC546769845C407B3 /* Pods_JavaZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JavaZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50241E882238485400BD2B6D /* CompanyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailViewController.swift; sourceTree = "<group>"; };
 		5034AEAB21983F0400897145 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5036B93D2195906600752C6A /* JavaZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036B9402195906600752C6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,11 +80,11 @@
 		5051D4AF21F34915003EDCC5 /* UIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
 		5051D4B221F3491D003EDCC5 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPassMainViewController.swift; sourceTree = "<group>"; };
-		5051D4B921F35F8A003EDCC5 /* UserDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
+		5051D4B921F35F8A003EDCC5 /* CompanyDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyDataProvider.swift; sourceTree = "<group>"; };
 		5051D4BB21F35F9E003EDCC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
-		5051D4C221F35FD1003EDCC5 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
-		5051D4C321F35FD1003EDCC5 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		5051D4C221F35FD1003EDCC5 /* CompanyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyCollectionViewCell.xib; sourceTree = "<group>"; };
+		5051D4C321F35FD1003EDCC5 /* CompanyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCollectionViewCell.swift; sourceTree = "<group>"; };
 		5051D54D21F63D30003EDCC5 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		5051D54F21F63E81003EDCC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValues.swift; sourceTree = "<group>"; };
@@ -201,17 +203,17 @@
 		5051D4B721F35F8A003EDCC5 /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4B821F35F8A003EDCC5 /* UserDataProvider */,
+				5051D4B821F35F8A003EDCC5 /* CompanyDataProvider */,
 			);
 			path = DataProviders;
 			sourceTree = "<group>";
 		};
-		5051D4B821F35F8A003EDCC5 /* UserDataProvider */ = {
+		5051D4B821F35F8A003EDCC5 /* CompanyDataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4B921F35F8A003EDCC5 /* UserDataProvider.swift */,
+				5051D4B921F35F8A003EDCC5 /* CompanyDataProvider.swift */,
 			);
-			path = UserDataProvider;
+			path = CompanyDataProvider;
 			sourceTree = "<group>";
 		};
 		5051D4BD21F35FB0003EDCC5 /* Protocols */ = {
@@ -225,18 +227,18 @@
 		5051D4C021F35FD1003EDCC5 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4C121F35FD1003EDCC5 /* UserCollectionViewCell */,
+				5051D4C121F35FD1003EDCC5 /* CompanyCollectionViewCell */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
-		5051D4C121F35FD1003EDCC5 /* UserCollectionViewCell */ = {
+		5051D4C121F35FD1003EDCC5 /* CompanyCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4C221F35FD1003EDCC5 /* UserCollectionViewCell.xib */,
-				5051D4C321F35FD1003EDCC5 /* UserCollectionViewCell.swift */,
+				5051D4C221F35FD1003EDCC5 /* CompanyCollectionViewCell.xib */,
+				5051D4C321F35FD1003EDCC5 /* CompanyCollectionViewCell.swift */,
 			);
-			path = UserCollectionViewCell;
+			path = CompanyCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		50ACA1912195984D004F4B1C /* Utilities */ = {
@@ -342,6 +344,7 @@
 				50F663402195998C00284E79 /* SettingsViewController.swift */,
 				5051D4AC21F336E6003EDCC5 /* VisionController.swift */,
 				5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */,
+				50241E882238485400BD2B6D /* CompanyDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -417,7 +420,7 @@
 			files = (
 				5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */,
 				50F663652195AC3500284E79 /* licenses.html in Resources */,
-				5051D4C421F35FD1003EDCC5 /* UserCollectionViewCell.xib in Resources */,
+				5051D4C421F35FD1003EDCC5 /* CompanyCollectionViewCell.xib in Resources */,
 				50F663662195AC3500284E79 /* disclosure.png in Resources */,
 				5036B94D2195906800752C6A /* LaunchScreen.storyboard in Resources */,
 				5051D54E21F63D30003EDCC5 /* Shared in Resources */,
@@ -516,7 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F663442195998C00284E79 /* Session.swift in Sources */,
-				5051D4BA21F35F8A003EDCC5 /* UserDataProvider.swift in Sources */,
+				5051D4BA21F35F8A003EDCC5 /* CompanyDataProvider.swift in Sources */,
 				5051D4AD21F336E6003EDCC5 /* VisionController.swift in Sources */,
 				5034AEAC21983F0400897145 /* Bundle.swift in Sources */,
 				50F663482195998C00284E79 /* GeneralSettingsCell.swift in Sources */,
@@ -539,9 +542,10 @@
 				50F6634E2195998C00284E79 /* SpeakerRepository.swift in Sources */,
 				5051D4B321F3491D003EDCC5 /* CameraViewController.swift in Sources */,
 				50F663422195998C00284E79 /* FeedbackApiService.swift in Sources */,
-				5051D4C521F35FD1003EDCC5 /* UserCollectionViewCell.swift in Sources */,
+				5051D4C521F35FD1003EDCC5 /* CompanyCollectionViewCell.swift in Sources */,
 				50F6634F2195998C00284E79 /* UIVIew.swift in Sources */,
 				50F663532195998C00284E79 /* UIViewController.swift in Sources */,
+				50241E892238485400BD2B6D /* CompanyDetailViewController.swift in Sources */,
 				50F663192195997A00284E79 /* URLConstants.swift in Sources */,
 				5036B9412195906600752C6A /* AppDelegate.swift in Sources */,
 				50F663512195998C00284E79 /* Request.swift in Sources */,

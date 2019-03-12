@@ -101,22 +101,10 @@ class ViewController:  UIViewController, UINavigationControllerDelegate {
         let row = detectorPicker.selectedRow(inComponent: 0)
         if let rowIndex = DetectorPickerRow(rawValue: row) {
             switch rowIndex {
-            case .detectFaceOnDevice:
-                detectFaces(image: imageView.image)
             case .detectTextOnDevice:
                 detectTextOnDevice(image: imageView.image)
             case .detectBarcodeOnDevice:
                 detectBarcodes(image: imageView.image)
-            case .detectImageLabelsOnDevice:
-                detectLabels(image: imageView.image)
-            case .detectTextInCloud:
-                detectTextInCloud(image: imageView.image)
-            case .detectDocumentTextInCloud:
-                detectDocumentTextInCloud(image: imageView.image)
-            case .detectImageLabelsInCloud:
-                detectCloudLabels(image: imageView.image)
-            case .detectLandmarkInCloud:
-                detectCloudLandmarks(image: imageView.image)
             }
         } else {
             print("No such item at row \(row) in detector picker.")
@@ -777,53 +765,6 @@ extension ViewController {
         // [END detect_barcodes]
     }
     
-    /// Detects labels on the specified image using On-Device label API.
-    ///
-    /// - Parameter image: The image.
-    func detectLabels(image: UIImage?) {
-        guard let image = image else { return }
-        
-        // [START config_label]
-        let options = VisionLabelDetectorOptions(
-            confidenceThreshold: Constants.labelConfidenceThreshold
-        )
-        // [END config_label]
-        
-        // [START init_label]
-        let labelDetector = vision.labelDetector(options: options)
-        // [END init_label]
-        
-        // Define the metadata for the image.
-        let imageMetadata = VisionImageMetadata()
-        imageMetadata.orientation = UIUtilities.visionImageOrientation(from: image.imageOrientation)
-        
-        // Initialize a VisionImage object with the given UIImage.
-        let visionImage = VisionImage(image: image)
-        visionImage.metadata = imageMetadata
-        
-        // [START detect_label]
-        labelDetector.detect(in: visionImage) { features, error in
-            guard error == nil, let features = features, !features.isEmpty else {
-                // [START_EXCLUDE]
-                let errorString = error?.localizedDescription ?? Constants.detectionNoResultsMessage
-                self.resultsText = "On-Device label detection failed with error: \(errorString)"
-                self.showResults()
-                // [END_EXCLUDE]
-                return
-            }
-            
-            // [START_EXCLUDE]
-            self.resultsText = features.map { feature -> String in
-                return "Label: \(String(describing: feature.label)), " +
-                    "Confidence: \(feature.confidence), " +
-                "EntityID: \(String(describing: feature.entityID))"
-                }.joined(separator: "\n")
-            self.showResults()
-            // [END_EXCLUDE]
-        }
-        // [END detect_label]
-    }
-    
     /// Detects text on the specified image and draws a frame around the recognized text using the
     /// On-Device text recognizer.
     ///
@@ -960,101 +901,39 @@ extension ViewController {
         // [END detect_landmarks_cloud]
     }
     
-    /// Detects labels on the specified image using cloud label API.
-    ///
-    /// - Parameter image: The image.
-    func detectCloudLabels(image: UIImage?) {
-        guard let image = image else { return }
+    // MARK: - Enums
+    
+    private enum DetectorPickerRow: Int {
+        case detectTextOnDevice = 0,
+        detectBarcodeOnDevice
         
-        // [START init_label_cloud]
-        let labelDetector = vision.cloudLabelDetector()
-        // Or, to change the default settings:
-        // let labelDetector = Vision.vision().cloudLabelDetector(options: options)
-        // [END init_label_cloud]
+        static let rowsCount = 2
+        static let componentsCount = 1
         
-        // Define the metadata for the image.
-        let imageMetadata = VisionImageMetadata()
-        imageMetadata.orientation = UIUtilities.visionImageOrientation(from: image.imageOrientation)
-        
-        // Initialize a VisionImage object with the given UIImage.
-        let visionImage = VisionImage(image: image)
-        visionImage.metadata = imageMetadata
-        
-        // [START detect_label_cloud]
-        labelDetector.detect(in: visionImage) { labels, error in
-            guard error == nil, let labels = labels, !labels.isEmpty else {
-                // [START_EXCLUDE]
-                let errorString = error?.localizedDescription ?? Constants.detectionNoResultsMessage
-                self.resultsText = "Cloud label detection failed with error: \(errorString)"
-                self.showResults()
-                // [END_EXCLUDE]
-                return
+        public var description: String {
+            switch self {
+            case .detectTextOnDevice:
+                return "Text On-Device"
+            case .detectBarcodeOnDevice:
+                return "Barcode On-Device"
             }
-            
-            // Labeled image
-            // START_EXCLUDE
-            self.resultsText = labels.map { label -> String in
-                "Label: \(String(describing: label.label ?? "")), " +
-                    "Confidence: \(label.confidence ?? 0), " +
-                "EntityID: \(label.entityId ?? "")"
-                }.joined(separator: "\n")
-            self.showResults()
-            // [END_EXCLUDE]
         }
     }
-    // [END detect_label_cloud]
-}
-
-// MARK: - Enums
-
-private enum DetectorPickerRow: Int {
-    case detectFaceOnDevice = 0,
-    detectTextOnDevice,
-    detectBarcodeOnDevice,
-    detectImageLabelsOnDevice,
-    detectTextInCloud,
-    detectDocumentTextInCloud,
-    detectImageLabelsInCloud,
-    detectLandmarkInCloud
     
-    static let rowsCount = 8
-    static let componentsCount = 1
-    
-    public var description: String {
-        switch self {
-        case .detectFaceOnDevice:
-            return "Face On-Device"
-        case .detectTextOnDevice:
-            return "Text On-Device"
-        case .detectBarcodeOnDevice:
-            return "Barcode On-Device"
-        case .detectImageLabelsOnDevice:
-            return "Image Labeling On-Device"
-        case .detectTextInCloud:
-            return "Text in Cloud"
-        case .detectDocumentTextInCloud:
-            return "Document Text in Cloud"
-        case .detectImageLabelsInCloud:
-            return "Image Labeling in Cloud"
-        case .detectLandmarkInCloud:
-            return "Landmarks in Cloud"
-        }
+    private enum Constants {
+        static let images = ["grace_hopper.jpg", "barcode_128.png", "qr_code.jpg", "beach.jpg",
+                             "image_has_text.jpg", "liberty.jpg"]
+        static let modelExtension = "tflite"
+        static let localModelName = "mobilenet"
+        static let quantizedModelFilename = "mobilenet_quant_v1_224"
+        
+        static let detectionNoResultsMessage = "No results returned."
+        static let failedToDetectObjectsMessage = "Failed to detect objects in image."
+        
+        static let labelConfidenceThreshold: Float = 0.75
+        static let smallDotRadius: CGFloat = 5.0
+        static let largeDotRadius: CGFloat = 10.0
+        static let lineColor = UIColor.yellow.cgColor
+        static let fillColor = UIColor.clear.cgColor
     }
-}
-
-private enum Constants {
-    static let images = ["grace_hopper.jpg", "barcode_128.png", "qr_code.jpg", "beach.jpg",
-                         "image_has_text.jpg", "liberty.jpg"]
-    static let modelExtension = "tflite"
-    static let localModelName = "mobilenet"
-    static let quantizedModelFilename = "mobilenet_quant_v1_224"
-    
-    static let detectionNoResultsMessage = "No results returned."
-    static let failedToDetectObjectsMessage = "Failed to detect objects in image."
-    
-    static let labelConfidenceThreshold: Float = 0.75
-    static let smallDotRadius: CGFloat = 5.0
-    static let largeDotRadius: CGFloat = 10.0
-    static let lineColor = UIColor.yellow.cgColor
-    static let fillColor = UIColor.clear.cgColor
 }

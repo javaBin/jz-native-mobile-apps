@@ -4,30 +4,31 @@ import DisplaySwitcher
 private let animationDuration: TimeInterval = 0.3
 
 private let listLayoutStaticCellHeight: CGFloat = 80
-private let gridLayoutStaticCellHeight: CGFloat = 165
+private let gridLayoutStaticCellHeight: CGFloat = 120
 
-class DigitalPassMainViewController: UIViewController , UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate{
+class DigitalPassMainViewController: UIViewController , UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var rotationButton: SwitchLayoutButton!
     
     fileprivate var tap: UITapGestureRecognizer!
-    fileprivate var users = UserDataProvider().generateFakeUsers()
-    fileprivate var searchUsers = [User]()
+    fileprivate var collectionViewTap: UITapGestureRecognizer!
+    
+    fileprivate var companies = CompanyDataProvider().generateFakeCompanies()
+    fileprivate var searchCompanies = [Company]()
     fileprivate var isTransitionAvailable = true
-    fileprivate lazy var listLayout = DisplaySwitchLayout(staticCellHeight: listLayoutStaticCellHeight, nextLayoutStaticCellHeight: gridLayoutStaticCellHeight, layoutState: .list)
     fileprivate lazy var gridLayout = DisplaySwitchLayout(staticCellHeight: gridLayoutStaticCellHeight, nextLayoutStaticCellHeight: listLayoutStaticCellHeight, layoutState: .grid)
-    fileprivate var layoutState: LayoutState = .list
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        
-        searchUsers = users
-        rotationButton.isSelected = true
+        collectionViewTap = UITapGestureRecognizer(target: self, action: #selector(gesture(_:)))
+        collectionViewTap.numberOfTapsRequired = 1
+        collectionViewTap.numberOfTouchesRequired = 1
+        collectionView?.addGestureRecognizer(collectionViewTap)
+        searchCompanies = companies
         setupCollectionView()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -36,50 +37,46 @@ class DigitalPassMainViewController: UIViewController , UISearchBarDelegate, UIC
     
     // MARK: - Private methods
     fileprivate func setupCollectionView() {
-        collectionView.collectionViewLayout = listLayout
-        collectionView.register(UserCollectionViewCell.cellNib, forCellWithReuseIdentifier:UserCollectionViewCell.id)
+        collectionView.collectionViewLayout = gridLayout
+        collectionView.register(CompanyCollectionViewCell.cellNib, forCellWithReuseIdentifier:CompanyCollectionViewCell.id)
     }
     
     // MARK: - Actions
     @IBAction func buttonTapped(_ sender: AnyObject) {
-        if !isTransitionAvailable {
-            return
-        }
-        let transitionManager: TransitionManager
-        if layoutState == .list {
-            layoutState = .grid
-            transitionManager = TransitionManager(duration: animationDuration, collectionView: collectionView!, destinationLayout: gridLayout, layoutState: layoutState)
-        } else {
-            layoutState = .list
-            transitionManager = TransitionManager(duration: animationDuration, collectionView: collectionView!, destinationLayout: listLayout, layoutState: layoutState)
-        }
-        transitionManager.startInteractiveTransition()
-        rotationButton.isSelected = layoutState == .list
-        rotationButton.animationDuration = animationDuration
+
     }
     
-    @IBAction func tapRecognized() {
-        view.endEditing(true)
+    @objc func gesture(_ sender: UITapGestureRecognizer) {
+        let point = sender.location(in: collectionView)
+        if let indexPath = collectionView?.indexPathForItem(at: point) {
+            let cell = collectionView?.cellForItem(at: indexPath) as! CompanyCollectionViewCell
+            self.performSegue(withIdentifier: "companyInformationSegue", sender: cell)
+
+        }
     }
     
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "companyInformationSegue" {
+            let newViewController = segue.destination as! CompanyDetailViewController
+            let company = sender as! CompanyCollectionViewCell
+            newViewController.company = company as! Company
+        }
+    }
 }
 
 extension DigitalPassMainViewController {
     
     // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchUsers.count
+        return searchCompanies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserCollectionViewCell.id, for: indexPath) as! UserCollectionViewCell
-        if layoutState == .grid {
-            cell.setupGridLayoutConstraints(1, cellWidth: cell.frame.width)
-        } else {
-            cell.setupListLayoutConstraints(1, cellWidth: cell.frame.width)
-        }
-        cell.bind(searchUsers[(indexPath as NSIndexPath).row])
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompanyCollectionViewCell.id, for: indexPath) as! CompanyCollectionViewCell
+        cell.setupGridLayoutConstraints(1, cellWidth: cell.frame.width)
+        cell.bind(searchCompanies[(indexPath as NSIndexPath).row])
+        cell.company = searchCompanies[(indexPath as NSIndexPath).row]
         return cell
     }
     
@@ -107,16 +104,12 @@ extension DigitalPassMainViewController {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            searchUsers = users
+            searchCompanies = companies
         } else {
-            searchUsers = searchUsers.filter { return $0.name.contains(searchText) }
+            searchCompanies = searchCompanies.filter { return $0.name.contains(searchText) }
         }
         
         collectionView.reloadData()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,didSelectItemAtIndexPath indexPath: IndexPath) {
-        print("Hi \((indexPath as NSIndexPath).row)")
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
