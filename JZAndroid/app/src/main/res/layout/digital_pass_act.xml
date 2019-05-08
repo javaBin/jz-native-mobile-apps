@@ -12,19 +12,21 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<FrameLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <fragment
         android:id="@+id/main_content"
         android:name="no.schedule.javazone.v3.digitalpass.DigitalPassPagerFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         tools:layout="@layout/digital_pass_pager_frag" />
 
     <no.schedule.javazone.v3.ui.widget.BadgedBottomNavigationView
@@ -35,4 +37,4 @@
         android:layout_gravity="bottom"
         app:menu="@menu/bottom_nav_items" />
 
-</FrameLayout>
+</LinearLayout>
