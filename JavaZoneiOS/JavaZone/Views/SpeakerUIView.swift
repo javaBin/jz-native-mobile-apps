@@ -7,7 +7,6 @@ class SpeakerUIView: UIView {
     @IBOutlet weak var speakerImageView: AvatarImageView! {
         didSet {
             speakerImageView.configuration = ImageConfig()
-            
         }
     }
     

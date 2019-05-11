@@ -10,8 +10,6 @@ class GeneralSettingsCell: UITableViewCell {
         } else {
             
         }
-        
-        
     }
     
     

@@ -5,9 +5,10 @@ import CoreData
 import Swinject
 import SwinjectStoryboard
 import SVProgressHUD
-import Firebase
+import FirebaseCore
 import UserNotifications
 import AudioToolbox
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -47,7 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
             c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
             
-        }  
+        }
+        
+        
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -57,6 +60,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window = window
         FirebaseApp.configure()
         let _ = RemoteConfigValues.sharedInstance
+        var migrationVersion: UInt64 = 2
+        var oldMigrationVersion: UInt64 = 1
+        
+        // Set configuration and delete all realm if version is not the same
+        let config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: migrationVersion,
+            
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                switch oldSchemaVersion {
+                default:
+                    oldMigrationVersion = oldSchemaVersion
+                    break
+                }
+        }
+        )
+
+        if migrationVersion > oldMigrationVersion {
+            do {
+                let realm = try! Realm(configuration: config)
+                try! realm.write {
+                    realm.deleteAll()
+                }
+            } catch let error as NSError {
+                // handle error
+            }
+
+        }
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()

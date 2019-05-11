@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50241E892238485400BD2B6D /* CompanyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50241E882238485400BD2B6D /* CompanyDetailViewController.swift */; };
+		50241E892238485400BD2B6D /* PartnerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50241E882238485400BD2B6D /* PartnerDetailViewController.swift */; };
 		5034AEAC21983F0400897145 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034AEAB21983F0400897145 /* Bundle.swift */; };
+		5035CCD42286C2A2005A6311 /* DigitalPassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */; };
 		5036B9412195906600752C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036B9402195906600752C6A /* AppDelegate.swift */; };
 		5036B9482195906600752C6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B9462195906600752C6A /* Main.storyboard */; };
 		5036B94D2195906800752C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B94B2195906800752C6A /* LaunchScreen.storyboard */; };
-		5051D4AD21F336E6003EDCC5 /* VisionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AC21F336E6003EDCC5 /* VisionController.swift */; };
+		50398EE1224A8B5400F9846E /* PartnerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50398EE0224A8B5400F9846E /* PartnerRepository.swift */; };
+		50398EE3224AA43E00F9846E /* PartnerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50398EE2224AA43E00F9846E /* PartnerService.swift */; };
 		5051D4B021F34915003EDCC5 /* MLKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */; };
-		5051D4B121F34915003EDCC5 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AF21F34915003EDCC5 /* UIUtilities.swift */; };
-		5051D4B321F3491D003EDCC5 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B221F3491D003EDCC5 /* CameraViewController.swift */; };
-		5051D4B521F35758003EDCC5 /* DigitalPassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */; };
-		5051D4BA21F35F8A003EDCC5 /* CompanyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B921F35F8A003EDCC5 /* CompanyDataProvider.swift */; };
-		5051D4BC21F35F9E003EDCC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BB21F35F9E003EDCC5 /* User.swift */; };
+		5051D4B521F35758003EDCC5 /* PartnerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */; };
+		5051D4BA21F35F8A003EDCC5 /* PartnerDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */; };
+		5051D4BC21F35F9E003EDCC5 /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BB21F35F9E003EDCC5 /* Partner.swift */; };
 		5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */; };
-		5051D4C421F35FD1003EDCC5 /* CompanyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5051D4C221F35FD1003EDCC5 /* CompanyCollectionViewCell.xib */; };
-		5051D4C521F35FD1003EDCC5 /* CompanyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4C321F35FD1003EDCC5 /* CompanyCollectionViewCell.swift */; };
+		5051D4C421F35FD1003EDCC5 /* PartnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5051D4C221F35FD1003EDCC5 /* PartnerCollectionViewCell.xib */; };
+		5051D4C521F35FD1003EDCC5 /* PartnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */; };
 		5051D54E21F63D30003EDCC5 /* Shared in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54D21F63D30003EDCC5 /* Shared */; };
 		5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54F21F63E81003EDCC5 /* Assets.xcassets */; };
 		50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */; };
@@ -68,23 +68,23 @@
 /* Begin PBXFileReference section */
 		17B2F1AD67EDB6ABBA8E42B2 /* Pods-JavaZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JavaZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JavaZone/Pods-JavaZone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A081B0CC546769845C407B3 /* Pods_JavaZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JavaZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50241E882238485400BD2B6D /* CompanyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailViewController.swift; sourceTree = "<group>"; };
+		50241E882238485400BD2B6D /* PartnerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDetailViewController.swift; sourceTree = "<group>"; };
 		5034AEAB21983F0400897145 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPassMainViewController.swift; sourceTree = "<group>"; };
 		5036B93D2195906600752C6A /* JavaZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036B9402195906600752C6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5036B9472195906600752C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5036B94C2195906800752C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5036B94E2195906800752C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5051D4AC21F336E6003EDCC5 /* VisionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionController.swift; sourceTree = "<group>"; };
+		50398EE0224A8B5400F9846E /* PartnerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRepository.swift; sourceTree = "<group>"; };
+		50398EE2224AA43E00F9846E /* PartnerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerService.swift; sourceTree = "<group>"; };
 		5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLKitExtensions.swift; sourceTree = "<group>"; };
-		5051D4AF21F34915003EDCC5 /* UIUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
-		5051D4B221F3491D003EDCC5 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPassMainViewController.swift; sourceTree = "<group>"; };
-		5051D4B921F35F8A003EDCC5 /* CompanyDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyDataProvider.swift; sourceTree = "<group>"; };
-		5051D4BB21F35F9E003EDCC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListViewController.swift; sourceTree = "<group>"; };
+		5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerDataProvider.swift; sourceTree = "<group>"; };
+		5051D4BB21F35F9E003EDCC5 /* Partner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
-		5051D4C221F35FD1003EDCC5 /* CompanyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyCollectionViewCell.xib; sourceTree = "<group>"; };
-		5051D4C321F35FD1003EDCC5 /* CompanyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyCollectionViewCell.swift; sourceTree = "<group>"; };
+		5051D4C221F35FD1003EDCC5 /* PartnerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PartnerCollectionViewCell.xib; sourceTree = "<group>"; };
+		5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5051D54D21F63D30003EDCC5 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		5051D54F21F63E81003EDCC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValues.swift; sourceTree = "<group>"; };
@@ -195,14 +195,6 @@
 		5051D4B621F35F5B003EDCC5 /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4B721F35F8A003EDCC5 /* DataProviders */,
-			);
-			path = DataProviders;
-			sourceTree = "<group>";
-		};
-		5051D4B721F35F8A003EDCC5 /* DataProviders */ = {
-			isa = PBXGroup;
-			children = (
 				5051D4B821F35F8A003EDCC5 /* CompanyDataProvider */,
 			);
 			path = DataProviders;
@@ -211,7 +203,7 @@
 		5051D4B821F35F8A003EDCC5 /* CompanyDataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4B921F35F8A003EDCC5 /* CompanyDataProvider.swift */,
+				5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */,
 			);
 			path = CompanyDataProvider;
 			sourceTree = "<group>";
@@ -227,25 +219,24 @@
 		5051D4C021F35FD1003EDCC5 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4C121F35FD1003EDCC5 /* CompanyCollectionViewCell */,
+				5051D4C121F35FD1003EDCC5 /* PartnerCollectionViewCell */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
-		5051D4C121F35FD1003EDCC5 /* CompanyCollectionViewCell */ = {
+		5051D4C121F35FD1003EDCC5 /* PartnerCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4C221F35FD1003EDCC5 /* CompanyCollectionViewCell.xib */,
-				5051D4C321F35FD1003EDCC5 /* CompanyCollectionViewCell.swift */,
+				5051D4C221F35FD1003EDCC5 /* PartnerCollectionViewCell.xib */,
+				5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */,
 			);
-			path = CompanyCollectionViewCell;
+			path = PartnerCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		50ACA1912195984D004F4B1C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */,
-				5051D4AF21F34915003EDCC5 /* UIUtilities.swift */,
 				50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */,
 			);
 			path = Utilities;
@@ -265,6 +256,7 @@
 			children = (
 				50F6631B2195998C00284E79 /* SessionApiService.swift */,
 				50F6631C2195998C00284E79 /* FeedbackApiService.swift */,
+				50398EE2224AA43E00F9846E /* PartnerService.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -272,21 +264,13 @@
 		50F6631D2195998C00284E79 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4BB21F35F9E003EDCC5 /* User.swift */,
+				5051D4BB21F35F9E003EDCC5 /* Partner.swift */,
 				50F6631E2195998C00284E79 /* MySession.swift */,
 				50F6631F2195998C00284E79 /* Session.swift */,
-				50F663202195998C00284E79 /* Db */,
 				50F663212195998C00284E79 /* SpeakerImageViewDataSource.swift */,
 				50F663222195998C00284E79 /* Feedback.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		50F663202195998C00284E79 /* Db */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Db;
 			sourceTree = "<group>";
 		};
 		50F663232195998C00284E79 /* Views */ = {
@@ -308,6 +292,7 @@
 				50F6632A2195998C00284E79 /* Repository.swift */,
 				50F6632B2195998C00284E79 /* SessionRepository.swift */,
 				50F6632C2195998C00284E79 /* SpeakerRepository.swift */,
+				50398EE0224A8B5400F9846E /* PartnerRepository.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -330,7 +315,6 @@
 		50F663352195998C00284E79 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5051D4B221F3491D003EDCC5 /* CameraViewController.swift */,
 				50F663362195998C00284E79 /* AboutTableViewController.swift */,
 				50F663372195998C00284E79 /* SpeakerDetailViewController.swift */,
 				50F663382195998C00284E79 /* EventViewController.swift */,
@@ -342,9 +326,9 @@
 				50F6633E2195998C00284E79 /* OpenSourceLicenseViewController.swift */,
 				50F6633F2195998C00284E79 /* AboutViewController.swift */,
 				50F663402195998C00284E79 /* SettingsViewController.swift */,
-				5051D4AC21F336E6003EDCC5 /* VisionController.swift */,
-				5051D4B421F35758003EDCC5 /* DigitalPassMainViewController.swift */,
-				50241E882238485400BD2B6D /* CompanyDetailViewController.swift */,
+				5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */,
+				50241E882238485400BD2B6D /* PartnerDetailViewController.swift */,
+				5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -420,7 +404,7 @@
 			files = (
 				5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */,
 				50F663652195AC3500284E79 /* licenses.html in Resources */,
-				5051D4C421F35FD1003EDCC5 /* CompanyCollectionViewCell.xib in Resources */,
+				5051D4C421F35FD1003EDCC5 /* PartnerCollectionViewCell.xib in Resources */,
 				50F663662195AC3500284E79 /* disclosure.png in Resources */,
 				5036B94D2195906800752C6A /* LaunchScreen.storyboard in Resources */,
 				5051D54E21F63D30003EDCC5 /* Shared in Resources */,
@@ -442,17 +426,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-JavaZone/Pods-JavaZone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AvatarImageView/AvatarImageView.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/DisplaySwitcher/DisplaySwitcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -461,23 +445,26 @@
 				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvatarImageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DisplaySwitcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -486,6 +473,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,8 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F663442195998C00284E79 /* Session.swift in Sources */,
-				5051D4BA21F35F8A003EDCC5 /* CompanyDataProvider.swift in Sources */,
-				5051D4AD21F336E6003EDCC5 /* VisionController.swift in Sources */,
+				5051D4BA21F35F8A003EDCC5 /* PartnerDataProvider.swift in Sources */,
 				5034AEAC21983F0400897145 /* Bundle.swift in Sources */,
 				50F663482195998C00284E79 /* GeneralSettingsCell.swift in Sources */,
 				50F663522195998C00284E79 /* String.swift in Sources */,
@@ -535,35 +524,36 @@
 				50F663432195998C00284E79 /* MySession.swift in Sources */,
 				50ACA196219598AA004F4B1C /* CommonConstants.swift in Sources */,
 				5051D4B021F34915003EDCC5 /* MLKitExtensions.swift in Sources */,
-				5051D4B121F34915003EDCC5 /* UIUtilities.swift in Sources */,
 				50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */,
 				50F663592195998C00284E79 /* FeedbackViewController.swift in Sources */,
 				50F663472195998C00284E79 /* SpeakerUIView.swift in Sources */,
 				50F6634E2195998C00284E79 /* SpeakerRepository.swift in Sources */,
-				5051D4B321F3491D003EDCC5 /* CameraViewController.swift in Sources */,
 				50F663422195998C00284E79 /* FeedbackApiService.swift in Sources */,
-				5051D4C521F35FD1003EDCC5 /* CompanyCollectionViewCell.swift in Sources */,
+				5051D4C521F35FD1003EDCC5 /* PartnerCollectionViewCell.swift in Sources */,
 				50F6634F2195998C00284E79 /* UIVIew.swift in Sources */,
 				50F663532195998C00284E79 /* UIViewController.swift in Sources */,
-				50241E892238485400BD2B6D /* CompanyDetailViewController.swift in Sources */,
+				50241E892238485400BD2B6D /* PartnerDetailViewController.swift in Sources */,
 				50F663192195997A00284E79 /* URLConstants.swift in Sources */,
 				5036B9412195906600752C6A /* AppDelegate.swift in Sources */,
 				50F663512195998C00284E79 /* Request.swift in Sources */,
 				50F663552195998C00284E79 /* UITextView.swift in Sources */,
+				5035CCD42286C2A2005A6311 /* DigitalPassMainViewController.swift in Sources */,
 				50F663602195998C00284E79 /* SettingsViewController.swift in Sources */,
 				50F6634C2195998C00284E79 /* Repository.swift in Sources */,
 				50F663502195998C00284E79 /* UIStackView.swift in Sources */,
 				50F6635B2195998C00284E79 /* SessionListViewController.swift in Sources */,
+				50398EE1224A8B5400F9846E /* PartnerRepository.swift in Sources */,
 				50F663492195998C00284E79 /* SessionTableViewCell.swift in Sources */,
 				50F6635F2195998C00284E79 /* AboutViewController.swift in Sources */,
 				50F6634B2195998C00284E79 /* MySessionRepository.swift in Sources */,
 				50F6635C2195998C00284E79 /* MyScheduleViewController.swift in Sources */,
-				5051D4B521F35758003EDCC5 /* DigitalPassMainViewController.swift in Sources */,
+				5051D4B521F35758003EDCC5 /* PartnerListViewController.swift in Sources */,
 				5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */,
 				50F6635A2195998C00284E79 /* SessionDetailsViewController.swift in Sources */,
 				50F663412195998C00284E79 /* SessionApiService.swift in Sources */,
 				50F663572195998C00284E79 /* SpeakerDetailViewController.swift in Sources */,
-				5051D4BC21F35F9E003EDCC5 /* User.swift in Sources */,
+				50398EE3224AA43E00F9846E /* PartnerService.swift in Sources */,
+				5051D4BC21F35F9E003EDCC5 /* Partner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +703,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4FF6CYH8M;
 				INFOPLIST_FILE = JavaZone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -732,6 +723,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4FF6CYH8M;
 				INFOPLIST_FILE = JavaZone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

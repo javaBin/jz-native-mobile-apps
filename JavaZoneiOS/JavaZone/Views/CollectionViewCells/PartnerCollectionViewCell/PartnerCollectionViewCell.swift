@@ -3,13 +3,13 @@ import DisplaySwitcher
 
 private let avatarListLayoutSize: CGFloat = 70.0
 
-class CompanyCollectionViewCell: UICollectionViewCell, CellInterface {
+class PartnerCollectionViewCell: UICollectionViewCell, CellInterface {
     
     @IBOutlet fileprivate weak var avatarImageView: UIImageView!
     @IBOutlet fileprivate weak var backgroundGradientView: UIView!
     @IBOutlet fileprivate weak var nameListLabel: UILabel!
     
-    var company : Company!
+    var partner : Partner!
     
     // avatarImageView constraints
     @IBOutlet fileprivate weak var avatarImageViewWidthConstraint: NSLayoutConstraint!
@@ -25,9 +25,9 @@ class CompanyCollectionViewCell: UICollectionViewCell, CellInterface {
     fileprivate var avatarGridLayoutSize: CGFloat = 0.0
     fileprivate var initialLabelsLeadingConstraintValue: CGFloat = 0.0
     
-    func bind(_ company: Company) {
-        avatarImageView.image = company.avatar
-        nameListLabel.text = company.name
+    func bind(_ partner: Partner) {
+        avatarImageView.imageFromUrl(urlString: partner.uriImage!)
+        nameListLabel.text = partner.name
     }
     
     func setupGridLayoutConstraints(_ transitionProgress: CGFloat, cellWidth: CGFloat) {
