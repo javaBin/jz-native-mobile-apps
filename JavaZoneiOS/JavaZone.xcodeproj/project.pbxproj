@@ -10,11 +10,13 @@
 		50241E892238485400BD2B6D /* PartnerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50241E882238485400BD2B6D /* PartnerDetailViewController.swift */; };
 		5034AEAC21983F0400897145 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034AEAB21983F0400897145 /* Bundle.swift */; };
 		5035CCD42286C2A2005A6311 /* DigitalPassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */; };
+		5035CCD62286CE23005A6311 /* DigitalPassTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035CCD52286CE23005A6311 /* DigitalPassTicketViewController.swift */; };
+		5035CCD82286E7EF005A6311 /* FeedbackApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035CCD72286E7EF005A6311 /* FeedbackApiService.swift */; };
+		5035CCDA2286EA60005A6311 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035CCD92286EA60005A6311 /* Ticket.swift */; };
 		5036B9412195906600752C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5036B9402195906600752C6A /* AppDelegate.swift */; };
 		5036B9482195906600752C6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B9462195906600752C6A /* Main.storyboard */; };
 		5036B94D2195906800752C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5036B94B2195906800752C6A /* LaunchScreen.storyboard */; };
 		50398EE1224A8B5400F9846E /* PartnerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50398EE0224A8B5400F9846E /* PartnerRepository.swift */; };
-		50398EE3224AA43E00F9846E /* PartnerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50398EE2224AA43E00F9846E /* PartnerService.swift */; };
 		5051D4B021F34915003EDCC5 /* MLKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */; };
 		5051D4B521F35758003EDCC5 /* PartnerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */; };
 		5051D4BA21F35F8A003EDCC5 /* PartnerDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */; };
@@ -24,11 +26,11 @@
 		5051D4C521F35FD1003EDCC5 /* PartnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */; };
 		5051D54E21F63D30003EDCC5 /* Shared in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54D21F63D30003EDCC5 /* Shared */; };
 		5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54F21F63E81003EDCC5 /* Assets.xcassets */; };
+		50625BDD2289BC5800723FB4 /* TicketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50625BDC2289BC5800723FB4 /* TicketProvider.swift */; };
 		50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */; };
 		50ACA196219598AA004F4B1C /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA195219598AA004F4B1C /* CommonConstants.swift */; };
 		50F663192195997A00284E79 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F663182195997A00284E79 /* URLConstants.swift */; };
 		50F663412195998C00284E79 /* SessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6631B2195998C00284E79 /* SessionApiService.swift */; };
-		50F663422195998C00284E79 /* FeedbackApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6631C2195998C00284E79 /* FeedbackApiService.swift */; };
 		50F663432195998C00284E79 /* MySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6631E2195998C00284E79 /* MySession.swift */; };
 		50F663442195998C00284E79 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6631F2195998C00284E79 /* Session.swift */; };
 		50F663452195998C00284E79 /* SpeakerImageViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F663212195998C00284E79 /* SpeakerImageViewDataSource.swift */; };
@@ -62,6 +64,7 @@
 		50F663622195A90600284E79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F663612195A90600284E79 /* GoogleService-Info.plist */; };
 		50F663652195AC3500284E79 /* licenses.html in Resources */ = {isa = PBXBuildFile; fileRef = 50F663632195AC3500284E79 /* licenses.html */; };
 		50F663662195AC3500284E79 /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F663642195AC3500284E79 /* disclosure.png */; };
+		50FB8B032295B81C00DB8E43 /* PartnerInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB8B022295B81C00DB8E43 /* PartnerInformationViewController.swift */; };
 		F5EFEA25D673CC4640859395 /* Pods_JavaZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A081B0CC546769845C407B3 /* Pods_JavaZone.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,13 +74,15 @@
 		50241E882238485400BD2B6D /* PartnerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDetailViewController.swift; sourceTree = "<group>"; };
 		5034AEAB21983F0400897145 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPassMainViewController.swift; sourceTree = "<group>"; };
+		5035CCD52286CE23005A6311 /* DigitalPassTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPassTicketViewController.swift; sourceTree = "<group>"; };
+		5035CCD72286E7EF005A6311 /* FeedbackApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackApiService.swift; sourceTree = "<group>"; };
+		5035CCD92286EA60005A6311 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		5036B93D2195906600752C6A /* JavaZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5036B9402195906600752C6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5036B9472195906600752C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5036B94C2195906800752C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5036B94E2195906800752C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50398EE0224A8B5400F9846E /* PartnerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRepository.swift; sourceTree = "<group>"; };
-		50398EE2224AA43E00F9846E /* PartnerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerService.swift; sourceTree = "<group>"; };
 		5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLKitExtensions.swift; sourceTree = "<group>"; };
 		5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListViewController.swift; sourceTree = "<group>"; };
 		5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerDataProvider.swift; sourceTree = "<group>"; };
@@ -87,11 +92,11 @@
 		5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5051D54D21F63D30003EDCC5 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		5051D54F21F63E81003EDCC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50625BDC2289BC5800723FB4 /* TicketProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketProvider.swift; sourceTree = "<group>"; };
 		50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValues.swift; sourceTree = "<group>"; };
 		50ACA195219598AA004F4B1C /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		50F663182195997A00284E79 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		50F6631B2195998C00284E79 /* SessionApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionApiService.swift; sourceTree = "<group>"; };
-		50F6631C2195998C00284E79 /* FeedbackApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackApiService.swift; sourceTree = "<group>"; };
 		50F6631E2195998C00284E79 /* MySession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySession.swift; sourceTree = "<group>"; };
 		50F6631F2195998C00284E79 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		50F663212195998C00284E79 /* SpeakerImageViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerImageViewDataSource.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 		50F663612195A90600284E79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50F663632195AC3500284E79 /* licenses.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = licenses.html; path = JavaZone/licenses.html; sourceTree = "<group>"; };
 		50F663642195AC3500284E79 /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = disclosure.png; path = JavaZone/disclosure.png; sourceTree = "<group>"; };
+		50FB8B022295B81C00DB8E43 /* PartnerInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerInformationViewController.swift; sourceTree = "<group>"; };
 		F5A41CC4F86145680553A83A /* Pods-JavaZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JavaZone.release.xcconfig"; path = "Pods/Target Support Files/Pods-JavaZone/Pods-JavaZone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +201,7 @@
 		5051D4B621F35F5B003EDCC5 /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
+				50625BDB2289BC4100723FB4 /* TicketProvider */,
 				5051D4B821F35F8A003EDCC5 /* CompanyDataProvider */,
 			);
 			path = DataProviders;
@@ -233,6 +240,14 @@
 			path = PartnerCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		50625BDB2289BC4100723FB4 /* TicketProvider */ = {
+			isa = PBXGroup;
+			children = (
+				50625BDC2289BC5800723FB4 /* TicketProvider.swift */,
+			);
+			path = TicketProvider;
+			sourceTree = "<group>";
+		};
 		50ACA1912195984D004F4B1C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,9 +269,8 @@
 		50F6631A2195998C00284E79 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				5035CCD72286E7EF005A6311 /* FeedbackApiService.swift */,
 				50F6631B2195998C00284E79 /* SessionApiService.swift */,
-				50F6631C2195998C00284E79 /* FeedbackApiService.swift */,
-				50398EE2224AA43E00F9846E /* PartnerService.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -269,6 +283,7 @@
 				50F6631F2195998C00284E79 /* Session.swift */,
 				50F663212195998C00284E79 /* SpeakerImageViewDataSource.swift */,
 				50F663222195998C00284E79 /* Feedback.swift */,
+				5035CCD92286EA60005A6311 /* Ticket.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,6 +344,8 @@
 				5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */,
 				50241E882238485400BD2B6D /* PartnerDetailViewController.swift */,
 				5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */,
+				5035CCD52286CE23005A6311 /* DigitalPassTicketViewController.swift */,
+				50FB8B022295B81C00DB8E43 /* PartnerInformationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -512,6 +529,7 @@
 				5051D4BA21F35F8A003EDCC5 /* PartnerDataProvider.swift in Sources */,
 				5034AEAC21983F0400897145 /* Bundle.swift in Sources */,
 				50F663482195998C00284E79 /* GeneralSettingsCell.swift in Sources */,
+				50FB8B032295B81C00DB8E43 /* PartnerInformationViewController.swift in Sources */,
 				50F663522195998C00284E79 /* String.swift in Sources */,
 				50F663452195998C00284E79 /* SpeakerImageViewDataSource.swift in Sources */,
 				50F663462195998C00284E79 /* Feedback.swift in Sources */,
@@ -519,6 +537,7 @@
 				50F663542195998C00284E79 /* UIImageView.swift in Sources */,
 				50F6635D2195998C00284E79 /* InfoViewController.swift in Sources */,
 				50F663582195998C00284E79 /* EventViewController.swift in Sources */,
+				5035CCD82286E7EF005A6311 /* FeedbackApiService.swift in Sources */,
 				50F6635E2195998C00284E79 /* OpenSourceLicenseViewController.swift in Sources */,
 				50F663562195998C00284E79 /* AboutTableViewController.swift in Sources */,
 				50F663432195998C00284E79 /* MySession.swift in Sources */,
@@ -528,7 +547,6 @@
 				50F663592195998C00284E79 /* FeedbackViewController.swift in Sources */,
 				50F663472195998C00284E79 /* SpeakerUIView.swift in Sources */,
 				50F6634E2195998C00284E79 /* SpeakerRepository.swift in Sources */,
-				50F663422195998C00284E79 /* FeedbackApiService.swift in Sources */,
 				5051D4C521F35FD1003EDCC5 /* PartnerCollectionViewCell.swift in Sources */,
 				50F6634F2195998C00284E79 /* UIVIew.swift in Sources */,
 				50F663532195998C00284E79 /* UIViewController.swift in Sources */,
@@ -536,6 +554,7 @@
 				50F663192195997A00284E79 /* URLConstants.swift in Sources */,
 				5036B9412195906600752C6A /* AppDelegate.swift in Sources */,
 				50F663512195998C00284E79 /* Request.swift in Sources */,
+				5035CCDA2286EA60005A6311 /* Ticket.swift in Sources */,
 				50F663552195998C00284E79 /* UITextView.swift in Sources */,
 				5035CCD42286C2A2005A6311 /* DigitalPassMainViewController.swift in Sources */,
 				50F663602195998C00284E79 /* SettingsViewController.swift in Sources */,
@@ -546,13 +565,14 @@
 				50F663492195998C00284E79 /* SessionTableViewCell.swift in Sources */,
 				50F6635F2195998C00284E79 /* AboutViewController.swift in Sources */,
 				50F6634B2195998C00284E79 /* MySessionRepository.swift in Sources */,
+				5035CCD62286CE23005A6311 /* DigitalPassTicketViewController.swift in Sources */,
 				50F6635C2195998C00284E79 /* MyScheduleViewController.swift in Sources */,
 				5051D4B521F35758003EDCC5 /* PartnerListViewController.swift in Sources */,
 				5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */,
 				50F6635A2195998C00284E79 /* SessionDetailsViewController.swift in Sources */,
 				50F663412195998C00284E79 /* SessionApiService.swift in Sources */,
 				50F663572195998C00284E79 /* SpeakerDetailViewController.swift in Sources */,
-				50398EE3224AA43E00F9846E /* PartnerService.swift in Sources */,
+				50625BDD2289BC5800723FB4 /* TicketProvider.swift in Sources */,
 				5051D4BC21F35F9E003EDCC5 /* Partner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

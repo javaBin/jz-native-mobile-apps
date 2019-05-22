@@ -5,8 +5,11 @@ import ObjectMapper_Realm
 
 class Partner : Object, Mappable {    
     @objc dynamic var name: String?
-    @objc dynamic var uriImage: String?
+    @objc dynamic var logoUrl: String?
     @objc dynamic var hasStamped: String?
+    @objc dynamic var homepageUrl: String?
+    var longitude: Double?
+    var latitude: Double?
     
     required convenience init?(map: Map) {
         self.init()
@@ -14,7 +17,10 @@ class Partner : Object, Mappable {
     
     func mapping(map: Map) {
         name            <- map["name"]
-        uriImage        <- map["uriImage"]
+        logoUrl        <- map["logoUrl"]
         hasStamped      <- map["hasStamped"]
+        homepageUrl    <- map["homepageUrl"]
+        longitude       <- map["longitude"]
+        latitude        <- map["latitude"]
     }
 }

@@ -33,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             r in SessionRepository(speakerRepository: r.resolve(SpeakerRepository.self, name: "speakerRepository"))
         }
         
+        container.register(PartnerRepository.self, name: "partnerRepository") {
+            r in PartnerRepository()
+        }
+        
         // Views
         container.storyboardInitCompleted(MyScheduleViewController.self) { r, c in
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
@@ -48,6 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
             c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
             
+        }
+        
+        container.storyboardInitCompleted(PartnerListViewController.self) {
+            r,c in
+            c.partnerRepository = r.resolve(PartnerRepository.self, name: "partnerRepository")
         }
         
         

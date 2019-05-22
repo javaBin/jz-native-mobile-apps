@@ -1,10 +1,14 @@
 import UIKit
 import DisplaySwitcher
+import SVProgressHUD
+import FirebaseDatabase
+import FirebaseStorage
 
 private let animationDuration: TimeInterval = 0.3
 
 private let listLayoutStaticCellHeight: CGFloat = 80
 private let gridLayoutStaticCellHeight: CGFloat = 120
+var partnerRepository: PartnerRepository?
 
 class PartnerListViewController: UIViewController , UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -14,10 +18,13 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     fileprivate var tap: UITapGestureRecognizer!
     fileprivate var collectionViewTap: UITapGestureRecognizer!
     
-    fileprivate var partners = PartnerDataProvider().generateFakeCompanies()
+    fileprivate var partners = [Partner]()
     fileprivate var searchPartners = [Partner]()
     fileprivate var isTransitionAvailable = true
     fileprivate lazy var gridLayout = DisplaySwitchLayout(staticCellHeight: gridLayoutStaticCellHeight, nextLayoutStaticCellHeight: listLayoutStaticCellHeight, layoutState: .grid)
+    var partnerRepository: PartnerRepository?
+
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -33,6 +40,8 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
+        getAllPartners()
+        
     }
     
     // MARK: - Private methods
@@ -44,6 +53,37 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     // MARK: - Actions
     @IBAction func buttonTapped(_ sender: AnyObject) {
 
+    }
+    
+    func getAllPartners() {
+        partnerRepository!.deleteAll()
+        getAllPartnersFromFirebase()
+        
+    }
+    
+    func getAllPartnersFromFirebase()
+    {
+        SVProgressHUD.show()
+        let ref = Database.database().reference(withPath: "partners")
+        self.partners.removeAll()
+        
+        _ = ref.queryLimited(toFirst: 100).observe(.value) { snapshot in
+            for child in snapshot.children {
+                let partnerObject = child as! DataSnapshot
+                let dict = partnerObject.value as! [String: Any]
+                let partner = Partner()
+                partner.name = dict["name"] as? String
+                partner.logoUrl = dict["logoUrl"] as? String
+                partner.homepageUrl = dict["homepageUrl"] as? String
+                partner.latitude = dict["latitude"] as! Double
+                partner.longitude = dict["longitude"] as! Double
+                self.partners.append(partner)
+            }
+            
+            self.searchPartners = self.partners
+            self.collectionView.reloadData()
+            SVProgressHUD.dismiss()
+        }
     }
     
     @objc func gesture(_ sender: UITapGestureRecognizer) {
@@ -60,7 +100,7 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
         if segue.identifier == "partnerInformationSegue" {
             let newViewController = segue.destination as! PartnerDetailViewController
             let partner = sender as! PartnerCollectionViewCell
-            newViewController.partner = partner as! Partner
+            newViewController.partner = partner as? Partner
         }
     }
 }

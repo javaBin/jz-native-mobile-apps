@@ -5,7 +5,7 @@ class PartnerDataProvider {
     func generateFakeCompanies() -> [Partner] {
         let company1 = Partner()
         company1.name = "7N"
-        company1.uriImage = ""
+        company1.logoUrl = ""
         company1.hasStamped = "false"
 //        let company2 = Company(name: "Acando", avatar: UIImage(named: "acando")!, hasStamped: false)
 //        let company3 = Company(name: "Accenture", avatar: UIImage(named: "accenture")!, hasStamped: false)

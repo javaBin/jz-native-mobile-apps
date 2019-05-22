@@ -1533,10 +1533,6 @@ We would not be what we are today without YOU! Thank you for your support and co
                         <rect key="frame" x="0.0" y="0.0" width="414" height="579"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8a-gs-R8G">
-                                <rect key="frame" x="87" y="100" width="248" height="223"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Location somewhere" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8i-zD-d8L">
                                 <rect key="frame" x="130" y="353" width="155" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1545,7 +1541,7 @@ We would not be what we are today without YOU! Thank you for your support and co
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DT-Mu-PcT">
-                                <rect key="frame" x="165" y="544" width="85" height="72"/>
+                                <rect key="frame" x="165" y="468" width="85" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.64313725489999995" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="qrcode-scan"/>
@@ -1561,13 +1557,17 @@ We would not be what we are today without YOU! Thank you for your support and co
                                     <action selector="scanInModalAction:" destination="pWa-xf-xRp" eventType="touchUpInside" id="IJf-2E-0QY"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8a-gs-R8G">
+                                <rect key="frame" x="83" y="74" width="248" height="223"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dde-aK-TqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5546" y="2486"/>
+            <point key="canvasLocation" x="-5546" y="2171"/>
         </scene>
         <!--PartnerListMain-->
         <scene sceneID="oVA-OE-nhF">
@@ -1663,7 +1663,7 @@ We would not be what we are today without YOU! Thank you for your support and co
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQi-iH-dk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="BOo-rZ-mBb"/>
             </objects>
-            <point key="canvasLocation" x="-5546" y="1710"/>
+            <point key="canvasLocation" x="-5510" y="1482"/>
         </scene>
         <!--Digital Pass Main View Controller-->
         <scene sceneID="e8D-WA-nzh">
@@ -1679,6 +1679,9 @@ We would not be what we are today without YOU! Thank you for your support and co
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TB3-RL-JQU" userLabel="Ticket Container">
                                 <rect key="frame" x="0.0" y="108" width="414" height="579"/>
+                                <connections>
+                                    <segue destination="rm7-qQ-6rG" kind="embed" id="a8u-C0-86c"/>
+                                </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGJ-gr-rSM" userLabel="Partner Container">
                                 <rect key="frame" x="0.0" y="108" width="414" height="579"/>
@@ -1687,7 +1690,10 @@ We would not be what we are today without YOU! Thank you for your support and co
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5C-uS-U8s" userLabel="Info Container">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="107" width="414" height="580"/>
+                                <connections>
+                                    <segue destination="a00-qF-TH4" kind="embed" id="uRw-E0-NAW"/>
+                                </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2OA-KT-HyH">
                                 <rect key="frame" x="24" y="71" width="370" height="29"/>
@@ -1701,7 +1707,7 @@ We would not be what we are today without YOU! Thank you for your support and co
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="w5C-uS-U8s" firstAttribute="top" secondItem="ebT-6d-29Q" secondAttribute="bottom" id="4eE-80-LfD"/>
+                            <constraint firstItem="w5C-uS-U8s" firstAttribute="top" secondItem="ebT-6d-29Q" secondAttribute="bottom" constant="43" id="4eE-80-LfD"/>
                             <constraint firstAttribute="trailing" secondItem="w5C-uS-U8s" secondAttribute="trailing" id="A8P-yx-zJJ"/>
                             <constraint firstItem="w5C-uS-U8s" firstAttribute="leading" secondItem="nIc-io-8yU" secondAttribute="leading" id="KWG-ah-Bbe"/>
                             <constraint firstItem="2OA-KT-HyH" firstAttribute="trailing" secondItem="nIc-io-8yU" secondAttribute="trailingMargin" id="UbQ-vh-5bs"/>
@@ -1728,7 +1734,112 @@ We would not be what we are today without YOU! Thank you for your support and co
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74W-gl-zhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5546" y="789"/>
+            <point key="canvasLocation" x="-5546.376811594203" y="788.31521739130437"/>
+        </scene>
+        <!--Digital Pass Ticket View Controller-->
+        <scene sceneID="DIk-bj-vUn">
+            <objects>
+                <viewController id="rm7-qQ-6rG" customClass="DigitalPassTicketViewController" customModule="JavaZone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="szp-4w-W0C"/>
+                        <viewControllerLayoutGuide type="bottom" id="L2H-hi-gcN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cnz-Jk-1ko">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="579"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B3K-lF-4T8">
+                                <rect key="frame" x="87" y="28" width="240" height="248"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zJ-7J-xCr">
+                                <rect key="frame" x="136" y="448" width="142" height="73"/>
+                                <color key="backgroundColor" red="1" green="0.233758891" blue="0.23659539979999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="bAA-Ss-lgS"/>
+                                    <constraint firstAttribute="width" constant="142" id="rN4-ZV-Cq1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Delete Ticket"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJb-iy-yXG">
+                                <rect key="frame" x="136" y="325" width="142" height="73"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.64313725489999995" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="2zu-wo-E6w"/>
+                                    <constraint firstAttribute="height" constant="73" id="8yi-eh-G4V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Scan Ticket"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="top" secondItem="szp-4w-W0C" secondAttribute="bottom" constant="8" symbolic="YES" id="CYT-q6-44p"/>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="centerX" secondItem="Cnz-Jk-1ko" secondAttribute="centerX" id="Eqq-eG-Wuy"/>
+                            <constraint firstItem="0zJ-7J-xCr" firstAttribute="top" secondItem="qJb-iy-yXG" secondAttribute="bottom" constant="50" id="KH4-Hu-dYQ"/>
+                            <constraint firstItem="L2H-hi-gcN" firstAttribute="top" secondItem="B3K-lF-4T8" secondAttribute="bottom" constant="303" id="RF8-CS-J5o"/>
+                            <constraint firstItem="qJb-iy-yXG" firstAttribute="top" secondItem="B3K-lF-4T8" secondAttribute="bottom" constant="49" id="adP-pq-q2k"/>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="leading" secondItem="Cnz-Jk-1ko" secondAttribute="leadingMargin" constant="67" id="fua-i4-dWd"/>
+                            <constraint firstItem="0zJ-7J-xCr" firstAttribute="leading" secondItem="qJb-iy-yXG" secondAttribute="trailing" constant="-142" id="hfv-m5-hAT"/>
+                            <constraint firstItem="qJb-iy-yXG" firstAttribute="centerX" secondItem="B3K-lF-4T8" secondAttribute="centerX" id="tym-fC-MVg"/>
+                            <constraint firstItem="L2H-hi-gcN" firstAttribute="top" secondItem="qJb-iy-yXG" secondAttribute="bottom" constant="181" id="u4B-OM-Dfa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="deleteTicketButton" destination="0zJ-7J-xCr" id="D0U-1X-ig9"/>
+                        <outlet property="qrCodeTicketImageView" destination="B3K-lF-4T8" id="xwH-dQ-8wE"/>
+                        <outlet property="scanTicketButton" destination="qJb-iy-yXG" id="chK-K8-FeO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4Q-Wb-dpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6878.2608695652179" y="1481.6576086956522"/>
+        </scene>
+        <!--Partner Information View Controller-->
+        <scene sceneID="QgU-ze-gou">
+            <objects>
+                <viewController id="a00-qF-TH4" customClass="PartnerInformationViewController" customModule="JavaZone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bOw-DA-uM0"/>
+                        <viewControllerLayoutGuide type="bottom" id="84Q-VW-TSG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Ek-of-ZLO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="580"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sta-7e-GVF">
+                                <rect key="frame" x="30" y="189" width="364" height="307"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Visit all the partner stands and get a correctpunch hole for each in your passport. Show thepassport with all the punch holes you have got tothe javaBin Lounge.We’ll count how many stands you have visitedand add you to the prize draw.If you are among the lucky winners, you will hearfrom us shortly after the conference.Happy hunting!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collectibles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8g-rg-eYd">
+                                <rect key="frame" x="20" y="88" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="84Q-VW-TSG" firstAttribute="top" secondItem="Sta-7e-GVF" secondAttribute="bottom" constant="84" id="8xW-oY-dpA"/>
+                            <constraint firstItem="Q8g-rg-eYd" firstAttribute="top" secondItem="bOw-DA-uM0" secondAttribute="bottom" constant="68" id="G6w-Zg-WO5"/>
+                            <constraint firstItem="Sta-7e-GVF" firstAttribute="centerX" secondItem="8Ek-of-ZLO" secondAttribute="centerX" constant="5" id="WWN-qG-hbh"/>
+                            <constraint firstItem="Sta-7e-GVF" firstAttribute="top" secondItem="bOw-DA-uM0" secondAttribute="bottom" constant="169" id="b64-kg-vq6"/>
+                            <constraint firstItem="Q8g-rg-eYd" firstAttribute="leading" secondItem="8Ek-of-ZLO" secondAttribute="leadingMargin" id="iuU-R8-xyc"/>
+                            <constraint firstItem="Q8g-rg-eYd" firstAttribute="trailing" secondItem="Sta-7e-GVF" secondAttribute="trailing" id="nVA-I5-6fQ"/>
+                            <constraint firstItem="Sta-7e-GVF" firstAttribute="leading" secondItem="8Ek-of-ZLO" secondAttribute="leadingMargin" constant="10" id="s7c-JQ-MQ9"/>
+                            <constraint firstItem="Sta-7e-GVF" firstAttribute="top" secondItem="Q8g-rg-eYd" secondAttribute="bottom" constant="80" id="z7E-32-FDb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="informationTextField" destination="Sta-7e-GVF" id="Nh4-Ha-si9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTG-T9-CGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4494.202898550725" y="1499.1847826086957"/>
         </scene>
     </scenes>
     <resources>

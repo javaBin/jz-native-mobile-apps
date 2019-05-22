@@ -1,7 +1,7 @@
 import Foundation
 import RealmSwift
 
-class PartneRepository : Repository {
+class PartnerRepository : Repository {
     func addCompanyAsync(partner: Partner!, session: Session) {
         DispatchQueue.global().async {
             // Get new realm and table since we are in a new thread
@@ -22,6 +22,15 @@ class PartneRepository : Repository {
 //        
 //        return returnResult
 //    }
-    
+    override func deleteAll() {
+        DispatchQueue.global().async {
+            let otherRealm = try! Realm()
+            let partnerObjects = otherRealm.objects(Partner.self)
+            try! otherRealm.write {
+                
+                otherRealm.delete(partnerObjects)
+            }
+        }
+    }
     
 }
