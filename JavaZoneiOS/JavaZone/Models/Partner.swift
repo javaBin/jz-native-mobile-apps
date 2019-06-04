@@ -8,8 +8,8 @@ class Partner : Object, Mappable {
     @objc dynamic var logoUrl: String?
     @objc dynamic var hasStamped: String?
     @objc dynamic var homepageUrl: String?
-    var longitude: Double?
-    var latitude: Double?
+    var longitude: String?
+    var latitude: String?
     
     required convenience init?(map: Map) {
         self.init()

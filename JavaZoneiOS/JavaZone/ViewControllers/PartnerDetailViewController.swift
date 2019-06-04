@@ -1,9 +1,13 @@
 import UIKit
 import AVFoundation
 import QRCodeReader
+import Contacts
 
 class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     var partner: Partner!
+    @IBOutlet weak var partnerImageView: UIImageView!
+    @IBOutlet weak var partnerUrlTextView: UITextView!
+    @IBOutlet weak var partnerName: UITextField!
     
     lazy var reader: QRCodeReader = QRCodeReader()
     lazy var readerVC: QRCodeReaderViewController = {
@@ -13,7 +17,7 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
             $0.preferredStatusBarStyle = .lightContent
             $0.showOverlayView        = true
             $0.showSwitchCameraButton  = false
-            $0.rectOfInterest          = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.5)
+            $0.rectOfInterest = CGRect(x: 0.15, y: 0.15, width: 0.7, height: 0.7)
             
             $0.reader.stopScanningWhenCodeIsFound = false
         }
@@ -21,7 +25,19 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
         return QRCodeReaderViewController(builder: builder)
     }()
     
-    // MARK: - Actions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        let font = UIFont.systemFont(ofSize: 18)
+        
+        let attributedString = NSMutableAttributedString(string: partner!.homepageUrl!, attributes:[NSAttributedString.Key.link: URL(string: partner!.homepageUrl!)!, NSAttributedString.Key.paragraphStyle: paragraph, NSAttributedString.Key.font: font ])
+        partnerImageView.imageFromUrl(urlString: (partner!.logoUrl!))
+        partnerImageView.contentMode = UIView.ContentMode.scaleAspectFit
+        partnerUrlTextView.attributedText = attributedString
+        partnerName.text = partner!.name
+
+    }
     
     private func checkScanPermissions() -> Bool {
         do {
@@ -70,16 +86,17 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
+
         
         dismiss(animated: true) { [weak self] in
-            let alert = UIAlertController(
-                title: "CompanyQRCodeReader",
-                message: String (format:"%@ (of type %@)", result.value, result.metadataType),
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            
-            self?.present(alert, animated: true, completion: nil)
+            if let data = result.value.data(using: .utf8) {
+                do {
+                    let partnerCard = try CNContactVCardSerialization.contacts(with: data)
+                    let partner = partnerCard.first
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
     

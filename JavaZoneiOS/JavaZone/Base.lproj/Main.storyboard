@@ -1533,18 +1533,14 @@ We would not be what we are today without YOU! Thank you for your support and co
                         <rect key="frame" x="0.0" y="0.0" width="414" height="579"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Location somewhere" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j8i-zD-d8L">
-                                <rect key="frame" x="130" y="353" width="155" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DT-Mu-PcT">
-                                <rect key="frame" x="165" y="468" width="85" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DT-Mu-PcT">
+                                <rect key="frame" x="84" y="438" width="248" height="72"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.64313725489999995" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="qrcode-scan"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="1yz-f7-ydG"/>
+                                    <constraint firstAttribute="height" constant="72" id="geg-Zj-cpW"/>
+                                </constraints>
+                                <state key="normal" title="Scan partner"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.98431372549999996" green="0.64313725489999995" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1557,17 +1553,64 @@ We would not be what we are today without YOU! Thank you for your support and co
                                     <action selector="scanInModalAction:" destination="pWa-xf-xRp" eventType="touchUpInside" id="IJf-2E-0QY"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8a-gs-R8G">
-                                <rect key="frame" x="83" y="74" width="248" height="223"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J8a-gs-R8G">
+                                <rect key="frame" x="83" y="90" width="248" height="223"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="IEI-7m-vcR"/>
+                                    <constraint firstAttribute="height" constant="223" id="iDi-BY-JJw"/>
+                                </constraints>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="PartnerName" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Chb-hE-w1g">
+                                <rect key="frame" x="87" y="28" width="240" height="34"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-bn-jT1">
+                                <rect key="frame" x="20" y="346" width="374" height="41"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="partnerUrl">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="29" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="J8a-gs-R8G" firstAttribute="top" secondItem="XeR-YS-fYg" secondAttribute="bottom" constant="70" id="6yd-Z2-jLp"/>
+                            <constraint firstItem="J8a-gs-R8G" firstAttribute="leading" secondItem="3Mo-Tm-aQ6" secondAttribute="leadingMargin" constant="63" id="8Kc-uo-6XI"/>
+                            <constraint firstAttribute="trailing" secondItem="1DT-Mu-PcT" secondAttribute="trailing" constant="82" id="FQx-t9-Ive"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J9F-bn-jT1" secondAttribute="trailing" id="GHz-fx-rAp"/>
+                            <constraint firstItem="EV7-fv-zpV" firstAttribute="top" secondItem="1DT-Mu-PcT" secondAttribute="bottom" constant="69" id="H9e-7A-T6B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Chb-hE-w1g" secondAttribute="trailing" constant="67" id="I0I-8N-thV"/>
+                            <constraint firstItem="J8a-gs-R8G" firstAttribute="centerX" secondItem="3Mo-Tm-aQ6" secondAttribute="centerX" id="btH-Uk-aND"/>
+                            <constraint firstItem="J9F-bn-jT1" firstAttribute="top" secondItem="J8a-gs-R8G" secondAttribute="bottom" constant="8" id="ds3-L9-gag"/>
+                            <constraint firstItem="1DT-Mu-PcT" firstAttribute="leading" secondItem="3Mo-Tm-aQ6" secondAttribute="leading" constant="84" id="h7K-u2-kCW"/>
+                            <constraint firstItem="Chb-hE-w1g" firstAttribute="top" secondItem="XeR-YS-fYg" secondAttribute="bottom" constant="8" id="hbN-sa-ANo"/>
+                            <constraint firstItem="J9F-bn-jT1" firstAttribute="leading" secondItem="1DT-Mu-PcT" secondAttribute="leading" constant="-64" id="laX-mb-Z1Q"/>
+                            <constraint firstItem="1DT-Mu-PcT" firstAttribute="top" secondItem="J9F-bn-jT1" secondAttribute="bottom" constant="76" id="qXK-mV-FVY"/>
+                            <constraint firstItem="J9F-bn-jT1" firstAttribute="leading" secondItem="3Mo-Tm-aQ6" secondAttribute="leadingMargin" id="yi9-fh-2fw"/>
+                            <constraint firstItem="Chb-hE-w1g" firstAttribute="leading" secondItem="J8a-gs-R8G" secondAttribute="leading" constant="4" id="yj2-ca-Izx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="partnerImageView" destination="J8a-gs-R8G" id="5dF-pq-52w"/>
+                        <outlet property="partnerName" destination="Chb-hE-w1g" id="0cL-g4-wli"/>
+                        <outlet property="partnerUrlTextView" destination="J9F-bn-jT1" id="803-rs-TtQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dde-aK-TqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5546" y="2171"/>
+            <point key="canvasLocation" x="-5546.376811594203" y="2170.5163043478265"/>
         </scene>
         <!--PartnerListMain-->
         <scene sceneID="oVA-OE-nhF">
@@ -1750,26 +1793,33 @@ We would not be what we are today without YOU! Thank you for your support and co
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B3K-lF-4T8">
                                 <rect key="frame" x="87" y="28" width="240" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="DVd-gy-c8E"/>
+                                    <constraint firstAttribute="height" constant="248" id="guF-xH-oNK"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zJ-7J-xCr">
-                                <rect key="frame" x="136" y="448" width="142" height="73"/>
+                                <rect key="frame" x="87" y="448" width="240" height="73"/>
                                 <color key="backgroundColor" red="1" green="0.233758891" blue="0.23659539979999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="73" id="bAA-Ss-lgS"/>
-                                    <constraint firstAttribute="width" constant="142" id="rN4-ZV-Cq1"/>
+                                    <constraint firstAttribute="width" constant="240" id="rN4-ZV-Cq1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Delete Ticket"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJb-iy-yXG">
-                                <rect key="frame" x="136" y="325" width="142" height="73"/>
+                                <rect key="frame" x="87" y="325" width="240" height="73"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.64313725489999995" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="142" id="2zu-wo-E6w"/>
+                                    <constraint firstAttribute="width" constant="240" id="2zu-wo-E6w"/>
                                     <constraint firstAttribute="height" constant="73" id="8yi-eh-G4V"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Scan Ticket"/>
+                                <connections>
+                                    <action selector="scanInModalAction:" destination="rm7-qQ-6rG" eventType="touchUpInside" id="wpy-aN-qOJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -1780,7 +1830,7 @@ We would not be what we are today without YOU! Thank you for your support and co
                             <constraint firstItem="L2H-hi-gcN" firstAttribute="top" secondItem="B3K-lF-4T8" secondAttribute="bottom" constant="303" id="RF8-CS-J5o"/>
                             <constraint firstItem="qJb-iy-yXG" firstAttribute="top" secondItem="B3K-lF-4T8" secondAttribute="bottom" constant="49" id="adP-pq-q2k"/>
                             <constraint firstItem="B3K-lF-4T8" firstAttribute="leading" secondItem="Cnz-Jk-1ko" secondAttribute="leadingMargin" constant="67" id="fua-i4-dWd"/>
-                            <constraint firstItem="0zJ-7J-xCr" firstAttribute="leading" secondItem="qJb-iy-yXG" secondAttribute="trailing" constant="-142" id="hfv-m5-hAT"/>
+                            <constraint firstItem="0zJ-7J-xCr" firstAttribute="leading" secondItem="qJb-iy-yXG" secondAttribute="trailing" constant="-240" id="hfv-m5-hAT"/>
                             <constraint firstItem="qJb-iy-yXG" firstAttribute="centerX" secondItem="B3K-lF-4T8" secondAttribute="centerX" id="tym-fC-MVg"/>
                             <constraint firstItem="L2H-hi-gcN" firstAttribute="top" secondItem="qJb-iy-yXG" secondAttribute="bottom" constant="181" id="u4B-OM-Dfa"/>
                         </constraints>
@@ -1810,7 +1860,15 @@ We would not be what we are today without YOU! Thank you for your support and co
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sta-7e-GVF">
                                 <rect key="frame" x="30" y="189" width="364" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Visit all the partner stands and get a correctpunch hole for each in your passport. Show thepassport with all the punch holes you have got tothe javaBin Lounge.We’ll count how many stands you have visitedand add you to the prize draw.If you are among the lucky winners, you will hearfrom us shortly after the conference.Happy hunting!</string>
+                                <string key="text">Visit all the partner stands and get a correct
+punch hole for each in your passport. Show the
+passport with all the punch holes you have got to
+the javaBin Lounge.
+We’ll count how many stands you have visited
+and add you to the prize draw.
+If you are among the lucky winners, you will hear
+from us shortly after the conference.
+Happy hunting!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1850,7 +1908,6 @@ We would not be what we are today without YOU! Thank you for your support and co
         <image name="ic_map_white" width="24" height="24"/>
         <image name="ic_schedule_white" width="24" height="24"/>
         <image name="pass_white_24pt" width="24" height="24"/>
-        <image name="qrcode-scan" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9ii-b8-aWo"/>

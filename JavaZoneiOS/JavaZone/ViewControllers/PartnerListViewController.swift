@@ -73,10 +73,10 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
                 let dict = partnerObject.value as! [String: Any]
                 let partner = Partner()
                 partner.name = dict["name"] as? String
-                partner.logoUrl = dict["logoUrl"] as? String
+                partner.logoUrl = dict["logoUrl_png"] as? String
                 partner.homepageUrl = dict["homepageUrl"] as? String
-                partner.latitude = dict["latitude"] as! Double
-                partner.longitude = dict["longitude"] as! Double
+                partner.latitude = dict["latitude"] as! String
+                partner.longitude = dict["longitude"] as! String
                 self.partners.append(partner)
             }
             
@@ -95,12 +95,11 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
         }
     }
     
-    
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "partnerInformationSegue" {
             let newViewController = segue.destination as! PartnerDetailViewController
-            let partner = sender as! PartnerCollectionViewCell
-            newViewController.partner = partner as? Partner
+            let partnerCell = sender as! PartnerCollectionViewCell
+            newViewController.partner = partnerCell.partner as? Partner
         }
     }
 }
