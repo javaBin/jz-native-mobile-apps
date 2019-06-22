@@ -10,6 +10,7 @@ PODS:
   - Cosmos (18.0.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
+  - CryptoSwift (0.14.0)
   - DisplaySwitcher (1.2)
   - Fabric (1.9.0)
   - Firebase/Analytics (5.18.0):
@@ -171,6 +172,7 @@ DEPENDENCIES:
   - AvatarImageView
   - Cosmos
   - Crashlytics
+  - CryptoSwift
   - DisplaySwitcher (from `https://github.com/Yalantis/DisplaySwitcher.git`)
   - Fabric
   - Firebase/Analytics
@@ -201,6 +203,7 @@ SPEC REPOS:
     - BoringSSL-GRPC
     - Cosmos
     - Crashlytics
+    - CryptoSwift
     - Fabric
     - Firebase
     - FirebaseABTesting
@@ -256,6 +259,7 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   Cosmos: 7dfaa3f52584ca5f94ab74b5c2e264019cc9f7f5
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   DisplaySwitcher: a9ee0b5c7821cd8d12e39783ada99399f6d927a0
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
@@ -293,6 +297,6 @@ SPEC CHECKSUMS:
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: 1629fe2160e84e2806a83dcfc7790de972041305
+PODFILE CHECKSUM: c96276201e028505953dfbb5cc84402e14c30938
 
 COCOAPODS: 1.5.3

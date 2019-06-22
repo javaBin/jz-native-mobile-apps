@@ -2,12 +2,15 @@ import UIKit
 import AVFoundation
 import QRCodeReader
 import Contacts
+import ObjectMapper
 
 class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     var partner: Partner!
     @IBOutlet weak var partnerImageView: UIImageView!
     @IBOutlet weak var partnerUrlTextView: UITextView!
     @IBOutlet weak var partnerName: UITextField!
+    
+    var saltedName: String = ""
     
     lazy var reader: QRCodeReader = QRCodeReader()
     lazy var readerVC: QRCodeReaderViewController = {
@@ -36,6 +39,8 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
         partnerImageView.contentMode = UIView.ContentMode.scaleAspectFit
         partnerUrlTextView.attributedText = attributedString
         partnerName.text = partner!.name
+        
+        saltedName = RemoteConfigValues.sharedInstance.string(key: "salted_partner_name")
 
     }
     
@@ -91,8 +96,21 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
         dismiss(animated: true) { [weak self] in
             if let data = result.value.data(using: .utf8) {
                 do {
-                    let partnerCard = try CNContactVCardSerialization.contacts(with: data)
-                    let partner = partnerCard.first
+                    guard let qrPartnerResult = try? JSONDecoder().decode(QRPartnerResult.self, from: data ) else {
+                        print("Error: Could not decode data into QRPartnerResult")
+                        return
+                    }
+                    
+                    // TODO
+                    
+                    let generateKey = SecretKeySupplier.generateVerificationKey(value: self.partner.name!)
+                    
+                    if(qrPartnerResult.Key == generateKey) {
+                        
+                    }
+                    
+                    
+                    
                 } catch {
                     print(error.localizedDescription)
                 }

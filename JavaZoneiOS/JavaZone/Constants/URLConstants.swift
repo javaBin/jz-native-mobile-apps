@@ -8,7 +8,7 @@ struct JZURL {
     }
     
     private struct DevUrls {
-        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2017"
+        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2019"
         static let DevNullUrl = "https://devnull.javazone.no"
     } 
     

@@ -21,6 +21,7 @@ class SessionDetailsViewController:  UIViewController  {
         roomLabel?.text = "\(startTime!) - \(endTime!), \(session!.room!)"
         abstractTextView?.text = session!.abstract
         intendedAudienceTextView?.text = session!.intendedAudience
+        feedbackButton.isHidden = true
         
         // showFeedbackButtonFiveMinutesBeforeEndTime(session: session)
         

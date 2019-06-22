@@ -31,6 +31,7 @@ target 'JavaZone' do
   pod 'DisplaySwitcher', :git => 'https://github.com/Yalantis/DisplaySwitcher.git'
   pod 'Crashlytics'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+  pod 'CryptoSwift'
   
   # Uncomment if you use SwinjectStoryboard
   pod 'SwinjectStoryboard'

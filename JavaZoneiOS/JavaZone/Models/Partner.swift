@@ -24,3 +24,8 @@ class Partner : Object, Mappable {
         latitude        <- map["latitude"]
     }
 }
+
+struct QRPartnerResult: Decodable {
+    let Partner: String?
+    let Key: String?
+}

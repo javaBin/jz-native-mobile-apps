@@ -34,7 +34,6 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
     private func CheckAndCreateQrCodeByTicket() {
         let ticketData = "http://pennlabs.org"
         
-        self.deleteTicketButton.isHidden = true
         let data = ticketData.data(using: String.Encoding.ascii)
         
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
@@ -54,6 +53,7 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
         let processedImage = UIImage(cgImage: cgImage)
         
         qrCodeTicketImageView.image = processedImage
+        qrCodeTicketImageView.contentMode = UIView.ContentMode.scaleAspectFit
     }
     
     
@@ -103,6 +103,11 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
         present(readerVC, animated: true, completion: nil)
     }
     
+    @IBAction func deleteTicketAction(_ sender: Any) {
+        
+        
+        
+    }
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
         dismiss(animated: true) { [weak self] in

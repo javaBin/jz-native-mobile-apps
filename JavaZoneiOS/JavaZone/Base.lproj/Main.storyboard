@@ -1561,15 +1561,8 @@ We would not be what we are today without YOU! Thank you for your support and co
                                     <constraint firstAttribute="height" constant="223" id="iDi-BY-JJw"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="PartnerName" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Chb-hE-w1g">
-                                <rect key="frame" x="87" y="28" width="240" height="34"/>
-                                <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-bn-jT1">
-                                <rect key="frame" x="20" y="346" width="374" height="41"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-bn-jT1">
+                                <rect key="frame" x="20" y="321" width="374" height="41"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment content="partnerUrl">
@@ -1583,6 +1576,13 @@ We would not be what we are today without YOU! Thank you for your support and co
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="PartnerName" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Chb-hE-w1g">
+                                <rect key="frame" x="87" y="28" width="240" height="34"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1794,26 +1794,26 @@ We would not be what we are today without YOU! Thank you for your support and co
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B3K-lF-4T8">
                                 <rect key="frame" x="87" y="28" width="240" height="248"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="DVd-gy-c8E"/>
-                                    <constraint firstAttribute="height" constant="248" id="guF-xH-oNK"/>
+                                    <constraint firstAttribute="height" constant="248" id="VMG-L6-1X8"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zJ-7J-xCr">
-                                <rect key="frame" x="87" y="448" width="240" height="73"/>
+                                <rect key="frame" x="87" y="502" width="240" height="57"/>
                                 <color key="backgroundColor" red="1" green="0.233758891" blue="0.23659539979999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="bAA-Ss-lgS"/>
-                                    <constraint firstAttribute="width" constant="240" id="rN4-ZV-Cq1"/>
+                                    <constraint firstAttribute="height" constant="57" id="nVy-5o-tJa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Delete Ticket"/>
+                                <connections>
+                                    <action selector="deleteTicketAction:" destination="rm7-qQ-6rG" eventType="touchUpInside" id="Aws-cL-GTk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJb-iy-yXG">
-                                <rect key="frame" x="87" y="325" width="240" height="73"/>
+                                <rect key="frame" x="87" y="416" width="240" height="57"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.64313725489999995" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="2zu-wo-E6w"/>
-                                    <constraint firstAttribute="height" constant="73" id="8yi-eh-G4V"/>
+                                    <constraint firstAttribute="height" constant="57" id="tW7-Dw-XEo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Scan Ticket"/>
@@ -1824,15 +1824,15 @@ We would not be what we are today without YOU! Thank you for your support and co
                         </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="B3K-lF-4T8" firstAttribute="top" secondItem="szp-4w-W0C" secondAttribute="bottom" constant="8" symbolic="YES" id="CYT-q6-44p"/>
-                            <constraint firstItem="B3K-lF-4T8" firstAttribute="centerX" secondItem="Cnz-Jk-1ko" secondAttribute="centerX" id="Eqq-eG-Wuy"/>
-                            <constraint firstItem="0zJ-7J-xCr" firstAttribute="top" secondItem="qJb-iy-yXG" secondAttribute="bottom" constant="50" id="KH4-Hu-dYQ"/>
-                            <constraint firstItem="L2H-hi-gcN" firstAttribute="top" secondItem="B3K-lF-4T8" secondAttribute="bottom" constant="303" id="RF8-CS-J5o"/>
-                            <constraint firstItem="qJb-iy-yXG" firstAttribute="top" secondItem="B3K-lF-4T8" secondAttribute="bottom" constant="49" id="adP-pq-q2k"/>
-                            <constraint firstItem="B3K-lF-4T8" firstAttribute="leading" secondItem="Cnz-Jk-1ko" secondAttribute="leadingMargin" constant="67" id="fua-i4-dWd"/>
-                            <constraint firstItem="0zJ-7J-xCr" firstAttribute="leading" secondItem="qJb-iy-yXG" secondAttribute="trailing" constant="-240" id="hfv-m5-hAT"/>
-                            <constraint firstItem="qJb-iy-yXG" firstAttribute="centerX" secondItem="B3K-lF-4T8" secondAttribute="centerX" id="tym-fC-MVg"/>
-                            <constraint firstItem="L2H-hi-gcN" firstAttribute="top" secondItem="qJb-iy-yXG" secondAttribute="bottom" constant="181" id="u4B-OM-Dfa"/>
+                            <constraint firstItem="qJb-iy-yXG" firstAttribute="trailing" secondItem="0zJ-7J-xCr" secondAttribute="trailing" id="99o-QD-deu"/>
+                            <constraint firstItem="qJb-iy-yXG" firstAttribute="leading" secondItem="0zJ-7J-xCr" secondAttribute="leading" id="LQa-OA-zA7"/>
+                            <constraint firstAttribute="bottom" secondItem="0zJ-7J-xCr" secondAttribute="bottom" constant="20" symbolic="YES" id="eW4-mY-kaj"/>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="top" secondItem="szp-4w-W0C" secondAttribute="bottom" constant="8" symbolic="YES" id="fs4-yv-sAF"/>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="leading" secondItem="qJb-iy-yXG" secondAttribute="leading" id="gex-br-cBb"/>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="centerX" secondItem="Cnz-Jk-1ko" secondAttribute="centerX" id="iy9-ot-1Qa"/>
+                            <constraint firstItem="0zJ-7J-xCr" firstAttribute="top" secondItem="qJb-iy-yXG" secondAttribute="bottom" constant="29" id="kIo-XB-UMn"/>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="leading" secondItem="Cnz-Jk-1ko" secondAttribute="leadingMargin" constant="67" id="wpI-x8-9PH"/>
+                            <constraint firstItem="B3K-lF-4T8" firstAttribute="trailing" secondItem="qJb-iy-yXG" secondAttribute="trailing" id="xda-oj-cDh"/>
                         </constraints>
                     </view>
                     <connections>

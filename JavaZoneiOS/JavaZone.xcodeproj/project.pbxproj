@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5011EB7E22BA88ED009B158B /* SecretKeySupplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011EB7D22BA88EC009B158B /* SecretKeySupplier.swift */; };
+		5011EB8022BA8995009B158B /* CustomExceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011EB7F22BA8995009B158B /* CustomExceptions.swift */; };
 		50241E892238485400BD2B6D /* PartnerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50241E882238485400BD2B6D /* PartnerDetailViewController.swift */; };
 		5034AEAC21983F0400897145 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034AEAB21983F0400897145 /* Bundle.swift */; };
 		5035CCD42286C2A2005A6311 /* DigitalPassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */; };
@@ -71,6 +73,8 @@
 /* Begin PBXFileReference section */
 		17B2F1AD67EDB6ABBA8E42B2 /* Pods-JavaZone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JavaZone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JavaZone/Pods-JavaZone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A081B0CC546769845C407B3 /* Pods_JavaZone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JavaZone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5011EB7D22BA88EC009B158B /* SecretKeySupplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeySupplier.swift; sourceTree = "<group>"; };
+		5011EB7F22BA8995009B158B /* CustomExceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExceptions.swift; sourceTree = "<group>"; };
 		50241E882238485400BD2B6D /* PartnerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerDetailViewController.swift; sourceTree = "<group>"; };
 		5034AEAB21983F0400897145 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5035CCD32286C2A2005A6311 /* DigitalPassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalPassMainViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 			children = (
 				5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */,
 				50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */,
+				5011EB7D22BA88EC009B158B /* SecretKeySupplier.swift */,
+				5011EB7F22BA8995009B158B /* CustomExceptions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 				"${BUILT_PRODUCTS_DIR}/AvatarImageView/AvatarImageView.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/DisplaySwitcher/DisplaySwitcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -473,6 +480,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvatarImageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DisplaySwitcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -534,6 +542,7 @@
 				50F663452195998C00284E79 /* SpeakerImageViewDataSource.swift in Sources */,
 				50F663462195998C00284E79 /* Feedback.swift in Sources */,
 				50F6634D2195998C00284E79 /* SessionRepository.swift in Sources */,
+				5011EB7E22BA88ED009B158B /* SecretKeySupplier.swift in Sources */,
 				50F663542195998C00284E79 /* UIImageView.swift in Sources */,
 				50F6635D2195998C00284E79 /* InfoViewController.swift in Sources */,
 				50F663582195998C00284E79 /* EventViewController.swift in Sources */,
@@ -547,6 +556,7 @@
 				50F663592195998C00284E79 /* FeedbackViewController.swift in Sources */,
 				50F663472195998C00284E79 /* SpeakerUIView.swift in Sources */,
 				50F6634E2195998C00284E79 /* SpeakerRepository.swift in Sources */,
+				5011EB8022BA8995009B158B /* CustomExceptions.swift in Sources */,
 				5051D4C521F35FD1003EDCC5 /* PartnerCollectionViewCell.swift in Sources */,
 				50F6634F2195998C00284E79 /* UIVIew.swift in Sources */,
 				50F663532195998C00284E79 /* UIViewController.swift in Sources */,
