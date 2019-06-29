@@ -1,16 +1,19 @@
-import Foundation
+import UIKit
+import ObjectMapper
 import RealmSwift
+import ObjectMapper_Realm
+import Contacts
 
-struct Ticket {
-    var fullName: String
-    var email: String
-    var phoneNumber: String
+class Ticket : Object, Mappable {
+    @objc dynamic var vCardData: String?
+    @objc dynamic var jzYear: Int = 0
     
-    public func toJSON() -> [String: Any] {
-        return [
-            "fullName": fullName as Any,
-            "email": email as Any,
-            "phoneNumber": phoneNumber as Any
-        ]
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        vCardData            <- map["vCardData"]
+        jzYear        <- map["jzYear"]
     }
 }

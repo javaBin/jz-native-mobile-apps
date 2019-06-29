@@ -1,11 +1,16 @@
 import UIKit
+import AVFoundation
 import QRCodeReader
 import Contacts
+import SVProgressHUD
 
 class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     @IBOutlet weak var qrCodeTicketImageView: UIImageView!
     @IBOutlet weak var scanTicketButton: UIButton!
     @IBOutlet weak var deleteTicketButton: UIButton!
+    
+    var ticketRepository : TicketRepository?
+    var partnerRepository : PartnerRepository?
     
     lazy var reader: QRCodeReader = QRCodeReader()
     lazy var readerVC: QRCodeReaderViewController = {
@@ -25,38 +30,60 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        deleteTicketButton.isEnabled = false
+        scanTicketButton.isEnabled = true
         // Do any additional setup after loading the view.
-        CheckAndCreateQrCodeByTicket()
+        let ticketData = ticketRepository!.getTicket()
+
+        CheckAndCreateQrCodeByTicket(ticketData: ticketData)
         
     }
     
-    private func CheckAndCreateQrCodeByTicket() {
-        let ticketData = "http://pennlabs.org"
+    private func CheckAndCreateQrCodeByTicket(ticketData: Ticket?) {
         
-        let data = ticketData.data(using: String.Encoding.ascii)
-        
-        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
-            return
+        if ticketData != nil && ticketData!.vCardData != nil {
+            let date = Date()
+
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month, .day], from: date)
+
+            if ticketData!.jzYear != components.year {
+                self.deleteTicket(ticket: ticketData!)
+                return
+            }
+    
+            do {
+                
+                guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
+                    return
+                }
+                
+                var qrDataTransformed = ticketData!.vCardData!.data(using: String.Encoding.ascii)
+                qrFilter.setValue(qrDataTransformed, forKey: "inputMessage")
+                
+                // Get the output image
+                guard let qrImage = qrFilter.outputImage else { return }
+                // Scale the image
+                let transform = CGAffineTransform(scaleX: 10, y: 10)
+                let scaledQrImage = qrImage.transformed(by: transform)
+                
+                let context = CIContext()
+                guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return }
+                let processedImage = UIImage(cgImage: cgImage)
+                
+                qrCodeTicketImageView.image = processedImage
+                qrCodeTicketImageView.contentMode = UIView.ContentMode.scaleAspectFit
+                deleteTicketButton.isEnabled = true
+                scanTicketButton.isEnabled = false
+            }
+            catch {
+                
+            }
+        } else {
+            qrCodeTicketImageView.image = UIImage(named: "mysteryman")
+            qrCodeTicketImageView.contentMode = UIView.ContentMode.scaleAspectFit
         }
-        
-        qrFilter.setValue(data, forKey: "inputMessage")
-        
-        // Get the output image
-        guard let qrImage = qrFilter.outputImage else { return }
-        // Scale the image
-        let transform = CGAffineTransform(scaleX: 10, y: 10)
-        let scaledQrImage = qrImage.transformed(by: transform)
-        
-        let context = CIContext()
-        guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return }
-        let processedImage = UIImage(cgImage: cgImage)
-        
-        qrCodeTicketImageView.image = processedImage
-        qrCodeTicketImageView.contentMode = UIView.ContentMode.scaleAspectFit
     }
-    
-    
     
     private func checkScanPermissions() -> Bool {
         do {
@@ -104,20 +131,62 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
     }
     
     @IBAction func deleteTicketAction(_ sender: Any) {
+        let getTicket = ticketRepository!.getTicket()
+        let alert: UIAlertController
         
-        
+        if(getTicket != nil) {
+            alert = UIAlertController(title: "Information", message: "Are you sure you want to delete your ticket? All your scanned partners will also disappear", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.deleteTicket(ticket: getTicket!)
+
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func deleteTicket(ticket: Ticket) {
+        SVProgressHUD.showInfo(withStatus: "Deleted ticket and scanned partners")
+        self.partnerRepository?.deleteAll()
+        self.ticketRepository?.deleteAll()
+        self.scanTicketButton.isEnabled = true
+        self.deleteTicketButton.isEnabled = false
+        self.CheckAndCreateQrCodeByTicket(ticketData: nil)
         
     }
+    
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
+        SVProgressHUD.show()
         dismiss(animated: true) { [weak self] in
             if let data = result.value.data(using: .utf8) {
                 do {
                     let ticketCard = try CNContactVCardSerialization.contacts(with: data)
-                    let ticket = ticketCard.first
-                    print("\(String(describing: ticket?.familyName))")
+                    let ticketData = ticketCard.first
+                    
+                    if(ticketData == nil) {
+                        throw NSError(domain: "Error", code: 92, userInfo: ["":""])
+                    }
+                    
+                    let ticket = Ticket()
+                    let year = Int(RemoteConfigValues.sharedInstance.string(key: "javazone_year"))
+                    ticket.vCardData = result.value
+                    ticket.jzYear = year!
+                    self!.ticketRepository!.addTicketAsync(ticket: ticket)
+                    
+                    SVProgressHUD.showSuccess(withStatus: "Successfully scanned JavaZone ticket")
+                    
+                    self?.CheckAndCreateQrCodeByTicket(ticketData: ticket)
+                    
+                    
                 }
-                catch {
+                catch let error as NSError  {
+                    let alert: UIAlertController
+                    alert = UIAlertController(title: "Error", message: "Ticket failed to read, please use a valid JavaZone QR Code ticket", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self!.present(alert, animated: true, completion: nil)
+                    SVProgressHUD.showError(withStatus: "Failed to scan ticket, please check if it is this years JavaZone ticket or contact javaBiners")
+
                     print(error.localizedDescription)
                 }
                 

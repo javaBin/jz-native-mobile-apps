@@ -26,9 +26,9 @@
 		5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */; };
 		5051D4C421F35FD1003EDCC5 /* PartnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5051D4C221F35FD1003EDCC5 /* PartnerCollectionViewCell.xib */; };
 		5051D4C521F35FD1003EDCC5 /* PartnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */; };
-		5051D54E21F63D30003EDCC5 /* Shared in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54D21F63D30003EDCC5 /* Shared */; };
 		5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54F21F63E81003EDCC5 /* Assets.xcassets */; };
 		50625BDD2289BC5800723FB4 /* TicketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50625BDC2289BC5800723FB4 /* TicketProvider.swift */; };
+		5083E2DF22C11E900020F0CF /* TicketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083E2DE22C11E900020F0CF /* TicketRepository.swift */; };
 		50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */; };
 		50ACA196219598AA004F4B1C /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA195219598AA004F4B1C /* CommonConstants.swift */; };
 		50F663192195997A00284E79 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F663182195997A00284E79 /* URLConstants.swift */; };
@@ -94,9 +94,9 @@
 		5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
 		5051D4C221F35FD1003EDCC5 /* PartnerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PartnerCollectionViewCell.xib; sourceTree = "<group>"; };
 		5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerCollectionViewCell.swift; sourceTree = "<group>"; };
-		5051D54D21F63D30003EDCC5 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		5051D54F21F63E81003EDCC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50625BDC2289BC5800723FB4 /* TicketProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketProvider.swift; sourceTree = "<group>"; };
+		5083E2DE22C11E900020F0CF /* TicketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRepository.swift; sourceTree = "<group>"; };
 		50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValues.swift; sourceTree = "<group>"; };
 		50ACA195219598AA004F4B1C /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		50F663182195997A00284E79 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
@@ -161,7 +161,6 @@
 		5036B9342195906600752C6A = {
 			isa = PBXGroup;
 			children = (
-				5051D54D21F63D30003EDCC5 /* Shared */,
 				50F663642195AC3500284E79 /* disclosure.png */,
 				50F663632195AC3500284E79 /* licenses.html */,
 				5036B93F2195906600752C6A /* JavaZone */,
@@ -314,6 +313,7 @@
 				50F6632B2195998C00284E79 /* SessionRepository.swift */,
 				50F6632C2195998C00284E79 /* SpeakerRepository.swift */,
 				50398EE0224A8B5400F9846E /* PartnerRepository.swift */,
+				5083E2DE22C11E900020F0CF /* TicketRepository.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -430,7 +430,6 @@
 				5051D4C421F35FD1003EDCC5 /* PartnerCollectionViewCell.xib in Resources */,
 				50F663662195AC3500284E79 /* disclosure.png in Resources */,
 				5036B94D2195906800752C6A /* LaunchScreen.storyboard in Resources */,
-				5051D54E21F63D30003EDCC5 /* Shared in Resources */,
 				50F663622195A90600284E79 /* GoogleService-Info.plist in Resources */,
 				50F6634A2195998C00284E79 /* SpeakerUIView.xib in Resources */,
 				5036B9482195906600752C6A /* Main.storyboard in Resources */,
@@ -566,6 +565,7 @@
 				50F663512195998C00284E79 /* Request.swift in Sources */,
 				5035CCDA2286EA60005A6311 /* Ticket.swift in Sources */,
 				50F663552195998C00284E79 /* UITextView.swift in Sources */,
+				5083E2DF22C11E900020F0CF /* TicketRepository.swift in Sources */,
 				5035CCD42286C2A2005A6311 /* DigitalPassMainViewController.swift in Sources */,
 				50F663602195998C00284E79 /* SettingsViewController.swift in Sources */,
 				50F6634C2195998C00284E79 /* Repository.swift in Sources */,

@@ -37,6 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             r in PartnerRepository()
         }
         
+        container.register(TicketRepository.self, name: "ticketRepository") {
+            r in TicketRepository()
+        }
+        
         // Views
         container.storyboardInitCompleted(MyScheduleViewController.self) { r, c in
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
@@ -52,6 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
             c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
             
+        }
+        
+        container.storyboardInitCompleted(DigitalPassTicketViewController.self) {
+            r, c in
+            c.ticketRepository = r.resolve(TicketRepository.self, name: "ticketRepository")
+            c.partnerRepository = r.resolve(PartnerRepository.self, name: "partnerRepository")
         }
         
         container.storyboardInitCompleted(PartnerListViewController.self) {
@@ -71,34 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let _ = RemoteConfigValues.sharedInstance
         var migrationVersion: UInt64 = 2
         var oldMigrationVersion: UInt64 = 1
-        
-        // Set configuration and delete all realm if version is not the same
-        let config = Realm.Configuration(
-            // Set the new schema version. This must be greater than the previously used
-            // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: migrationVersion,
-            
-            migrationBlock: { migration, oldSchemaVersion in
-                // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                switch oldSchemaVersion {
-                default:
-                    oldMigrationVersion = oldSchemaVersion
-                    break
-                }
-        }
-        )
-
-        if migrationVersion > oldMigrationVersion {
-            do {
-                let realm = try! Realm(configuration: config)
-                try! realm.write {
-                    realm.deleteAll()
-                }
-            } catch let error as NSError {
-                // handle error
-            }
-
-        }
+    
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()

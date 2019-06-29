@@ -103,7 +103,7 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
                     
                     // TODO
                     
-                    let generateKey = SecretKeySupplier.generateVerificationKey(value: self.partner.name!)
+                    let generateKey = SecretKeySupplier.generateVerificationKey(value: self!.partner.name!)
                     
                     if(qrPartnerResult.Key == generateKey) {
                         
