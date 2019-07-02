@@ -2,9 +2,8 @@ import Foundation
 import RealmSwift
 
 class PartnerRepository : Repository {
-    func addCompanyAsync(partner: Partner!, session: Session) {
+    func addPartnerAsync(partner: Partner!) {
         DispatchQueue.global().async {
-            // Get new realm and table since we are in a new thread
             let realm = try! Realm()
             realm.beginWrite()
             realm.create(Partner.self, value: partner)
@@ -12,16 +11,34 @@ class PartnerRepository : Repository {
         }
     }
     
-//    func getPartners() -> List<Partner>? {
-//        let realm = try! Realm()
-//        let getPartners = realm.objects(Speaker.self).filter("sessionId = %@", session.sessionId)
-//        let returnResult = getSpeakersForSession.reduce(List<Speaker>()) { (list, element) -> List<Speaker> in
-//            list.append(element)
-//            return list
-//        }
-//        
-//        return returnResult
-//    }
+    func getPartner(name: String) -> Partner? {
+        let result = realm.objects(Partner.self).filter("name = %@", name).first
+        return result
+    }
+    
+    func updatePartnerData(updatedData: Partner!) {
+        
+    }
+    
+    func updatePartner(stamp: Bool, name: String) {
+        DispatchQueue.global().async {
+            let realm = try! Realm()
+            let partnerData = realm.objects(Partner.self).filter("name = %@", name)
+            if let partnerRetrieved = partnerData.first {
+                try! realm.write {
+                    partnerRetrieved.hasStamped = stamp
+                }
+            }
+        }
+    }
+    
+    func getAllPartners() -> Array<Partner>? {
+        let realm = try! Realm()
+        let getPartners = realm.objects(Partner.self)
+        let returnResult = Array(getPartners)
+        return returnResult
+    }
+    
     override func deleteAll() {
         DispatchQueue.global().async {
             let otherRealm = try! Realm()

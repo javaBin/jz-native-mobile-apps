@@ -79,9 +79,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window = window
         FirebaseApp.configure()
         let _ = RemoteConfigValues.sharedInstance
-        var migrationVersion: UInt64 = 2
-        var oldMigrationVersion: UInt64 = 1
-    
+        
+        // Set configuration and delete all realm if version is not the same
+        let config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+            
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if(oldSchemaVersion < 1) {
+                    migration.deleteData(forType: Partner.className())
+                    migration.deleteData(forType: Ticket.className())
+                    migration.deleteData(forType: Session.className())
+                    migration.deleteData(forType: MySession.className())
+                    migration.deleteData(forType: Speaker.className())
+                }
+        }
+        )
+        
+        Realm.Configuration.defaultConfiguration = config
+        
+        
+        
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()

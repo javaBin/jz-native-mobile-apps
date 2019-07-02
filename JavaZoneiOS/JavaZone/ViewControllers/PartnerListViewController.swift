@@ -23,8 +23,6 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     fileprivate var isTransitionAvailable = true
     fileprivate lazy var gridLayout = DisplaySwitchLayout(staticCellHeight: gridLayoutStaticCellHeight, nextLayoutStaticCellHeight: listLayoutStaticCellHeight, layoutState: .grid)
     var partnerRepository: PartnerRepository?
-
-    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -40,8 +38,7 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
-        getAllPartners()
-        
+        getAllPartners()        
     }
     
     // MARK: - Private methods
@@ -56,34 +53,65 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     }
     
     func getAllPartners() {
-        partnerRepository!.deleteAll()
-        getAllPartnersFromFirebase()
-        
+        SVProgressHUD.show()
+        let partnerList = partnerRepository!.getAllPartners()
+        if partnerList != nil && partnerList!.count > 0 {
+            for partner in partnerList! {
+                self.partners.append(partner)
+            }
+            
+            reInitializeCollectionView()
+        } else {
+            partnerRepository!.deleteAll()
+            getAllPartnersFromFirebase()
+        }
     }
     
     func getAllPartnersFromFirebase()
     {
-        SVProgressHUD.show()
         let ref = Database.database().reference(withPath: "partners")
         self.partners.removeAll()
         
         _ = ref.queryLimited(toFirst: 100).observe(.value) { snapshot in
             for child in snapshot.children {
-                let partnerObject = child as! DataSnapshot
-                let dict = partnerObject.value as! [String: Any]
-                let partner = Partner()
-                partner.name = dict["name"] as? String
-                partner.logoUrl = dict["logoUrl_png"] as? String
-                partner.homepageUrl = dict["homepageUrl"] as? String
-                partner.latitude = dict["latitude"] as! String
-                partner.longitude = dict["longitude"] as! String
+                let partner = self.createPartner(snapshot: child as! DataSnapshot)
                 self.partners.append(partner)
             }
-            
-            self.searchPartners = self.partners
-            self.collectionView.reloadData()
-            SVProgressHUD.dismiss()
+            self.reInitializeCollectionView()
         }
+    
+        self.partnerRepository?.addAsync(items: self.partners)
+    }
+    
+    private func reInitializeCollectionView() {
+        self.searchPartners = self.partners
+        self.collectionView.reloadData()
+        SVProgressHUD.dismiss()
+        
+        Database.database().reference(withPath: "partners").observe(.childChanged) { (snapshot, key) in
+            var changedOrNewPartnerData = self.createPartner(snapshot: snapshot)
+            let getPartner = self.partnerRepository!.getPartner(name: changedOrNewPartnerData.name!)
+            
+            if getPartner != nil {
+                // TODO
+                self.partnerRepository!.updatePartnerData(updatedData: changedOrNewPartnerData)
+                
+            } else {
+                self.partnerRepository!.addPartnerAsync(partner: changedOrNewPartnerData)
+            }
+        }
+    }
+    
+    private func createPartner(snapshot: DataSnapshot) -> Partner {
+        let dict = snapshot.value as! [String: Any]
+        let partner = Partner()
+        partner.name = dict["name"] as? String
+        partner.logoUrl = dict["logoUrl_png"] as? String
+        partner.homepageUrl = dict["homepageUrl"] as? String
+        partner.latitude = dict["latitude"] as? String
+        partner.longitude = dict["longitude"] as? String
+        
+        return partner
     }
     
     @objc func gesture(_ sender: UITapGestureRecognizer) {

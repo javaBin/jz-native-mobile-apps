@@ -40,15 +40,22 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
     }
     
     private func CheckAndCreateQrCodeByTicket(ticketData: Ticket?) {
+        // Check if we are in a simulator
+        var ticketCheck: Ticket? = ticketData
+        #if targetEnvironment(simulator)
+            ticketCheck = TicketProvider.sharedInstance.mockTicket()
+        #endif
         
-        if ticketData != nil && ticketData!.vCardData != nil {
+        
+        
+        if ticketCheck != nil && ticketCheck!.vCardData != nil {
             let date = Date()
 
             let calendar = Calendar.current
             let components = calendar.dateComponents([.year, .month, .day], from: date)
 
-            if ticketData!.jzYear != components.year {
-                self.deleteTicket(ticket: ticketData!)
+            if ticketCheck!.jzYear != components.year {
+                self.deleteTicket(ticket: ticketCheck!)
                 return
             }
     
@@ -58,7 +65,7 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
                     return
                 }
                 
-                var qrDataTransformed = ticketData!.vCardData!.data(using: String.Encoding.ascii)
+                var qrDataTransformed = ticketCheck!.vCardData!.data(using: String.Encoding.ascii)
                 qrFilter.setValue(qrDataTransformed, forKey: "inputMessage")
                 
                 // Get the output image

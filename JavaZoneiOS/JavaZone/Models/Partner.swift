@@ -6,7 +6,7 @@ import ObjectMapper_Realm
 class Partner : Object, Mappable {    
     @objc dynamic var name: String?
     @objc dynamic var logoUrl: String?
-    @objc dynamic var hasStamped: String?
+    @objc dynamic var hasStamped: Bool = false
     @objc dynamic var homepageUrl: String?
     var longitude: String?
     var latitude: String?

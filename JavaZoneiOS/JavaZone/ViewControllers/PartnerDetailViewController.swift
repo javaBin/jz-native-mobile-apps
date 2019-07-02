@@ -3,6 +3,7 @@ import AVFoundation
 import QRCodeReader
 import Contacts
 import ObjectMapper
+import SVProgressHUD
 
 class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     var partner: Partner!
@@ -41,7 +42,7 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
         partnerName.text = partner!.name
         
         saltedName = RemoteConfigValues.sharedInstance.string(key: "salted_partner_name")
-
+        
     }
     
     private func checkScanPermissions() -> Bool {
@@ -91,28 +92,35 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
-
         
         dismiss(animated: true) { [weak self] in
             if let data = result.value.data(using: .utf8) {
+                
+                
                 do {
                     guard let qrPartnerResult = try? JSONDecoder().decode(QRPartnerResult.self, from: data ) else {
                         print("Error: Could not decode data into QRPartnerResult")
+                        SVProgressHUD.showError(withStatus: "Error! Could not decode partner data")
                         return
                     }
                     
                     // TODO
-                    
-                    let generateKey = SecretKeySupplier.generateVerificationKey(value: self!.partner.name!)
-                    
-                    if(qrPartnerResult.Key == generateKey) {
-                        
+                    SVProgressHUD.show(withStatus: "Reading and checking valid partner data")
+                    DispatchQueue.global().async {
+                        let generateKey = SecretKeySupplier.generateVerificationKey(value: self!.partner.name!)
+                        if(qrPartnerResult.Key == generateKey) {
+                            SVProgressHUD.dismiss()
+                            partnerRepository!.updatePartner(stamp: true, name: qrPartnerResult.Partner!)
+                        } else {
+                            SVProgressHUD.dismiss()
+                            SVProgressHUD.showError(withStatus: "Error! QR coded partner data is invalid!")
+                        }
                     }
-                    
-                    
                     
                 } catch {
                     print(error.localizedDescription)
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showError(withStatus: "Error, something went wrong while trying to read Partner QR code, please try again")
                 }
             }
         }

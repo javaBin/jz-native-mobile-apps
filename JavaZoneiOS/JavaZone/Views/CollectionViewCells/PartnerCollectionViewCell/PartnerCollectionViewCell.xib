@@ -36,19 +36,29 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rMa-bq-TqE" userLabel="Partner Image View">
                         <rect key="frame" x="0.0" y="0.0" width="87" height="80"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="87" id="IqF-8v-QP5"/>
                             <constraint firstAttribute="height" constant="80" id="fNl-vd-0HY"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="tME-DL-vN8">
+                        <rect key="frame" x="24" y="16" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="PcS-Dx-PuI"/>
+                            <constraint firstAttribute="height" constant="44" id="yEt-7b-YSd"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="rMa-bq-TqE" firstAttribute="baseline" secondItem="tME-DL-vN8" secondAttribute="firstBaseline" constant="64" id="3xF-Md-TvK"/>
+                <constraint firstItem="tME-DL-vN8" firstAttribute="top" secondItem="rMa-bq-TqE" secondAttribute="bottom" constant="-64" id="89u-UM-llT"/>
                 <constraint firstItem="rMa-bq-TqE" firstAttribute="top" secondItem="gdF-wQ-JiZ" secondAttribute="top" id="DRm-1f-DUn"/>
                 <constraint firstAttribute="trailing" secondItem="xuV-JL-rj1" secondAttribute="trailing" id="HfT-YS-LTn"/>
                 <constraint firstItem="hwV-Zy-XbA" firstAttribute="leading" secondItem="gdF-wQ-JiZ" secondAttribute="leading" constant="95" id="Peb-am-J2S"/>
                 <constraint firstItem="rMa-bq-TqE" firstAttribute="leading" secondItem="gdF-wQ-JiZ" secondAttribute="leading" id="QED-8H-YJW"/>
+                <constraint firstItem="rMa-bq-TqE" firstAttribute="leading" secondItem="tME-DL-vN8" secondAttribute="trailing" constant="-68" id="VNY-23-Ubb"/>
                 <constraint firstItem="hwV-Zy-XbA" firstAttribute="top" secondItem="gdF-wQ-JiZ" secondAttribute="top" constant="15" id="ent-aL-IzK"/>
                 <constraint firstItem="xuV-JL-rj1" firstAttribute="top" secondItem="gdF-wQ-JiZ" secondAttribute="top" id="gi5-GN-Y8f"/>
                 <constraint firstItem="xuV-JL-rj1" firstAttribute="leading" secondItem="gdF-wQ-JiZ" secondAttribute="leading" id="hxB-fz-5ZD"/>
@@ -59,6 +69,7 @@
                 <outlet property="avatarImageViewHeightConstraint" destination="fNl-vd-0HY" id="SHE-aA-uST"/>
                 <outlet property="avatarImageViewWidthConstraint" destination="IqF-8v-QP5" id="9b4-mv-RS2"/>
                 <outlet property="backgroundGradientView" destination="xuV-JL-rj1" id="ZjJ-Jh-wOL"/>
+                <outlet property="checkMarkImageView" destination="tME-DL-vN8" id="Uhb-Mu-4Yv"/>
                 <outlet property="nameListLabel" destination="hwV-Zy-XbA" id="Uh3-pU-iDZ"/>
                 <outlet property="nameListLabelLeadingConstraint" destination="Peb-am-J2S" id="S32-gL-Kke"/>
                 <outlet property="partnerImageView" destination="rMa-bq-TqE" id="E9Z-Wy-PoG"/>
@@ -66,4 +77,7 @@
             <point key="canvasLocation" x="388.80000000000001" y="222.1889055472264"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="checkmark" width="29" height="29"/>
+    </resources>
 </document>

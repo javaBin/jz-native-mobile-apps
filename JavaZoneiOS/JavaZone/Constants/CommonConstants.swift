@@ -119,7 +119,7 @@ public struct CommonNotificationUtil {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
         dateFormatter.timeZone = TimeZone(identifier: "GMT+1")
         
-        let date = dateFormatter.date(from: "2018-11-10T09:39")
+        let date = dateFormatter.date(from: startTime)
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .timeZone], from: date!)
         let sessionDate = calendar.date(from: dateComponents)
@@ -135,9 +135,6 @@ public struct CommonNotificationUtil {
                 createAndAddNotification(sessionId: mySession.sessionId, sessionTitle: mySession.sessionTitle, date: sessionStartTime)
             }
         }
-        
-        
-        
         
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {requests -> () in
             for request in requests{

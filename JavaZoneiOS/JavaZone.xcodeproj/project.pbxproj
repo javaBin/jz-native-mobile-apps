@@ -21,7 +21,6 @@
 		50398EE1224A8B5400F9846E /* PartnerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50398EE0224A8B5400F9846E /* PartnerRepository.swift */; };
 		5051D4B021F34915003EDCC5 /* MLKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */; };
 		5051D4B521F35758003EDCC5 /* PartnerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */; };
-		5051D4BA21F35F8A003EDCC5 /* PartnerDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */; };
 		5051D4BC21F35F9E003EDCC5 /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BB21F35F9E003EDCC5 /* Partner.swift */; };
 		5051D4BF21F35FB0003EDCC5 /* CellInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */; };
 		5051D4C421F35FD1003EDCC5 /* PartnerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5051D4C221F35FD1003EDCC5 /* PartnerCollectionViewCell.xib */; };
@@ -89,7 +88,6 @@
 		50398EE0224A8B5400F9846E /* PartnerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRepository.swift; sourceTree = "<group>"; };
 		5051D4AE21F34915003EDCC5 /* MLKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLKitExtensions.swift; sourceTree = "<group>"; };
 		5051D4B421F35758003EDCC5 /* PartnerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListViewController.swift; sourceTree = "<group>"; };
-		5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerDataProvider.swift; sourceTree = "<group>"; };
 		5051D4BB21F35F9E003EDCC5 /* Partner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		5051D4BE21F35FB0003EDCC5 /* CellInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInterface.swift; sourceTree = "<group>"; };
 		5051D4C221F35FD1003EDCC5 /* PartnerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PartnerCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -205,17 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				50625BDB2289BC4100723FB4 /* TicketProvider */,
-				5051D4B821F35F8A003EDCC5 /* CompanyDataProvider */,
 			);
 			path = DataProviders;
-			sourceTree = "<group>";
-		};
-		5051D4B821F35F8A003EDCC5 /* CompanyDataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				5051D4B921F35F8A003EDCC5 /* PartnerDataProvider.swift */,
-			);
-			path = CompanyDataProvider;
 			sourceTree = "<group>";
 		};
 		5051D4BD21F35FB0003EDCC5 /* Protocols */ = {
@@ -533,7 +522,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F663442195998C00284E79 /* Session.swift in Sources */,
-				5051D4BA21F35F8A003EDCC5 /* PartnerDataProvider.swift in Sources */,
 				5034AEAC21983F0400897145 /* Bundle.swift in Sources */,
 				50F663482195998C00284E79 /* GeneralSettingsCell.swift in Sources */,
 				50FB8B032295B81C00DB8E43 /* PartnerInformationViewController.swift in Sources */,
