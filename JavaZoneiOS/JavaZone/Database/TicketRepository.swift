@@ -17,23 +17,17 @@ class TicketRepository : Repository {
     func getTicket() -> Ticket? {
         let realm = try! Realm()
         let getTicketObject = realm.objects(Ticket.self).first
-        
+        print(getTicketObject?.vCardData)
         return getTicketObject
             != nil ? getTicketObject : nil
     }
     
     
-    func deleteTicket() {
-        DispatchQueue.global().async {
-            let otherRealm = try! Realm()
-            let ticketObjects = otherRealm.objects(Ticket.self)
-            try! otherRealm.write {
-                
-                otherRealm.delete(ticketObjects)
-            }
-
-        }
+    func deleteTicket(item: Ticket) {
+        let realm = try! Realm()
+        realm.beginWrite()
+        realm.delete(item)
+        try! realm.commitWrite()
     }
-    
 }
 

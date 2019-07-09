@@ -6,12 +6,13 @@ import ObjectMapper
 import SVProgressHUD
 
 class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerDelegate {
-    var partner: Partner!
+    var partnerCell: PartnerCollectionViewCell!
+    var partnerCellIndex: IndexPath!
+    var parentVC: PartnerListViewController!
     @IBOutlet weak var partnerImageView: UIImageView!
     @IBOutlet weak var partnerUrlTextView: UITextView!
     @IBOutlet weak var partnerName: UITextField!
-    
-    var saltedName: String = ""
+    var partnerRepository: PartnerRepository?
     
     lazy var reader: QRCodeReader = QRCodeReader()
     lazy var readerVC: QRCodeReaderViewController = {
@@ -35,14 +36,11 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
         paragraph.alignment = .center
         let font = UIFont.systemFont(ofSize: 18)
         
-        let attributedString = NSMutableAttributedString(string: partner!.homepageUrl!, attributes:[NSAttributedString.Key.link: URL(string: partner!.homepageUrl!)!, NSAttributedString.Key.paragraphStyle: paragraph, NSAttributedString.Key.font: font ])
-        partnerImageView.imageFromUrl(urlString: (partner!.logoUrl!))
+        let attributedString = NSMutableAttributedString(string: partnerCell.partner!.homepageUrl!, attributes:[NSAttributedString.Key.link: URL(string: partnerCell.partner!.homepageUrl!)!, NSAttributedString.Key.paragraphStyle: paragraph, NSAttributedString.Key.font: font ])
+        partnerImageView.imageFromUrl(urlString: (partnerCell.partner!.logoUrl!))
         partnerImageView.contentMode = UIView.ContentMode.scaleAspectFit
         partnerUrlTextView.attributedText = attributedString
-        partnerName.text = partner!.name
-        
-        saltedName = RemoteConfigValues.sharedInstance.string(key: "salted_partner_name")
-        
+        partnerName.text = partnerCell.partner!.name
     }
     
     private func checkScanPermissions() -> Bool {
@@ -76,18 +74,28 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     }
     
     @IBAction func scanInModalAction(_ sender: AnyObject) {
-        guard checkScanPermissions() else { return }
+        var partnerTicket: QRPartnerResult? = nil
         
-        readerVC.modalPresentationStyle = .formSheet
-        readerVC.delegate               = self
+        #if targetEnvironment(simulator)
+        partnerTicket = QRPartnerTicketProvider.sharedInstance.mockTicket()
+        #endif
         
-        readerVC.completionBlock = { (result: QRCodeReaderResult?) in
-            if let result = result {
-                print("Completion with result: \(result.value) of type \(result.metadataType)")
+        if(partnerTicket == nil) {
+            guard checkScanPermissions() else { return }
+            
+            readerVC.modalPresentationStyle = .formSheet
+            readerVC.delegate               = self
+            
+            readerVC.completionBlock = { (result: QRCodeReaderResult?) in
+                if let result = result {
+                    print("Completion with result: \(result.value) of type \(result.metadataType)")
+                }
             }
+            
+            present(readerVC, animated: true, completion: nil)
+        } else {
+            updateQRPartnerResult(qrPartnerResult: partnerTicket!)
         }
-        
-        present(readerVC, animated: true, completion: nil)
     }
     
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
@@ -104,13 +112,12 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
                         return
                     }
                     
-                    // TODO
                     SVProgressHUD.show(withStatus: "Reading and checking valid partner data")
                     DispatchQueue.global().async {
-                        let generateKey = SecretKeySupplier.generateVerificationKey(value: self!.partner.name!)
+                        let generateKey = SecretKeySupplier.generateVerificationKey(value: self!.partnerCell.partner.name!)
                         if(qrPartnerResult.Key == generateKey) {
-                            SVProgressHUD.dismiss()
-                            partnerRepository!.updatePartner(stamp: true, name: qrPartnerResult.Partner!)
+                            SVProgressHUD.showSuccess(withStatus: "Successfully validated partner")
+                            self!.updateQRPartnerResult(qrPartnerResult: qrPartnerResult)
                         } else {
                             SVProgressHUD.dismiss()
                             SVProgressHUD.showError(withStatus: "Error! QR coded partner data is invalid!")
@@ -124,6 +131,12 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
                 }
             }
         }
+    }
+    
+    private func updateQRPartnerResult(qrPartnerResult: QRPartnerResult) {
+        partnerCell.partner!.hasStamped = true
+        partnerRepository!.updatePartner(stamp: true, name: qrPartnerResult.Name!)
+        parentVC.collectionView.reloadItems(at: [partnerCellIndex])
     }
     
     func readerDidCancel(_ reader: QRCodeReaderViewController) {

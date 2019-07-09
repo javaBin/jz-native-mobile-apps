@@ -28,6 +28,7 @@
 		5051D55021F63E81003EDCC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5051D54F21F63E81003EDCC5 /* Assets.xcassets */; };
 		50625BDD2289BC5800723FB4 /* TicketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50625BDC2289BC5800723FB4 /* TicketProvider.swift */; };
 		5083E2DF22C11E900020F0CF /* TicketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083E2DE22C11E900020F0CF /* TicketRepository.swift */; };
+		5083E2E122D4F4830020F0CF /* QRPartnerTicketProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083E2E022D4F4830020F0CF /* QRPartnerTicketProvider.swift */; };
 		50ACA1932195987D004F4B1C /* RemoteConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */; };
 		50ACA196219598AA004F4B1C /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACA195219598AA004F4B1C /* CommonConstants.swift */; };
 		50F663192195997A00284E79 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F663182195997A00284E79 /* URLConstants.swift */; };
@@ -95,6 +96,7 @@
 		5051D54F21F63E81003EDCC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50625BDC2289BC5800723FB4 /* TicketProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketProvider.swift; sourceTree = "<group>"; };
 		5083E2DE22C11E900020F0CF /* TicketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRepository.swift; sourceTree = "<group>"; };
+		5083E2E022D4F4830020F0CF /* QRPartnerTicketProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPartnerTicketProvider.swift; sourceTree = "<group>"; };
 		50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValues.swift; sourceTree = "<group>"; };
 		50ACA195219598AA004F4B1C /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		50F663182195997A00284E79 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
@@ -202,7 +204,8 @@
 		5051D4B621F35F5B003EDCC5 /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
-				50625BDB2289BC4100723FB4 /* TicketProvider */,
+				50625BDC2289BC5800723FB4 /* TicketProvider.swift */,
+				5083E2E022D4F4830020F0CF /* QRPartnerTicketProvider.swift */,
 			);
 			path = DataProviders;
 			sourceTree = "<group>";
@@ -230,14 +233,6 @@
 				5051D4C321F35FD1003EDCC5 /* PartnerCollectionViewCell.swift */,
 			);
 			path = PartnerCollectionViewCell;
-			sourceTree = "<group>";
-		};
-		50625BDB2289BC4100723FB4 /* TicketProvider */ = {
-			isa = PBXGroup;
-			children = (
-				50625BDC2289BC5800723FB4 /* TicketProvider.swift */,
-			);
-			path = TicketProvider;
 			sourceTree = "<group>";
 		};
 		50ACA1912195984D004F4B1C /* Utilities */ = {
@@ -562,6 +557,7 @@
 				50398EE1224A8B5400F9846E /* PartnerRepository.swift in Sources */,
 				50F663492195998C00284E79 /* SessionTableViewCell.swift in Sources */,
 				50F6635F2195998C00284E79 /* AboutViewController.swift in Sources */,
+				5083E2E122D4F4830020F0CF /* QRPartnerTicketProvider.swift in Sources */,
 				50F6634B2195998C00284E79 /* MySessionRepository.swift in Sources */,
 				5035CCD62286CE23005A6311 /* DigitalPassTicketViewController.swift in Sources */,
 				50F6635C2195998C00284E79 /* MyScheduleViewController.swift in Sources */,

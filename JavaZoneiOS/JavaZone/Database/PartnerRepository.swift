@@ -2,11 +2,21 @@ import Foundation
 import RealmSwift
 
 class PartnerRepository : Repository {
-    func addPartnerAsync(partner: Partner!) {
+    func addPartner(partner: Partner!) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(Partner.self, value: partner)
+        }
+    }
+    
+    func addAsync(items: [Partner]) {
         DispatchQueue.global().async {
+            // Get new realm and table since we are in a new thread
             let realm = try! Realm()
             realm.beginWrite()
-            realm.create(Partner.self, value: partner)
+            for item in items {
+                realm.create(Partner.self, value: item)
+            }
             try! realm.commitWrite()
         }
     }
@@ -21,12 +31,12 @@ class PartnerRepository : Repository {
     }
     
     func updatePartner(stamp: Bool, name: String) {
-        DispatchQueue.global().async {
-            let realm = try! Realm()
-            let partnerData = realm.objects(Partner.self).filter("name = %@", name)
-            if let partnerRetrieved = partnerData.first {
+        DispatchQueue(label: "background").async {
+            autoreleasepool {
+                let realm = try! Realm()
+                let partnerRetrieved = realm.objects(Partner.self).filter("name = %@", name).first
                 try! realm.write {
-                    partnerRetrieved.hasStamped = stamp
+                    partnerRetrieved?.hasStamped = stamp
                 }
             }
         }

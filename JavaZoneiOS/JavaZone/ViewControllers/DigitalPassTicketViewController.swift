@@ -43,9 +43,9 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
         // Check if we are in a simulator
         var ticketCheck: Ticket? = ticketData
         #if targetEnvironment(simulator)
-            ticketCheck = TicketProvider.sharedInstance.mockTicket()
+        ticketCheck = TicketProvider.sharedInstance.mockTicket()
         #endif
-        
+
         
         
         if ticketCheck != nil && ticketCheck!.vCardData != nil {
@@ -155,7 +155,7 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
     private func deleteTicket(ticket: Ticket) {
         SVProgressHUD.showInfo(withStatus: "Deleted ticket and scanned partners")
         self.partnerRepository?.deleteAll()
-        self.ticketRepository?.deleteAll()
+        self.ticketRepository?.deleteTicket(item: ticket)
         self.scanTicketButton.isEnabled = true
         self.deleteTicketButton.isEnabled = false
         self.CheckAndCreateQrCodeByTicket(ticketData: nil)

@@ -26,6 +26,18 @@ class Partner : Object, Mappable {
 }
 
 struct QRPartnerResult: Decodable {
-    let Partner: String?
+    let Name: String?
     let Key: String?
+
+    
+    init(name: String? = nil, key: String? = nil) {
+        self.Name = name
+        self.Key = key
+    }
+    
+}
+
+class PartnerCellData {
+    var Cell: PartnerCollectionViewCell? = nil
+    var Index: IndexPath? = nil
 }
