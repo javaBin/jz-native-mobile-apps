@@ -9,6 +9,8 @@ class MySessionRepository: Repository {
     }
 
     override func add<T>(item: T) where T : MySession {
+        let realm = try! Realm()
+
         try! realm.write {
             realm.create(MySession.self, value: item)
         }

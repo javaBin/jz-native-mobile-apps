@@ -4,13 +4,13 @@ import SVProgressHUD
 import FirebaseDatabase
 import FirebaseStorage
 
-private let animationDuration: TimeInterval = 0.3
-var searchActive : Bool = false
-private let listLayoutStaticCellHeight: CGFloat = 80
-private let gridLayoutStaticCellHeight: CGFloat = 120
-var partnerRepository: PartnerRepository?
 
 class PartnerListViewController: UIViewController , UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+    private let animationDuration: TimeInterval = 0.3
+    var searchActive : Bool = false
+    private let listLayoutStaticCellHeight: CGFloat = 80
+    private let gridLayoutStaticCellHeight: CGFloat = 120
+    var partnerRepository: PartnerRepository?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -22,7 +22,6 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     fileprivate var searchPartners = [Partner]()
     fileprivate var isTransitionAvailable = true
     fileprivate lazy var gridLayout = DisplaySwitchLayout(staticCellHeight: gridLayoutStaticCellHeight, nextLayoutStaticCellHeight: listLayoutStaticCellHeight, layoutState: .grid)
-    var partnerRepository: PartnerRepository?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -49,7 +48,7 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     
     // MARK: - Actions
     @IBAction func buttonTapped(_ sender: AnyObject) {
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,16 +59,20 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     
     func getAllPartners() {
         SVProgressHUD.show()
-        let partnerList = partnerRepository!.getAllPartners()
+        var partnerList : [Partner]? = nil
+        DispatchQueue.global().sync {
+            partnerList = self.partnerRepository!.getAllPartners()
+        }
+        
         if partnerList != nil && partnerList!.count > 0 {
             for partner in partnerList! {
                 self.partners.append(partner)
             }
             
-            reInitializeCollectionView()
+            self.reInitializeCollectionView()
         } else {
-            partnerRepository!.deleteAll()
-            getAllPartnersFromFirebase()
+            self.partnerRepository!.deleteAll()
+            self.getAllPartnersFromFirebase()
         }
     }
     
@@ -87,12 +90,14 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
             self.partnerRepository?.addAsync(items: self.partners)
             self.reInitializeCollectionView()
         }
-    
+        
     }
     
     private func reInitializeCollectionView() {
         self.searchPartners = self.partners
-        self.collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
         SVProgressHUD.dismiss()
         
         Database.database().reference(withPath: "partners").observe(.childChanged) { (snapshot, key) in
@@ -125,12 +130,12 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
         let point = sender.location(in: collectionView)
         if let indexPath = collectionView?.indexPathForItem(at: point) {
             let partnerInformation = PartnerCellData()
-
+            
             partnerInformation.Cell = collectionView?.cellForItem(at: indexPath) as? PartnerCollectionViewCell
             partnerInformation.Index = indexPath
             self.performSegue(withIdentifier: "partnerInformationSegue", sender: partnerInformation)
-            }
         }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "partnerInformationSegue" {
@@ -187,7 +192,9 @@ extension PartnerListViewController {
             searchPartners = searchPartners.filter { return $0.name!.contains(searchText) }
         }
         
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

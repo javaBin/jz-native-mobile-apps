@@ -4,11 +4,12 @@ import QRCodeReader
 import Contacts
 import ObjectMapper
 import SVProgressHUD
+import RealmSwift
 
 class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     var partnerCell: PartnerCollectionViewCell!
     var partnerCellIndex: IndexPath!
-    var parentVC: PartnerListViewController!
+    weak var parentVC: PartnerListViewController!
     @IBOutlet weak var partnerImageView: UIImageView!
     @IBOutlet weak var partnerUrlTextView: UITextView!
     @IBOutlet weak var partnerName: UITextField!
@@ -114,7 +115,9 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
                     
                     SVProgressHUD.show(withStatus: "Reading and checking valid partner data")
                     DispatchQueue.global().async {
-                        let generateKey = SecretKeySupplier.generateVerificationKey(value: self!.partnerCell.partner.name!)
+                        let partnerData = self!.partnerRepository!.getPartner(name: qrPartnerResult.Name!)
+                        let generateKey = SecretKeySupplier.generateVerificationKey(value: partnerData!.name!)
+
                         if(qrPartnerResult.Key == generateKey) {
                             SVProgressHUD.showSuccess(withStatus: "Successfully validated partner")
                             self!.updateQRPartnerResult(qrPartnerResult: qrPartnerResult)
@@ -123,6 +126,7 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
                             SVProgressHUD.showError(withStatus: "Error! QR coded partner data is invalid!")
                         }
                     }
+                        
                     
                 } catch {
                     print(error.localizedDescription)
@@ -134,9 +138,13 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     }
     
     private func updateQRPartnerResult(qrPartnerResult: QRPartnerResult) {
-        partnerCell.partner!.hasStamped = true
         partnerRepository!.updatePartner(stamp: true, name: qrPartnerResult.Name!)
-        parentVC.collectionView.reloadItems(at: [partnerCellIndex])
+        partnerCell.partner = partnerRepository!.getPartner(name: qrPartnerResult.Name!)
+        DispatchQueue.main.async {
+            self.parentVC.collectionView.performBatchUpdates({
+                self.parentVC.collectionView.reloadItems(at: [self.partnerCellIndex])
+            })
+        }
     }
     
     func readerDidCancel(_ reader: QRCodeReaderViewController) {

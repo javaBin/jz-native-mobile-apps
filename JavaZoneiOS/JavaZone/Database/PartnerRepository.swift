@@ -22,7 +22,12 @@ class PartnerRepository : Repository {
     }
     
     func getPartner(name: String) -> Partner? {
-        let result = realm.objects(Partner.self).filter("name = %@", name).first
+        var result :Partner? = nil
+        DispatchQueue.global().sync {
+            let realm = try! Realm()
+            result = realm.objects(Partner.self).filter("name = %@", name).first
+        }
+        
         return result
     }
     
@@ -31,12 +36,18 @@ class PartnerRepository : Repository {
     }
     
     func updatePartner(stamp: Bool, name: String) {
-        DispatchQueue(label: "background").async {
+        let realm = try! Realm()
+        let partnerRetrieved = realm.objects(Partner.self).filter("name = %@", name).first
+        let partnerRetrievedRef = ThreadSafeReference(to: partnerRetrieved!)
+        
+        DispatchQueue.global().async {
             autoreleasepool {
                 let realm = try! Realm()
-                let partnerRetrieved = realm.objects(Partner.self).filter("name = %@", name).first
+                guard let partnerRetrieved = realm.resolve(partnerRetrievedRef) else {
+                    return
+                }
                 try! realm.write {
-                    partnerRetrieved?.hasStamped = stamp
+                    partnerRetrieved.hasStamped = stamp
                 }
             }
         }

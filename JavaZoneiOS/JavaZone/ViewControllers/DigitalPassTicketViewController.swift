@@ -9,6 +9,7 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
     @IBOutlet weak var scanTicketButton: UIButton!
     @IBOutlet weak var deleteTicketButton: UIButton!
     
+    var hasDeletedTicket : Bool = false
     var ticketRepository : TicketRepository?
     var partnerRepository : PartnerRepository?
     
@@ -45,8 +46,6 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
         #if targetEnvironment(simulator)
         ticketCheck = TicketProvider.sharedInstance.mockTicket()
         #endif
-
-        
         
         if ticketCheck != nil && ticketCheck!.vCardData != nil {
             let date = Date()
@@ -144,7 +143,8 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
         if(getTicket != nil) {
             alert = UIAlertController(title: "Information", message: "Are you sure you want to delete your ticket? All your scanned partners will also disappear", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-                self.deleteTicket(ticket: getTicket!)
+            self.deleteTicket(ticket: getTicket!)
+            self.hasDeletedTicket = true
 
             }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))

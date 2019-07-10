@@ -2,7 +2,6 @@ import Foundation
 import RealmSwift
 
 class SessionRepository {
-    let realm = try! Realm()
     var speakerRepository: SpeakerRepository?
     
     init(speakerRepository: SpeakerRepository?) {
@@ -10,6 +9,7 @@ class SessionRepository {
     }
 
     func add(item: Session) {
+        let realm = try! Realm()
         try! realm.write {
             realm.create(Session.self, value: item)
         }

@@ -1,4 +1,5 @@
 import UIKit
+import SVProgressHUD
 
 class DigitalPassMainViewController: UIViewController {
     @IBOutlet weak var ticketContainer: UIView!
@@ -27,6 +28,15 @@ class DigitalPassMainViewController: UIViewController {
             ticketContainer.isHidden = true
             partnerContainer.isHidden = false
             infoContainer.isHidden = true
+            
+            var partnerListVC = self.children[1] as! PartnerListViewController
+            var ticketVC = self.children[0] as! DigitalPassTicketViewController
+            if(partnerListVC.partnerRepository!.getAllPartners()!.count < 1 && ticketVC.hasDeletedTicket) {
+                SVProgressHUD.show()
+                partnerListVC.getAllPartnersFromFirebase()
+                ticketVC.hasDeletedTicket = false
+            }
+            
             break;
         case 2:
             ticketContainer.isHidden = true

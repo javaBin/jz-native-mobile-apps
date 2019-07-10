@@ -10,7 +10,7 @@ class PartnerCollectionViewCell: UICollectionViewCell, CellInterface {
     @IBOutlet fileprivate weak var backgroundGradientView: UIView!
     @IBOutlet fileprivate weak var nameListLabel: UILabel!
     
-    var partner : Partner!
+    weak var partner : Partner!
     
     // avatarImageView constraints
     @IBOutlet fileprivate weak var avatarImageViewWidthConstraint: NSLayoutConstraint!
@@ -32,6 +32,7 @@ class PartnerCollectionViewCell: UICollectionViewCell, CellInterface {
         if(!partner.hasStamped) {
             checkMarkImageView.isHidden = true
         } else {
+
             checkMarkImageView.isHidden = false
         }
 
