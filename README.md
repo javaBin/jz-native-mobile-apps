@@ -1,5 +1,7 @@
 # JavaZone Native apps
 
+[![Build Status](https://travis-ci.org/javaBin/jz-native-mobile-apps.svg?branch=develop)](https://travis-ci.org/javaBin/jz-native-mobile-apps)
+
 Developed with native Android and iOS.
 
 Conference app for JavaZone. The project includes 2 native projects, JZAndroid (Java) and JZiOS (Swift).
