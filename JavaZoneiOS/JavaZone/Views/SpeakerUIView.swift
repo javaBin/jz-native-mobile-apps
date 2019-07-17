@@ -6,8 +6,13 @@ class SpeakerUIView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var speakerImageView: AvatarImageView! {
         didSet {
-            speakerImageView.configuration = AvatarImageConfig()
+            speakerImageView.configuration = ImageConfig()
+            
         }
+    }
+    
+    struct ImageConfig: AvatarImageViewConfiguration {
+        var shape: Shape = .circle
     }
     
     var speaker: Speaker!

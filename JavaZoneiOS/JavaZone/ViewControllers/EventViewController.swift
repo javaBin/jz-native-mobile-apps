@@ -17,10 +17,7 @@ class EventViewController: UIViewController {
             connectToWifiButton.isHidden = false
         } else {
             connectToWifiButton.isHidden = true
-            
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

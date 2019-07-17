@@ -1,5 +1,6 @@
 import UIKit
 import SVProgressHUD
+import UserNotifications
 
 
 protocol SessionCellDelegate {
@@ -27,8 +28,6 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
        // sessionSearchBar.text = ""
         sessionSearchBar.resignFirstResponder()
         mySessionSegmentedControl.selectedSegmentIndex = segmentedSelected
-        
-        
     }
     
     func favoriteButtonTapped(cell: SessionTableViewCell!) {
@@ -37,12 +36,21 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         if findMySession != nil {
             mySessionRepository!.delete(item: findMySession!)
             cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_border_48pt"), for: .normal)
+            CommonNotificationUtil.scheduleNotification(session: cell.session!, withDate: nil, sessionRemove: true)
+            
         } else {
             let mySessionObject = MySession()
             mySessionObject.sessionId = cell.session!.sessionId!
+            mySessionObject.startTime = cell.session!.startTime!
+            mySessionObject.endTime = cell.session!.endTime!
+            mySessionObject.sessionTitle = cell.session!.title!
             
             mySessionRepository!.add(item: mySessionObject)
             cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_48pt"), for: .normal)
+            
+            let sessionDate = CommonNotificationUtil.getStartDate(startTime: cell.session!.startTime!)
+            CommonNotificationUtil.scheduleNotification(session: cell.session!, withDate: sessionDate!, sessionRemove: false)
+            
         }
     }
     
@@ -63,13 +71,6 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
         refresher?.addTarget(self, action: Selector(("getAllSessionsFromSleepingPill")), for: .valueChanged)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        // Show spinner here
         
         self.refreshData()
         self.mySessionSegmentedControl.removeAllSegments()
@@ -103,7 +104,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         SessionApiService.sharedInstance.getAllSessions().done { (result) in
             self.loadSessions(sessionResult: result)
             self.refresher?.endRefreshing()
-            }.always {
+            }.ensure {
                 // Hide spinner here
                 SVProgressHUD.dismiss()
             }
@@ -190,7 +191,6 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         return sections[sortedSections[section]]!.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as! SessionTableViewCell
         
@@ -212,14 +212,12 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         cell.roomLabel?.text = session.room
         cell.delegate = self
         
-        
         let findMySession = mySessionRepository!.getMySession(sessionId: cell.session.sessionId!)
         
         if findMySession != nil && findMySession!.sessionId == session.sessionId! {
             cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_48pt"), for: .normal)
         } else {
             cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_border_48pt"), for: .normal)
-            
         }
         
         return cell

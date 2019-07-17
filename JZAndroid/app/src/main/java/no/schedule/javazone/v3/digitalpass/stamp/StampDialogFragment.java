@@ -36,7 +36,7 @@ public class StampDialogFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle);
+        setStyle(R.style.FullScreenDialogStyle, 0);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class StampDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.digital_pass_stamp_dialog_fragment, container, false);
 
         // Setting logo
-        ImageView logo =  view.findViewById(R.id.dialog_stamp_logo);
+        ImageView logo = view.findViewById(R.id.dialog_stamp_logo);
         logo.setImageResource(stamp.getImage());
 
         // Setting description
@@ -100,8 +100,12 @@ public class StampDialogFragment extends DialogFragment {
         }
     }
 
-    public void setStamp(Stamp stamp){
+    public void setStamp(Stamp stamp) {
         this.stamp = stamp;
+    }
+
+    private boolean verifyQRCode(String barcode, String stampCode) {
+        return true;
     }
 
 }

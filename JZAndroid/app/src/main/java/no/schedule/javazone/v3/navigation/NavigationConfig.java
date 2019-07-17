@@ -30,7 +30,7 @@ public class NavigationConfig {
             NavigationItemEnum.MY_SCHEDULE,
             NavigationItemEnum.DIGITAL_PASS,
 //            NavigationItemEnum.FEED,
-//            NavigationItemEnum.MAP,
+            NavigationItemEnum.MAP,
             NavigationItemEnum.INFO,
     };
 
@@ -69,9 +69,9 @@ public class NavigationConfig {
 //                case FEED:
 //                    includeItem = BuildConfig.ENABLE_FEED_IN_NAVIGATION;
 //                    break;
-//                case MAP:
-//                    includeItem = BuildConfig.ENABLE_MAP_IN_NAVIGATION;
-//                    break;
+                case MAP:
+                    includeItem = true;
+                    break;
                 case INFO:
                     includeItem = true;
                     break;
