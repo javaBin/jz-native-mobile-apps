@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
@@ -79,7 +80,7 @@ public class StampDialogFragment extends DialogFragment {
             if (resultCode == Activity.RESULT_OK) {
                 String barcode = data.getStringExtra("barcode");
                 Log.d("barcode", barcode);
-                if (verifyQRCode(barcode, stamp.getQrCode())){
+                if(barcode.equals(stamp.getQrCode())) {
                     stamp.setTagged(true);
                     StampListFragment slf = (StampListFragment) getTargetFragment();
                     slf.refreshList();
@@ -87,10 +88,13 @@ public class StampDialogFragment extends DialogFragment {
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(stamp.getName(), barcode);
                     editor.commit();
-                } else {
-                    // @Todo Finn ut hva som skjer hvis den scannede QR-koden ikke matcher denen logoen
-                    // TODO Få opp error melding
+                }else{
+                    Context context = getActivity();
+                    CharSequence text = "Wrong QR code.";
+                    int duration = Toast.LENGTH_LONG;
 
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
             }
         }

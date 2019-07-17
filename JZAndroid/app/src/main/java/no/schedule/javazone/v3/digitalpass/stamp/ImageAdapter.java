@@ -54,6 +54,10 @@ public class ImageAdapter extends BaseAdapter {
             int color = Color.parseColor("#AE6118");
             imageView.setColorFilter(color);
             Log.d("ImageAdapter", "Setting color");
+        } else {
+            int color = Color.parseColor("#000000");
+            imageView.setColorFilter(color);
+            Log.d("ImageAdapter", "Setting color");
         }
 
         imageView.setImageResource(mStamps.get(position).getImage());

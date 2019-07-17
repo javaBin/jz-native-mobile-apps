@@ -17,6 +17,8 @@ public class DigitalPassActivity extends BaseActivity {
 
     private DigitalPassPagerFragment mDigitalPassPagerFragment;
 
+    private boolean registered = false;
+
     // -- BaseActivity overrides
 
     @Override
@@ -51,4 +53,14 @@ public class DigitalPassActivity extends BaseActivity {
         super.onNewIntent(intent);
         setIntent(intent);
     }
+
+    public boolean isRegistered(){
+        return registered;
+    }
+
+    public void setRegistered(boolean registered){
+        this.registered = registered;
+        //getFragmentManager().findFragmentById()
+    }
+
 }
