@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
@@ -88,7 +89,12 @@ public class StampDialogFragment extends DialogFragment {
                     editor.putString(stamp.getName(), barcode);
                     editor.commit();
                 }else{
-                    // @Todo Finn ut hva som skjer hvis den scannede QR-koden ikke matcher denen logoen
+                    Context context = getActivity();
+                    CharSequence text = "Wrong QR code.";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
             }
         }

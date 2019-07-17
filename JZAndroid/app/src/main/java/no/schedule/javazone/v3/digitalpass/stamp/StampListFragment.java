@@ -1,7 +1,9 @@
 package no.schedule.javazone.v3.digitalpass.stamp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import no.schedule.javazone.v3.R;
+import no.schedule.javazone.v3.digitalpass.DigitalPassActivity;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
 
 public class StampListFragment extends Fragment {
@@ -23,6 +27,8 @@ public class StampListFragment extends Fragment {
 
     private GridView gridview;
     private ImageAdapter logoAdapter;
+
+    private Button button;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -53,13 +59,24 @@ public class StampListFragment extends Fragment {
             }
         });
 
-        final Button button = view.findViewById(R.id.stamp_list_scan_button);
+        button = view.findViewById(R.id.stamp_list_scan_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivityForResult(
                         new Intent(getActivity(), CameraActivity.class), CameraActivity.BARCODE_REQUEST);
             }
         });
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (((DigitalPassActivity)getActivity()).isRegistered()){
+            button.setEnabled(true);
+        } else {
+            button.setEnabled(false);
+        }
     }
 
 
@@ -80,9 +97,37 @@ public class StampListFragment extends Fragment {
             if (resultCode == Activity.RESULT_OK) {
                 String barcode = data.getStringExtra("barcode");
                 Log.d("barcode", barcode);
+                for (int i = 0; i < logoAdapter.getCount(); i++) {
+                    Stamp stamp = logoAdapter.getItem(i);
+                    if (barcode.equals(stamp.getQrCode())) {
+                        stamp.setTagged(true);
+                        this.refreshList();
+                        SharedPreferences sharedPref = getActivity().getSharedPreferences("StampPref", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString(stamp.getName(), barcode);
+                        editor.commit();
+                        Context context = getActivity();
+                        CharSequence text = "QR code for " + stamp.getName() + " scanned.";
+                        int duration = Toast.LENGTH_LONG;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        return;
+                    }
+                }
             }else{
-                // @Todo Finn ut hva som skjer hvis den scannede QR-koden ikke matcher denen logoen
+                Context context = getActivity();
+                CharSequence text = "Error scanning QR code";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                return;
             }
         }
+        Context context = getActivity();
+        CharSequence text = "QR code not valid.";
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
+
 }

@@ -26,15 +26,16 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import java.io.IOException;
 import java.util.List;
 
-/** Barcode Detector Demo. */
 public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseVisionBarcode>> {
 
     private static final String TAG = "BarcodeScanProc";
 
     private final FirebaseVisionBarcodeDetector detector;
     private final CameraActivity ca;
+    private int requestCode;
 
-    public BarcodeScanningProcessor(CameraActivity ca) {
+    public BarcodeScanningProcessor(CameraActivity ca, int requestCode) {
+        this.requestCode = requestCode;
         this.ca = ca;
         detector = FirebaseVision.getInstance().getVisionBarcodeDetector();
     }
@@ -60,10 +61,16 @@ public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseV
             @NonNull GraphicOverlay graphicOverlay) {
         graphicOverlay.clear();
         for (int i = 0; i < barcodes.size(); ++i) {
+            switch (requestCode){
+                case CameraActivity.BARCODE_REQUEST:
+
+            }
             FirebaseVisionBarcode barcode = barcodes.get(i);
             BarcodeGraphic barcodeGraphic = new BarcodeGraphic(graphicOverlay, barcode);
             graphicOverlay.add(barcodeGraphic);
-            this.ca.onQrScanned(barcode.getDisplayValue());
+            FirebaseVisionBarcode.ContactInfo contactInfo = barcode.getContactInfo();
+            Log.d(TAG, "Barcode: " + barcode.getDisplayValue());
+            this.ca.onQrScanned(barcode.getContactInfo());
         }
     }
 

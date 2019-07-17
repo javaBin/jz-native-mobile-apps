@@ -8,6 +8,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
+
 import java.io.IOException;
 
 import no.schedule.javazone.v3.R;
@@ -29,11 +31,19 @@ public class CameraActivity extends BaseActivity {
     private CameraSource cameraSource = null;
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
+    private int requestCode;
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        intent.putExtra("requestCode", requestCode);
+        super.startActivityForResult(intent, requestCode);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        requestCode = getIntent().getIntExtra("requestCode", -1);
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
                 != this.getPackageManager().PERMISSION_GRANTED) {
             // Permission is not granted
@@ -66,7 +76,7 @@ public class CameraActivity extends BaseActivity {
         if (cameraSource == null) {
             cameraSource = new CameraSource(this, graphicOverlay);
         }
-        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this));
+        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this, requestCode));
         try {
             Log.d(TAG, "onClick: start camera");
             preview.start(cameraSource, graphicOverlay);
@@ -75,9 +85,20 @@ public class CameraActivity extends BaseActivity {
         }
     }
 
-    public void onQrScanned(String barcode){
+    public void onQrScanned(FirebaseVisionBarcode.ContactInfo contactInfo){
         Intent resultIntent = new Intent();
-        resultIntent.putExtra("barcode", barcode);
+        resultIntent.putExtra("requestCode", requestCode);
+        //switch (requestCode){
+        //    case BARCODE_REQUEST:
+        //        resultIntent.putExtra("barcode", )
+        //}
+        //extras.putSerializable("contactInfo", contactInfo);
+        resultIntent.putExtra("name", contactInfo.getName().getFormattedName());
+        resultIntent.putExtra("email", contactInfo.getEmails().get(0).getAddress());
+        //resultIntent.putExtra("address", contactInfo.getAddresses().get(0).getAddressLines());
+        //resultIntent.putExtra("company", contactInfo.getOrganization());
+        //resultIntent.putExtra("phone", contactInfo.getPhones().get(0).getNumber());
+        //resultIntent.putExtra("url", contactInfo.getUrls()[0]);
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }
