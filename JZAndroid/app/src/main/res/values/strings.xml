@@ -130,10 +130,15 @@ Develop and Distribute). -->
     <string name="title_digital_pass">Digital Pass</string>
     <string name="title_stamp">Stamps</string>
     <string name="navdrawer_item_digital_pass">Digital Pass</string>
+    <string name="navdrawer_item_map">Map</string>
+    <string name="title_map">Map</string>
+
     <string name="description_avatar">Avatar</string>
     <string name="add_events">Add events</string>
 
     <string name="myqr">My QR</string>
+    <string name="scan_button">Scan QR-code</string>
+    <string name="scan">Scan</string>
 
     <!-- Accessibility announcement to confirm the feedback rating made for a session by the user. -->
     <string name="feedback_rating_confirmation">Your rating: %1$d out of %2$d stars"</string>

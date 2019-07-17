@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import no.schedule.javazone.v3.R;
+import no.schedule.javazone.v3.digitalpass.info.InfoFragment;
 import no.schedule.javazone.v3.digitalpass.pass.PassFragment;
 import no.schedule.javazone.v3.digitalpass.stamp.StampListFragment;
 import no.schedule.javazone.v3.info.BaseInfoFragment;
@@ -18,9 +19,10 @@ public class DigitalPassViewPagerAdapter extends FragmentPagerAdapter {
 
     private final static String TAG = makeLogTag(DigitalPassViewPagerAdapter.class);
 
-    private final static int NUM_PAGES = 2;
+    private final static int NUM_PAGES = 3;
     private final static int PASS_INDEX = 0;
     private final static int STAMP_INDEX = 1;
+    private final static int INFO_INDEX = 2;
 
     private Context mContext;
 
@@ -54,6 +56,9 @@ public class DigitalPassViewPagerAdapter extends FragmentPagerAdapter {
             case STAMP_INDEX:
                 mFragments[position] = new StampListFragment();
                 break;
+            case INFO_INDEX:
+                mFragments[position] = new InfoFragment();
+                break;
         }
 
         return mFragments[position];
@@ -69,6 +74,8 @@ public class DigitalPassViewPagerAdapter extends FragmentPagerAdapter {
                 return mContext.getResources().getString(R.string.title_digital_pass);
             case 1:
                 return mContext.getResources().getString(R.string.title_stamp);
+            case 2:
+                return mContext.getResources().getString(R.string.title_info);
             default:
                 return mContext.getResources().getString(R.string.title_digital_pass);
         }
