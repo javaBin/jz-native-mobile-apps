@@ -12,13 +12,8 @@ class OpenSourceLicenseViewController: UIViewController {
         do {
             let content = try String(contentsOfFile:path!, encoding: String.Encoding.utf8)
             openSourceDescriptionTextView.setHTML(html: content)
-
-            print(content)
         } catch {
-            print("nil")
         }
-
-
     }
 
     override func didReceiveMemoryWarning() {

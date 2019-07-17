@@ -87,7 +87,7 @@
         <activity
             android:name=".digitalpass.DigitalPassActivity"
             android:exported="true"
-            android:label="@string/title_my_schedule"
+            android:label="@string/title_digital_pass"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.JZSched.MySchedule"></activity>
@@ -95,6 +95,12 @@
             android:name=".digitalpass.camera.CameraActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_camera"
+            android:launchMode="singleTask"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity
+            android:name=".map.MapActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_map"
             android:launchMode="singleTask"
             android:theme="@style/FullscreenTheme"></activity>
         <activity

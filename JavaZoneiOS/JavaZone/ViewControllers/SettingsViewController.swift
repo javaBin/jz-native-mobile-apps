@@ -1,21 +1,24 @@
 import UIKit
 import UserNotifications
+import Firebase
 
 class SettingsViewController: UITableViewController {
     var mySessionRepository: MySessionRepository?
     var sessionRepository: SessionRepository?
-    @IBOutlet weak var generalSettingsCell: GeneralSettingsCell!
+    
     var isGrantedNotificationAccess = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let center = UNUserNotificationCenter.current()
-        let options: UNAuthorizationOptions = [.alert, .sound];
-        
+        let options: UNAuthorizationOptions = [.alert, .badge, .sound];
         
         center.requestAuthorization(options: options) {
             (granted, error) in
             self.isGrantedNotificationAccess = granted
+            // IF turned on, set switch to on!
+            
+            
             if !granted {
                 print("Something went wrong")
             }
@@ -26,38 +29,30 @@ class SettingsViewController: UITableViewController {
                 // Notifications not allowed
             }
         }
-        
-        
-        //notification trigger can be based on time, calendar or location
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval:2.0, repeats: false)
-        
-        //create request to display
-        let request = UNNotificationRequest(identifier: "ContentIdentifier", content: createNotificationContent(), trigger: trigger)
-        
-        //add request to notification center
-        center.add(request) { (error) in
-            if error != nil {
-                print("error \(String(describing: error))")
+    }
+    
+    @IBAction func notificationSwitchValueChanged(_ sender: UISwitch!) {
+        if(!sender.isOn) {
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        } else {
+            let mySessions = mySessionRepository!.getAll()
+            
+            // TODO check if anything happens here
+            if(mySessions!.count > 0) {
+                for var mySession in mySessions! {
+                    let sessionDate = CommonNotificationUtil.getStartDate(startTime: mySession.startTime!)
+                    CommonNotificationUtil.createAndAddNotification(sessionId: mySession.sessionId!, sessionTitle: mySession.title!, date: sessionDate)
+                }
             }
         }
     }
-
+    
+    @IBAction func anonymousSwitchValueChanged(_ sender: UISwitch!) {
+        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(sender.isOn)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    private func createNotificationContent() -> UNMutableNotificationContent {
-        let content = UNMutableNotificationContent()
-        content.title = " Jurassic Park"
-        content.subtitle = "Lunch"
-        content.body = "Its lunch time at the park, please join us for a dinosaur feeding"
-        content.sound = UNNotificationSound.default
-        
-        
-        
-        return content
-    }
-    
-
 }

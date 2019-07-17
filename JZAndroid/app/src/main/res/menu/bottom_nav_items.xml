@@ -16,10 +16,10 @@
         <!--android:id="@+id/feed_nav_item"-->
         <!--android:checkable="true"-->
         <!--android:visible="false" />-->
-    <!--<item-->
-        <!--android:id="@+id/map_nav_item"-->
-        <!--android:checkable="true"-->
-        <!--android:visible="false" />-->
+    <item
+        android:id="@+id/map_nav_item"
+        android:checkable="true"
+        android:visible="false" />
     <item
         android:id="@+id/info_nav_item"
         android:checkable="true"
