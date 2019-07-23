@@ -2,6 +2,7 @@
 matrix:
   include:
     - language: android
+      dist: trusty # Android is not supported on Xenial yet
       jdk: oraclejdk8
       sudo: required # false for Container-Based Infrastructure, required for Sudo-enabled Infrastructure
 
