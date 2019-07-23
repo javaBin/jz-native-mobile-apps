@@ -14,6 +14,7 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     @IBOutlet weak var partnerUrlTextView: UITextView!
     @IBOutlet weak var partnerName: UITextField!
     var partnerRepository: PartnerRepository?
+    var ticketRepository: TicketRepository?
     
     lazy var reader: QRCodeReader = QRCodeReader()
     lazy var readerVC: QRCodeReaderViewController = {
@@ -77,10 +78,18 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     @IBAction func scanInModalAction(_ sender: AnyObject) {
         var partnerTicket: QRPartnerResult? = nil
         
+        if ticketRepository?.getTicket() == nil {
+            let alert = UIAlertController(title: "Wait...", message: "Please scan your JavaZone pass to scan the partners QR Code", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+
+            return
+        }
+        
         #if targetEnvironment(simulator)
         partnerTicket = QRPartnerTicketProvider.sharedInstance.mockTicket()
         #endif
-        
+
         if(partnerTicket == nil) {
             guard checkScanPermissions() else { return }
             

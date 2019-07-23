@@ -72,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         container.storyboardInitCompleted(PartnerDetailViewController.self) {
             r,c in
             c.partnerRepository = r.resolve(PartnerRepository.self, name: "partnerRepository")
+            c.ticketRepository = r.resolve(TicketRepository.self, name: "ticketRepository")
         }
         
         

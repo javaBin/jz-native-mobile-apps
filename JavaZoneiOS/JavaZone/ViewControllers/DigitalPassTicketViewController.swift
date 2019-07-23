@@ -46,7 +46,7 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
         #if targetEnvironment(simulator)
         ticketCheck = TicketProvider.sharedInstance.mockTicket()
         #endif
-        
+
         if ticketCheck != nil && ticketCheck!.vCardData != nil {
             let date = Date()
 
@@ -137,7 +137,12 @@ class DigitalPassTicketViewController: UIViewController, QRCodeReaderViewControl
     }
     
     @IBAction func deleteTicketAction(_ sender: Any) {
-        let getTicket = ticketRepository!.getTicket()
+        var getTicket = ticketRepository!.getTicket()
+        
+        #if targetEnvironment(simulator)
+        getTicket = TicketProvider.sharedInstance.mockTicket()
+        #endif
+        
         let alert: UIAlertController
         
         if(getTicket != nil) {
