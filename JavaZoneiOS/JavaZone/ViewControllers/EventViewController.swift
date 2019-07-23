@@ -36,7 +36,6 @@ class EventViewController: UIViewController {
                         //an error accured
                         SVProgressHUD.showSuccess(withStatus: "Failed to connect to wifi")
                         
-                        print(error?.localizedDescription)
                     }
                     else {
                         //success

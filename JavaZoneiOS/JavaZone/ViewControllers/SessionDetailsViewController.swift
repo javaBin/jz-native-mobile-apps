@@ -21,6 +21,7 @@ class SessionDetailsViewController:  UIViewController  {
         roomLabel?.text = "\(startTime!) - \(endTime!), \(session!.room!)"
         abstractTextView?.text = session!.abstract
         intendedAudienceTextView?.text = session!.intendedAudience
+        feedbackButton.isHidden = true
         
         // showFeedbackButtonFiveMinutesBeforeEndTime(session: session)
         
@@ -88,10 +89,10 @@ class SessionDetailsViewController:  UIViewController  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "speakerDetailSegue" {
-            var vc = segue.destination as! SpeakerDetailViewController
+            let vc = segue.destination as! SpeakerDetailViewController
             vc.speaker = (sender as! SpeakerUIView).speaker
         } else if segue.identifier == "sessionFeedbackSegue" {
-            var vc = segue.destination as! FeedbackViewController
+            let vc = segue.destination as! FeedbackViewController
             vc.session = self.session
         }
     }

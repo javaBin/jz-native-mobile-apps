@@ -1,64 +1,79 @@
 PODS:
   - Alamofire (4.8.1)
   - AvatarImageView (2.2.0)
+  - BoringSSL-GRPC (0.0.2):
+    - BoringSSL-GRPC/Implementation (= 0.0.2)
+    - BoringSSL-GRPC/Interface (= 0.0.2)
+  - BoringSSL-GRPC/Implementation (0.0.2):
+    - BoringSSL-GRPC/Interface (= 0.0.2)
+  - BoringSSL-GRPC/Interface (0.0.2)
   - Cosmos (18.0.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
+  - CryptoSwift (0.14.0)
+  - DisplaySwitcher (1.2)
   - Fabric (1.9.0)
-  - Firebase/Core (5.16.0):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.5.0)
-  - Firebase/CoreOnly (5.16.0):
-    - FirebaseCore (= 5.2.0)
-  - Firebase/Crash (5.16.0):
+  - Firebase/Analytics (5.18.0):
     - Firebase/Core
-    - FirebaseCrash (= 3.1.1)
-  - Firebase/MLVision (5.16.0):
+  - Firebase/Core (5.18.0):
     - Firebase/CoreOnly
-    - FirebaseMLVision (= 0.14.0)
-  - Firebase/MLVisionBarcodeModel (5.16.0):
-    - Firebase/CoreOnly
-    - FirebaseMLVisionBarcodeModel (= 0.14.0)
-  - Firebase/RemoteConfig (5.16.0):
+    - FirebaseAnalytics (= 5.7.0)
+  - Firebase/CoreOnly (5.18.0):
+    - FirebaseCore (= 5.3.1)
+  - Firebase/RemoteConfig (5.18.0):
     - Firebase/Core
     - FirebaseRemoteConfig (= 3.1.0)
   - FirebaseABTesting (2.0.0):
     - FirebaseCore (~> 5.0)
     - Protobuf (~> 3.5)
-  - FirebaseAnalytics (5.5.0):
-    - FirebaseCore (~> 5.2)
-    - FirebaseInstanceID (~> 3.4)
-    - GoogleAppMeasurement (= 5.5.0)
+  - FirebaseAnalytics (5.7.0):
+    - FirebaseCore (~> 5.3)
+    - FirebaseInstanceID (~> 3.6)
+    - GoogleAppMeasurement (= 5.7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.2.0):
+  - FirebaseAnalyticsInterop (1.2.0)
+  - FirebaseAuthInterop (1.0.0)
+  - FirebaseCore (5.3.1):
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseCrash (3.1.1):
-    - FirebaseAnalytics (~> 5.1)
-    - FirebaseInstanceID (~> 3.2)
-    - GoogleToolboxForMac/Logger (~> 2.1)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - Protobuf (~> 3.5)
-  - FirebaseInstanceID (3.4.0):
+  - FirebaseDatabase (5.1.0):
+    - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
-  - FirebaseMLCommon (0.14.0):
+    - leveldb-library (~> 1.18)
+  - FirebaseFirestore (1.0.2):
+    - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
-    - FirebaseInstanceID (~> 3.4)
-    - GoogleUtilities/UserDefaults (~> 5.3)
+    - FirebaseFirestore/abseil-cpp (= 1.0.2)
+    - "gRPC-C++ (= 0.0.6)"
+    - leveldb-library (~> 1.20)
+    - nanopb (~> 0.3.901)
+    - Protobuf (~> 3.1)
+  - FirebaseFirestore/abseil-cpp (1.0.2):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - "gRPC-C++ (= 0.0.6)"
+    - leveldb-library (~> 1.20)
+    - nanopb (~> 0.3.901)
+    - Protobuf (~> 3.1)
+  - FirebaseFunctions (2.3.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseMLVision (0.14.0):
+  - FirebaseInstanceID (3.7.0):
     - FirebaseCore (~> 5.2)
-    - FirebaseMLCommon (~> 0.14)
-    - GoogleAPIClientForREST/Core (~> 1.3)
-    - GoogleAPIClientForREST/Vision (~> 1.3)
-    - GoogleMobileVision/Detector (~> 1.4)
-  - FirebaseMLVisionBarcodeModel (0.14.0):
-    - GoogleMobileVision/BarcodeDetector (~> 1.4)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/UserDefaults (~> 5.2)
+  - FirebaseMessaging (3.3.2):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.2)
+    - FirebaseInstanceID (~> 3.6)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/Reachability (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+    - Protobuf (~> 3.1)
   - FirebaseRemoteConfig (3.1.0):
     - FirebaseABTesting (~> 2.0)
     - FirebaseAnalytics (~> 5.3)
@@ -67,29 +82,16 @@ PODS:
     - GoogleUtilities/Environment (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - Protobuf (~> 3.5)
-  - GoogleAPIClientForREST/Core (1.3.8):
-    - GTMSessionFetcher (>= 1.1.7)
-  - GoogleAPIClientForREST/Vision (1.3.8):
-    - GoogleAPIClientForREST/Core
-    - GTMSessionFetcher (>= 1.1.7)
-  - GoogleAppMeasurement (5.5.0):
+  - FirebaseStorage (3.1.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleAppMeasurement (5.7.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - GoogleMobileVision/BarcodeDetector (1.5.0):
-    - GoogleMobileVision/Detector (~> 1.5)
-  - GoogleMobileVision/Detector (1.5.0):
-    - GoogleToolboxForMac/Logger (~> 2.1)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - GTMSessionFetcher/Core (~> 1.1)
-    - Protobuf (~> 3.1)
-  - GoogleToolboxForMac/Defines (2.2.0)
-  - GoogleToolboxForMac/Logger (2.2.0):
-    - GoogleToolboxForMac/Defines (= 2.2.0)
-  - "GoogleToolboxForMac/NSData+zlib (2.2.0)":
-    - GoogleToolboxForMac/Defines (= 2.2.0)
   - GoogleUtilities/AppDelegateSwizzler (5.3.7):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -108,11 +110,24 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher (1.2.1):
-    - GTMSessionFetcher/Full (= 1.2.1)
+  - "gRPC-C++ (0.0.6)":
+    - "gRPC-C++/Implementation (= 0.0.6)"
+    - "gRPC-C++/Interface (= 0.0.6)"
+  - "gRPC-C++/Implementation (0.0.6)":
+    - "gRPC-C++/Interface (= 0.0.6)"
+    - gRPC-Core (= 1.17.0)
+    - nanopb (~> 0.3)
+  - "gRPC-C++/Interface (0.0.6)"
+  - gRPC-Core (1.17.0):
+    - gRPC-Core/Implementation (= 1.17.0)
+    - gRPC-Core/Interface (= 1.17.0)
+  - gRPC-Core/Implementation (1.17.0):
+    - BoringSSL-GRPC (= 0.0.2)
+    - gRPC-Core/Interface (= 1.17.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.17.0)
   - GTMSessionFetcher/Core (1.2.1)
-  - GTMSessionFetcher/Full (1.2.1):
-    - GTMSessionFetcher/Core (= 1.2.1)
+  - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -134,7 +149,8 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.3):
     - PromiseKit/CorePromise
-  - Protobuf (3.6.1)
+  - Protobuf (3.7.0)
+  - QRCodeReader.swift (10.0.0)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
   - Realm/Headers (3.13.1)
@@ -142,7 +158,7 @@ PODS:
     - Realm (= 3.13.1)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
-  - Swinject (2.5.0)
+  - Swinject (2.6.0)
   - SwinjectStoryboard (2.1.0):
     - Swinject (~> 2.5)
   - Toast-Swift (4.0.1)
@@ -156,15 +172,21 @@ DEPENDENCIES:
   - AvatarImageView
   - Cosmos
   - Crashlytics
+  - CryptoSwift
+  - DisplaySwitcher (from `https://github.com/Yalantis/DisplaySwitcher.git`)
   - Fabric
-  - Firebase/Core
-  - Firebase/Crash
-  - Firebase/MLVision
-  - Firebase/MLVisionBarcodeModel
+  - Firebase/Analytics
   - Firebase/RemoteConfig
+  - FirebaseCore
+  - FirebaseDatabase
+  - FirebaseFirestore
+  - FirebaseFunctions
+  - FirebaseMessaging
+  - FirebaseStorage
   - ObjectMapper
   - "ObjectMapper+Realm"
   - PromiseKit
+  - QRCodeReader.swift (~> 10.0.0)
   - Realm
   - RealmSwift
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
@@ -178,31 +200,37 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AvatarImageView
+    - BoringSSL-GRPC
     - Cosmos
     - Crashlytics
+    - CryptoSwift
     - Fabric
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseAuthInterop
     - FirebaseCore
-    - FirebaseCrash
+    - FirebaseDatabase
+    - FirebaseFirestore
+    - FirebaseFunctions
     - FirebaseInstanceID
-    - FirebaseMLCommon
-    - FirebaseMLVision
-    - FirebaseMLVisionBarcodeModel
+    - FirebaseMessaging
     - FirebaseRemoteConfig
-    - GoogleAPIClientForREST
+    - FirebaseStorage
     - GoogleAppMeasurement
-    - GoogleMobileVision
-    - GoogleToolboxForMac
     - GoogleUtilities
+    - "gRPC-C++"
+    - gRPC-Core
     - GTMSessionFetcher
+    - leveldb-library
     - nanopb
     - ObjcExceptionBridging
     - ObjectMapper
     - "ObjectMapper+Realm"
     - PromiseKit
     - Protobuf
+    - QRCodeReader.swift
     - Realm
     - RealmSwift
     - SwiftyJSON
@@ -212,10 +240,15 @@ SPEC REPOS:
     - XCGLogger
 
 EXTERNAL SOURCES:
+  DisplaySwitcher:
+    :git: https://github.com/Yalantis/DisplaySwitcher.git
   SVProgressHUD:
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
 
 CHECKOUT OPTIONS:
+  DisplaySwitcher:
+    :commit: 8895f597bdc0c2e93a22659814205d5718a59c6f
+    :git: https://github.com/Yalantis/DisplaySwitcher.git
   SVProgressHUD:
     :commit: e2a6aaa12321962cbe9fbecc370475f369c6566c
     :git: https://github.com/SVProgressHUD/SVProgressHUD.git
@@ -223,40 +256,47 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AvatarImageView: afe8e7eb50181ca3f095e21034f245676b535c55
+  BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   Cosmos: 7dfaa3f52584ca5f94ab74b5c2e264019cc9f7f5
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
+  DisplaySwitcher: a9ee0b5c7821cd8d12e39783ada99399f6d927a0
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
+  Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
-  FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
-  FirebaseCore: ea2d1816723ef21492b8e9113303e1350db5e08c
-  FirebaseCrash: 011365f2c0dfac64315109103ed350bacfcdc03f
-  FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
-  FirebaseMLCommon: d8a789e36a7faa175b1a5d1139e7fc7323c8db7b
-  FirebaseMLVision: 07c0da3ceaa5ecde621528a985748d6098a84388
-  FirebaseMLVisionBarcodeModel: 7ae6e777c4c268505f08761afdfb64613c41204d
+  FirebaseAnalytics: 23851fe602c872130a2c5c55040b302120346cc2
+  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
+  FirebaseCore: 52f851b30e11360f1e67cf04b1edfebf0a47a2d3
+  FirebaseDatabase: 23acb0c53cd4d4070a427b60100b2e4aaa97c45d
+  FirebaseFirestore: ccdaffb8a73c591ff61872b8f7905ad0c237ef50
+  FirebaseFunctions: 3ee25c43a467ec3099718d77323de04ce07828d8
+  FirebaseInstanceID: bd6fc5a258884e206fd5c474ebe4f5b00e21770e
+  FirebaseMessaging: d740150547f7686b33799f6489f5b69a4706631b
   FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
-  GoogleAPIClientForREST: 5447a194eae517986cafe6421a5330b80b820591
-  GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
-  GoogleMobileVision: a1f93108b3527d67339e2de80e1db76645f9e8b9
-  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  FirebaseStorage: 29075f874c2b3cf61e5221a62c4ceefc809e5412
+  GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
+  "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
+  gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   "ObjectMapper+Realm": 4cf44ed3202a73f08594e21e13eb3f8aa9b5a664
   PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
-  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  QRCodeReader.swift: 74d0378eb0c7807828552b49626bbc8307495aee
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
+  Swinject: 48a96cda93633cf2860697b4ce76ab5db9ebaca2
   SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: b1766e7880ae5ddd3d7c6d065ccf58aa2aa5a089
+PODFILE CHECKSUM: c96276201e028505953dfbb5cc84402e14c30938
 
 COCOAPODS: 1.5.3

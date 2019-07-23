@@ -5,9 +5,10 @@ import CoreData
 import Swinject
 import SwinjectStoryboard
 import SVProgressHUD
-import Firebase
+import FirebaseCore
 import UserNotifications
 import AudioToolbox
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -32,6 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             r in SessionRepository(speakerRepository: r.resolve(SpeakerRepository.self, name: "speakerRepository"))
         }
         
+        container.register(PartnerRepository.self, name: "partnerRepository") {
+            r in PartnerRepository()
+        }
+        
+        container.register(TicketRepository.self, name: "ticketRepository") {
+            r in TicketRepository()
+        }
+        
         // Views
         container.storyboardInitCompleted(MyScheduleViewController.self) { r, c in
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
@@ -47,7 +56,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             c.mySessionRepository = r.resolve(MySessionRepository.self, name: "mySessionRepository")
             c.sessionRepository = r.resolve(SessionRepository.self, name: "sessionRepository")
             
-        }  
+        }
+        
+        container.storyboardInitCompleted(DigitalPassTicketViewController.self) {
+            r, c in
+            c.ticketRepository = r.resolve(TicketRepository.self, name: "ticketRepository")
+            c.partnerRepository = r.resolve(PartnerRepository.self, name: "partnerRepository")
+        }
+        
+        container.storyboardInitCompleted(PartnerListViewController.self) {
+            r,c in
+            c.partnerRepository = r.resolve(PartnerRepository.self, name: "partnerRepository")
+        }
+        
+        container.storyboardInitCompleted(PartnerDetailViewController.self) {
+            r,c in
+            c.partnerRepository = r.resolve(PartnerRepository.self, name: "partnerRepository")
+            c.ticketRepository = r.resolve(TicketRepository.self, name: "ticketRepository")
+        }
+        
+        
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -57,6 +85,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window = window
         FirebaseApp.configure()
         let _ = RemoteConfigValues.sharedInstance
+        
+        // Set configuration and delete all realm if version is not the same
+        let config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+            
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if(oldSchemaVersion < 1) {
+                    migration.deleteData(forType: Partner.className())
+                    migration.deleteData(forType: Ticket.className())
+                    migration.deleteData(forType: Session.className())
+                    migration.deleteData(forType: MySession.className())
+                    migration.deleteData(forType: Speaker.className())
+                }
+        }
+        )
+        
+        Realm.Configuration.defaultConfiguration = config
+        
+        
+        
         
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()

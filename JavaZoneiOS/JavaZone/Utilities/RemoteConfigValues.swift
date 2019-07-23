@@ -13,9 +13,11 @@ class RemoteConfigValues {
     
     func loadDefaultValues() {
         let appDefaults: [String: Any?] = [
-            "event_after_hours_description": "Some descriptioin",
+            "event_after_hours_description": "Some description",
             "default_wifi_network": "javazone",
             "default_wifi_password": "",
+            "salted_partner_name": "JavaZoneErKulestIVerden!!!1",
+            "javazone_year": "2019"
         ]
         
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])

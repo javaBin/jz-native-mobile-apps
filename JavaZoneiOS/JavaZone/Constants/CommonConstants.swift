@@ -3,8 +3,8 @@ import UserNotifications
 import AvatarImageView
 
 public struct Common {
-    static let JavaZone2017Dates = ["13.09.2017", "14.09.2017"]
-    static let JavaZone2018Dates = ["12.09.2018", "13.09.2018"]
+    static let JavaZone2017Dates = ["12.09.2018", "13.09.2018"]
+    static let JavaZone2019Dates = ["11.09.2019", "12.09.2019"]
 }
 
 public struct CommonDate {
@@ -50,9 +50,9 @@ public struct CommonDate {
     
     static func conferenceDates() -> [String] {
         #if DEBUG
-        return Common.JavaZone2017Dates
+        return Common.JavaZone2019Dates
         #else
-        return Common.JavaZone2018Dates
+        return Common.JavaZone2019Dates
         #endif
     }
 }
@@ -119,7 +119,7 @@ public struct CommonNotificationUtil {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
         dateFormatter.timeZone = TimeZone(identifier: "GMT+1")
         
-        let date = dateFormatter.date(from: "2018-11-10T09:39")
+        let date = dateFormatter.date(from: startTime)
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .timeZone], from: date!)
         let sessionDate = calendar.date(from: dateComponents)
@@ -135,9 +135,6 @@ public struct CommonNotificationUtil {
                 createAndAddNotification(sessionId: mySession.sessionId, sessionTitle: mySession.sessionTitle, date: sessionStartTime)
             }
         }
-        
-        
-        
         
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {requests -> () in
             for request in requests{

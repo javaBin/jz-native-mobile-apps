@@ -1,6 +1,6 @@
 import UIKit
 import UserNotifications
-import Firebase
+import FirebaseCore
 
 class SettingsViewController: UITableViewController {
     var mySessionRepository: MySessionRepository?
