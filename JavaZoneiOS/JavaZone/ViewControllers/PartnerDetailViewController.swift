@@ -76,8 +76,6 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     }
     
     @IBAction func scanInModalAction(_ sender: AnyObject) {
-        var partnerTicket: QRPartnerResult? = nil
-        
         if ticketRepository?.getTicket() == nil {
             let alert = UIAlertController(title: "Wait...", message: "Please scan your JavaZone pass to scan the partners QR Code", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -86,11 +84,11 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
             return
         }
         
-        #if targetEnvironment(simulator)
-        partnerTicket = QRPartnerTicketProvider.sharedInstance.mockTicket()
-        #endif
-
-        if(partnerTicket == nil) {
+        let partnerName = partnerCell.partner.name!
+        let partnerTicket = partnerRepository?.getPartner(name: partnerName)
+        let hasStamped = partnerTicket?.hasStamped as! Bool
+        
+        if(!hasStamped) {
             guard checkScanPermissions() else { return }
             
             readerVC.modalPresentationStyle = .formSheet
@@ -104,7 +102,9 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
             
             present(readerVC, animated: true, completion: nil)
         } else {
-            updateQRPartnerResult(qrPartnerResult: partnerTicket!)
+            let alert = UIAlertController(title: "Wait...", message: "Partner QR code has already been scanned", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
     }
     
