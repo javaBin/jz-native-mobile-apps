@@ -2,6 +2,7 @@
 matrix:
   include:
     - language: android
+      dist: trusty # Android is not supported on Xenial yet
       jdk: oraclejdk8
       sudo: required # false for Container-Based Infrastructure, required for Sudo-enabled Infrastructure
 
@@ -49,4 +50,4 @@ matrix:
         - pod repo update
         - pod install
       script:
-        - xcodebuild clean build -quiet -sdk iphonesimulator CODE_SIGN_IDENTITY="" -workspace JavaZone.xcworkspace -scheme JavaZone ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+        - travis_wait 30 xcodebuild clean build -quiet -sdk iphonesimulator CODE_SIGN_IDENTITY="" -workspace JavaZone.xcworkspace -scheme JavaZone ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
