@@ -16,6 +16,7 @@ class SessionApiService {
     
     func getAllSessions() -> Promise<SessionResult>
     {
+//        let url = URL(string: JZURL.GetAllSessions)!
         let url = JZURL.GetAllSessions
         SVProgressHUD.show()
         return Promise<SessionResult> { seal in
@@ -34,6 +35,7 @@ class SessionApiService {
                     }
                     seal.fulfill(sessionResult)
                 case .failure(let error):
+
                     seal.reject(error)
                 }
             }

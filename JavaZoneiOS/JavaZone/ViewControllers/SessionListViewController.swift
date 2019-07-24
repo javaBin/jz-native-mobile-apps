@@ -70,7 +70,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         
         refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
-        refresher?.addTarget(self, action: Selector(("getAllSessionsFromSleepingPill")), for: .valueChanged)
+        refresher?.addTarget(self, action: #selector(self.getAllSessionsFromSleepingPill), for: UIControl.Event.valueChanged)
         
         self.refreshData()
         self.mySessionSegmentedControl.removeAllSegments()
@@ -78,6 +78,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         for (index, conferenceDate) in CommonDate.conferenceDates().enumerated() {
             self.mySessionSegmentedControl.insertSegment(withTitle: conferenceDate, at: index, animated: false)
         }
+        
         
         self.mySessionSegmentedControl.addTarget(self, action: #selector(self.selectedSegmentedDate), for: UIControl.Event.valueChanged)
     }
@@ -97,7 +98,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         }
     }
     
-    func getAllSessionsFromSleepingPill() {
+    @objc func getAllSessionsFromSleepingPill() {
         sessionRepository!.deleteAll()
         speakerRepository!.deleteAll()
         

@@ -99,6 +99,7 @@
 		5083E2E022D4F4830020F0CF /* QRPartnerTicketProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPartnerTicketProvider.swift; sourceTree = "<group>"; };
 		50ACA1922195987D004F4B1C /* RemoteConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigValues.swift; sourceTree = "<group>"; };
 		50ACA195219598AA004F4B1C /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
+		50DA195922E7266500223266 /* JavaZone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JavaZone.entitlements; sourceTree = "<group>"; };
 		50F663182195997A00284E79 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		50F6631B2195998C00284E79 /* SessionApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionApiService.swift; sourceTree = "<group>"; };
 		50F6631E2195998C00284E79 /* MySession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySession.swift; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 		5036B93F2195906600752C6A /* JavaZone */ = {
 			isa = PBXGroup;
 			children = (
+				50DA195922E7266500223266 /* JavaZone.entitlements */,
 				5051D54F21F63E81003EDCC5 /* Assets.xcassets */,
 				5051D4BD21F35FB0003EDCC5 /* Protocols */,
 				5051D4B621F35F5B003EDCC5 /* DataProviders */,
@@ -383,6 +385,11 @@
 				TargetAttributes = {
 					5036B93C2195906600752C6A = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

@@ -3,7 +3,7 @@ import Foundation
 
 struct JZURL {
     private struct ProdUrls {
-        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2018"
+        static let SleepingPillUrl = "https://sleepingpill.javazone.no/public/allSessions/javazone_2019"
         static let DevNullUrl = "https://devnull.javazone.no"
     }
     
