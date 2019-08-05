@@ -82,7 +82,7 @@ public class PassFragment extends Fragment{
     @Override
     public void onStart(){
         super.onStart();
-        int[] numbers = readStamps("stamps.csv");
+        int[] numbers = getStampProgress("stamps.csv");
         pb.setMax(numbers[0]);
         pb.setProgress(numbers[1]);
 
@@ -130,14 +130,12 @@ public class PassFragment extends Fragment{
         }
     }
 
-    private int[] readStamps(String file){
-        ArrayList<Stamp> stamps = new ArrayList<Stamp>();
+    private int[] getStampProgress(String file){
         Context mContext = getContext();
         int [] numbers = new int[2];
         try {
             CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(mContext.getAssets().open(file))));
             String[] nextLine;
-            int count = 0;
             while ((nextLine = reader.readNext()) != null) {
                 String name = nextLine[1];
                 String code = nextLine[4];

@@ -10,6 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.opencsv.CSVReader;
 
 import java.io.BufferedReader;
@@ -19,6 +24,8 @@ import java.util.ArrayList;
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Stamp> mStamps;
+
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     public ImageAdapter(Context c) {
         mContext = c;
@@ -66,6 +73,26 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     private ArrayList<Stamp> readStamps(String file){
+        DatabaseReference ref = database.getReference("partners");
+
+        final ArrayList<Stamp> stamps = new ArrayList<Stamp>();
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Stamp stamp = snapshot.getValue(Stamp.class);
+                    Log.d("read stamps", stamp.getName());
+                    stamps.add(stamp);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+/*
         ArrayList<Stamp> stamps = new ArrayList<Stamp>();
         try {
             CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(mContext.getAssets().open(file))));
@@ -86,6 +113,7 @@ public class ImageAdapter extends BaseAdapter {
             e.printStackTrace();
             Toast.makeText(mContext, "The specified stamps file was not found", Toast.LENGTH_SHORT).show();
         }
+        */
 
         return stamps;
     }

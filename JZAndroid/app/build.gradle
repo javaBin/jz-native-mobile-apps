@@ -143,6 +143,8 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.3.0'
     api 'com.crashlytics.sdk.android:crashlytics:2.9.8'
 
+    api 'commons-codec:commons-codec:1.13'
+
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
     implementation project(':JavaZoneApiClient')
 
