@@ -1,5 +1,6 @@
 package no.schedule.javazone.v3.map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -13,6 +14,7 @@ public class MapActivity extends BaseActivity {
     private static final String TAG = makeLogTag(MapActivity.class);
 
     private static final String SCREEN_LABEL = "Map";
+    public static final int MARKER_REQUEST = 0;
 
     // -- BaseActivity overrides
 
@@ -30,4 +32,10 @@ public class MapActivity extends BaseActivity {
         setContentView(R.layout.map_act);
         setFullscreenLayout();
     }
+//
+//    @Override
+//    public void startActivity(Intent intent, int requestCode) {
+//        if(requestCode == MARKER_REQUEST)
+//
+//    }
 }

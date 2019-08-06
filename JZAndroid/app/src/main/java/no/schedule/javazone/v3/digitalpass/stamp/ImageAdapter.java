@@ -1,35 +1,62 @@
 package no.schedule.javazone.v3.digitalpass.stamp;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
+
+import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.StreamEncoder;
+import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.caverock.androidsvg.SVG;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.opencsv.CSVReader;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.util.ArrayList;
+
+import no.schedule.javazone.v3.R;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Stamp> mStamps;
 
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     public ImageAdapter(Context c) {
         mContext = c;
-        mStamps = readStamps("stamps.csv");
+        mStamps = new ArrayList<>();
+        DatabaseReference ref = database.getReference("partners");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Stamp stamp = snapshot.getValue(Stamp.class);
+                    Log.d("read stamps", stamp.getName());
+                    Log.d("ImageAdapter", "LogoUrl_png " + stamp.getLogoUrl_png());
+                    Log.d("ImageAdapter", "LogoUrl " + stamp.getLogoUrl());
+                    mStamps.add(stamp);
+                    Log.d("ImageAdapter", "Stamp count: " + mStamps.size());
+                }
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("FirebaseError", "The read failed: " + databaseError.getCode());
+            }
+        });
     }
 
     public int getCount() {
@@ -46,76 +73,47 @@ public class ImageAdapter extends BaseAdapter {
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
+        ImageView mImageView;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new ViewGroup.LayoutParams(250, 150));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            mImageView = new ImageView(mContext);
+            mImageView.setLayoutParams(new ViewGroup.LayoutParams(250, 150));
+            mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            mImageView.setPadding(8, 8, 8, 8);
         } else {
-            imageView = (ImageView) convertView;
+            mImageView = (ImageView) convertView;
         }
 
-        if(mStamps.get(position).isTagged()){
+        if (mStamps.get(position).isTagged()) {
             int color = Color.parseColor("#AE6118");
-            imageView.setColorFilter(color);
+            mImageView.setColorFilter(color);
             Log.d("ImageAdapter", "Setting color");
         } else {
             int color = Color.parseColor("#000000");
-            imageView.setColorFilter(color);
+            mImageView.setColorFilter(color);
             Log.d("ImageAdapter", "Setting color");
         }
 
-        imageView.setImageResource(mStamps.get(position).getImage());
+        GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(mContext)
+                .using(Glide.buildStreamModelLoader(Uri.class, mContext), InputStream.class)
+                .from(Uri.class)
+                .as(SVG.class)
+                .transcode(new SvgDrawableTranscoder(), PictureDrawable.class)
+                .sourceEncoder(new StreamEncoder())
+                .cacheDecoder(new FileToStreamDecoder<SVG>(new SvgDecoder()))
+                .decoder(new SvgDecoder())
+                .placeholder(R.drawable.ic_logo)
+                .error(R.drawable.circle_border)
+                .animate(android.R.anim.fade_in)
+                .listener(new SvgSoftwareLayerSetter<Uri>());
 
-        return imageView;
+        Uri uri = Uri.parse(mStamps.get(position).getLogoUrl());
+        requestBuilder
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                // SVG cannot be serialized so it's not worth to cache it
+                .load(uri)
+                .into(mImageView);
+
+        return mImageView;
     }
-
-    private ArrayList<Stamp> readStamps(String file){
-        DatabaseReference ref = database.getReference("partners");
-
-        final ArrayList<Stamp> stamps = new ArrayList<Stamp>();
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Stamp stamp = snapshot.getValue(Stamp.class);
-                    Log.d("read stamps", stamp.getName());
-                    stamps.add(stamp);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-/*
-        ArrayList<Stamp> stamps = new ArrayList<Stamp>();
-        try {
-            CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(mContext.getAssets().open(file))));
-            String[] nextLine;
-            while ((nextLine = reader.readNext()) != null) {
-                int imageId = mContext.getResources().getIdentifier(nextLine[0],"drawable", mContext.getPackageName());
-                String name = nextLine[1];
-                String code = nextLine[4];
-                Stamp stamp = new Stamp(imageId, name, nextLine[2], nextLine[3], code);
-                SharedPreferences sharedPref = mContext.getSharedPreferences("StampPref", Context.MODE_PRIVATE);
-                String savedCode = sharedPref.getString(name, null);
-                if (savedCode != null && code.equals(savedCode)) {
-                    stamp.setTagged(true);
-                }
-                stamps.add(stamp);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(mContext, "The specified stamps file was not found", Toast.LENGTH_SHORT).show();
-        }
-        */
-
-        return stamps;
-    }
-
 }

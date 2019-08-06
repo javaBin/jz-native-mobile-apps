@@ -9,49 +9,49 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/frameLayout"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="427dp">
 
         <!-- YOUR CUSTOM VIEWS HERE -->
         <ImageView
             android:id="@+id/dialog_stamp_logo"
-            android:layout_width="223dp"
-            android:layout_height="142dp"
+            android:layout_width="318dp"
+            android:layout_height="243dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:src="@mipmap/ic_launcher"
-            app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.421"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dialog_stamp_description"
-            android:layout_width="240dp"
-            android:layout_height="182dp"
+            android:id="@+id/dialog_stamp_url"
+            android:layout_width="261dp"
+            android:layout_height="74dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="379dp"
-            android:text="@string/eula_legal_text"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_logo"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="59dp" />
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textColor="#F44336"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_logo" />
 
         <Button
             android:id="@+id/dialog_scan_button"
-            android:layout_width="181dp"
-            android:layout_height="49dp"
+            android:layout_width="236dp"
+            android:layout_height="47dp"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="76dp"
+            android:layout_marginEnd="60dp"
             android:layout_marginBottom="8dp"
             android:text="@string/scan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_description"
-            app:layout_constraintVertical_bias="0.944" />
+            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_url"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
             android:id="@+id/dialog_map_button"
@@ -65,7 +65,7 @@
             app:layout_constraintEnd_toStartOf="@+id/dialog_scan_button"
             app:layout_constraintHorizontal_bias="0.962"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_description"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_url"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_action_map" />
 

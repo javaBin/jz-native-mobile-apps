@@ -5,8 +5,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +20,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.StreamEncoder;
+import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.caverock.androidsvg.SVG;
+
+import java.io.InputStream;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
+import no.schedule.javazone.v3.map.MapActivity;
+import no.schedule.javazone.v3.util.FirebaseRemoteConfigUtil;
 
 import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
@@ -46,19 +63,47 @@ public class StampDialogFragment extends DialogFragment {
 
         // Setting logo
         ImageView logo = view.findViewById(R.id.dialog_stamp_logo);
-        logo.setImageResource(stamp.getImage());
 
+        GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(getContext())
+                .using(Glide.buildStreamModelLoader(Uri.class, getContext()), InputStream.class)
+                .from(Uri.class)
+                .as(SVG.class)
+                .transcode(new SvgDrawableTranscoder(), PictureDrawable.class)
+                .sourceEncoder(new StreamEncoder())
+                .cacheDecoder(new FileToStreamDecoder<SVG>(new SvgDecoder()))
+                .decoder(new SvgDecoder())
+                .placeholder(R.drawable.ic_logo)
+                .error(R.drawable.jzappsplash)
+                .animate(android.R.anim.fade_in)
+                .listener(new SvgSoftwareLayerSetter<Uri>());
+
+        Uri uri = Uri.parse(stamp.getLogoUrl());
+        requestBuilder
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                // SVG cannot be serialized so it's not worth to cache it
+                .load(uri)
+                .into(logo);
         // Setting description
-        TextView description = view.findViewById(R.id.dialog_stamp_description);
-        description.setText(stamp.getDescription());
+        TextView url = view.findViewById(R.id.dialog_stamp_url);
+        String urlText = String.format("<a href=\"%s\">Visit %s</a>", stamp.getHomepageUrl(), stamp.getName());
+        url.setText(Html.fromHtml(urlText));
+        url.setMovementMethod(LinkMovementMethod.getInstance());
 
-        final Button button = view.findViewById(R.id.dialog_scan_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button scanButton = view.findViewById(R.id.dialog_scan_button);
+        scanButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivityForResult(
                         new Intent(getActivity(), CameraActivity.class), CameraActivity.BARCODE_REQUEST);
             }
         });
+
+
+//        final Button mapButton = view.findViewById(R.id.dialog_map_button);
+//        mapButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), MapActivity.class), MapActivity.MARKER_REQUEST);
+//            }
+//        });
 
 
         return view;
@@ -78,9 +123,16 @@ public class StampDialogFragment extends DialogFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CameraActivity.BARCODE_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
+                String verificationKey;
+                try {
+                    verificationKey = stamp.generateVerificationKey(FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners"));
+                } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                    Log.d("StampDialogFragment", e.getMessage());
+                    return;
+                }
                 String barcode = data.getStringExtra("barcode");
                 Log.d("barcode", barcode);
-                if(barcode.equals(stamp.getQrCode())) {
+                if (barcode.equals(verificationKey)) {
                     stamp.setTagged(true);
                     StampListFragment slf = (StampListFragment) getTargetFragment();
                     slf.refreshList();
@@ -88,7 +140,7 @@ public class StampDialogFragment extends DialogFragment {
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(stamp.getName(), barcode);
                     editor.commit();
-                }else{
+                } else {
                     Context context = getActivity();
                     CharSequence text = "Wrong QR code.";
                     int duration = Toast.LENGTH_LONG;
@@ -103,9 +155,4 @@ public class StampDialogFragment extends DialogFragment {
     public void setStamp(Stamp stamp) {
         this.stamp = stamp;
     }
-
-    private boolean verifyQRCode(String barcode, String stampCode) {
-        return true;
-    }
-
 }

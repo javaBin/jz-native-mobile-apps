@@ -17,9 +17,13 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.DigitalPassActivity;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
+import no.schedule.javazone.v3.util.FirebaseRemoteConfigUtil;
 
 public class StampListFragment extends Fragment {
 
@@ -96,10 +100,20 @@ public class StampListFragment extends Fragment {
         if (requestCode == CameraActivity.BARCODE_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
                 String barcode = data.getStringExtra("barcode");
+                String salt = FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners");
+
                 Log.d("barcode", barcode);
                 for (int i = 0; i < logoAdapter.getCount(); i++) {
                     Stamp stamp = logoAdapter.getItem(i);
-                    if (barcode.equals(stamp.getQrCode())) {
+
+                    String verificationKey;
+                    try{
+                        verificationKey = stamp.generateVerificationKey(salt);
+                    }catch( NoSuchAlgorithmException | InvalidKeySpecException e){
+                        Log.d("StampDialogFragment", e.getMessage());
+                        return;
+                    }
+                    if (barcode.equals(verificationKey)) {
                         stamp.setTagged(true);
                         this.refreshList();
                         SharedPreferences sharedPref = getActivity().getSharedPreferences("StampPref", Context.MODE_PRIVATE);

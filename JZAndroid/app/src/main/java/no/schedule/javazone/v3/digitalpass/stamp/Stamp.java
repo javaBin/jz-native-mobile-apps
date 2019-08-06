@@ -10,19 +10,16 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 public class Stamp {
-    private int image;
     public String name;
-    private String description;
     public String homepageUrl;
     public String latitude;
     public String longitude;
     public String logoUrl;
     public String logoUrl_png;
     private boolean tagged;
-    private String qrCode;
 
     public Stamp() {
-
+        this.tagged = false;
     }
 
     public Stamp(String homepageUrl, String latitude, String logoUrl, String logoUrl_png, String longitude, String name) {
@@ -32,27 +29,12 @@ public class Stamp {
         this.logoUrl_png = logoUrl_png;
         this.name = name;
         this.logoUrl = logoUrl;
+        this.tagged = false;
     }
 
-    public Stamp(int image, String name, String description, String url, String qrCode) {
-        this.image = image;
-        this.name = name;
-        this.description = description;
-        this.homepageUrl = url;
-        this.qrCode = qrCode;
-        tagged = false;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setLatitude(String latitude) {
@@ -63,19 +45,15 @@ public class Stamp {
         this.longitude = longitude;
     }
 
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
-    }
-
     public void setHomepageUrl(String homepageUrl) {
         this.homepageUrl = homepageUrl;
     }
 
-    public void setLogoUrl_png (String logoUrl_png){
+    public void setLogoUrl_png(String logoUrl_png) {
         this.logoUrl_png = logoUrl_png;
     }
 
-    public void setLogoUrl (String logoUrl){
+    public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
     }
 
@@ -83,24 +61,32 @@ public class Stamp {
         this.tagged = tagged;
     }
 
-    public int getImage() {
-        return image;
+    public String getHomepageUrl() {
+        return homepageUrl;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public String getLogoUrl_png() {
+        return logoUrl_png;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public boolean isTagged() {
         return tagged;
-    }
-
-    public String getQrCode() {
-        return qrCode;
     }
 
     public String generateVerificationKey(String salt) throws NoSuchAlgorithmException, InvalidKeySpecException {
