@@ -101,7 +101,8 @@ public class Stamp {
         SecretKey key = skf.generateSecret(spec);
         byte[] hashedBytes = key.getEncoded();
 
-        return Hex.encodeHexString(hashedBytes);
+        //Hex.encodeHex(hashedBytes);
+        return new String(Hex.encodeHex(hashedBytes));
 
     }
 }

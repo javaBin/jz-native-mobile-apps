@@ -26,6 +26,7 @@ public class CameraActivity extends BaseActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int BARCODE_REQUEST = 0;
+    public static final int PARTNER_SCAN = 1;
 
     private static final String TAG = makeLogTag(PassFragment.class);
     private CameraSource cameraSource = null;
@@ -35,6 +36,9 @@ public class CameraActivity extends BaseActivity {
 
     @Override
     public void startActivityForResult(Intent intent, int requestCode) {
+        this.requestCode = intent.getIntExtra("requestCode", -1);
+        Log.d("CameraActivity", "requestCode: " + this.requestCode);
+        Log.d("startActivityForRes", "test");
         intent.putExtra("requestCode", requestCode);
         super.startActivityForResult(intent, requestCode);
     }
@@ -43,7 +47,8 @@ public class CameraActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestCode = getIntent().getIntExtra("requestCode", -1);
+        this.requestCode = getIntent().getIntExtra("requestCode", -1);
+        Log.d("CameraActivity", "requestCode: " + this.requestCode);
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
                 != this.getPackageManager().PERMISSION_GRANTED) {
             // Permission is not granted
@@ -71,18 +76,26 @@ public class CameraActivity extends BaseActivity {
     private void setupCamera(){
         setContentView(R.layout.activity_camera);
 
-        preview = (CameraSourcePreview) findViewById(R.id.firePreview);
-        graphicOverlay = (GraphicOverlay) findViewById(R.id.fireFaceOverlay);
+        preview = findViewById(R.id.firePreview);
+        graphicOverlay = findViewById(R.id.fireFaceOverlay);
         if (cameraSource == null) {
             cameraSource = new CameraSource(this, graphicOverlay);
         }
-        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this, requestCode));
+        cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor(this, this.requestCode));
         try {
             Log.d(TAG, "onClick: start camera");
             preview.start(cameraSource, graphicOverlay);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onPartnerScan(String code){
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("requestCode", requestCode);
+        resultIntent.putExtra("code", code);
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();
     }
 
     public void onQrScanned(FirebaseVisionBarcode.ContactInfo contactInfo){

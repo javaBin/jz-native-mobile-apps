@@ -66,8 +66,9 @@ public class StampListFragment extends Fragment {
         button = view.findViewById(R.id.stamp_list_scan_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivityForResult(
-                        new Intent(getActivity(), CameraActivity.class), CameraActivity.BARCODE_REQUEST);
+                Intent intent = new Intent(getActivity(), CameraActivity.class);
+                intent.putExtra("requestCode", CameraActivity.PARTNER_SCAN);
+                startActivityForResult(intent, CameraActivity.PARTNER_SCAN);
             }
         });
 
@@ -97,10 +98,12 @@ public class StampListFragment extends Fragment {
     }
   
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CameraActivity.BARCODE_REQUEST) {
+        if (requestCode == CameraActivity.PARTNER_SCAN) {
             if (resultCode == Activity.RESULT_OK) {
-                String barcode = data.getStringExtra("barcode");
-                String salt = FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners");
+                String barcode = data.getStringExtra("code");
+                //String salt = FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners");
+                String salt = "tQMHgyouAYrOPACRDcEC";
+                Log.d("salt", salt);
 
                 Log.d("barcode", barcode);
                 for (int i = 0; i < logoAdapter.getCount(); i++) {
@@ -114,6 +117,7 @@ public class StampListFragment extends Fragment {
                         return;
                     }
                     if (barcode.equals(verificationKey)) {
+                        Log.d("QR scanned", "successful");
                         stamp.setTagged(true);
                         this.refreshList();
                         SharedPreferences sharedPref = getActivity().getSharedPreferences("StampPref", Context.MODE_PRIVATE);

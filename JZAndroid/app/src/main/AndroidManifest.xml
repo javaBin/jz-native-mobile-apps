@@ -66,6 +66,8 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
+        <uses-library android:name="ro.vendor.graphics.memory" android:required="false"/>
+
 
         <!-- Google Play Services -->
         <meta-data

@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.opencsv.CSVReader;
 
 import net.glxn.qrgen.android.QRCode;
@@ -28,7 +34,10 @@ import net.glxn.qrgen.core.scheme.VCard;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.DigitalPassActivity;
@@ -39,9 +48,12 @@ import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 
 public class PassFragment extends Fragment{
 
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
     private static final String TAG = makeLogTag(PassFragment.class);
     ProgressBar pb;
     TextView ptv;
+    private int[] counts = new int[2];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,13 +94,18 @@ public class PassFragment extends Fragment{
     @Override
     public void onStart(){
         super.onStart();
-        int[] numbers = getStampProgress("stamps.csv");
-        pb.setMax(numbers[0]);
-        pb.setProgress(numbers[1]);
+        getStampProgress();
+    }
 
-        ptv.setText(numbers[1] + " of " + numbers[0] + " scanned.");
+    public void setProgressText(){
+        pb.setMax(counts[0]);
+        pb.setProgress(counts[1]);
 
-        if (numbers[0] == numbers[1]){
+        ptv.setText(counts[1] + " of " + counts[0] + " scanned.");
+
+        Log.d("Counts", "counts[1] = " + counts[1] + ", counts[0] = " + counts[0]);
+
+        if (counts[0] == counts[1]){
             Context context = getActivity();
             CharSequence text = "All stamped";
             int duration = Toast.LENGTH_LONG;
@@ -96,7 +113,6 @@ public class PassFragment extends Fragment{
             toast.show();
             ptv.setText("All stamped.");
         }
-
     }
 
     public void onActivityResult(int requestCode, int resultCode,
@@ -130,27 +146,42 @@ public class PassFragment extends Fragment{
         }
     }
 
-    private int[] getStampProgress(String file){
-        Context mContext = getContext();
-        int [] numbers = new int[2];
-        try {
-            CSVReader reader = new CSVReader(new BufferedReader(new InputStreamReader(mContext.getAssets().open(file))));
-            String[] nextLine;
-            while ((nextLine = reader.readNext()) != null) {
-                String name = nextLine[1];
-                String code = nextLine[4];
-                SharedPreferences sharedPref = mContext.getSharedPreferences("StampPref", Context.MODE_PRIVATE);
-                String savedCode = sharedPref.getString(name, null);
-                if (savedCode != null && code.equals(savedCode)) {
-                    numbers[1] += 1;
+    private void getStampProgress(){
+        DatabaseReference ref = database.getReference("partners");
+        final Context mContext = getContext();
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                counts[0] = 0;
+                counts[1] = 0;
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Stamp stamp = snapshot.getValue(Stamp.class);
+                    counts[0]+= 1;
+                    //if code is in sharedpreference
+                    SharedPreferences sharedPref = mContext.getSharedPreferences("StampPref", Context.MODE_PRIVATE);
+                    String savedCode = sharedPref.getString(stamp.getName(), null);
+                    try {
+                        if (savedCode != null && stamp.generateVerificationKey("tQMHgyouAYrOPACRDcEC").equals(savedCode)) {
+                            counts[1] += 1;
+                        }
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (InvalidKeySpecException e) {
+                        e.printStackTrace();
+                    }
                 }
-                numbers[0] += 1;
+                Log.d("Counts", "counts[1] = " + counts[1] + ", counts[0] = " + counts[0]);
+                setProgressText();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(mContext, "The specified stamps file was not found", Toast.LENGTH_SHORT).show();
-        }
-        return numbers;
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("FirebaseError", "The read failed: " + databaseError.getCode());
+            }
+        });
+
     }
 
     private void noBarcode (){
@@ -161,8 +192,10 @@ public class PassFragment extends Fragment{
         button.setText("Scan QR Code");
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CameraActivity.class);
+                intent.putExtra("requestCode", CameraActivity.BARCODE_REQUEST);
                     startActivityForResult(
-                            new Intent(getActivity(), CameraActivity.class),
+                            intent,
                             CameraActivity.BARCODE_REQUEST);
                 }
         });
@@ -202,7 +235,8 @@ public class PassFragment extends Fragment{
     private void deleteQR(){
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.remove(getString(R.string.myqr));
+        //editor.remove(getString(R.string.myqr));
+        editor.clear();
         editor.commit();
         sharedPref = getActivity().getSharedPreferences("StampPref", Context.MODE_PRIVATE);
         editor = sharedPref.edit();

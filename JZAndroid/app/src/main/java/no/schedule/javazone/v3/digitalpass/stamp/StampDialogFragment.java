@@ -26,6 +26,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.caverock.androidsvg.SVG;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import java.io.InputStream;
 import java.security.NoSuchAlgorithmException;
@@ -92,8 +93,9 @@ public class StampDialogFragment extends DialogFragment {
         final Button scanButton = view.findViewById(R.id.dialog_scan_button);
         scanButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivityForResult(
-                        new Intent(getActivity(), CameraActivity.class), CameraActivity.BARCODE_REQUEST);
+                Intent intent = new Intent(getActivity(), CameraActivity.class);
+                intent.putExtra("requestCode", CameraActivity.PARTNER_SCAN);
+                startActivityForResult(intent, CameraActivity.PARTNER_SCAN);
             }
         });
 
@@ -121,25 +123,37 @@ public class StampDialogFragment extends DialogFragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CameraActivity.BARCODE_REQUEST) {
+        if (requestCode == CameraActivity.PARTNER_SCAN) {
             if (resultCode == Activity.RESULT_OK) {
                 String verificationKey;
+                //Log.d("salt",FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners"));
+                String salt = "tQMHgyouAYrOPACRDcEC";
                 try {
-                    verificationKey = stamp.generateVerificationKey(FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners"));
+                    verificationKey = stamp.generateVerificationKey(salt);
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                     Log.d("StampDialogFragment", e.getMessage());
                     return;
                 }
-                String barcode = data.getStringExtra("barcode");
+
+                String barcode = data.getStringExtra("code");
                 Log.d("barcode", barcode);
+                Log.d("verification", verificationKey);
                 if (barcode.equals(verificationKey)) {
-                    stamp.setTagged(true);
+                    Log.d("QR scanned", "successful");
                     StampListFragment slf = (StampListFragment) getTargetFragment();
+                    stamp.setTagged(true);
                     slf.refreshList();
                     SharedPreferences sharedPref = getActivity().getSharedPreferences("StampPref", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(stamp.getName(), barcode);
                     editor.commit();
+                    Context context = getActivity();
+                    CharSequence text = "QR code for " + stamp.getName() + " scanned.";
+                    int duration = Toast.LENGTH_LONG;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    return;
+
                 } else {
                     Context context = getActivity();
                     CharSequence text = "Wrong QR code.";
