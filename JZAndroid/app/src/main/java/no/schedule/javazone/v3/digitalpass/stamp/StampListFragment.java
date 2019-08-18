@@ -103,6 +103,7 @@ public class StampListFragment extends Fragment {
                 String barcode = data.getStringExtra("code");
                 //String salt = FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners");
                 String salt = "tQMHgyouAYrOPACRDcEC";
+
                 Log.d("salt", salt);
 
                 Log.d("barcode", barcode);
