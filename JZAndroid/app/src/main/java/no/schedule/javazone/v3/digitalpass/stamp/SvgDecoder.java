@@ -32,11 +32,8 @@ public class SvgDecoder implements ResourceDecoder<InputStream, SVG> {
     public Resource<SVG> decode(InputStream source, int width, int height) throws IOException {
         try {
             SVG svg = SVG.getFromInputStream(source);
-            Log.d("R", "GOTTEEEM");
-
             return new SimpleResource<SVG>(svg);
         } catch (SVGParseException ex) {
-            Log.d("SVGERROR", ex.getMessage());
             throw new IOException("Cannot load SVG from stream", ex);
         }
     }

@@ -99,8 +99,8 @@ public class NavigationModel implements Model<NavigationModel.NavigationQueryEnu
 //                R.drawable.ic_nav_feed, FeedActivity.class, true),
         DIGITAL_PASS(R.id.digital_pass_nav_item, R.string.navdrawer_item_digital_pass,
                 R.drawable.ic_badge_pickup, DigitalPassActivity.class, true),
-        MAP(R.id.map_nav_item, R.string.navdrawer_item_map, R.drawable.ic_nav_map,
-                MapActivity.class, true),
+//        MAP(R.id.map_nav_item, R.string.navdrawer_item_map, R.drawable.ic_nav_map,
+//                MapActivity.class, true),
         INFO(R.id.info_nav_item, R.string.navdrawer_item_info,
                 R.drawable.ic_nav_info, InfoActivity.class, true),
         INVALID(12, 0, 0, null);

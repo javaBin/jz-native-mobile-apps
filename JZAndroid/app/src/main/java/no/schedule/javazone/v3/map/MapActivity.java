@@ -18,10 +18,10 @@ public class MapActivity extends BaseActivity {
 
     // -- BaseActivity overrides
 
-    @Override
-    protected NavigationModel.NavigationItemEnum getSelfNavDrawerItem() {
-        return NavigationModel.NavigationItemEnum.MAP;
-    }
+//    @Override
+//    protected NavigationModel.NavigationItemEnum getSelfNavDrawerItem() {
+//        return NavigationModel.NavigationItemEnum.MAP;
+//    }
 
     // -- Lifecycle callbacks
 

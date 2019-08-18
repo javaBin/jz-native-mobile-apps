@@ -102,12 +102,12 @@
             android:label="@string/title_activity_camera"
             android:launchMode="singleTask"
             android:theme="@style/FullscreenTheme"></activity>
-        <activity
-            android:name=".map.MapActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_map"
-            android:launchMode="singleTask"
-            android:theme="@style/FullscreenTheme"></activity>
+        <!--<activity-->
+            <!--android:name=".map.MapActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+            <!--android:label="@string/title_map"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:theme="@style/FullscreenTheme"></activity>-->
         <activity
             android:name=".schedule.ScheduleActivity"
             android:exported="false"

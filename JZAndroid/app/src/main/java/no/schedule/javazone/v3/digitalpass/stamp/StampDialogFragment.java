@@ -84,6 +84,12 @@ public class StampDialogFragment extends DialogFragment {
                 // SVG cannot be serialized so it's not worth to cache it
                 .load(uri)
                 .into(logo);
+
+        if(stamp.name.equals("Ambita AS")) {
+            logo.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            logo.setAdjustViewBounds(true);
+        }
+
         // Setting description
         TextView url = view.findViewById(R.id.dialog_stamp_url);
         String urlText = String.format("<a href=\"%s\">Visit %s</a>", stamp.getHomepageUrl(), stamp.getName());

@@ -114,6 +114,11 @@ public class ImageAdapter extends BaseAdapter {
                 .load(uri)
                 .into(mImageView);
 
+        if(mStamps.get(position).name.equals("Ambita AS")) {
+            mImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            mImageView.setAdjustViewBounds(true);
+        }
+
         return mImageView;
     }
 }
