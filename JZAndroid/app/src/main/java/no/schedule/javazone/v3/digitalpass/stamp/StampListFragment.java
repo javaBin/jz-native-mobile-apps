@@ -17,6 +17,10 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGParseException;
+
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
@@ -70,7 +74,6 @@ public class StampListFragment extends Fragment {
                         new Intent(getActivity(), CameraActivity.class), CameraActivity.BARCODE_REQUEST);
             }
         });
-
     }
 
     @Override
