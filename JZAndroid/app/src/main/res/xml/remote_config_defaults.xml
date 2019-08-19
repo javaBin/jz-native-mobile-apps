@@ -92,6 +92,10 @@ the License.
         <value><![CDATA[<b>Lyft Line</b>: Download the Lyft app (<a href="https://play.google.com/store/apps/details?id=me.lyft.android&hl=enor">GOOGLE PLAY</a>) and use <a href="https://www.lyft.com/line">LYFT LINE</a> to share a ride with others going the same way for less.<br/><br/><b>uberPOOL</b>: Download the app today (<a href="https://play.google.com/store/apps/details?id=com.ubercab&hl=en">GOOGLE PLAY</a>) to use uberPOOL and share a ride.]]></value>
     </entry>
     <entry>
+        <key>salt</key>
+        <value>salt_test</value>
+    </entry>
+    <entry>
         <key>faq_stay_informed_description</key>
         <value><![CDATA[To stay up to date on the latest information on sessions, speakers, and activities, be sure to visit the <a href="https://events.google.com/io/">GOOGLE I/O 2017 WEBSITE</a>, the <a href="http://googledevelopers.blogspot.com/">GOOGLE DEVELOPERS BLOG</a>, and follow us on <a href="https://www.facebook.com/Google-Developers-967415219957038/"> FACEBOOK</a>, <a href="https://plus.google.com/+GoogleDevelopers">GOOGLE+</a>, and <a href="https://twitter.com/googledevs">TWITTER</a>. You can also follow and join the social conversation about Google I/O 2017 via the official <a href="https://twitter.com/hashtag/io17?lang=en">#IO17</a> hashtag. In addition, we'll be emailing important information to all registered attendees, along with check-in instructions prior to the festival.]]></value>
     </entry>
