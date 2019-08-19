@@ -92,6 +92,7 @@ public class DigitalPassPagerFragment extends Fragment {
     public void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        /*
         if (mViewPagerAdapter != null && mViewPagerAdapter.getFragments() != null) {
             Fragment[] digitalPassFragments = mViewPagerAdapter.getFragments();
             String[] tags = new String[digitalPassFragments.length];
@@ -101,6 +102,7 @@ public class DigitalPassPagerFragment extends Fragment {
             outState.putStringArray(DIGITAL_PASS_TAB_FRAGMENTS_TAGS, tags);
             outState.putInt(CURRENT_DIGITAL_PASS_TAB_FRAGMENT_POSITION, mViewPager.getCurrentItem());
         }
+        */
     }
 
     private void setCurrentPage() {

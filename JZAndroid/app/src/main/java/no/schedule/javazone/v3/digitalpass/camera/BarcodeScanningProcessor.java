@@ -60,17 +60,22 @@ public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseV
             @NonNull FrameMetadata frameMetadata,
             @NonNull GraphicOverlay graphicOverlay) {
         graphicOverlay.clear();
+        Log.d(TAG,"TESTING");
         for (int i = 0; i < barcodes.size(); ++i) {
-            switch (requestCode){
-                case CameraActivity.BARCODE_REQUEST:
-
-            }
             FirebaseVisionBarcode barcode = barcodes.get(i);
             BarcodeGraphic barcodeGraphic = new BarcodeGraphic(graphicOverlay, barcode);
             graphicOverlay.add(barcodeGraphic);
-            FirebaseVisionBarcode.ContactInfo contactInfo = barcode.getContactInfo();
-            Log.d(TAG, "Barcode: " + barcode.getDisplayValue());
-            this.ca.onQrScanned(barcode.getContactInfo());
+            Log.d(TAG,"TESTING");
+            switch (requestCode){
+                case CameraActivity.BARCODE_REQUEST:
+                    Log.d(TAG, "Barcode: " + barcode.getDisplayValue());
+                    this.ca.onQrScanned(barcode.getContactInfo());
+                    break;
+                case CameraActivity.PARTNER_SCAN:
+                    Log.d(TAG, "Barcode: " + barcode.getDisplayValue());
+                    this.ca.onPartnerScan(barcode.getDisplayValue());
+                    break;
+            }
         }
     }
 

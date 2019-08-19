@@ -22,6 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
+
 import com.bumptech.glide.BitmapRequestBuilder;
 import com.bumptech.glide.BitmapTypeRequest;
 import com.bumptech.glide.Glide;

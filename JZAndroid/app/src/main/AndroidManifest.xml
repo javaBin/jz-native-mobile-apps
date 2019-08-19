@@ -64,6 +64,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JZSched">
 
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <uses-library android:name="ro.vendor.graphics.memory" android:required="false"/>
+
+
         <!-- Google Play Services -->
         <meta-data
             android:name="com.google.android.gms.version"
@@ -97,12 +102,12 @@
             android:label="@string/title_activity_camera"
             android:launchMode="singleTask"
             android:theme="@style/FullscreenTheme"></activity>
-        <activity
-            android:name=".map.MapActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_map"
-            android:launchMode="singleTask"
-            android:theme="@style/FullscreenTheme"></activity>
+        <!--<activity-->
+            <!--android:name=".map.MapActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+            <!--android:label="@string/title_map"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:theme="@style/FullscreenTheme"></activity>-->
         <activity
             android:name=".schedule.ScheduleActivity"
             android:exported="false"

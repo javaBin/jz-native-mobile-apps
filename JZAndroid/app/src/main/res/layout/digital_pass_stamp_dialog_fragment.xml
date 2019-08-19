@@ -1,73 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinatorLayout"
-    android:layout_width="match_parent"
+    android:id="@+id/linearLayout"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/cardview_shadow_end_color">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="376dp"
-        android:layout_height="427dp">
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent">
 
         <!-- YOUR CUSTOM VIEWS HERE -->
         <ImageView
             android:id="@+id/dialog_stamp_logo"
-            android:layout_width="223dp"
-            android:layout_height="142dp"
+            android:layout_width="382dp"
+            android:layout_height="222dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.421"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/dialog_stamp_description"
-            android:layout_width="240dp"
-            android:layout_height="182dp"
+            android:id="@+id/dialog_stamp_url"
+            android:layout_width="232dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="379dp"
-            android:text="@string/eula_legal_text"
-            android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_logo"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="59dp" />
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textColor="#F44336"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/dialog_stamp_logo"/>
 
         <Button
             android:id="@+id/dialog_scan_button"
-            android:layout_width="181dp"
-            android:layout_height="49dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="76dp"
+            android:layout_marginEnd="36dp"
             android:layout_marginBottom="8dp"
             android:text="@string/scan"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_description"
-            app:layout_constraintVertical_bias="0.944" />
+            android:layout_below="@id/dialog_stamp_url"
+            android:layout_centerHorizontal="true"/>
 
-        <ImageButton
-            android:id="@+id/dialog_map_button"
-            android:layout_width="50dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="39dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/dialog_scan_button"
-            app:layout_constraintHorizontal_bias="0.962"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_stamp_description"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/ic_action_map" />
 
-    </android.support.constraint.ConstraintLayout>
-</android.support.design.widget.CoordinatorLayout>
+        <!--<ImageButton-->
+            <!--android:id="@+id/dialog_map_button"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="36dp"-->
+            <!--android:layout_marginEnd="36dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:layout_below="@+id/dialog_stamp_url"-->
+            <!--android:layout_centerHorizontal="true" />-->
+
+
+    </RelativeLayout>
+</LinearLayout>

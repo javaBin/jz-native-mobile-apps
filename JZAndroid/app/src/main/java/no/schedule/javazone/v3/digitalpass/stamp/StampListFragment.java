@@ -17,9 +17,17 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGParseException;
+
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 import no.schedule.javazone.v3.R;
 import no.schedule.javazone.v3.digitalpass.DigitalPassActivity;
 import no.schedule.javazone.v3.digitalpass.camera.CameraActivity;
+import no.schedule.javazone.v3.util.FirebaseRemoteConfigUtil;
 
 public class StampListFragment extends Fragment {
 
@@ -62,11 +70,11 @@ public class StampListFragment extends Fragment {
         button = view.findViewById(R.id.stamp_list_scan_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivityForResult(
-                        new Intent(getActivity(), CameraActivity.class), CameraActivity.BARCODE_REQUEST);
+                Intent intent = new Intent(getActivity(), CameraActivity.class);
+                intent.putExtra("requestCode", CameraActivity.PARTNER_SCAN);
+                startActivityForResult(intent, CameraActivity.PARTNER_SCAN);
             }
         });
-
     }
 
     @Override
@@ -93,13 +101,27 @@ public class StampListFragment extends Fragment {
     }
   
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CameraActivity.BARCODE_REQUEST) {
+        if (requestCode == CameraActivity.PARTNER_SCAN) {
             if (resultCode == Activity.RESULT_OK) {
-                String barcode = data.getStringExtra("barcode");
+                String barcode = data.getStringExtra("code");
+                //String salt = FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners");
+                String salt = "tQMHgyouAYrOPACRDcEC";
+
+                Log.d("salt", salt);
+
                 Log.d("barcode", barcode);
                 for (int i = 0; i < logoAdapter.getCount(); i++) {
                     Stamp stamp = logoAdapter.getItem(i);
-                    if (barcode.equals(stamp.getQrCode())) {
+
+                    String verificationKey;
+                    try{
+                        verificationKey = stamp.generateVerificationKey(salt);
+                    }catch( NoSuchAlgorithmException | InvalidKeySpecException e){
+                        Log.d("StampDialogFragment", e.getMessage());
+                        return;
+                    }
+                    if (barcode.equals(verificationKey)) {
+                        Log.d("QR scanned", "successful");
                         stamp.setTagged(true);
                         this.refreshList();
                         SharedPreferences sharedPref = getActivity().getSharedPreferences("StampPref", Context.MODE_PRIVATE);
