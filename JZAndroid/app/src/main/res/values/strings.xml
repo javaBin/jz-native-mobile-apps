@@ -202,6 +202,7 @@ Develop and Distribute). -->
     <string name="event_afterhours_title">After Hours</string>
     <string name="default_wifi_network_key" translatable="false">default_wifi_network</string>
     <string name="default_wifi_password_key" translatable="false">default_wifi_password</string>
+    <string name="salt_key" translatable="false">salt</string>
     <string name="event_sandbox_description_key" translatable="false">
         event_sandbox_description</string>
     <string name="event_code_labs_description_key" translatable="false">

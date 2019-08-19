@@ -132,8 +132,9 @@ public class StampDialogFragment extends DialogFragment {
         if (requestCode == CameraActivity.PARTNER_SCAN) {
             if (resultCode == Activity.RESULT_OK) {
                 String verificationKey;
-                //Log.d("salt",FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners"));
-                String salt = "tQMHgyouAYrOPACRDcEC";
+
+                String salt = FirebaseRemoteConfig.getInstance().getString(getContext().getString(R.string.salt_key));
+
                 try {
                     verificationKey = stamp.generateVerificationKey(salt);
                 } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {

@@ -26,7 +26,7 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
   private static final String TAG = makeLogTag(ScheduleDatabase.class);
 
   private static final String DATABASE_NAME = "jz2017.db";
-  private static final int VER_2017_RELEASE_D = 216;
+  private static final int VER_2017_RELEASE_D = 217;
   private static final int CUR_DATABASE_VERSION = VER_2017_RELEASE_D;
 
   private final Context mContext;

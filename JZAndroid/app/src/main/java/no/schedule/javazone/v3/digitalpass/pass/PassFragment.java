@@ -242,6 +242,7 @@ public class PassFragment extends Fragment{
         editor = sharedPref.edit();
         editor.clear().commit();
         noBarcode();
+        getStampProgress();
     }
 }
 

@@ -3,6 +3,9 @@ package no.schedule.javazone.v3.digitalpass.stamp;
 import android.content.Context;
 import android.graphics.Color;
 
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.util.Log;
@@ -16,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.caverock.androidsvg.SVG;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -84,16 +89,6 @@ public class ImageAdapter extends BaseAdapter {
             mImageView = (ImageView) convertView;
         }
 
-        if (mStamps.get(position).isTagged()) {
-            int color = Color.parseColor("#AE6118");
-            mImageView.setColorFilter(color);
-            Log.d("ImageAdapter", "Setting color");
-        } else {
-            int color = Color.parseColor("#000000");
-            mImageView.setColorFilter(color);
-            Log.d("ImageAdapter", "Setting color");
-        }
-
         GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(mContext)
                 .using(Glide.buildStreamModelLoader(Uri.class, mContext), InputStream.class)
                 .from(Uri.class)
@@ -117,6 +112,14 @@ public class ImageAdapter extends BaseAdapter {
         if(mStamps.get(position).name.equals("Ambita AS")) {
             mImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             mImageView.setAdjustViewBounds(true);
+        }
+
+        if (mStamps.get(position).isTagged()) {
+            mImageView.setBackgroundColor(Color.parseColor("#f5ad42"));
+            Log.d("ImageAdapter", "Setting color");
+        } else {
+            mImageView.setBackgroundColor(Color.parseColor("white"));
+            Log.d("ImageAdapter", "Setting color");
         }
 
         return mImageView;

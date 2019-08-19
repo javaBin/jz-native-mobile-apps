@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -104,12 +105,9 @@ public class StampListFragment extends Fragment {
         if (requestCode == CameraActivity.PARTNER_SCAN) {
             if (resultCode == Activity.RESULT_OK) {
                 String barcode = data.getStringExtra("code");
-                //String salt = FirebaseRemoteConfigUtil.getRemoteConfigSequence("partners");
-                String salt = "tQMHgyouAYrOPACRDcEC";
 
-                Log.d("salt", salt);
+                String salt = FirebaseRemoteConfig.getInstance().getString(getContext().getString(R.string.salt_key));
 
-                Log.d("barcode", barcode);
                 for (int i = 0; i < logoAdapter.getCount(); i++) {
                     Stamp stamp = logoAdapter.getItem(i);
 
