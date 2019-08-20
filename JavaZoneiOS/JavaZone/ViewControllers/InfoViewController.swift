@@ -3,7 +3,6 @@ import UIKit
 class InfoViewController: UIViewController {
     @IBOutlet weak var eventContainer: UIView!
     @IBOutlet weak var travelContainer: UIView!
-    @IBOutlet weak var settingsContainer: UIView!
     @IBOutlet weak var aboutContainer: UIView!
     @IBOutlet weak var infoSegmentedControl: UISegmentedControl!
     
@@ -13,7 +12,6 @@ class InfoViewController: UIViewController {
         infoSegmentedControl.selectedSegmentIndex = 0;
         eventContainer.isHidden = false
         travelContainer.isHidden = true
-        settingsContainer.isHidden = true
         aboutContainer.isHidden = true
         
         infoSegmentedControl.removeSegment(at: 1, animated: false)
@@ -25,18 +23,15 @@ class InfoViewController: UIViewController {
         case 0:
             eventContainer.isHidden = false
             travelContainer.isHidden = true
-            settingsContainer.isHidden = true
             aboutContainer.isHidden = true
         case 1:
             eventContainer.isHidden = true
             travelContainer.isHidden = true
-            settingsContainer.isHidden = false
-            aboutContainer.isHidden = true
+            aboutContainer.isHidden = false
             break;
         case 2:
             eventContainer.isHidden = true
             travelContainer.isHidden = true
-            settingsContainer.isHidden = true
             aboutContainer.isHidden = false
             break;
         default:

@@ -116,8 +116,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {(granted, error) in
             if (granted) {
+                UserDefaults.standard.removeObject(forKey: "notifySwitch")
+                UserDefaults.standard.set(true, forKey: "notifySwitch")
             } else{
                 print("Notification permissions not granted")
+                UserDefaults.standard.removeObject(forKey: "notifySwitch")
+                UserDefaults.standard.set(false, forKey: "notifySwitch")
             }
         })
         

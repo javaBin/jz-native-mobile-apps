@@ -118,12 +118,13 @@ public struct CommonNotificationUtil {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
         dateFormatter.timeZone = TimeZone(identifier: "GMT+1")
-        
+//        let testDate = "2019-08-20T18:58"
+//        
         let date = dateFormatter.date(from: startTime)
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .timeZone], from: date!)
         let sessionDate = calendar.date(from: dateComponents)
-        let returnDate = calendar.date(byAdding: .minute, value: -15, to: sessionDate!)
+        let returnDate = calendar.date(byAdding: .minute, value: -10, to: sessionDate!)
         return returnDate
     }
     

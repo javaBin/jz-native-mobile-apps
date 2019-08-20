@@ -6,22 +6,46 @@ class SettingsViewController: UITableViewController {
     var mySessionRepository: MySessionRepository?
     var sessionRepository: SessionRepository?
     
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
+    @IBOutlet weak var usageStatisticsSwitch: UISwitch!
+    
     var isGrantedNotificationAccess = false
-
+    var isGrantedUsageStatisticsAccess = false
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let center = UNUserNotificationCenter.current()
         let options: UNAuthorizationOptions = [.alert, .badge, .sound];
         
+        isGrantedNotificationAccess = defaults.bool(forKey: "notifySwitch")
+        isGrantedUsageStatisticsAccess = defaults.bool(forKey: "anonymousSwitch")
+        
+        if isGrantedNotificationAccess {
+            notificationSwitch.setOn(true, animated: false)
+        } else {
+            notificationSwitch.setOn(false, animated: false)
+
+        }
+        
+        if !isGrantedUsageStatisticsAccess {
+            usageStatisticsSwitch.setOn(false, animated: false)
+        } else {
+            usageStatisticsSwitch.setOn(true, animated: false)
+        }
+        
+        
         center.requestAuthorization(options: options) {
             (granted, error) in
-            self.isGrantedNotificationAccess = granted
-            // IF turned on, set switch to on!
-            
             
             if !granted {
                 print("Something went wrong")
             }
+        }
+        
+        DispatchQueue.main.async {
+            self.notificationSwitch.setOn(self.isGrantedNotificationAccess, animated: true)
         }
         
         center.getNotificationSettings { (settings) in
@@ -34,6 +58,7 @@ class SettingsViewController: UITableViewController {
     @IBAction func notificationSwitchValueChanged(_ sender: UISwitch!) {
         if(!sender.isOn) {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            
         } else {
             let mySessions = mySessionRepository!.getAll()
             
@@ -45,10 +70,17 @@ class SettingsViewController: UITableViewController {
                 }
             }
         }
+        
+        defaults.removeObject(forKey: "notifySwitch")
+
+        defaults.set(sender.isOn, forKey: "notifySwitch")
     }
     
     @IBAction func anonymousSwitchValueChanged(_ sender: UISwitch!) {
         AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(sender.isOn)
+        defaults.removeObject(forKey: "anonymousSwitch")
+        defaults.set(sender.isOn, forKey: "anonymousSwitch")
+
     }
     
     override func didReceiveMemoryWarning() {

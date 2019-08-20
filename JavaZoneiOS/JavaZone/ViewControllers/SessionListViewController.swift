@@ -36,7 +36,11 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         if findMySession != nil {
             mySessionRepository!.delete(item: findMySession!)
             cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_border_48pt"), for: .normal)
-            CommonNotificationUtil.scheduleNotification(session: cell.session!, withDate: nil, sessionRemove: true)
+            
+            let isGrantedNotificationAccess = UserDefaults.standard.bool(forKey: "notifySwitch")
+            if isGrantedNotificationAccess {
+                CommonNotificationUtil.scheduleNotification(session: cell.session!, withDate: nil, sessionRemove: true)
+            }
             
         } else {
             let mySessionObject = MySession()
@@ -49,7 +53,10 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
             cell.favoriteButton.setImage(UIImage.init(named: "ic_favorite_48pt"), for: .normal)
             
             let sessionDate = CommonNotificationUtil.getStartDate(startTime: cell.session!.startTime!)
-            CommonNotificationUtil.scheduleNotification(session: cell.session!, withDate: sessionDate!, sessionRemove: false)
+            let isGrantedNotificationAccess = UserDefaults.standard.bool(forKey: "notifySwitch")
+            if isGrantedNotificationAccess {
+                CommonNotificationUtil.scheduleNotification(session: cell.session!, withDate: sessionDate!, sessionRemove: false)
+            }
             
         }
     }
