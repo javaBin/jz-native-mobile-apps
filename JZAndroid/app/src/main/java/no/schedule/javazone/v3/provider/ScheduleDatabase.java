@@ -25,7 +25,7 @@ import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 public class ScheduleDatabase extends SQLiteOpenHelper {
   private static final String TAG = makeLogTag(ScheduleDatabase.class);
 
-  private static final String DATABASE_NAME = "jz2017.db";
+  private static final String DATABASE_NAME = "jz2019.db";
   private static final int VER_2017_RELEASE_D = 217;
   private static final int CUR_DATABASE_VERSION = VER_2017_RELEASE_D;
 
@@ -336,7 +336,9 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
 
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     LOGD(TAG, "onUpgrade() from " + oldVersion + " to " + newVersion);
+
 
     // Cancel any sync currently in progress
     Account account = AccountUtils.getActiveAccount(mContext);
