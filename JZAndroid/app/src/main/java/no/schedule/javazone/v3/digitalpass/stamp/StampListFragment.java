@@ -107,6 +107,7 @@ public class StampListFragment extends Fragment {
                 String barcode = data.getStringExtra("code");
 
                 String salt = FirebaseRemoteConfig.getInstance().getString(getContext().getString(R.string.salt_key));
+                Log.d("salt", salt);
 
                 for (int i = 0; i < logoAdapter.getCount(); i++) {
                     Stamp stamp = logoAdapter.getItem(i);
