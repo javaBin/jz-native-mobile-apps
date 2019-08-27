@@ -369,25 +369,25 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
 
     // Drop triggers and tables in reverse order of creation.
 
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.CARDS);
-
-    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_MY_SCHEDULE_DELETE);
-    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_SPEAKERS_DELETE);
-    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_TAGS_DELETE);
-
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.SEARCH_SUGGEST);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SEARCH);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.HASHTAGS);
-
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.MAPTILES);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_TAGS);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SPEAKERS);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.MY_SCHEDULE);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.SPEAKERS);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.ROOMS);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.TAGS);
-    db.execSQL("DROP TABLE IF EXISTS " + Tables.BLOCKS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.CARDS);
+//
+//    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_MY_SCHEDULE_DELETE);
+//    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_SPEAKERS_DELETE);
+//    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_TAGS_DELETE);
+//
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SEARCH_SUGGEST);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SEARCH);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.HASHTAGS);
+//
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.MAPTILES);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_TAGS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SPEAKERS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.MY_SCHEDULE);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SPEAKERS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.ROOMS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.TAGS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.BLOCKS);
 
     onCreate(db);
     version = CUR_DATABASE_VERSION;

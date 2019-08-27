@@ -203,6 +203,8 @@ public class PassFragment extends Fragment{
 
     private void hasBarcode (VCard contactInfo){
         //VCard contactInfo =
+        TextView name = getView().findViewById(R.id.vcard_name);
+        name.setText(contactInfo.getName());
         Bitmap myBitmap = QRCode.from(contactInfo).bitmap();
         ImageView myImage = getView().findViewById(R.id.my_qr);
         myImage.setImageBitmap(myBitmap);
