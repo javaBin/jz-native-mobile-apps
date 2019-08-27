@@ -25,6 +25,15 @@ class Partner : Object, Mappable {
     }
 }
 
+class PartnerView {
+    var name: String?
+    var logoUrl: String?
+    var hasStamped: Bool = false
+    var homepageUrl: String?
+    var longitude: String?
+    var latitude: String?
+}
+
 struct QRPartnerResult: Decodable {
     let Name: String?
     let Key: String?
@@ -34,7 +43,6 @@ struct QRPartnerResult: Decodable {
         self.Name = name
         self.Key = key
     }
-    
 }
 
 class PartnerCellData {

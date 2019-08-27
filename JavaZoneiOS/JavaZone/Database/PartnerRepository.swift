@@ -35,12 +35,12 @@ class PartnerRepository : Repository {
         
     }
     
-    func updatePartner(stamp: Bool, name: String) {
+    func updatePartner(stamp: Bool, name: String) -> Partner? {
         let realm = try! Realm()
         let partnerRetrieved = realm.objects(Partner.self).filter("name = %@", name).first
         let partnerRetrievedRef = ThreadSafeReference(to: partnerRetrieved!)
         
-        DispatchQueue.global().async {
+        DispatchQueue.global().sync {
             autoreleasepool {
                 let realm = try! Realm()
                 guard let partnerRetrieved = realm.resolve(partnerRetrievedRef) else {
@@ -51,6 +51,8 @@ class PartnerRepository : Repository {
                 }
             }
         }
+        
+        return partnerRetrieved
     }
     
     func getAllPartners() -> Array<Partner>? {

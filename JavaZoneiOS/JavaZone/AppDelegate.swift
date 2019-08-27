@@ -9,6 +9,7 @@ import FirebaseCore
 import UserNotifications
 import AudioToolbox
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -112,6 +113,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: container)
         window.rootViewController = storyboard.instantiateInitialViewController()
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        
+        
+        let isGrantedUsageStatisticsAccess = UserDefaults.standard.bool(forKey: "anonymousSwitch")
+        Analytics.setAnalyticsCollectionEnabled(isGrantedUsageStatisticsAccess)
         
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {(granted, error) in

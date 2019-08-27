@@ -84,7 +84,7 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
             return
         }
         
-        let partnerName = partnerCell.partner.name!
+        let partnerName = partnerCell.partnerName!
         let partnerTicket = partnerRepository?.getPartner(name: partnerName)
         let hasStamped = partnerTicket?.hasStamped as! Bool
         
@@ -118,14 +118,28 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
                 do {
                     guard let qrPartnerResult = try? JSONDecoder().decode(QRPartnerResult.self, from: data ) else {
                         print("Error: Could not decode data into QRPartnerResult")
-                        SVProgressHUD.showError(withStatus: "Error! Could not decode partner data")
+                        SVProgressHUD.showError(withStatus: "Error! Could not decode partner data! Reason: wrong data was scanned!")
+                        return
+                    }
+                
+                    
+                    if qrPartnerResult.Name! != self!.partnerCell.partner!.name {
+                        SVProgressHUD.dismiss()
+                        SVProgressHUD.showError(withStatus: "Error! This is the wrong Partner, please scan \(String(describing: self!.partnerCell.partner!.name!))")
                         return
                     }
                     
                     SVProgressHUD.show(withStatus: "Reading and checking valid partner data")
                     DispatchQueue.global().async {
-                        let partnerData = self!.partnerRepository!.getPartner(name: qrPartnerResult.Name!)
-                        let generateKey = SecretKeySupplier.generateVerificationKey(value: partnerData!.name!)
+                        let getPartnerByScannedName = self!.partnerRepository!.getPartner(name: qrPartnerResult.Name!)
+                        
+                        if getPartnerByScannedName == nil {
+                            print("Error: Could not decode data into QRPartnerResult")
+                            SVProgressHUD.showError(withStatus: "Error! Could not decode partner data! Reason: wrong data was scanned!")
+                            return
+                        }
+
+                        let generateKey = SecretKeySupplier.generateVerificationKey(value: getPartnerByScannedName!.name!)
 
                         if(qrPartnerResult.Key == generateKey) {
                             SVProgressHUD.showSuccess(withStatus: "Successfully validated partner")
@@ -147,10 +161,12 @@ class PartnerDetailViewController: UIViewController, QRCodeReaderViewControllerD
     }
     
     private func updateQRPartnerResult(qrPartnerResult: QRPartnerResult) {
-        partnerRepository!.updatePartner(stamp: true, name: qrPartnerResult.Name!)
-        partnerCell.partner = partnerRepository!.getPartner(name: qrPartnerResult.Name!)
+        _ = partnerRepository!.updatePartner(stamp: true, name: qrPartnerResult.Name!)
         DispatchQueue.main.async {
             self.parentVC.collectionView.performBatchUpdates({
+
+                self.parentVC.partners.first(where: {$0.name! == qrPartnerResult.Name})?.hasStamped = true
+                self.parentVC.searchPartners.first(where: {$0.name! == qrPartnerResult.Name})?.hasStamped = true
                 self.parentVC.collectionView.reloadItems(at: [self.partnerCellIndex])
             })
         }

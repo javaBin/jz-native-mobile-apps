@@ -11,15 +11,16 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     private let listLayoutStaticCellHeight: CGFloat = 80
     private let gridLayoutStaticCellHeight: CGFloat = 120
     var partnerRepository: PartnerRepository?
-    
+    var refresher: UIRefreshControl?
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     fileprivate var tap: UITapGestureRecognizer!
     fileprivate var collectionViewTap: UITapGestureRecognizer!
     
-    fileprivate var partners = [Partner]()
-    fileprivate var searchPartners = [Partner]()
+    var partners = [PartnerView]()
+    var searchPartners = [PartnerView]()
     fileprivate var isTransitionAvailable = true
     fileprivate lazy var gridLayout = DisplaySwitchLayout(staticCellHeight: gridLayoutStaticCellHeight, nextLayoutStaticCellHeight: listLayoutStaticCellHeight, layoutState: .grid)
     
@@ -37,6 +38,18 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
+        
+        
+        refresher = UIRefreshControl()
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = self.refresher
+        } else {
+            self.collectionView.addSubview(self.refresher!)
+        }
+        
+        refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
+        refresher?.addTarget(self, action: #selector(self.getAllPartnersFromFirebase), for: UIControl.Event.valueChanged)
         getAllPartners()        
     }
     
@@ -66,34 +79,60 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
         
         if partnerList != nil && partnerList!.count > 0 {
             for partner in partnerList! {
-                self.partners.append(partner)
+                self.partners.append(self.mapPartnerToPartnerView(partner: partner))
             }
             
             self.reInitializeCollectionView()
         } else {
-            self.partnerRepository!.deleteAll()
             self.getAllPartnersFromFirebase()
         }
+        
     }
     
-    func getAllPartnersFromFirebase()
+    @objc func getAllPartnersFromFirebase()
     {
         let ref = Database.database().reference(withPath: "partners")
         self.partners.removeAll()
-        
+        self.searchPartners.removeAll()
+        var partnerData = [Partner]()
         _ = ref.queryLimited(toFirst: 100).observe(.value) { snapshot in
             for child in snapshot.children {
                 let partner = self.createPartner(snapshot: child as! DataSnapshot)
-                self.partners.append(partner)
+                
+                let getExistingPartner = self.partnerRepository!.getPartner(name: partner.name!)
+                
+                if(getExistingPartner != nil) {
+                    if getExistingPartner!.hasStamped {
+                        partner.hasStamped = getExistingPartner!.hasStamped
+                    }
+                } else {
+                    partnerData.append(partner)
+                }
+                
+                self.partners.append(self.mapPartnerToPartnerView(partner: partner))
             }
             
-            self.partnerRepository?.addAsync(items: self.partners)
+            if(partnerData.count > 0) {
+                self.partnerRepository?.addAsync(items: partnerData)
+            }
             self.reInitializeCollectionView()
+            self.refresher?.endRefreshing()
         }
-        
+    }
+    
+    private func mapPartnerToPartnerView(partner: Partner) -> PartnerView {
+        var partnerView = PartnerView()
+        partnerView.name = partner.name
+        partnerView.hasStamped = partner.hasStamped
+        partnerView.homepageUrl = partner.homepageUrl
+        partnerView.logoUrl = partner.logoUrl
+        partnerView.latitude = partner.latitude
+        partnerView.longitude = partner.longitude
+        return partnerView
     }
     
     private func reInitializeCollectionView() {
+        self.partners.sort(by: { $0.name! < $1.name! })
         self.searchPartners = self.partners
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -158,8 +197,10 @@ extension PartnerListViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PartnerCollectionViewCell.id, for: indexPath) as! PartnerCollectionViewCell
         cell.setupGridLayoutConstraints(1, cellWidth: cell.frame.width)
-        cell.bind(searchPartners[(indexPath as NSIndexPath).row])
         cell.partner = searchPartners[(indexPath as NSIndexPath).row]
+        cell.partnerName = searchPartners[(indexPath as NSIndexPath).row].name!
+        cell.bind(searchPartners[(indexPath as NSIndexPath).row])
+
         return cell
     }
     
@@ -189,7 +230,7 @@ extension PartnerListViewController {
         if searchText.isEmpty {
             searchPartners = partners
         } else {
-            searchPartners = searchPartners.filter { return $0.name!.contains(searchText) }
+            searchPartners = partners.filter { return $0.name!.contains(searchText) }
         }
         
         DispatchQueue.main.async {
@@ -212,7 +253,11 @@ extension PartnerListViewController {
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
         
-        self.searchPartners = partners
+        self.searchPartners = self.partners
+        print(self.searchPartners)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     

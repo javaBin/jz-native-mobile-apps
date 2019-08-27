@@ -1,6 +1,6 @@
 import UIKit
 import UserNotifications
-import FirebaseCore
+import Firebase
 
 class SettingsViewController: UITableViewController {
     var mySessionRepository: MySessionRepository?
@@ -77,7 +77,7 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func anonymousSwitchValueChanged(_ sender: UISwitch!) {
-        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(sender.isOn)
+        Analytics.setAnalyticsCollectionEnabled(sender.isOn)
         defaults.removeObject(forKey: "anonymousSwitch")
         defaults.set(sender.isOn, forKey: "anonymousSwitch")
 
