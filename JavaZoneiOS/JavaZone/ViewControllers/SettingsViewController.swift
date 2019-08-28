@@ -19,6 +19,8 @@ class SettingsViewController: UITableViewController {
         let center = UNUserNotificationCenter.current()
         let options: UNAuthorizationOptions = [.alert, .badge, .sound];
         
+        usageStatisticsSwitch.isHidden = true
+        
         isGrantedNotificationAccess = defaults.bool(forKey: "notifySwitch")
         isGrantedUsageStatisticsAccess = defaults.bool(forKey: "anonymousSwitch")
         

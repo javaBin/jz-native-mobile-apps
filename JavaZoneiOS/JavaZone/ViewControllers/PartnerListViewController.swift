@@ -93,7 +93,6 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
     {
         let ref = Database.database().reference(withPath: "partners")
         self.partners.removeAll()
-        self.searchPartners.removeAll()
         var partnerData = [Partner]()
         _ = ref.queryLimited(toFirst: 100).observe(.value) { snapshot in
             for child in snapshot.children {
@@ -105,6 +104,10 @@ class PartnerListViewController: UIViewController , UISearchBarDelegate, UIColle
                     if getExistingPartner!.hasStamped {
                         partner.hasStamped = getExistingPartner!.hasStamped
                     }
+                    
+                    self.partnerRepository?.updatePartnerData(updatedData: partner)
+                    
+                    
                 } else {
                     partnerData.append(partner)
                 }
@@ -199,7 +202,7 @@ extension PartnerListViewController {
         cell.setupGridLayoutConstraints(1, cellWidth: cell.frame.width)
         cell.partner = searchPartners[(indexPath as NSIndexPath).row]
         cell.partnerName = searchPartners[(indexPath as NSIndexPath).row].name!
-        cell.bind(searchPartners[(indexPath as NSIndexPath).row])
+        cell.bind(partnerView: searchPartners[(indexPath as NSIndexPath).row])
 
         return cell
     }

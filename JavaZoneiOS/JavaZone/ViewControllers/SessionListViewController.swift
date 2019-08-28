@@ -1,6 +1,9 @@
 import UIKit
 import UserNotifications
 import SVProgressHUD
+import Fabric
+import Crashlytics
+
 
 
 protocol SessionCellDelegate {
@@ -78,7 +81,6 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresher?.tintColor = UIColor(red:1.00, green: 0.21, blue: 0.55, alpha: 1.0)
         refresher?.addTarget(self, action: #selector(self.getAllSessionsFromSleepingPill), for: UIControl.Event.valueChanged)
-        
         self.refreshData()
         self.mySessionSegmentedControl.removeAllSegments()
         
@@ -88,6 +90,7 @@ class SessionListViewController: UIViewController, UISearchBarDelegate, UITableV
         
         
         self.mySessionSegmentedControl.addTarget(self, action: #selector(self.selectedSegmentedDate), for: UIControl.Event.valueChanged)
+
     }
     
     @objc func selectedSegmentedDate(sender: UISegmentedControl) {

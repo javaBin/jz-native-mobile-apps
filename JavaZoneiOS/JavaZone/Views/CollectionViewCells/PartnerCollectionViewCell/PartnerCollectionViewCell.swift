@@ -5,7 +5,7 @@ private let avatarListLayoutSize: CGFloat = 70.0
 
 class PartnerCollectionViewCell: UICollectionViewCell, CellInterface {
     
-    @IBOutlet fileprivate weak var partnerImageView: UIImageView!
+    @IBOutlet weak var partnerImageView: UIImageView!
     @IBOutlet weak var checkMarkImageView: UIImageView!
     @IBOutlet fileprivate weak var backgroundGradientView: UIView!
     @IBOutlet fileprivate weak var nameListLabel: UILabel!
@@ -27,16 +27,16 @@ class PartnerCollectionViewCell: UICollectionViewCell, CellInterface {
     fileprivate var avatarGridLayoutSize: CGFloat = 0.0
     fileprivate var initialLabelsLeadingConstraintValue: CGFloat = 0.0
     
-    func bind(_ : PartnerView) {
-        partnerImageView!.imageFromUrl(urlString: self.partner.logoUrl!)
-        if(!self.partner.hasStamped) {
+    func bind(partnerView : PartnerView) {
+        partnerImageView!.imageFromUrl(urlString: partnerView.logoUrl!)
+        if(!partnerView.hasStamped) {
             checkMarkImageView.isHidden = true
         }
         else {
             checkMarkImageView.isHidden = false
         }
         
-        nameListLabel.text = self.partner.name
+        nameListLabel.text = partnerView.name
     }
     
     func setupGridLayoutConstraints(_ transitionProgress: CGFloat, cellWidth: CGFloat) {
@@ -59,4 +59,8 @@ class PartnerCollectionViewCell: UICollectionViewCell, CellInterface {
         }
     }
     
+    override func prepareForReuse() {
+        self.partnerImageView.image = nil
+        self.checkMarkImageView.isHidden = true
+    }
 }

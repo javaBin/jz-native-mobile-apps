@@ -32,7 +32,25 @@ class PartnerRepository : Repository {
     }
     
     func updatePartnerData(updatedData: Partner!) {
+        let realm = try! Realm()
+        let partnerRetrieved = realm.objects(Partner.self).filter("name = %@", updatedData.name!).first
+        let partnerRetrievedRef = ThreadSafeReference(to: partnerRetrieved!)
         
+        DispatchQueue.global().sync {
+            autoreleasepool {
+                let realm = try! Realm()
+                guard let partnerRetrieved = realm.resolve(partnerRetrievedRef) else {
+                    return
+                }
+                try! realm.write {
+                    partnerRetrieved.name = updatedData.name!
+                    partnerRetrieved.homepageUrl = updatedData.homepageUrl
+                    partnerRetrieved.logoUrl = updatedData.logoUrl
+                    partnerRetrieved.longitude = updatedData.longitude
+                    partnerRetrieved.latitude = updatedData.latitude
+                }
+            }
+        }
     }
     
     func updatePartner(stamp: Bool, name: String) -> Partner? {

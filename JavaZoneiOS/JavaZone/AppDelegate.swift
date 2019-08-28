@@ -114,9 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window.rootViewController = storyboard.instantiateInitialViewController()
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         
-        
-        let isGrantedUsageStatisticsAccess = UserDefaults.standard.bool(forKey: "anonymousSwitch")
-        Analytics.setAnalyticsCollectionEnabled(isGrantedUsageStatisticsAccess)
+        Analytics.setAnalyticsCollectionEnabled(true)
         
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {(granted, error) in
