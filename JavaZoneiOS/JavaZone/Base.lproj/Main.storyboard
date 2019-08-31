@@ -1467,7 +1467,7 @@ We would not be what we are today without YOU! Thank you for your support and co
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Chb-hE-w1g">
-                                <rect key="frame" x="87" y="28" width="240" height="34"/>
+                                <rect key="frame" x="20" y="28" width="374" height="34"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment content="PartnerName">
@@ -1488,15 +1488,15 @@ We would not be what we are today without YOU! Thank you for your support and co
                             <constraint firstAttribute="trailing" secondItem="1DT-Mu-PcT" secondAttribute="trailing" constant="82" id="FQx-t9-Ive"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J9F-bn-jT1" secondAttribute="trailing" id="GHz-fx-rAp"/>
                             <constraint firstItem="EV7-fv-zpV" firstAttribute="top" secondItem="1DT-Mu-PcT" secondAttribute="bottom" constant="69" id="H9e-7A-T6B"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Chb-hE-w1g" secondAttribute="trailing" constant="67" id="I0I-8N-thV"/>
+                            <constraint firstItem="Chb-hE-w1g" firstAttribute="leading" secondItem="J9F-bn-jT1" secondAttribute="leading" id="LRc-Gg-O43"/>
+                            <constraint firstItem="Chb-hE-w1g" firstAttribute="trailing" secondItem="J9F-bn-jT1" secondAttribute="trailing" id="Urq-cr-gWK"/>
+                            <constraint firstItem="Chb-hE-w1g" firstAttribute="top" secondItem="XeR-YS-fYg" secondAttribute="bottom" constant="8" symbolic="YES" id="Xik-Jz-Scq"/>
                             <constraint firstItem="J8a-gs-R8G" firstAttribute="centerX" secondItem="3Mo-Tm-aQ6" secondAttribute="centerX" id="btH-Uk-aND"/>
                             <constraint firstItem="J9F-bn-jT1" firstAttribute="top" secondItem="J8a-gs-R8G" secondAttribute="bottom" constant="8" id="ds3-L9-gag"/>
                             <constraint firstItem="1DT-Mu-PcT" firstAttribute="leading" secondItem="3Mo-Tm-aQ6" secondAttribute="leading" constant="84" id="h7K-u2-kCW"/>
-                            <constraint firstItem="Chb-hE-w1g" firstAttribute="top" secondItem="XeR-YS-fYg" secondAttribute="bottom" constant="8" id="hbN-sa-ANo"/>
                             <constraint firstItem="J9F-bn-jT1" firstAttribute="leading" secondItem="1DT-Mu-PcT" secondAttribute="leading" constant="-64" id="laX-mb-Z1Q"/>
                             <constraint firstItem="1DT-Mu-PcT" firstAttribute="top" secondItem="J9F-bn-jT1" secondAttribute="bottom" constant="76" id="qXK-mV-FVY"/>
                             <constraint firstItem="J9F-bn-jT1" firstAttribute="leading" secondItem="3Mo-Tm-aQ6" secondAttribute="leadingMargin" id="yi9-fh-2fw"/>
-                            <constraint firstItem="Chb-hE-w1g" firstAttribute="leading" secondItem="J8a-gs-R8G" secondAttribute="leading" constant="4" id="yj2-ca-Izx"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1507,7 +1507,7 @@ We would not be what we are today without YOU! Thank you for your support and co
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dde-aK-TqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5510" y="2169"/>
+            <point key="canvasLocation" x="-5510.144927536232" y="2168.8858695652175"/>
         </scene>
         <!--PartnerListMain-->
         <scene sceneID="oVA-OE-nhF">
@@ -1754,38 +1754,40 @@ We would not be what we are today without YOU! Thank you for your support and co
                         <rect key="frame" x="0.0" y="0.0" width="414" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sta-7e-GVF">
-                                <rect key="frame" x="30" y="189" width="364" height="307"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sta-7e-GVF">
+                                <rect key="frame" x="25" y="43" width="364" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Visit all the partner stands and get a correct
-punch hole for each in your passport. Show the
-passport with all the punch holes you have got to
-the javaBin Lounge.
-We’ll count how many stands you have visited
-and add you to the prize draw.
-If you are among the lucky winners, you will hear
-from us shortly after the conference.
-Happy hunting!</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <mutableString key="content">&lt;h1&gt;Visit All The Partners Game&lt;/h1&gt;
+
+&lt;h2&gt;Rules&lt;/h2&gt;
+1. Visit all partner stands and scan their QR-codes. Each stand should have one, ask if they are not visible.
+2. When you have got a green checkmark on all logos, visit the javaBin Lounge in the expo area. 
+3. Show your badge, and register your contact information to participate in a prize draw.
+&lt;h2&gt;Prizes&lt;/h2&gt;
+The prizes will be drawn shortly after the conference. If you are among the lucky winners; you will hear from us shortly after the conference.
+
+&lt;h1&gt;Notice&lt;/h1&gt;
+&lt;h3&gt;General Data Protection Regulation (GDPR)&lt;/h3&gt;
+JavaZone team would like to remind attendees that by allowing a partner to scan your badge, you are agreeing to share your contact information with them.
+All data will be stored locally on the device and no data will be collected or shared with third parties.</mutableString>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collectibles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8g-rg-eYd">
-                                <rect key="frame" x="20" y="88" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="84Q-VW-TSG" firstAttribute="top" secondItem="Sta-7e-GVF" secondAttribute="bottom" constant="84" id="8xW-oY-dpA"/>
-                            <constraint firstItem="Q8g-rg-eYd" firstAttribute="top" secondItem="bOw-DA-uM0" secondAttribute="bottom" constant="68" id="G6w-Zg-WO5"/>
-                            <constraint firstItem="Sta-7e-GVF" firstAttribute="centerX" secondItem="8Ek-of-ZLO" secondAttribute="centerX" constant="5" id="WWN-qG-hbh"/>
-                            <constraint firstItem="Sta-7e-GVF" firstAttribute="top" secondItem="bOw-DA-uM0" secondAttribute="bottom" constant="169" id="b64-kg-vq6"/>
-                            <constraint firstItem="Q8g-rg-eYd" firstAttribute="leading" secondItem="8Ek-of-ZLO" secondAttribute="leadingMargin" id="iuU-R8-xyc"/>
-                            <constraint firstItem="Q8g-rg-eYd" firstAttribute="trailing" secondItem="Sta-7e-GVF" secondAttribute="trailing" id="nVA-I5-6fQ"/>
-                            <constraint firstItem="Sta-7e-GVF" firstAttribute="leading" secondItem="8Ek-of-ZLO" secondAttribute="leadingMargin" constant="10" id="s7c-JQ-MQ9"/>
-                            <constraint firstItem="Sta-7e-GVF" firstAttribute="top" secondItem="Q8g-rg-eYd" secondAttribute="bottom" constant="80" id="z7E-32-FDb"/>
+                            <constraint firstItem="Sta-7e-GVF" firstAttribute="centerX" secondItem="8Ek-of-ZLO" secondAttribute="centerX" id="bqH-8E-GgW"/>
+                            <constraint firstItem="Sta-7e-GVF" firstAttribute="leading" secondItem="8Ek-of-ZLO" secondAttribute="leadingMargin" constant="5" id="lgd-PP-3Io"/>
+                            <constraint firstItem="Sta-7e-GVF" firstAttribute="top" secondItem="bOw-DA-uM0" secondAttribute="bottom" constant="23" id="m7E-DC-Cpl"/>
+                            <constraint firstItem="84Q-VW-TSG" firstAttribute="top" secondItem="Sta-7e-GVF" secondAttribute="bottom" constant="31" id="wS2-Ae-hfF"/>
                         </constraints>
                     </view>
                     <connections>

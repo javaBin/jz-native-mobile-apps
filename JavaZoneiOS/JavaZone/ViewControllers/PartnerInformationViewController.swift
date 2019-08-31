@@ -5,8 +5,8 @@ class PartnerInformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        informationTextField.attributedText = informationTextField.text.convertHtml()
+        
     }
     
 
