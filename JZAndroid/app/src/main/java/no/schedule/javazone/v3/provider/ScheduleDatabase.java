@@ -25,8 +25,8 @@ import static no.schedule.javazone.v3.util.LogUtils.makeLogTag;
 public class ScheduleDatabase extends SQLiteOpenHelper {
   private static final String TAG = makeLogTag(ScheduleDatabase.class);
 
-  private static final String DATABASE_NAME = "jz2017.db";
-  private static final int VER_2017_RELEASE_D = 216;
+  private static final String DATABASE_NAME = "jz2019.db";
+  private static final int VER_2017_RELEASE_D = 217;
   private static final int CUR_DATABASE_VERSION = VER_2017_RELEASE_D;
 
   private final Context mContext;
@@ -336,7 +336,9 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
 
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     LOGD(TAG, "onUpgrade() from " + oldVersion + " to " + newVersion);
+
 
     // Cancel any sync currently in progress
     Account account = AccountUtils.getActiveAccount(mContext);
@@ -361,34 +363,35 @@ public class ScheduleDatabase extends SQLiteOpenHelper {
 
     // At this point, we ran out of upgrade logic, so if we are still at the wrong
     // version, we have no choice but to delete everything and create everything again.
-    if (version != CUR_DATABASE_VERSION) {
-      LOGW(TAG, "Upgrade unsuccessful -- destroying old data during upgrade");
+    //if (version != CUR_DATABASE_VERSION) {
+    //if (oldVersion < newVersion) {
+    LOGW(TAG, "Upgrade unsuccessful -- destroying old data during upgrade");
 
-      // Drop triggers and tables in reverse order of creation.
+    // Drop triggers and tables in reverse order of creation.
 
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.CARDS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.CARDS);
+//
+//    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_MY_SCHEDULE_DELETE);
+//    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_SPEAKERS_DELETE);
+//    db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_TAGS_DELETE);
+//
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SEARCH_SUGGEST);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SEARCH);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.HASHTAGS);
+//
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.MAPTILES);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_TAGS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SPEAKERS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.MY_SCHEDULE);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SPEAKERS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.ROOMS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.TAGS);
+//    db.execSQL("DROP TABLE IF EXISTS " + Tables.BLOCKS);
 
-      db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_MY_SCHEDULE_DELETE);
-      db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_SPEAKERS_DELETE);
-      db.execSQL("DROP TRIGGER IF EXISTS " + Triggers.SESSIONS_TAGS_DELETE);
-
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.SEARCH_SUGGEST);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SEARCH);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.HASHTAGS);
-
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.MAPTILES);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_TAGS);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS_SPEAKERS);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.MY_SCHEDULE);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.SPEAKERS);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.SESSIONS);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.ROOMS);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.TAGS);
-      db.execSQL("DROP TABLE IF EXISTS " + Tables.BLOCKS);
-
-      onCreate(db);
-      version = CUR_DATABASE_VERSION;
-    }
+    onCreate(db);
+    version = CUR_DATABASE_VERSION;
+    //}
 
     if (dataInvalidated) {
       LOGD(TAG, "Data invalidated; resetting our data timestamp.");

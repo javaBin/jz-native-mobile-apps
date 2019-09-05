@@ -27,6 +27,7 @@ android {
         targetSdkVersion 28
         versionCode 6
         versionName "6"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -108,6 +109,10 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 configurations.all {
@@ -123,6 +128,7 @@ configurations.all {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:support-v4:28.1.0'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -141,13 +147,16 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.3.0'
     api 'com.crashlytics.sdk.android:crashlytics:2.9.8'
 
+    api 'commons-codec:commons-codec:1.13'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
     implementation project(':JavaZoneApiClient')
 
     // JSON utility library.
     api 'com.google.code.gson:gson:2.8.2'
 
     // Glide library, used to handle asynchronous loading and caching of images.
-    api 'com.github.bumptech.glide:glide:3.7.0'
+    api 'com.github.bumptech.glide:glide:3.8.0'
 
 
     api('com.google.api-client:google-api-client:1.22.0') {
@@ -189,6 +198,8 @@ dependencies {
     api 'com.airbnb.android:lottie:2.0.0-beta4'
 
     // Firebase libraries
+
+    api 'com.google.firebase:firebase-ml-vision:16.0.0'
     api "com.google.firebase:firebase-core:16.0.6"
     api "com.google.firebase:firebase-messaging:17.3.4"
     api "com.google.firebase:firebase-appindexing:17.1.0"
@@ -199,8 +210,10 @@ dependencies {
 
     api "org.apache.commons:commons-lang3:3.6"
 
+    implementation 'com.github.kenglxn.QRGen:android:2.6.0'
+    implementation 'com.opencsv:opencsv:3.9'
 
-    testImplementation 'junit:junit:4.12'
+    implementation 'com.caverock:androidsvg:1.2.1'
 
     androidTestImplementation 'junit:junit:4.12'
     androidTestImplementation 'org.hamcrest:hamcrest-core:1.3'

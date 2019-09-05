@@ -5,26 +5,22 @@
     <string name="title_notifications">Notifications</string>
 
 
-    <plurals name="schedule_block_subtitle"
-             description="Shown in the schedule to indicate how many sessions are available on that particular time slot.">
+    <plurals name="schedule_block_subtitle" description="Shown in the schedule to indicate how many sessions are available on that particular time slot.">
         <item quantity="one"><xliff:g id="number_of_sessions">%1$d</xliff:g> available session</item>
         <item quantity="other"><xliff:g id="number_of_sessions">%1$d</xliff:g> available sessions</item>
     </plurals>
 
-    <plurals name="session_notification_text"
-             description="Shows as a notification on the system bar to alert user that some of their sessions are about to begin.">
+    <plurals name="session_notification_text" description="Shows as a notification on the system bar to alert user that some of their sessions are about to begin.">
         <item quantity="one">and <xliff:g id="num_sessions">%2$d</xliff:g> other starting in <xliff:g id="remaining_time">%1$d</xliff:g> min.</item>
         <item quantity="other">and <xliff:g id="num_sessions">%2$d</xliff:g> others starting in <xliff:g id="remaining_time">%1$d</xliff:g> min.</item>
     </plurals>
 
-    <plurals name="session_notification_ticker"
-             description="Shown as a notification on the system bar to alert user that some of their sessions are about to begin.">
+    <plurals name="session_notification_ticker" description="Shown as a notification on the system bar to alert user that some of their sessions are about to begin.">
         <item quantity="one">%1$d session is about to start.</item>
         <item quantity="other">%1$d sessions are about to start.</item>
     </plurals>
 
-    <plurals name="session_plurals"
-             description="Indicates a certain number of sessions.">
+    <plurals name="session_plurals" description="Indicates a certain number of sessions.">
         <item quantity="one">%1$d session</item>
         <item quantity="other">%1$d sessions</item>
     </plurals>
@@ -131,8 +127,18 @@ Develop and Distribute). -->
     <string name="title_session_detail">Session Information</string>
     <string name="title_my_schedule">My Schedule</string>
     <string name="navdrawer_item_my_io">My Schedule</string>
+    <string name="title_digital_pass">Digital Pass</string>
+    <string name="title_stamp">Stamps</string>
+    <string name="navdrawer_item_digital_pass">Digital Pass</string>
+    <string name="navdrawer_item_map">Map</string>
+    <string name="title_map">Map</string>
+
     <string name="description_avatar">Avatar</string>
     <string name="add_events">Add events</string>
+
+    <string name="myqr">My QR</string>
+    <string name="scan_button">Scan QR-code</string>
+    <string name="scan">Scan</string>
 
     <!-- Accessibility announcement to confirm the feedback rating made for a session by the user. -->
     <string name="feedback_rating_confirmation">Your rating: %1$d out of %2$d stars"</string>
@@ -196,6 +202,7 @@ Develop and Distribute). -->
     <string name="event_afterhours_title">After Hours</string>
     <string name="default_wifi_network_key" translatable="false">default_wifi_network</string>
     <string name="default_wifi_password_key" translatable="false">default_wifi_password</string>
+    <string name="salt_key" translatable="false">salt</string>
     <string name="event_sandbox_description_key" translatable="false">
         event_sandbox_description</string>
     <string name="event_code_labs_description_key" translatable="false">
@@ -241,5 +248,8 @@ Develop and Distribute). -->
         faq_additional_info_description</string>
     <string name="about_javazone">About JavaZone</string>
 
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

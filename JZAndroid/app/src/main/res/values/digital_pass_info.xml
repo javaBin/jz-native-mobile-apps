@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="digital_pass_rules_title">Rules</string>
+    <string name="digital_pass_rules">Visit the partner stands and scan their QR-code to get their logo highlighted in the app. Go to the javaBin Lounge after visiting all the stands and show your QR-code to get added to the prize draw. If you are among the lucky winners; you will hear from us shortly after the conference. Happy hunting!</string>
+    <string name="digital_pass_prizes_title">Prizes</string>
+    <string name="digital_pass_prizes">T</string>
+</resources>

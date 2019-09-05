@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright 2017 Google Inc. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@
     <!-- Root styles that vary by API level -->
 
     <!-- Prevents crash on certain devices to namespace conflict -->
-    <style name="FrameworkRoot.Theme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="FrameworkRoot.Theme" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <style name="Theme.JZSched" parent="FrameworkRoot.Theme">
         <item name="colorPrimary">@color/theme_primary</item>
@@ -96,19 +95,19 @@
         <item name="android:textColor">@color/app_white</item>
     </style>
 
-    <style name="Theme.JZSched.Welcome" parent="@style/Theme.JZSched.Immersive"/>
+    <style name="Theme.JZSched.Welcome" parent="@style/Theme.JZSched.Immersive" />
 
     <!-- My Schedule -->
-    <style name="Theme.JZSched.MySchedule" parent="@style/Theme.JZSched.Immersive"/>
+    <style name="Theme.JZSched.MySchedule" parent="@style/Theme.JZSched.Immersive" />
 
     <!-- Schedule -->
-    <style name="Theme.JZSched.Schedule" parent="@style/Theme.JZSched"/>
+    <style name="Theme.JZSched.Schedule" parent="@style/Theme.JZSched" />
 
     <!-- Feed -->
-    <style name="Theme.JZSched.Feed" parent="@style/Theme.JZSched.Immersive"/>
+    <style name="Theme.JZSched.Feed" parent="@style/Theme.JZSched.Immersive" />
 
     <!-- Map -->
-    <style name="Theme.JZSched.Map" parent="@style/Theme.JZSched.Immersive"/>
+    <style name="Theme.JZSched.Map" parent="@style/Theme.JZSched.Immersive" />
 
     <!-- Info -->
     <style name="Theme.JZSched.Info" parent="@style/Theme.JZSched.Immersive">
@@ -124,11 +123,11 @@
         <item name="colorAccent">@color/jz_orange</item>
     </style>
 
-    <style name="ThemeOverlay.DarkToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="ThemeOverlay.DarkToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="ThemeOverlay.LightToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar"/>
+    <style name="ThemeOverlay.LightToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    <style name="ThemeOverlay.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light"/>
+    <style name="ThemeOverlay.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.JZSched.SessionDetails" parent="Theme.JZSched">
         <item name="android:windowSharedElementEnterTransition">
@@ -143,8 +142,7 @@
     </style>
 
     <!-- Text appearances -->
-    <style name="TextAppearance.H1" parent="@style/TextAppearance.AppCompat.Large">
-    </style>
+    <style name="TextAppearance.H1" parent="@style/TextAppearance.AppCompat.Large"></style>
 
     <style name="TextAppearance.H3" parent="@style/TextAppearance.AppCompat.Medium">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -180,7 +178,7 @@
     </style>
 
     <!-- Widget styles-->
-    <style name="Widget.JZSched" parent="android:Widget"/>
+    <style name="Widget.JZSched" parent="android:Widget" />
 
     <style name="Widget.JZSched.TextView" parent="@android:style/Widget.Material.TextView">
         <item name="android:lineSpacingMultiplier">@dimen/text_line_spacing</item>
@@ -391,12 +389,40 @@
 
     <string name="live_now">Live Now</string>
 
-    <style name="Theme.JZSched.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.JZSched.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.JZSched.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="Theme.JZSched.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
     <style name="SplashTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/jzappsplash</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="Theme.JZSched">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- Set this to true if you want Full Screen without status bar -->
+        <item name="android:windowFullscreen">false</item>
+
+        <item name="android:windowIsFloating">false</item>
+
+        <!-- This is important! Don't forget to set window background -->
+        <item name="android:windowBackground">@color/cardview_light_background</item>
+
+        <!-- Additionally if you want animations when dialog opening -->
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 </resources>

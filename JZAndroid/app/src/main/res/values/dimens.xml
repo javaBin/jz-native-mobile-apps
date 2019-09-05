@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright 2017 Google Inc. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +12,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
-<!-- Dimensions common among all features in the app. -->
+  --><!-- Dimensions common among all features in the app. -->
 <resources>
 
     <!-- standard metrics -->
@@ -145,5 +143,6 @@
     <dimen name="activity_horizontal_margin">16px</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="logo_size">150dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="no.schedule.javazone.v3">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="no.schedule.javazone.v3">
 
     <permission
         android:name="no.schedule.javazone.v3.permission.WRITE_SCHEDULE"
         android:description="@string/permission_write"
         android:label="@string/permission_write"
-        android:protectionLevel="normal"/>
+        android:protectionLevel="normal" />
 
     <!--
      Legacy permissions, required due to minSdk level.
      Newer devices will use runtime permissions.
     -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
-    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <!-- required for YouTube -->
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!-- required for Calendar API in Android 4.0 or above -->
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <!-- required for setIsSyncable -->
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
     <!-- required for MapView v2 -->
     <permission
         android:name="no.schedule.javazone.v3.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="signature" />
 
-    <uses-permission android:name="no.schedule.javazone.v3.permission.MAPS_RECEIVE"/>
+    <uses-permission android:name="no.schedule.javazone.v3.permission.MAPS_RECEIVE" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18"/>
+        android:maxSdkVersion="18" />
 
     <application
         android:name=".AppApplication"
@@ -59,15 +64,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JZSched">
 
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <uses-library android:name="ro.vendor.graphics.memory" android:required="false"/>
+
+
         <!-- Google Play Services -->
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="barcode" />
 
         <!-- MapView v2 API -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value=""/>
+            android:value="" />
 
         <activity
             android:name=".myschedule.MyScheduleActivity"
@@ -75,22 +88,40 @@
             android:label="@string/title_my_schedule"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.JZSched.MySchedule">
-        </activity>
+            android:theme="@style/Theme.JZSched.MySchedule"></activity>
+        <activity
+            android:name=".digitalpass.DigitalPassActivity"
+            android:exported="true"
+            android:label="@string/title_digital_pass"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.JZSched.MySchedule"></activity>
+        <activity
+            android:name=".digitalpass.camera.CameraActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_camera"
+            android:launchMode="singleTask"
+            android:theme="@style/FullscreenTheme"></activity>
+        <!--<activity-->
+            <!--android:name=".map.MapActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+            <!--android:label="@string/title_map"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:theme="@style/FullscreenTheme"></activity>-->
         <activity
             android:name=".schedule.ScheduleActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.JZSched.Schedule"/>
+            android:theme="@style/Theme.JZSched.Schedule" />
         <activity
             android:name=".ui.SplashScreenActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme.Base"/>
+            android:theme="@style/SplashTheme.Base" />
         <!--
  This activity alias lets us change the main entry point without breaking launcher
      shortcuts. DO NOT change its android:name attribute.
@@ -100,9 +131,9 @@
             android:label="@string/app_name"
             android:targetActivity=".ui.SplashScreenActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
@@ -113,19 +144,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.JZSched.SessionDetails">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.item/vnd.javazone2017.session"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.javazone2017.session" />
             </intent-filter>
             <!-- Android Beam for session details -->
             <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.item/vnd.javazone2017.session"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.javazone2017.session" />
             </intent-filter>
             <!-- Web URLs -->
             <!--
@@ -138,20 +169,20 @@
             android:name=".feedback.SessionFeedbackActivity"
             android:exported="false"
             android:label="@string/title_session_feedback"
-            android:screenOrientation="portrait"
             android:parentActivityName=".myschedule.MyScheduleActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.JZSched.Feedback"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <service
             android:name=".signin.RegisterWithServerIntentService"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!--
      Register AnalyticsReceiver and AnalyticsService to support background
@@ -162,14 +193,14 @@
             android:enabled="true"
             tools:ignore="ExportedReceiver">
             <intent-filter>
-                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH"/>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
             </intent-filter>
         </receiver>
 
         <service
             android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!--
           MyFcmListenerService is the extension of the FirebaseMessagingService,
@@ -179,14 +210,14 @@
             android:name=".fcm.MyFcmListenerService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service
             android:name=".fcm.MyInstanceIDService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
@@ -198,14 +229,14 @@
             android:exported="true"
             android:label="@string/app_name"
             android:syncable="true"
-            android:writePermission="no.schedule.javazone.v3.permission.WRITE_SCHEDULE"/>
+            android:writePermission="no.schedule.javazone.v3.permission.WRITE_SCHEDULE" />
 
         <activity
             android:name=".info.InfoActivity"
             android:label="@string/title_activity_info"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.JZSched">
-        </activity>
+            android:theme="@style/Theme.JZSched"></activity>
+
     </application>
 
 </manifest>

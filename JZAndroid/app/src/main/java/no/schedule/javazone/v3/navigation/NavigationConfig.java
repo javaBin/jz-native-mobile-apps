@@ -14,11 +14,10 @@
 
 package no.schedule.javazone.v3.navigation;
 
-import no.schedule.javazone.v3.BuildConfig;
-import no.schedule.javazone.v3.navigation.NavigationModel.NavigationItemEnum;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import no.schedule.javazone.v3.navigation.NavigationModel.NavigationItemEnum;
 
 /**
  * Configuration file for items to show in the {@link AppNavigationView}. This is used by the {@link
@@ -29,6 +28,7 @@ public class NavigationConfig {
     public final static NavigationItemEnum[] ITEMS = new NavigationItemEnum[]{
             NavigationItemEnum.SCHEDULE,
             NavigationItemEnum.MY_SCHEDULE,
+            NavigationItemEnum.DIGITAL_PASS,
 //            NavigationItemEnum.FEED,
 //            NavigationItemEnum.MAP,
             NavigationItemEnum.INFO,
@@ -63,11 +63,14 @@ public class NavigationConfig {
                 case MY_SCHEDULE:
                     includeItem = true;
                     break;
+                case DIGITAL_PASS:
+                    includeItem = true;
+                    break;
 //                case FEED:
 //                    includeItem = BuildConfig.ENABLE_FEED_IN_NAVIGATION;
 //                    break;
 //                case MAP:
-//                    includeItem = BuildConfig.ENABLE_MAP_IN_NAVIGATION;
+//                    includeItem = true;
 //                    break;
                 case INFO:
                     includeItem = true;

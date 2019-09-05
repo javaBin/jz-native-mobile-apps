@@ -8,6 +8,10 @@
         android:id="@+id/schedule_nav_item"
         android:checkable="true"
         android:visible="false" />
+    <item
+        android:id="@+id/digital_pass_nav_item"
+        android:checkable="true"
+        android:visible="false" />
     <!--<item-->
         <!--android:id="@+id/feed_nav_item"-->
         <!--android:checkable="true"-->

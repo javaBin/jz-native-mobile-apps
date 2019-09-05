@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   Copyright 2015 Google Inc. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -70,22 +69,31 @@
     </declare-styleable>
 
     <declare-styleable name="CollapsibleCard">
-        <attr name="cardTitle" format="string"/>
-        <attr name="cardDescription" format="string"/>
+        <attr name="cardTitle" format="string" />
+        <attr name="cardDescription" format="string" />
     </declare-styleable>
 
     <declare-styleable name="ReserveButton">
-        <attr name="state_reservable" format="boolean|reference"/>
-        <attr name="state_reservation_pending" format="boolean|reference"/>
-        <attr name="state_reserved" format="boolean|reference"/>
-        <attr name="state_reservation_disabled" format="boolean|reference"/>
-        <attr name="state_auth_required" format="boolean|reference"/>
-        <attr name="state_waitlist_available" format="boolean|reference"/>
-        <attr name="state_waitlisted" format="boolean|reference"/>
+        <attr name="state_reservable" format="boolean|reference" />
+        <attr name="state_reservation_pending" format="boolean|reference" />
+        <attr name="state_reserved" format="boolean|reference" />
+        <attr name="state_reservation_disabled" format="boolean|reference" />
+        <attr name="state_auth_required" format="boolean|reference" />
+        <attr name="state_waitlist_available" format="boolean|reference" />
+        <attr name="state_waitlisted" format="boolean|reference" />
     </declare-styleable>
 
     <declare-styleable name="BadgedBottomNavigationView">
-        <attr name="badgeColor" format="color"/>
-        <attr name="badgeRadius" format="dimension"/>
+        <attr name="badgeColor" format="color" />
+        <attr name="badgeRadius" format="dimension" />
+    </declare-styleable>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 </resources>
